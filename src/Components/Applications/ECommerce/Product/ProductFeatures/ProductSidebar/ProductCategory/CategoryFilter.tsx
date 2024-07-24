@@ -2,15 +2,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Input, Label } from 'reactstrap';
-import { RootState } from '../../../../../../../ReduxToolkit/Store';
 import { deleteCategoryState, filterCategoryState } from '../../../../../../../ReduxToolkit/Reducers/ECommerce/ProductReducer';
+import { RootState } from '../../../../../../../ReduxToolkit/Store';
 
 export default function CategoryFilter() {
     const { productItem, filterValue } = useSelector((state: RootState) => state.product);
     const dispatch = useDispatch();
     const category = () => {
         let categoryData: string[] = [];
-        productItem.map((element : any) => {
+        productItem.map((element) => {
             if (element.name) {
                 if (categoryData.indexOf(element.name) === -1) {
                     categoryData.push(element.name);

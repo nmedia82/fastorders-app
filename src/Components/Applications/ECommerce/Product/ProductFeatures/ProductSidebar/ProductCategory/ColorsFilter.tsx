@@ -10,9 +10,9 @@ export default function ColorsFilter() {
     const dispatch = useDispatch();
     const colors = () => {
         let colorData: string[] = [];
-        productItem.map((element : any) => {
+        productItem.map((element) => {
             if (element.colors) {
-                element.colors.map((item:any) => {
+                element.colors.map((item) => {
                     if (colorData.indexOf(item) === -1) {
                         colorData.push(item);
                     }

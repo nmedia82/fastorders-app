@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Row } from 'reactstrap';
 import { Image, Ribbon } from '../../../../../AbstractElements';
+import { fetchProductData } from '../../../../../ReduxToolkit/Reducers/ECommerce/ProductReducer';
 import { AppDispatch, RootState } from '../../../../../ReduxToolkit/Store';
+import { FilterValueTypes, ProductDataTypes } from '../../../../../Types/ECommerce.type';
 import { dynamicImage } from '../../../../../Utils';
 import ProductDetails from './ProductDetails';
 import ProductHover from './ProductHover';
 import ProductModal from './ProductModal';
-import { fetchProductData } from '../../../../../ReduxToolkit/Reducers/ECommerce/ProductReducer';
-import { FilterValueTypes, ProductDataTypes } from '../../../../../Types/ECommerce.type';
 
 export default function ProductGrid() {
     const dispatch = useDispatch<AppDispatch>();
@@ -35,7 +35,7 @@ export default function ProductGrid() {
                 category = true;
             }
             let brand;
-            item.tags.map((element : any) => {
+            item.tags.map((element) => {
                 if (filterValue.brand.includes(element)) {
                     brand = true;
                 }

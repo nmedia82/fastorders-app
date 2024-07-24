@@ -1,8 +1,8 @@
 import React from 'react'
+import { ModalProductDetailsProp } from '../../../../../../Types/ECommerce.type'
 import { Btn, H4, H6, LI, P, UL } from '../../../../../../AbstractElements'
 import { Dollar } from '../../../../../../Utils/Constants'
 import { productSize } from '../../../../../../Data/Applications/ECommerce/Product'
-import { ModalProductDetailsProp } from '../../../../../../Types/ECommerce.type'
 
 export default function ModalProductDetails({ modelData }: ModalProductDetailsProp) {
     return (

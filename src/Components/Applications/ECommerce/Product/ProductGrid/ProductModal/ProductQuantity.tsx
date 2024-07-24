@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Input, InputGroup, InputGroupText } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Btn, H6 } from '../../../../../../AbstractElements';
 import { ProductQuantityProp } from '../../../../../../Types/ECommerce.type';
 import { addCartData } from '../../../../../../ReduxToolkit/Reducers/ECommerce/ProductReducer';
+import { Btn, H6 } from '../../../../../../AbstractElements';
 
 export default function ProductQuantity({ dataId, modelData }: ProductQuantityProp) {
     const [cartCount, setCartCount] = useState(1);

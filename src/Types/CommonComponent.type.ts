@@ -1,5 +1,3 @@
-import { Direction } from "reactstrap/types/lib/Dropdown";
-
 export interface CardHeaderSpanType {
     headerClass?: string;
     heading?: string
@@ -104,17 +102,4 @@ export interface CommonHeaderWithDropdownProps {
     headerIconClass?: string;
     start?: boolean;
     end?: boolean;
-}
-
-export interface BasicDropdownType {
-    toggleClass: string;
-    groupClass?: string;
-    bodyClass?: string;
-    position?: Direction;
-    text: string;
-    menulist: string[];
-}
-
-export interface DropdownCommonProp {
-    item: BasicDropdownType;
 }

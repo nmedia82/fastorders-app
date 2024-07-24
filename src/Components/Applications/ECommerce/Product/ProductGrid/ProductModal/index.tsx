@@ -1,10 +1,10 @@
 import React from 'react'
 import { Col, Modal, ModalHeader, Row } from 'reactstrap';
+import { ProductModalProps } from '../../../../../../Types/ECommerce.type';
 import { Image } from '../../../../../../AbstractElements';
 import { dynamicImage } from '../../../../../../Utils';
 import ModalProductDetails from './ModalProductDetails';
 import ProductQuantity from './ProductQuantity';
-import { ProductModalProps } from '../../../../../../Types/ECommerce.type';
 
 export default function ProductModal({ value, setOpenModal, dataId, modelData }: ProductModalProps) {
     const onCloseModal = () => {

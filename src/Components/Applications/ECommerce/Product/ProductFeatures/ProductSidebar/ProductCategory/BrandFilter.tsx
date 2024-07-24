@@ -2,17 +2,17 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Input, Label } from 'reactstrap';
-import { RootState } from '../../../../../../../ReduxToolkit/Store';
 import { deleteBrandState, filterBrandState } from '../../../../../../../ReduxToolkit/Reducers/ECommerce/ProductReducer';
+import { RootState } from '../../../../../../../ReduxToolkit/Store';
 
 export default function BrandFilter() {
     const { productItem, filterValue } = useSelector((state: RootState) => state.product);
     const dispatch = useDispatch();
     const brands = () => {
         let brandData: string[] = [];
-        productItem.map((element : any) => {
+        productItem.map((element) => {
             if (element.tags) {
-                element.tags.map((item : any) => {
+                element.tags.map((item) => {
                     if (brandData.indexOf(item) === -1) {
                         brandData.push(item);
                     }

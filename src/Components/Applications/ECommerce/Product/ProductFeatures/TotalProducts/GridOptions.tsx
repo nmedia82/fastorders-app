@@ -1,9 +1,9 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
+import { changeColumnClass } from '../../../../../../ReduxToolkit/Reducers/ECommerce/FilterReducer';
 import { LI, UL } from '../../../../../../AbstractElements';
 import { Href } from '../../../../../../Utils/Constants';
 import { gridOptionsData } from '../../../../../../Data/Applications/ECommerce/Product';
-import { changeColumnClass } from '../../../../../../ReduxToolkit/Reducers/ECommerce/FilterReducer';
 
 export default function GridOptions() {
     const dispatch = useDispatch();

@@ -11,8 +11,7 @@ export interface SidebarChildrenType {
     title: string;
     type: string;
     menu?: SubChildrenType[]
-    bookmark?: boolean;
-    target?: string;
+    bookmark?: boolean
 }
 
 export interface SidebarItemType {
@@ -26,8 +25,7 @@ export interface SidebarItemType {
     active?: boolean;
     url?: string;
     bookmark?: boolean;
-    menu?: SidebarChildrenType[];
-    target?: string;
+    menu?: SidebarChildrenType[]
 }
 
 export interface SidebarMenuType {

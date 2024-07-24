@@ -422,7 +422,7 @@ $activity-dot-color in (primary, $primary-color),
     }
 }
 .sales-bg {
-    // background-image: url(../../images/dashboard-2/bg.png);
+    background-image: url(../../images/dashboard-2/bg.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -437,7 +437,7 @@ $activity-dot-color in (primary, $primary-color),
 }
 .sales-overview {
     position: relative;
-    // background-image: url(../../images/dashboard-2/bg-shape.png);
+    background-image: url(../../images/dashboard-2/bg-shape.png);
     background-repeat: no-repeat;
     background-size: contain;
     .common-box {
@@ -903,7 +903,7 @@ $activity-dot-color in (primary, $primary-color),
         }
         &::after {
             content: '';
-            // background-image: url(../../images/dashboard-2/vector1.png);
+            background-image: url(../../images/dashboard-2/vector1.png);
             width: 100%;
             height: 172px;
             position: absolute;
@@ -1198,7 +1198,7 @@ $activity-dot-color in (primary, $primary-color),
 }
 // deal card
 .deal-card {
-    // background-image: url(../../images/dashboard-2/deal-bg.png);
+    background-image: url(../../images/dashboard-2/deal-bg.png);
     background-size: cover;
     .card-body {
         margin-bottom: calc(20px - 10px);

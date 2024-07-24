@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "title": "Client meeting",
+        "collection": "General",
+        "description": "In our future client meeting, let's talk about the project's development, significant milestones."
+    },
+    {
+        "id": 2,
+        "title": "Plan webinar",
+        "collection": "General",
+        "description": "Join us for a thought-provoking webinar on aviation developments and how they affect the sector."
+    },
+    {
+        "id": 3,
+        "title": "Email newsletter",
+        "collection": "General",
+        "description": "By signing up for our email newsletter, you may be informed about our most recent news and promotions."
+    },
+    {
+        "id": 4,
+        "title": "Publish podcast",
+        "collection": "General",
+        "description": "We're thrilled to announce the publication of a brand-new edition of our podcast."
+    },
+    {
+        "id": 5,
+        "title": "Lunch website",
+        "collection": "General",
+        "description": "Visit our website to find a delicious selection of lunch alternatives that will please every appetite."
+    },
+    {
+        "id": 6,
+        "title": "Client meeting",
+        "collection": "General",
+        "description": "Getting ready to meet with the customer to go through project updates, objectives, and next actions."
+    },
+    {
+        "id": 7,
+        "title": "Plan webinar",
+        "collection": "General",
+        "description": "Join us for a thought-provoking webinar on aviation developments and how they affect the sector."
+    },
+    {
+        "id": 8,
+        "title": "Email newsletter",
+        "collection": "General",
+        "description": "By signing up for our email newsletter, you may be informed about our most recent news and promotions."
+    }
+]

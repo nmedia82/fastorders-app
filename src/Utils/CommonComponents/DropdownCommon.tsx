@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ButtonGroup, Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
 import { Href } from '../Constants';
-import { DropdownCommonProp } from '../../Types/CommonComponent.type';
+import { DropdownCommonProp } from '../../Types/Buttons.type';
 
 export default function DropdownCommon({item}: DropdownCommonProp) {
     const [open, setOpen] = useState(false);

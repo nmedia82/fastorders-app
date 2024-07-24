@@ -3,9 +3,9 @@ import { Col, Row } from 'reactstrap';
 import { useDispatch } from 'react-redux';
 import { ChevronDown, Grid, List } from 'react-feather';
 import { Href } from '../../../../../../Utils/Constants';
+import { toggleColumnGrid, toggleRowGrid, toggleSidebar } from '../../../../../../ReduxToolkit/Reducers/ECommerce/FilterReducer';
 import GridOptions from './GridOptions';
 import Sorting from './Sorting';
-import { toggleColumnGrid, toggleRowGrid, toggleSidebar } from '../../../../../../ReduxToolkit/Reducers/ECommerce/FilterReducer';
 
 export default function TotalProducts() {
     const dispatch = useDispatch();

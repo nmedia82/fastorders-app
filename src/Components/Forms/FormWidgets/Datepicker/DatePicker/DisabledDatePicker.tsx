@@ -1,0 +1,17 @@
+import React, { useState } from 'react'
+import DatePicker from "react-datepicker";
+
+export default function DisabledDatePicker() {
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+    const today = new Date();
+    const disabledDates: Date[] = [today];
+
+    return (
+        <DatePicker
+            className="form-control"
+            selected={selectedDate}
+            onChange={(date: Date) => setSelectedDate(date)}
+            excludeDates={disabledDates}
+        />
+    )
+}

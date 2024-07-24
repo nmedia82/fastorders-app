@@ -1,9 +1,9 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
+import { ProductDataTypes, ProductHoverProps } from '../../../../../Types/ECommerce.type';
+import { addCartData } from '../../../../../ReduxToolkit/Reducers/ECommerce/ProductReducer';
 import { Btn, LI, UL } from '../../../../../AbstractElements';
 import { Link } from 'react-router-dom';
-import { addCartData } from '../../../../../ReduxToolkit/Reducers/ECommerce/ProductReducer';
-import { ProductDataTypes, ProductHoverProps } from '../../../../../Types/ECommerce.type';
 
 export default function ProductHover({ onClickHandle, item }: ProductHoverProps) {
     const dispatch = useDispatch();

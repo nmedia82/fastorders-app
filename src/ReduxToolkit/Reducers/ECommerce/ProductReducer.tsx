@@ -1,8 +1,8 @@
 /* eslint-disable array-callback-return */
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
-import { EccomInitialStateProps, ProductDataTypes } from "../../../Types/ECommerce.type";
 import { ProductApi } from "../../../api";
+import { EccomInitialStateProps, ProductDataTypes } from "../../../Types/ECommerce.type";
 
 export const fetchProductData = createAsyncThunk<ProductDataTypes[], void, {}>("api/product", async () => {
     const response = await axios.get(ProductApi);

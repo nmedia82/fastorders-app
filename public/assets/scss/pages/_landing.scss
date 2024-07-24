@@ -118,7 +118,7 @@
         left: 0;
         transform: translateY(-50%);
         margin-left: 0;
-        // background-image: url(../../images/landing/icon/plus.svg);
+        background-image: url(../../images/landing/icon/plus.svg);
         background-position: center;
         background-size: 16px;
       }
@@ -131,7 +131,7 @@
         background-color: transparent;
 
         &::after {
-          // background-image: url(../../images/landing/icon/minus.svg);
+          background-image: url(../../images/landing/icon/minus.svg);
         }
       }
     }
@@ -989,7 +989,7 @@ $landing-color : var(--theme-default);
 
 .footer-bg {
   position: relative;
-  // background: url(../../images/landing/footer.png);
+  background: url(../../images/landing/footer.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -2537,7 +2537,7 @@ $landing-color : var(--theme-default);
   position: relative;
   background-position: initial;
   background-size: cover;
-  // background-image: url(../../images/landing/home-bg.jpg);
+  background-image: url(../../images/landing/home-bg.jpg);
 
   @media (max-width:575px) {
     background-position: left;
@@ -2851,7 +2851,7 @@ $landing-color : var(--theme-default);
         &::after {
           content: '';
           position: absolute;
-          // background-image: url(../../images/landing/vector.png);
+          background-image: url(../../images/landing/vector.png);
           background-repeat: no-repeat;
           background-size: contain;
           left: 50%;

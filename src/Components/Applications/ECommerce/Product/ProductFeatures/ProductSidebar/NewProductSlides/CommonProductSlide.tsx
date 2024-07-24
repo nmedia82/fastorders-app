@@ -1,8 +1,8 @@
 import React from 'react'
+import { CommonProductSlideProp } from '../../../../../../../Types/ECommerce.type'
 import { Col, Row } from 'reactstrap'
 import { Image, P } from '../../../../../../../AbstractElements'
 import { dynamicImage, dynamicNumber } from '../../../../../../../Utils'
-import { CommonProductSlideProp } from '../../../../../../../Types/ECommerce.type'
 
 export default function CommonProductSlide({ data }: CommonProductSlideProp) {
     return (
