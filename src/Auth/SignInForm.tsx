@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Btn, H2, H6, Image, P } from '../AbstractElements';
 import { dynamicImage } from '../Utils';
-import { CreateAccount, DontHaveAccount, EmailAddress, ForgotPassword, Href, Password, RememberPassword, SignIn, SignInAccount, SignInWith } from '../Utils/Constants';
+import { CreateAccount, DontHaveAccount, EmailAddress, ForgotPassword, Password, RememberPassword, SignIn, SignInAccount, SignInWith } from '../Utils/Constants';
 import SocialLink from './SocialLink';
 
 export default function SignInForm() {
@@ -17,7 +17,7 @@ export default function SignInForm() {
         e.preventDefault()
         if (email === "test123@gmail.com" && password === "Test@123") {
             toast.success("Login Success...!");
-            navigate(`${process.env.PUBLIC_URL}/pages/sample_page`);
+            navigate(`${process.env.PUBLIC_URL}/dashboard/default`);
             localStorage.setItem("login", JSON.stringify(true));
         } else {
             toast.error("Please Enter valid email or password...!");
@@ -26,7 +26,7 @@ export default function SignInForm() {
     return (
         <div>
             <div>
-                <Link className='logo' to={`${process.env.PUBLIC_URL}/pages/sample_page`}>
+                <Link className='logo' to={`${process.env.PUBLIC_URL}/dashboard/default`}>
                     <Image className="img-fluid for-light" src={dynamicImage(`logo/logo.png`)} alt="looginpage" />
                     <Image className="img-fluid for-dark" src={dynamicImage(`logo/logo_dark.png`)} alt="looginpage"></Image>
                 </Link>
@@ -53,7 +53,7 @@ export default function SignInForm() {
                             <Input id="checkbox1" type="checkbox" />
                             <Label className="text-muted" htmlFor="checkbox1">{RememberPassword}</Label>
                         </div>
-                        <Link className="link" to={Href}>{ForgotPassword}</Link>
+                        <Link className="link" to={`${process.env.PUBLIC_URL}/auth/forget-password`}>{ForgotPassword}</Link>
                         <div className="text-end mt-3">
                             <Btn color='primary' className="w-100" block>{SignIn}</Btn>
                         </div>
@@ -61,7 +61,7 @@ export default function SignInForm() {
                     <H6 className="text-muted mt-4 or">{SignInWith}</H6>
                     <SocialLink />
                     <P className="mt-4 mb-0 text-center">{DontHaveAccount}
-                        <Link className="ms-2" to={Href}>{CreateAccount}</Link>
+                        <Link className="ms-2" to={`${process.env.PUBLIC_URL}/auth/sign-up`}>{CreateAccount}</Link>
                     </P>
                 </Form>
             </div>

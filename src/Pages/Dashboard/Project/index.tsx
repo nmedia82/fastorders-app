@@ -1,10 +1,10 @@
-import React from "react";
-import ProjectDashboard from "../../../Components/Dashboard/Project";
+import React from 'react'
+import ProjectDashboard from '../../../Components/Dashboard/Project'
 
-export default function DashboardPage() {
+export default function Project() {
   return (
-    <div className="page-body main-project">
-      <ProjectDashboard />
+    <div className='page-body main-project'>
+        <ProjectDashboard/>
     </div>
-  );
+  )
 }

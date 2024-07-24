@@ -12,10 +12,8 @@ export default function Routers() {
             <Routes>
                 {login ? (
                     <>
-                        <Route
-                            path={`${process.env.PUBLIC_URL}` || '/'}
-                            element={<Navigate to={`${process.env.PUBLIC_URL}/dashboard`} />}
-                        />
+                        <Route path={`${process.env.PUBLIC_URL}`} element={<Navigate to={`${process.env.PUBLIC_URL}/dashboard/default`} />} />
+                        <Route path={`/`} element={<Navigate to={`${process.env.PUBLIC_URL}/dashboard/default`} />} />
                     </>
                 ) : (
                     ""

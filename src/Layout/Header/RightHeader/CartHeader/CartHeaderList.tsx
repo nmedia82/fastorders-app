@@ -67,8 +67,8 @@ export default function CartHeaderList() {
             <H6 className="mb-0">{OrderTotal} <span className="f-right">{'$' + items.reduce((acc, item) => acc + item.price * item.quantity, 0)}</span></H6>
           </LI>
           <LI className="text-center">
-            <Link className="d-block mb-3 view-cart f-w-700" to={Href}>{Gotoyourcart}</Link>
-            <Link className="btn btn-primary view-checkout w-100" to={Href}>{Checkout}</Link>
+            <Link className="d-block mb-3 view-cart f-w-700" to={`${process.env.PUBLIC_URL}/applications/ecommerce/cart`}>{Gotoyourcart}</Link>
+            <Link className="btn btn-primary view-checkout w-100" to={`${process.env.PUBLIC_URL}/applications/ecommerce/checkout`}>{Checkout}</Link>
           </LI>
         </>
       ) : (

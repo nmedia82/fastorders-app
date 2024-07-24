@@ -1,9 +1,10 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
-import { Col, Form, FormGroup } from 'reactstrap';
+/* eslint-disable array-callback-return */
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { SidebarItemType } from '../../../Types/Layout.type';
+import { Form, FormGroup } from 'reactstrap';
 import { menuList } from '../../../Data/Layout/SidebarMenuList';
 import { RootState } from '../../../ReduxToolkit/Store';
+import { SidebarItemType } from '../../../Types/Layout.type';
 import SearchInput from './SearchInput';
 import SearchResult from './SearchResult';
 

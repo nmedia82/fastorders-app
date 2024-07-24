@@ -1,4 +1,4 @@
-export const api = `${process.env.PUBLIC_URL}/api`;
+const api = `${process.env.PUBLIC_URL}/api`;
 export const SearchResultApi = `${api}/searchResult.json`;
 export const ContactsApi = `${api}/contacts.json`;
 export const TasksApi = `${api}/tasks.json`;

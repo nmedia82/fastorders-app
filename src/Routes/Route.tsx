@@ -1,12 +1,13 @@
-import DashboardPage from "../Pages/Dashboard/Project";
 import SamplePage from "../Pages/Pages/SamplePage";
-import Product from "../Pages/Product";
+import { ProductPage } from "../Pages/Products";
 
 export const routes = [
   {
-    path: `${process.env.PUBLIC_URL}/pages/sample_page`,
+    path: `${process.env.PUBLIC_URL}/sample_page`,
     element: <SamplePage />,
   },
-  { path: `${process.env.PUBLIC_URL}/dashboard`, element: <DashboardPage /> },
-  { path: `${process.env.PUBLIC_URL}/products`, element: <Product /> },
+  {
+    path: `${process.env.PUBLIC_URL}/products`,
+    element: <ProductPage />,
+  },
 ];

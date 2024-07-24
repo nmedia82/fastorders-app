@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { H4, Image, LI, UL } from '../../../AbstractElements'
 import { dynamicImage } from '../../../Utils'
-import { Href, WadeWarren } from '../../../Utils/Constants'
+import { WadeWarren } from '../../../Utils/Constants'
 import { profileHeaderData } from '../../../Data/Layout/RightHeader'
 import SvgIcon from '../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons'
 
@@ -24,7 +24,7 @@ export default function ProfileHeader() {
             <UL className="profile-dropdown onhover-show-div simple-list">
                 {profileHeaderData.map((item) => (
                     <LI key={item.id}>
-                        <Link to={Href}>
+                        <Link to={`${process.env.PUBLIC_URL}/${item.link}`}>
                             <div className="profile-icon">
                                 <SvgIcon iconId={item.icon} />
                             </div>

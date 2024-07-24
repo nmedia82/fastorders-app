@@ -1,8 +1,8 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
-import { SidebarItemType } from '../../../../Types/Layout.type';
+/* eslint-disable array-callback-return */
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { menuList } from '../../../../Data/Layout/SidebarMenuList';
+import { SidebarItemType } from '../../../../Types/Layout.type';
 import BookmarkContainer from './BookmarkContainer';
-import { bookMarkData } from '../../../../Data/Layout/RightHeader';
 
 export default function BookmarkHeader() {
   const [bookmarkItems, setBookmarkItems] = useState<SidebarItemType[]>([]);
@@ -42,8 +42,6 @@ export default function BookmarkHeader() {
   useEffect(() => {
     let suggestionArray: SidebarItemType[] = [];
     let updatedList: SidebarItemType = {};
-
-    suggestionArray = [...bookMarkData];
     const getBookMarkList = (menuItem: SidebarItemType) => {
       if (menuItem.bookmark && menuItem.url) {
         updatedList = { ...menuItem };

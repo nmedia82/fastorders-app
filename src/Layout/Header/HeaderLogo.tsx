@@ -8,7 +8,6 @@ import { dynamicImage } from '../../Utils'
 import SvgIcon from '../../Utils/CommonComponents/CommonIcons/CommonSvgIcons'
 import { RootState } from '../../ReduxToolkit/Store'
 import { setSideBarToggle } from '../../ReduxToolkit/Reducers/Layout/LayoutReducer'
-import { Href } from '../../Utils/Constants'
 
 export default function HeaderLogo() {
     const dispatch = useDispatch();
@@ -21,7 +20,7 @@ export default function HeaderLogo() {
         <Col xs={'auto'} className="header-left-wrapper">
             <div className="header-logo-wrapper p-0 left-header">
                 <div className="logo-wrapper">
-                    <Link to={Href}>
+                    <Link to={`${process.env.PUBLIC_URL}/dashboard/default`}>
                         <Image className="img-fluid" src={dynamicImage(`logo/logo_dark.png`)} alt="" />
                     </Link>
                 </div>

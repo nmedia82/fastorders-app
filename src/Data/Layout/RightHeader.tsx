@@ -1,6 +1,3 @@
-import { SidebarItemType } from "../../Types/Layout.type";
-import { Href } from "../../Utils/Constants";
-
 //Notitications
 export const notiticationsData = [
     {
@@ -130,23 +127,5 @@ export const languagesData = [
     {
         data: "ae",
         language: "لعربية",
-    },
-];
-
-export const bookMarkData: SidebarItemType[] = [
-    {
-        icon: "form",
-        url: Href,
-        title: "Form",
-    },
-    {
-        icon: "user",
-        url: Href,
-        title: "Profile",
-    },
-    {
-        icon: "table",
-        url: Href,
-        title: "Tables",
     },
 ];

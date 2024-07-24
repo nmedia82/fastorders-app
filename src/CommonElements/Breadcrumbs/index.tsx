@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 import H2 from "../Headings/H2Element";
 import { menuList } from "../../Data/Layout/SidebarMenuList";
 import { SidebarChildrenType, SidebarMenuType } from "../../Types/Layout.type";
-import { Href } from "../../Utils/Constants";
 
 export default function Breadcrumbs() {
     const location = useLocation();
@@ -55,7 +54,7 @@ export default function Breadcrumbs() {
                 <H2>{titles[titles.length - 1]}</H2>
                 <Breadcrumb className="justify-content-sm-start align-items-center mb-0">
                     <BreadcrumbItem>
-                        <Link to={Href}>{'Home'}</Link>
+                        <Link to={`${process.env.PUBLIC_URL}/dashboard/default`}>{'Home'}</Link>
                     </BreadcrumbItem>
                     {titles.map((title: string | undefined, index: number) => (
                         index !== 0 && (

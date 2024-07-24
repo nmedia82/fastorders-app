@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import Loader from './Loader'
-import Taptop from './Taptop'
-import Sidebar from './Sidebar'
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom'
-import FooterLayout from './Footer/Footer'
-import Header from './Header'
-import ThemeCustomizer from './ThemeCustomizer'
-import { RootState } from '../ReduxToolkit/Store'
 import { setSideBarToggle } from '../ReduxToolkit/Reducers/Layout/LayoutReducer'
 import { addSidebarTypes } from '../ReduxToolkit/Reducers/Layout/ThemeCustomizerReducer'
+import { RootState } from '../ReduxToolkit/Store'
+import FooterLayout from './Footer/Footer'
+import Header from './Header'
+import Loader from './Loader'
+import Sidebar from './Sidebar'
+import Taptop from './Taptop'
+import ThemeCustomizer from './ThemeCustomizer'
 
 export default function Layout() {
   const { sidebar_types } = useSelector((state: RootState) => state.themeCustomizer);

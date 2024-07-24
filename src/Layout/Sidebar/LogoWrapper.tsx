@@ -16,7 +16,7 @@ export default function LogoWrapper() {
     };
     return (
         <div className="logo-wrapper">
-            <Link to={`${process.env.PUBLIC_URL}/pages/sample_page`}>
+            <Link to={`${process.env.PUBLIC_URL}/dashboard/default`}>
                 <Image className="img-fluid" src={dynamicImage(`logo/logo_dark.png`)} alt="" />
             </Link>
             <div className="back-btn" onClick={handleSidebarToggle}>

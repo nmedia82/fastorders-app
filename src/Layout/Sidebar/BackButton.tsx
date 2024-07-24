@@ -6,7 +6,7 @@ import { dynamicImage } from '../../Utils'
 export default function BackButton() {
     return (
         <LI className="back-btn">
-            <Link to={`${process.env.PUBLIC_URL}/pages/sample_page`}>
+            <Link to={`${process.env.PUBLIC_URL}/dashboard/default`}>
                 <Image className="img-fluid" src={dynamicImage(`logo/logo-icon.png`)} alt="" />
             </Link>
             <div className="mobile-back text-end">
