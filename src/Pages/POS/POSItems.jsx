@@ -1,7 +1,7 @@
 import React from "react";
 import "./pos.css"; // Ensure the CSS file is imported
 
-const products = Array.from({ length: 15 }, (_, index) => ({
+const products = Array.from({ length: 25 }, (_, index) => ({
   id: index + 1,
   title: `Product ${index + 1}`,
   price: (10 + index).toFixed(2),
