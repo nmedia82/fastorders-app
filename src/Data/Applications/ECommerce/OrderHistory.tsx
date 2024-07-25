@@ -8,7 +8,7 @@ import { MoreVertical } from "react-feather";
 export const orderHistoryData = [
     {
         id: 1,
-        heading: 'New Orders',
+        heading: 'Takeway',
         details: [
             {
                 id: 1,
@@ -86,7 +86,7 @@ export const orderHistoryData = [
     },
     {
         id: 2,
-        heading: 'Shipped Orders',
+        heading: 'Dining',
         details: [
             {
                 id: 10,

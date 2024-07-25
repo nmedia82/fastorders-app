@@ -44,7 +44,7 @@ export const menuList: SidebarMenuType[] = [
       {
         id: 4,
         title: "Employees",
-        url: `${process.env.PUBLIC_URL}/foodypk/products/all_products`,
+        url: `${process.env.PUBLIC_URL}/add-product`,
         icon: "home",
         type: "link",
       },
@@ -59,7 +59,7 @@ export const menuList: SidebarMenuType[] = [
       {
         id: 4,
         title: "Tables",
-        url: `${process.env.PUBLIC_URL}/applications/ecommerce/category_page`,
+        url: `${process.env.PUBLIC_URL}/tables`,
         icon: "table",
         type: "link",
       },

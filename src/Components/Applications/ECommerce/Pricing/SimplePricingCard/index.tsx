@@ -1,33 +1,35 @@
-import React from 'react'
-import { Card, CardBody, Col, Row } from 'reactstrap'
-import CommonCardHeader from '../../../../../Utils/CommonComponents/CommonCardHeader'
-import { Dollar, Purchase, SimplePricingTitle } from '../../../../../Utils/Constants'
-import { Btn, H1, H3, H6 } from '../../../../../AbstractElements'
-import { simplePricingData } from '../../../../../Data/Applications/ECommerce/Product'
+import React from "react";
+import { Card, CardBody, Col, Row } from "reactstrap";
+import CommonCardHeader from "../../../../../Utils/CommonComponents/CommonCardHeader";
+import { Dollar, Purchase, SimplePricingTitle } from "../../../../../Utils/Constants";
+import { Btn, H1, H3, H6 } from "../../../../../AbstractElements";
+import { simplePricingData } from "../../../../../Pages/Common/Product";
 
 export default function SimplePricingCard() {
-    return (
-        <Card>
-            <CommonCardHeader title={SimplePricingTitle} />
-            <CardBody className="pricing-content">
-                <Row className="g-sm-4 g-3">
-                    {simplePricingData.map((data) => (
-                        <Col lg={3} sm={6} className="xl-50 box-col-6" key={data.id}>
-                            <Card className="text-center pricing-simple">
-                                <CardBody>
-                                    <H3>{data.title}</H3>
-                                    <H1>{Dollar}{data.amount}</H1>
-                                    <H6 className="mb-0">{data.text}</H6>
-                                </CardBody>
-                                <Btn size="lg" color="primary" block>
-                                    {Purchase}
-                                </Btn>
-                            </Card>
-                        </Col>
-                    ))}
-                </Row>
-            </CardBody>
-        </Card>
-    )
+  return (
+    <Card>
+      <CommonCardHeader title={SimplePricingTitle} />
+      <CardBody className="pricing-content">
+        <Row className="g-sm-4 g-3">
+          {simplePricingData.map((data) => (
+            <Col lg={3} sm={6} className="xl-50 box-col-6" key={data.id}>
+              <Card className="text-center pricing-simple">
+                <CardBody>
+                  <H3>{data.title}</H3>
+                  <H1>
+                    {Dollar}
+                    {data.amount}
+                  </H1>
+                  <H6 className="mb-0">{data.text}</H6>
+                </CardBody>
+                <Btn size="lg" color="primary" block>
+                  {Purchase}
+                </Btn>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </CardBody>
+    </Card>
+  );
 }
-

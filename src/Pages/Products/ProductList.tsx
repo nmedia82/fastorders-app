@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DataTable from "react-data-table-component";
-import FilterComponent from "../../Components/Tables/DataTables/Common/FilterComponent";
+import FilterComponent from "../Common/FilterComponent";
 import { ProductListType } from "../../Types/ECommerce.type";
 import {
   productListColumns,
