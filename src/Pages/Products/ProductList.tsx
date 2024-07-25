@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import DataTable from "react-data-table-component";
-import FilterComponent from "../Common/FilterComponent";
-import { ProductListType } from "../../../../Types/ECommerce.type";
+import FilterComponent from "../../Components/Tables/DataTables/Common/FilterComponent";
+import { ProductListType } from "../../Types/ECommerce.type";
 import {
   productListColumns,
   productListTableData,
-} from "../../../../Data/Applications/ECommerce/ProductList";
+} from "../../Data/Applications/ECommerce/ProductList";
 
 export default function ProductListTable() {
   const [filterText, setFilterText] = useState("");
