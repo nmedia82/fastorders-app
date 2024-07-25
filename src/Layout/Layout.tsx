@@ -1,19 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Outlet } from 'react-router-dom'
-import { setSideBarToggle } from '../ReduxToolkit/Reducers/Layout/LayoutReducer'
-import { addSidebarTypes } from '../ReduxToolkit/Reducers/Layout/ThemeCustomizerReducer'
-import { RootState } from '../ReduxToolkit/Store'
-import FooterLayout from './Footer/Footer'
-import Header from './Header'
-import Loader from './Loader'
-import Sidebar from './Sidebar'
-import Taptop from './Taptop'
-import ThemeCustomizer from './ThemeCustomizer'
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
+import { setSideBarToggle } from "../ReduxToolkit/Reducers/Layout/LayoutReducer";
+import { addSidebarTypes } from "../ReduxToolkit/Reducers/Layout/ThemeCustomizerReducer";
+import { RootState } from "../ReduxToolkit/Store";
+import FooterLayout from "./Footer/Footer";
+import Header from "./Header";
+import Loader from "./Loader";
+import Sidebar from "./Sidebar";
+import Taptop from "./Taptop";
+import ThemeCustomizer from "./ThemeCustomizer";
 
 export default function Layout() {
-  const { sidebar_types } = useSelector((state: RootState) => state.themeCustomizer);
+  const { sidebar_types } = useSelector(
+    (state: RootState) => state.themeCustomizer
+  );
   const { sideBarToggle } = useSelector((state: RootState) => state.layout);
   const dispatch = useDispatch();
 
@@ -25,14 +27,13 @@ export default function Layout() {
       } else {
         dispatch(setSideBarToggle(false));
       }
-    }
-    else if (sidebar_types === "horizontal-wrapper") {
+    } else if (sidebar_types === "horizontal-wrapper") {
       if (windowWidth <= 992) {
         dispatch(setSideBarToggle(true));
-        dispatch(addSidebarTypes('compact-wrapper'));
+        dispatch(addSidebarTypes("compact-wrapper"));
       } else {
         dispatch(setSideBarToggle(false));
-        dispatch(addSidebarTypes('horizontal-wrapper'))
+        dispatch(addSidebarTypes("horizontal-wrapper"));
       }
     }
   };
@@ -47,7 +48,12 @@ export default function Layout() {
     <>
       <Loader />
       <Taptop />
-      <div className={`page-wrapper ${sideBarToggle ? "compact-wrapper" : sidebar_types}`} id="pageWrapper">
+      <div
+        className={`page-wrapper ${
+          sideBarToggle ? "compact-wrapper" : sidebar_types
+        }`}
+        id="pageWrapper"
+      >
         <Header />
         <div className="page-body-wrapper">
           <Sidebar />
@@ -55,7 +61,7 @@ export default function Layout() {
           <FooterLayout />
         </div>
       </div>
-      <ThemeCustomizer />
+      {/* <ThemeCustomizer /> */}
     </>
-  )
+  );
 }
