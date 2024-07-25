@@ -1,10 +1,15 @@
 import SamplePage from "../Pages/Pages/SamplePage";
-import { ProductPage } from "../Pages/Products";
-import Default from "../Pages/Dashboard/Default";
+import  ProductListContainer  from "../Pages/Products";
+import DashBoard from "../Pages/Dashboards";
+import AllOrders from "../Pages/Orders";
 export const routes = [
   {
     path: `${process.env.PUBLIC_URL}/dashboard`,
-    element: <Default />,
+    element: <DashBoard />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/orders`,
+    element: <AllOrders />,
   },
   {
     path: `${process.env.PUBLIC_URL}/sample_page`,
@@ -12,6 +17,6 @@ export const routes = [
   },
   {
     path: `${process.env.PUBLIC_URL}/products`,
-    element: <ProductPage />,
+    element: <ProductListContainer />,
   },
 ];
