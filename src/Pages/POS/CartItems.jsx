@@ -13,9 +13,16 @@ function CartItems() {
     <div className="cart-items">
       {cartItems.map((item) => (
         <div key={item.id} className="cart-item">
-          <p className="cart-item-name">{item.name}</p>
-          <p className="cart-item-quantity">Qty: {item.quantity}</p>
-          <p className="cart-item-price">${item.price}</p>
+          <span className="cart-item-name">
+            {item.name}
+            <span className="cart-item-price">x Rs. 50</span>
+          </span>
+          <span className="cart-item-quantity">
+            <i className="icofont icofont-plus-circle"></i>
+            {item.quantity}
+            <i className="icofont icofont-minus-circle"></i>
+          </span>
+          <span className="cart-item-total">${item.price}</span>
         </div>
       ))}
     </div>

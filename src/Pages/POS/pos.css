@@ -91,13 +91,14 @@
 .cart-items {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   margin: 10px 0;
 }
 
 .cart-item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
@@ -108,8 +109,12 @@
   font-weight: bold;
 }
 
-.cart-item-quantity,
 .cart-item-price {
+  display: block;
+}
+.cart-item-quantity,
+.cart-item-price,
+.cart-item-total {
   font-size: 12px;
   color: #777;
 }
