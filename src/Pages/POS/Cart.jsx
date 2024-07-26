@@ -30,9 +30,14 @@ export const POSCart = () => {
             <span className="cart-total-label">Total:</span>
             <span className="cart-total-value">Rs. 2000</span>
           </div>
-          <Button color="primary" className="checkout-button">
-            Checkout
-          </Button>
+          <div className="d-flex justify-content-between">
+            <Button color="primary" className="btn-square">
+              Hold
+            </Button>
+            <Button color="success" className="btn-square">
+              Pay
+            </Button>
+          </div>
         </div>
       </div>
     </div>
