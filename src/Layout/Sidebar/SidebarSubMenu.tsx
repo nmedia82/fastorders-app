@@ -10,6 +10,7 @@ import { setPinedMenu } from "../../ReduxToolkit/Reducers/Layout/LayoutReducer";
 import { Badges, LI, UL } from "../../AbstractElements";
 import { Href } from "../../Utils/Constants";
 import SvgIcon from "../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
+import IcoIcon from "../../Pages/Icons/IcoIcon";
 import ConfigDB from "../../Config/ThemeConfig";
 
 export default function SidebarSubMenu({ menu, setActiveMenu, activeMenu, level }: MenuListType) {
@@ -55,33 +56,87 @@ export default function SidebarSubMenu({ menu, setActiveMenu, activeMenu, level 
   return (
     <>
       {menu.map((item, i) => (
-        <LI key={i} className={`${level === 0 ? "sidebar-list" : ""} ${item.title && pinedMenu.includes(item.title) ? "pined" : ""} ${(item.menu ? item.menu.map((innerItem) => ActiveNavLinkUrl(innerItem.url)).includes(true) : ActiveNavLinkUrl(item.url)) || activeMenu[level] === item.title ? "active" : ""}`}>
-          {level === 0 && <i className="fa fa-thumb-tack" onClick={() => item.title && handlePined(item.title)}></i>}
+        <LI
+          key={i}
+          className={`${level === 0 ? "sidebar-list" : ""} ${
+            item.title && pinedMenu.includes(item.title) ? "pined" : ""
+          } ${
+            (item.menu
+              ? item.menu.map((innerItem) => ActiveNavLinkUrl(innerItem.url)).includes(true)
+              : ActiveNavLinkUrl(item.url)) || activeMenu[level] === item.title
+              ? "active"
+              : ""
+          }`}
+        >
+          {level === 0 && (
+            <i
+              className="fa fa-thumb-tack"
+              onClick={() => item.title && handlePined(item.title)}
+            ></i>
+          )}
           {item.badge ? <Badges color={item.badgeColor}>{item.badgeName}</Badges> : ""}
           <Link
-            className={`${level === 0 ? "sidebar-link sidebar-title" : ""} ${(item.menu ? item.menu.map((innerItem) => ActiveNavLinkUrl(innerItem.url)).includes(true) : ActiveNavLinkUrl(item.url)) || activeMenu[level] === item.title ? "active" : ""}`}
+            className={`${level === 0 ? "sidebar-link sidebar-title" : ""} ${
+              (item.menu
+                ? item.menu.map((innerItem) => ActiveNavLinkUrl(innerItem.url)).includes(true)
+                : ActiveNavLinkUrl(item.url)) || activeMenu[level] === item.title
+                ? "active"
+                : ""
+            }`}
             to={item.url ? item.url : Href}
             onClick={() => {
               const temp = activeMenu;
               temp[level] = item.title !== temp[level] ? item.title : "";
               setActiveMenu([...temp]);
-            }}>
+            }}
+          >
             {item.icon && <SvgIcon className="stroke-icon" iconId={`stroke-${item.icon}`} />}
+
             {level === 0 ? <span className="lan-3">{t(`${item.title}`)}</span> : t(`${item.title}`)}
             {item.menu && (
               <>
-                {layout === "compact-wrapper" && <div className="according-menu">{activeMenu[level] === item.title ? <i className="fa fa-angle-down" /> : <i className="fa fa-angle-right" />}</div>}
-                {layout === "horizontal-wrapper" && <span className="sub-arrow arrow-none">{activeMenu[level] === item.title ? <i className="fa fa-angle-right" /> : <i className="fa fa-angle-right" />}</span>}
+                {layout === "compact-wrapper" && (
+                  <div className="according-menu">
+                    {activeMenu[level] === item.title ? (
+                      <i className="fa fa-angle-down" />
+                    ) : (
+                      <i className="fa fa-angle-right" />
+                    )}
+                  </div>
+                )}
+                {layout === "horizontal-wrapper" && (
+                  <span className="sub-arrow arrow-none">
+                    {activeMenu[level] === item.title ? (
+                      <i className="fa fa-angle-right" />
+                    ) : (
+                      <i className="fa fa-angle-right" />
+                    )}
+                  </span>
+                )}
               </>
             )}
           </Link>
           {item.menu && (
             <UL
-              className={`simple-list ${level !== 0 ? "nav-sub-childmenu submenu-content" : "sidebar-submenu"}`}
+              className={`simple-list ${
+                level !== 0 ? "nav-sub-childmenu submenu-content" : "sidebar-submenu"
+              }`}
               style={{
-                display: `${(item.menu ? item.menu.map((innerItem) => ActiveNavLinkUrl(innerItem.url)).includes(true) : ActiveNavLinkUrl(item.url)) || activeMenu[level] === item.title ? "block" : "none"}`,
-              }}>
-              <SidebarSubMenu menu={item.menu} activeMenu={activeMenu} setActiveMenu={setActiveMenu} level={level + 1} />
+                display: `${
+                  (item.menu
+                    ? item.menu.map((innerItem) => ActiveNavLinkUrl(innerItem.url)).includes(true)
+                    : ActiveNavLinkUrl(item.url)) || activeMenu[level] === item.title
+                    ? "block"
+                    : "none"
+                }`,
+              }}
+            >
+              <SidebarSubMenu
+                menu={item.menu}
+                activeMenu={activeMenu}
+                setActiveMenu={setActiveMenu}
+                level={level + 1}
+              />
             </UL>
           )}
         </LI>

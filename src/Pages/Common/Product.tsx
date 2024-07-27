@@ -174,6 +174,12 @@ export const addProductNav = [
   },
   {
     id: 2,
+    icon: "pricing",
+    title: "Product Pricing",
+    subTitle: "Add pricing & inventory details",
+  },
+  {
+    id: 3,
     icon: "product-gallery",
     title: "Product Gallery",
     subTitle: "Thumbnail & add product gallery",
@@ -186,12 +192,6 @@ export const productGalleryData = [
     title: "Product Image",
     icon: "file-upload",
     spanText: "SVG,PNG,JPG or GIF",
-  },
-  {
-    id: 2,
-    title: "Product Gallery",
-    icon: "file-upload1",
-    spanText: "Add Product Gallery Images",
   },
 ];
 

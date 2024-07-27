@@ -1,0 +1,153 @@
+/*=====================
+    3.29 Login CSS Start
+==========================*/
+.customer-card {
+  align-items: center;
+  justify-content: center;
+  /* margin: 0 auto; */
+  background-color: #e9fcff;
+  padding: 20px 12px;
+}
+
+.customer-card .logo {
+  display: block;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.customer-card .logo > img {
+  height: calc(28px + (40 - 28) * ((100vw - 320px) / (1920 - 320)));
+}
+
+.customer-card .btn-showcase .btn {
+  line-height: 1;
+  padding: 10px 15px;
+  margin: 0;
+}
+
+.customer-card .btn-showcase .btn + .btn {
+  margin-left: 5px;
+}
+
+.customer-card .btn-showcase .btn svg {
+  height: 16px;
+  vertical-align: bottom;
+}
+
+.customer-card .login-main {
+  width: 850px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 37px rgba(8, 21, 66, 0.05);
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.customer-card .login-main .theme-form h4 {
+  margin-bottom: 5px;
+}
+
+.customer-card .login-main .theme-form label {
+  font-size: 15px;
+  letter-spacing: 0.4px;
+}
+
+.customer-card .login-main .theme-form .checkbox label::before {
+  background-color: #f8f9fa;
+  border: 1px solid #dfdfdf;
+}
+
+.customer-card .login-main .theme-form .or {
+  position: relative;
+}
+
+.customer-card .login-main .theme-form .or:before {
+  content: "";
+  position: absolute;
+  width: 65%;
+  height: 2px;
+  background-color: #f1f1f1;
+  top: 9px;
+  z-index: 0;
+  right: 0;
+}
+
+.customer-card .login-main .theme-form input {
+  background-color: rgba(241, 241, 241, 0.6);
+  transition: all 0.3s ease;
+}
+
+.customer-card .login-main .theme-form input::-webkit-input-placeholder {
+  color: #6c757d;
+}
+
+.customer-card .login-main .theme-form input:hover,
+.customer-card .login-main .theme-form input:focus {
+  border: 1px solid #c4c4c4;
+  box-shadow: none !important;
+  transition: all 0.3s ease;
+}
+
+.customer-card .login-main .theme-form p {
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.customer-card .login-main .theme-form .form-group {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.customer-card .login-main .theme-form input[type="password"],
+.customer-card .login-main .theme-form input[type="text"] {
+  padding: 12px 60px 12px 12px !important;
+}
+
+.customer-card .login-main .theme-form .link {
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+
+.show-hide {
+  position: absolute;
+  top: 52px;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+.show-hide span {
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--theme-default);
+}
+
+.show-hide span.show:before {
+  content: "show";
+}
+
+.show-hide span:before {
+  content: "hide";
+}
+
+.needs-validation .invalid-feedback {
+  color: #6c757d;
+}
+
+.needs-validation .show-hide {
+  right: 30px;
+}
+
+.needs-validation .invalid-tooltip {
+  top: 10px;
+  right: 10px;
+}
+
+/* sign-up wizard */
+.theme-logo img {
+  height: calc(28px + (40 - 28) * ((100vw - 320px) / (1920 - 320)));
+}
+/*=====================
+    3.29 Login CSS Ends
+==========================*/

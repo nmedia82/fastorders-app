@@ -26,23 +26,17 @@ export default function AddProductDetails({ activeCallBack }: ActiveCallbackProp
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
-  //   const handleNextButton = () => {
-  //     if (productTitle !== "") {
-  //       activeCallBack(2);
-  //     } else {
-  //       return toast.error("Please fill out details before moving on to the next step");
-  //     }
-  //   };
   const handleNextButton = () => {
-    if (category !== "" && status !== "") {
-      activeCallBack(4);
+    if (productTitle !== "") {
+      activeCallBack(2);
     } else {
       return toast.error("Please fill out details before moving on to the next step");
     }
   };
+
   return (
     <div className="sidebar-body">
-      <Form>
+      <Form id="advance-tab">
         <Row className="g-2">
           <Col xs={12} className="m-0">
             <Label>
@@ -61,7 +55,6 @@ export default function AddProductDetails({ activeCallBack }: ActiveCallbackProp
           <Col xs={12}>
             <Row className="g-3">
               <NewCategoryModal />
-              <ProductTag title={"Add Category"} subTitle={true} />
 
               <Col sm={6}>
                 <Row className="g-2">
@@ -76,14 +69,15 @@ export default function AddProductDetails({ activeCallBack }: ActiveCallbackProp
                   </Col>
                 </Row>
               </Col>
+              <ProductTag title={"Add Category"} subTitle={true} />
             </Row>
           </Col>
-          <Inventory activeBorder={activeBorder} activeCallBack={activeCallBack} />
+          {/* <Inventory activeBorder={activeBorder} activeCallBack={activeCallBack} /> */}
           {/* <ToolbarBox paragraph={"Improve product visibility by adding a compelling description."} /> */}
         </Row>
       </Form>
-      <div className="product-buttons mt-20">
-        <Btn color="transparent" onClick={() => activeCallBack(3)}>
+      <div className="product-buttons">
+        <Btn color="transparent" onClick={handleNextButton}>
           <div className="d-flex align-items-center gap-sm-2 gap-1">
             <SvgIcon iconId="front-arrow" /> {"Next"}
           </div>
