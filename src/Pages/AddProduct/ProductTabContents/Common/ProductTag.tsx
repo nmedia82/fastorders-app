@@ -18,7 +18,7 @@ export default function ProductTag({ title, subTitle }: ProductTagProp) {
         </Col>
         <Col xs={12}>
           <TagsInput value={tags} onChange={handleTagsChange} />
-          {subTitle && <P className="f-light">{"Products can be tagged"}</P>}
+          {/* {subTitle && <P className="f-light">{"Products can be tagged"}</P>} */}
         </Col>
       </Row>
     </Col>

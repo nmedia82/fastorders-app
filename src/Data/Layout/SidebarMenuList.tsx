@@ -1,5 +1,4 @@
 import { SidebarMenuType } from "../../Types/Layout.type";
-
 export const menuList: SidebarMenuType[] = [
   {
     title: "- General",
@@ -24,27 +23,27 @@ export const menuList: SidebarMenuType[] = [
         id: 4,
         title: "Orders",
         url: `${process.env.PUBLIC_URL}/orders`,
-        icon: "order",
+        icon: "widget",
         type: "link",
       },
       {
         id: 4,
         title: "Products",
         url: `${process.env.PUBLIC_URL}/products`,
-        icon: "home",
+        icon: "ecommerce",
         type: "link",
       },
       {
         id: 4,
         title: "Categories",
-        url: `${process.env.PUBLIC_URL}/foodypk/products/Categories`,
+        url: `${process.env.PUBLIC_URL}/categories`,
         icon: "home",
         type: "link",
       },
       {
         id: 4,
         title: "Employees",
-        url: `${process.env.PUBLIC_URL}/add-product`,
+        url: `${process.env.PUBLIC_URL}/#`,
         icon: "home",
         type: "link",
       },
@@ -52,8 +51,8 @@ export const menuList: SidebarMenuType[] = [
       {
         id: 4,
         title: "Customers",
-        url: `${process.env.PUBLIC_URL}/auth/sign_up`,
-        icon: "customers",
+        url: `${process.env.PUBLIC_URL}/customers`,
+        icon: "user",
         type: "link",
       },
       {
@@ -66,7 +65,7 @@ export const menuList: SidebarMenuType[] = [
       {
         id: 4,
         title: "Reports",
-        icon: "reports",
+        icon: "sale",
         type: "sub",
         active: false,
         menu: [

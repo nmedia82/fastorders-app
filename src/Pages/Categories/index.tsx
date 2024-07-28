@@ -1,20 +1,21 @@
 import React from "react";
 import { Card, CardBody, CardHeader, Col, Container, Row } from "reactstrap";
-import TableListHeader from "./TableListHeader";
-import TableList from "./TableList";
+import CategoryListHeader from "./CategoryListHeader";
+import CategoryListTable from "./CategoryListTable";
 import CommonCardHeader from "../../Utils/CommonComponents/CommonCardHeader";
 
-export default function Tables() {
+export default function ProductCategories() {
   return (
     <div className="page-body main-project">
       <Container fluid>
         <Row>
           <Col sm={12}>
             <Card>
-              <CommonCardHeader title="Tables" />
+              <CommonCardHeader title="Categories" />
+
               <CardBody>
-                <TableListHeader />
-                <TableList />
+                <CategoryListHeader />
+                <CategoryListTable />
               </CardBody>
             </Card>
           </Col>

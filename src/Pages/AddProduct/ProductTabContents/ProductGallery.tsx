@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form } from "reactstrap";
+import { toast } from "react-toastify";
 import Dropzone from "react-dropzone-uploader";
 import { ActiveCallbackProp } from "../../../Types/ECommerce.type";
 import { Btn, H6, P } from "../../../AbstractElements";
@@ -7,15 +8,26 @@ import SvgIcon from "../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons"
 import { productGalleryData } from "../../Common/Product";
 
 export default function ProductGallery({ activeCallBack }: ActiveCallbackProp) {
+  const [productImage, setProductImage] = useState({ productimage: "" });
+  const { productimage } = productImage;
+
   const getUploadParams = () => {
     return { url: "https://httpbin.org/post" };
+  };
+
+  const handleSubmitButton = () => {
+    if (productimage) {
+      toast.success("Successfully Completed");
+    } else {
+      toast.error("Please fill out details before moving on to the next step");
+    }
   };
 
   return (
     <div className="sidebar-body">
       {productGalleryData.map((item) => (
         <div className="product-upload" key={item.id}>
-          <P>{item.title} </P>
+          <P>{item.title}</P>
           <Form>
             <Dropzone
               multiple={true}
@@ -32,14 +44,14 @@ export default function ProductGallery({ activeCallBack }: ActiveCallbackProp) {
         </div>
       ))}
       <div className="product-buttons">
-        <Btn color="transparent" className="me-1" onClick={() => activeCallBack(1)}>
+        <Btn color="transparent" className="me-1" onClick={() => activeCallBack(2)}>
           <div className="d-flex align-items-center gap-sm-2 gap-1">
             <SvgIcon iconId="back-arrow" /> {"Previous"}
           </div>
         </Btn>
-        <Btn color="transparent" onClick={() => activeCallBack(3)}>
+        <Btn color="transparent" onClick={handleSubmitButton}>
           <div className="d-flex align-items-center gap-sm-2 gap-1">
-            <SvgIcon iconId="front-arrow" /> {"Next"}
+            <SvgIcon iconId="front-arrow" /> {"Add Product"}
           </div>
         </Btn>
       </div>

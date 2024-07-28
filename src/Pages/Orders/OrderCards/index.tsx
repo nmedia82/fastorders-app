@@ -40,24 +40,24 @@ export default function OrderCards() {
                               <a href={Href}>{product.name}</a>
                             </H6>
                           </div>
-                          <div className="rating">
+                          {/* <div className="rating">
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
-                          </div>
+                          </div> */}
                           <div className="price d-flex">
                             <div className="text-muted me-2">{"Price"}</div>: {Dollar}
                             {product.price}
                           </div>
                           <div className="avaiabilty">
-                            <div className="txt-success f-w-600">{"In stock"}</div>
+                            {/* <div className="txt-success f-w-600">{"Processing"}</div> */}
+                            <Btn color={product.color} size="xs" style={{ position: "unset" }}>
+                              {product.avaiabilty}
+                            </Btn>
                           </div>
-                          <Btn color={product.color} size="xs">
-                            {product.avaiabilty}
-                          </Btn>
-                          <X className="close" onClick={() => toggleCard(product.id)} />
+                          {/* <X className="close" onClick={() => toggleCard(product.id)} /> */}
                         </div>
                       </div>
                     </div>

@@ -15,6 +15,9 @@ export default function ProductTabContents({ steps, activeCallBack }: ProductTab
           <AddProductDetails activeCallBack={activeCallBack} />
         </TabPane>
         <TabPane tabId={2}>
+          <AdvanceSection activeCallBack={activeCallBack} />
+        </TabPane>
+        <TabPane tabId={3}>
           <ProductGallery activeCallBack={activeCallBack} />
         </TabPane>
         {/* <TabPane tabId={3}>
@@ -22,9 +25,6 @@ export default function ProductTabContents({ steps, activeCallBack }: ProductTab
         </TabPane>
         <TabPane tabId={4}>
           <SellingPrice activeCallBack={activeCallBack} />
-        </TabPane>
-        <TabPane tabId={5}>
-          <AdvanceSection activeCallBack={activeCallBack} />
         </TabPane> */}
       </TabContent>
     </Col>
