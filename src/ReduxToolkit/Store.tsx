@@ -13,25 +13,26 @@ import ProductReducer from "./Reducers/ECommerce/ProductReducer";
 import FilterReducer from "./Reducers/ECommerce/FilterReducer";
 import ProjectReducer from "./Reducers/Applications/ProjectReducer";
 import JobSearchReducer from "./Reducers/JobSearchReducer";
+import CartReducer from "./Reducers/CartReducer";
 
 export const store = configureStore({
-    reducer: {
-        layout: layoutReducer,
-        searchResult: SearchResultReducer,
-        themeCustomizer: ThemeCustomizerReducer,
-        contact: ContactReducer,
-        tasks: TasksReducer,
-        userCards: UsersReducer,
-        bookmark: BookmarkReducer,
-        todos: TodoReducer,
-        email: EmailReducer,
-        chat: ChatReducer,
-        product: ProductReducer,
-        filter: FilterReducer,
-        project: ProjectReducer,
-        jobSearch: JobSearchReducer 
-
-    },
+  reducer: {
+    layout: layoutReducer,
+    searchResult: SearchResultReducer,
+    themeCustomizer: ThemeCustomizerReducer,
+    contact: ContactReducer,
+    tasks: TasksReducer,
+    userCards: UsersReducer,
+    bookmark: BookmarkReducer,
+    todos: TodoReducer,
+    email: EmailReducer,
+    chat: ChatReducer,
+    product: ProductReducer,
+    filter: FilterReducer,
+    project: ProjectReducer,
+    jobSearch: JobSearchReducer,
+    cart: CartReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
