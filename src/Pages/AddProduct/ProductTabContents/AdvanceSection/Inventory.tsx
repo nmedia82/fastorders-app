@@ -13,14 +13,18 @@ export default function Inventory({ activeCallBack, activeBorder }: AdvanceCallB
     stock: "",
     price2: "",
     code: "",
-    manage_stock: "",
+    manage_stock: false,
   });
   const { cost, price, price2, stock, code, manage_stock } = formData;
+
   const updateFormData = (event: ChangeEvent<HTMLInputElement>) => {
-    const name = event.target.name;
-    const value = name === "allowBackorders" ? event.target.checked : event.target.value;
-    setFormData({ ...formData, [name]: value });
+    const { name, type, value, checked } = event.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
   };
+
   const handleNextButton = () => {
     if (
       cost !== "" &&
@@ -28,7 +32,7 @@ export default function Inventory({ activeCallBack, activeBorder }: AdvanceCallB
       stock !== "" &&
       price2 !== "" &&
       code !== "" &&
-      manage_stock !== ""
+      manage_stock !== false
     ) {
       activeCallBack(3);
     } else {
@@ -42,51 +46,50 @@ export default function Inventory({ activeCallBack, activeBorder }: AdvanceCallB
         <Row className="g-3 custom-input">
           <Col lg={3} sm={6}>
             <Label>
-              <span>Product Cost</span>
+              <span>Product Code</span>
               <span className="txt-danger">{"*"}</span>
             </Label>
-            <Input type="number" name="ProductCost" value={cost} onChange={updateFormData} />
+            <Input type="number" name="code" value={code} onChange={updateFormData} />
           </Col>
           <Col lg={3} sm={6}>
             <Label>
-              <span>Product Price</span>
+              <span>Stock Quantity</span>
               <span className="txt-danger">{"*"}</span>
             </Label>
-            <Input type="number" name="ProductPrice" value={price} onChange={updateFormData} />
+            <Input type="number" name="stock" value={stock} onChange={updateFormData} />
+          </Col>
+          <Col lg={3} sm={6}>
+            <Input
+              className="checkbox_animated"
+              type="checkbox"
+              name="manage_stock"
+              checked={manage_stock}
+              onChange={updateFormData}
+            />
+            <Label htmlFor="invalidCheck-n" check>
+              {"Manage Stock Quantity"}
+            </Label>
+          </Col>
+          <Col lg={3} sm={6}>
+            <Label>
+              <span>Product Cost</span>
+              <span className="txt-danger">{"*"}</span>
+            </Label>
+            <Input type="number" name="cost" value={cost} onChange={updateFormData} />
+          </Col>
+          <Col lg={3} sm={6}>
+            <Label>
+              <span>Regular Price</span>
+              <span className="txt-danger">{"*"}</span>
+            </Label>
+            <Input type="number" name="price" value={price} onChange={updateFormData} />
           </Col>
           <Col lg={3} sm={6}>
             <Label>
               <span>Discount Price</span>
               <span className="txt-danger">{"*"}</span>
             </Label>
-            <Input type="number" name="DiscountPrice" value={price2} onChange={updateFormData} />
-          </Col>
-          <Col lg={3} sm={6}>
-            <Label>
-              <span>Product Stock</span>
-              <span className="txt-danger">{"*"}</span>
-            </Label>
-            <Input type="number" name="ProductStock" value={stock} onChange={updateFormData} />
-          </Col>
-          <Col lg={3} sm={6}>
-            <Label>
-              <span>Product Code</span>
-              <span className="txt-danger">{"*"}</span>
-            </Label>
-            <Input type="number" name="ProductCode" value={code} onChange={updateFormData} />
-          </Col>
-
-          <Col lg={3} sm={6}>
-            <Label>
-              <span>Manage Stock</span>
-              <span className="txt-danger">{"*"}</span>
-            </Label>
-            <Input
-              type="number"
-              name="ManageStock"
-              value={manage_stock}
-              onChange={updateFormData}
-            />
+            <Input type="number" name="price2" value={price2} onChange={updateFormData} />
           </Col>
         </Row>
       </Form>
