@@ -1,0 +1,54 @@
+.pay-cart-section {
+  padding: 20px;
+  background-color: #374558;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}
+
+.amount-display {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}
+
+.keys-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.keypad-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.keypad-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.keypad-row button {
+  width: 60px;
+  height: 60px;
+  font-size: 20px;
+  margin: 0 5px;
+}
+
+.quick-payment-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-left: 10px;
+}
+
+.quick-payment-section button {
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
