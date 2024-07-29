@@ -1,12 +1,12 @@
 import React, { ChangeEvent, useState } from "react";
 import { toast } from "react-toastify";
-import { AdvanceCallBackProp, ActiveBorderProp } from "../../../../Types/ECommerce.type";
+import { AdvanceCallBackProp } from "../../../../Types/ECommerce.type";
 import { Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
-import { PreOrder, RestockDate, Sku, StockQuantity } from "../../../../Utils/Constants";
 import { Btn } from "../../../../AbstractElements";
 import SvgIcon from "../../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
+import { customSwitchData } from "../../../../Data/Forms/FormWidgets";
 
-export default function Inventory({ activeCallBack, activeBorder }: AdvanceCallBackProp) {
+export default function Inventory({ activeCallBack }: AdvanceCallBackProp) {
   const [formData, setFormData] = useState({
     cost: "",
     price: "",
@@ -26,17 +26,10 @@ export default function Inventory({ activeCallBack, activeBorder }: AdvanceCallB
   };
 
   const handleNextButton = () => {
-    if (
-      cost !== "" &&
-      price !== "" &&
-      stock !== "" &&
-      price2 !== "" &&
-      code !== "" &&
-      manage_stock !== false
-    ) {
+    if (cost !== "" && price !== "" && stock !== "" && price2 !== "" && code !== "") {
       activeCallBack(3);
     } else {
-      return toast.error("Please fill out details before moving on to the next step");
+      toast.error("Please fill out details before moving on to the next step");
     }
   };
 
@@ -44,47 +37,50 @@ export default function Inventory({ activeCallBack, activeBorder }: AdvanceCallB
     <div>
       <Form id="advance-tab">
         <Row className="g-3 custom-input">
-          <Col lg={3} sm={6}>
+          <Col lg={5} sm={6}>
             <Label>
               <span>Product Code</span>
               <span className="txt-danger">{"*"}</span>
             </Label>
             <Input type="number" name="code" value={code} onChange={updateFormData} />
           </Col>
-          <Col lg={3} sm={6}>
+          <Col lg={5} sm={6}>
             <Label>
               <span>Stock Quantity</span>
               <span className="txt-danger">{"*"}</span>
             </Label>
             <Input type="number" name="stock" value={stock} onChange={updateFormData} />
           </Col>
-          <Col lg={3} sm={6}>
-            <Input
-              className="checkbox_animated"
-              type="checkbox"
-              name="manage_stock"
-              checked={manage_stock}
-              onChange={updateFormData}
-            />
-            <Label htmlFor="invalidCheck-n" check>
+          <Col key={customSwitchData[0].child[0].id} md={4} lg={2}>
+            <Label htmlFor="manageStockSwitch" check>
               {"Manage Stock Quantity"}
             </Label>
+            <FormGroup check switch inline>
+              <Input
+                id="manageStockSwitch"
+                className={`switch-${customSwitchData[0].child[0].color} switch-lg`}
+                type="checkbox"
+                name="manage_stock"
+                checked={manage_stock}
+                onChange={updateFormData}
+              />
+            </FormGroup>
           </Col>
-          <Col lg={3} sm={6}>
+          <Col lg={4} sm={6}>
             <Label>
               <span>Product Cost</span>
               <span className="txt-danger">{"*"}</span>
             </Label>
             <Input type="number" name="cost" value={cost} onChange={updateFormData} />
           </Col>
-          <Col lg={3} sm={6}>
+          <Col lg={4} sm={6}>
             <Label>
               <span>Regular Price</span>
               <span className="txt-danger">{"*"}</span>
             </Label>
             <Input type="number" name="price" value={price} onChange={updateFormData} />
           </Col>
-          <Col lg={3} sm={6}>
+          <Col lg={4} sm={6}>
             <Label>
               <span>Discount Price</span>
               <span className="txt-danger">{"*"}</span>

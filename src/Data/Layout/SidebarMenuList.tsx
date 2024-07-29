@@ -43,7 +43,7 @@ export const menuList: SidebarMenuType[] = [
       {
         id: 4,
         title: "Employees",
-        url: `${process.env.PUBLIC_URL}/#`,
+        url: `${process.env.PUBLIC_URL}/employees`,
         icon: "home",
         type: "link",
       },

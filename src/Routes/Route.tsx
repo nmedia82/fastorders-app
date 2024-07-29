@@ -7,6 +7,7 @@ import AddProduct from "../Pages/AddProduct";
 import POSHome from "../Pages/POS";
 import AddCustomers from "../Pages/Customers";
 import ProductCategories from "../Pages/Categories";
+import AllEmployees from "../Pages/Employees";
 
 export const routes = [
   {
@@ -44,5 +45,9 @@ export const routes = [
   {
     path: `${process.env.PUBLIC_URL}/pos`,
     element: <POSHome />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/employees`,
+    element: <AllEmployees />,
   },
 ];
