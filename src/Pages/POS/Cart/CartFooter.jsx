@@ -6,6 +6,7 @@ import {
   holdCart,
   clearCart,
   applyDiscount,
+  payingCart,
 } from "../../../ReduxToolkit/Reducers/CartReducer";
 
 export const CartFooter = () => {
@@ -14,6 +15,10 @@ export const CartFooter = () => {
 
   const handleHoldCart = () => {
     dispatch(holdCart());
+  };
+
+  const handlePayCart = () => {
+    dispatch(payingCart());
   };
 
   const handleClearCart = () => {
@@ -48,7 +53,11 @@ export const CartFooter = () => {
           >
             Hold
           </Button>
-          <Button color="success" className="btn-square">
+          <Button
+            color="success"
+            className="btn-square"
+            onClick={handlePayCart}
+          >
             Pay
           </Button>
           <Button

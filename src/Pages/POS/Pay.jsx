@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import "./paycart.css"; // Ensure the CSS file is imported
+import { useSelector } from "react-redux";
 
-const PayCart = ({ payableAmount }) => {
+const PayCart = () => {
+  const { total, discount } = useSelector((state) => state.cart);
   const [amount, setAmount] = useState("");
 
+  const payableAmount = parseFloat(total).toFixed;
+
   const handleNumberClick = (number) => {
-    setAmount((prevAmount) => prevAmount + number);
+    setAmount((prevAmount) => parseFloat(prevAmount) + parseFloat(number));
   };
 
   const handleClear = () => {
@@ -14,13 +18,15 @@ const PayCart = ({ payableAmount }) => {
 
   const handleQuickPayment = (quickAmount) => {
     setAmount((prevAmount) =>
-      prevAmount ? prevAmount + quickAmount : quickAmount
+      prevAmount
+        ? parseFloat(prevAmount) + parseFloat(quickAmount)
+        : quickAmount
     );
   };
 
   return (
     <div className="pay-cart-section">
-      <div className="amount-display">{amount || "0"}</div>
+      <div className="amount-display">{amount}</div>
       <div className="keys-wrapper">
         <div className="keypad-section">
           <div className="keypad-row">
@@ -72,7 +78,7 @@ const PayCart = ({ payableAmount }) => {
           </div>
         </div>
         <div className="quick-payment-section">
-          {[payableAmount, 100, 500, 1000, 5000].map((quickAmount) => (
+          {[total, 100, 500, 1000, 5000].map((quickAmount) => (
             <button
               className="b-r-8 btn btn-outline-primary btn-lg"
               key={quickAmount}

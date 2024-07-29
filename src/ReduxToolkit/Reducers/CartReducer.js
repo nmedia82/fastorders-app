@@ -5,9 +5,15 @@ const saveCartToLocalStorage = (cart) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
 
+const saveOrdersToLocalStorage = (orders) => {
+  localStorage.setItem("orders", JSON.stringify(orders));
+};
+
 const loadCartFromLocalStorage = () => {
   const cart = localStorage.getItem("cart");
-  return cart ? JSON.parse(cart) : { cartItems: [], total: 0, discount: 0 };
+  return cart
+    ? JSON.parse(cart)
+    : { cartItems: [], total: 0, discount: 0, isPaying: false };
 };
 
 const saveHoldCartsToLocalStorage = (holdCarts) => {
@@ -19,9 +25,15 @@ const loadHoldCartsFromLocalStorage = () => {
   return holdCarts ? JSON.parse(holdCarts) : [];
 };
 
+const loadOrdersFromLocalStorage = () => {
+  const orders = localStorage.getItem("orders");
+  return orders ? JSON.parse(orders) : [];
+};
+
 const initialState = {
   ...loadCartFromLocalStorage(),
   holdCarts: loadHoldCartsFromLocalStorage(),
+  localOrders: loadOrdersFromLocalStorage(),
 };
 
 const cartSlice = createSlice({
@@ -98,8 +110,25 @@ const cartSlice = createSlice({
       state.cartItems = [];
       state.total = 0;
       state.discount = 0;
+      state.isPaying = false;
       saveCartToLocalStorage(state);
       saveHoldCartsToLocalStorage(state.holdCarts);
+    },
+    payingCart: (state) => {
+      state.isPaying = true;
+    },
+    cartPaid: (state) => {
+      state.isPaying = false;
+      state.localOrders.push({
+        cartItems: [...state.cartItems],
+        total: state.total,
+        discount: state.discount,
+      });
+      state.cartItems = [];
+      state.total = 0;
+      state.discount = 0;
+      saveCartToLocalStorage(state);
+      saveOrdersToLocalStorage(state.localOrders);
     },
     retrieveCart: (state, action) => {
       const holdCart = state.holdCarts[action.payload];
@@ -116,6 +145,7 @@ const cartSlice = createSlice({
       state.cartItems = [];
       state.total = 0;
       state.discount = 0;
+      state.isPaying = false;
       saveCartToLocalStorage(state);
     },
   },
@@ -129,5 +159,7 @@ export const {
   holdCart,
   retrieveCart,
   clearCart,
+  payingCart,
+  cartPaid,
 } = cartSlice.actions;
 export default cartSlice.reducer;
