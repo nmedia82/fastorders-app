@@ -16,7 +16,6 @@
 }
 
 .product-area {
-  flex: 0 0 80%; /* 80% width */
   height: 100%;
   overflow-y: auto;
   padding: 10px;
@@ -179,4 +178,10 @@
 
 .checkout-button {
   margin-top: 10px;
+}
+
+.pay-summary-section {
+  padding: 10px;
+  background-color: #f9f9f9;
+  margin: 0 auto;
 }

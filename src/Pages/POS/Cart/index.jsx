@@ -30,7 +30,7 @@ export const POSCart = () => {
           </h1>
         )}
       </div>
-      <CartFooter />
+      {!isCartEmpty && <CartFooter />}
     </div>
   );
 };

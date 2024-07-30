@@ -117,6 +117,9 @@ const cartSlice = createSlice({
     payingCart: (state) => {
       state.isPaying = true;
     },
+    backToCart: (state) => {
+      state.isPaying = false;
+    },
     cartPaid: (state) => {
       state.isPaying = false;
       state.localOrders.push({
@@ -160,6 +163,7 @@ export const {
   retrieveCart,
   clearCart,
   payingCart,
+  backToCart,
   cartPaid,
 } = cartSlice.actions;
 export default cartSlice.reducer;

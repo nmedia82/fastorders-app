@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import "./paycart.css"; // Ensure the CSS file is imported
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { Button } from "reactstrap";
+import {
+  backToCart,
+  cartPaid,
+} from "../../../ReduxToolkit/Reducers/CartReducer";
 
 const PayCart = () => {
   const { total, discount } = useSelector((state) => state.cart);
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(0);
+  const dispatch = useDispatch();
 
   const payableAmount = parseFloat(total).toFixed;
 
@@ -88,6 +94,19 @@ const PayCart = () => {
             </button>
           ))}
         </div>
+      </div>
+
+      <div className="d-grid">
+        <Button className="btn-lg btn" onClick={() => dispatch(backToCart())}>
+          Back
+        </Button>
+        <Button
+          color="success"
+          className="btn-success btn-lg mt-3"
+          onClick={() => dispatch(cartPaid())}
+        >
+          Pay
+        </Button>
       </div>
     </div>
   );
