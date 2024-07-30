@@ -37,35 +37,36 @@ export default function Inventory({ activeCallBack }: AdvanceCallBackProp) {
     <div>
       <Form id="advance-tab">
         <Row className="g-3 custom-input">
-          <Col lg={5} sm={6}>
+          <Col lg={4} sm={6}>
             <Label>
               <span>Product Code</span>
               <span className="txt-danger">{"*"}</span>
             </Label>
             <Input type="number" name="code" value={code} onChange={updateFormData} />
           </Col>
-          <Col lg={5} sm={6}>
+          <Col lg={4} sm={6}>
             <Label>
               <span>Stock Quantity</span>
               <span className="txt-danger">{"*"}</span>
             </Label>
             <Input type="number" name="stock" value={stock} onChange={updateFormData} />
           </Col>
-          <Col key={customSwitchData[0].child[0].id} md={4} lg={2}>
-            <Label htmlFor="manageStockSwitch" check>
-              {"Manage Stock Quantity"}
-            </Label>
-            <FormGroup check switch inline>
+          <Col md={5} lg={4}>
+            <FormGroup check switch>
               <Input
-                id="manageStockSwitch"
-                className={`switch-${customSwitchData[0].child[0].color} switch-lg`}
+                id="invalidCheck-n"
+                required
                 type="checkbox"
                 name="manage_stock"
                 checked={manage_stock}
                 onChange={updateFormData}
               />
+              <Label htmlFor="invalidCheck-n" check>
+                {"Manage Stock Quantity"}
+              </Label>
             </FormGroup>
           </Col>
+
           <Col lg={4} sm={6}>
             <Label>
               <span>Product Cost</span>

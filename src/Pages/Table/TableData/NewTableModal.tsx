@@ -23,13 +23,13 @@ export default function NewTableModal() {
 
   return (
     <Col xs={12}>
-      <div className="category-button">
-        <Btn className="button-primary" color="primary" onClick={toggle}>
-          <i className="me-2 fa fa-plus" /> Create New Table
+      <div>
+        <Btn className="btn btn-primary" color="primary" onClick={toggle}>
+          <i className="fa fa-plus me-2"></i> {"Add New Table"}
         </Btn>
       </div>
       <Modal isOpen={modal} toggle={toggle} size="lg">
-        <ModalHeader toggle={toggle}>Create New Table</ModalHeader>
+        <ModalHeader toggle={toggle}>Add New Table</ModalHeader>
         <ModalBody className="custom-input">
           <div className="create-category">
             <div>

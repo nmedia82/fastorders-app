@@ -22,13 +22,13 @@ export default function NewCategoryModal() {
 
   return (
     <Col xs={12}>
-      <div className="category-button">
-        <Btn className="button-primary" color="primary" onClick={toggle}>
-          <i className="me-2 fa fa-plus" /> Create New Category
+      <div>
+        <Btn className="btn btn-primary" color="primary" onClick={toggle}>
+          <i className="fa fa-plus me-2"></i> {"Add New Category"}
         </Btn>
       </div>
       <Modal isOpen={modal} toggle={toggle} size="lg">
-        <ModalHeader toggle={toggle}>Create New Category</ModalHeader>
+        <ModalHeader toggle={toggle}>Add New Category</ModalHeader>
         <ModalBody className="custom-input">
           <div className="create-category">
             <div>

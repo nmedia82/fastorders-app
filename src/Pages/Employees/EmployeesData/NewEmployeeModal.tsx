@@ -1,6 +1,9 @@
 import React, { useState, ChangeEvent } from "react";
 import { Col, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { Btn } from "../../../AbstractElements";
+import { Link } from "react-router-dom";
+import { Filter } from "react-feather";
+import { Href } from "../../../Utils/Constants";
 
 export default function NewEmployeesModal() {
   const [tableform, setTableform] = useState({
@@ -26,11 +29,12 @@ export default function NewEmployeesModal() {
 
   return (
     <Col xs={12}>
-      <div className="category-button">
-        <Btn className="button-primary" color="primary" onClick={toggle}>
-          <i className="me-2 fa fa-plus" /> Add Employees
+      <div>
+        <Btn className="btn btn-primary" color="primary" onClick={toggle}>
+          <i className="fa fa-plus me-2"></i> {"Add Employees"}
         </Btn>
       </div>
+
       <Modal isOpen={modal} toggle={toggle} size="lg">
         <ModalHeader toggle={toggle}>Add Employees</ModalHeader>
         <ModalBody className="custom-input">

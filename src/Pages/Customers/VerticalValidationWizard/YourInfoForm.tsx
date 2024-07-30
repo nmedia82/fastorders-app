@@ -51,7 +51,6 @@ export default function YourInfoForm({ formData, updateFormData }: CustomerFormP
             onChange={updateFormData}
           />
         </Col>
-
         <Col xxl={4} sm={6}>
           <Label>{"Phone Number 2"}</Label>
           <Input
@@ -82,7 +81,7 @@ export default function YourInfoForm({ formData, updateFormData }: CustomerFormP
             onChange={updateFormData}
           />
         </Col>
-        <Col xxl={5} sm={6}>
+        <Col xxl={4} sm={6}>
           <Label>{"Status"}</Label>
           <Input type="select" name="status" value={formData.status} onChange={updateFormData}>
             <option value={"active"}>{"active"}</option>
