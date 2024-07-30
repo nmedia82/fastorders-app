@@ -1,33 +1,41 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
+import { Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { LoginFormProp } from "../../../../../Types/Others.type";
 import CommonLogo from "./CommonLogo";
-import { Col, Form, FormGroup, Input, Label } from "reactstrap";
 import { Btn, H2, P } from "../../../../../AbstractElements";
 import {
+  Agreewith,
+  CreateAccount,
+  CreateYourAccount,
   EmailAddress,
-  ForgotPassword,
+  Href,
   Password,
-  RememberPassword,
+  PrivacyPolicy,
   SignIn,
-  SignInAccount,
+  YourName,
 } from "../../../../../Utils/Constants";
-import { Link } from "react-router-dom";
 import SocialLinks from "../../../../../Pages/Auth/SocialLinks";
 
-export default function LoginForm({ logoClass }: LoginFormProp) {
+export default function RegisterForm({ logoClass }: LoginFormProp) {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const toggle = () => setPasswordVisible(!isPasswordVisible);
-  const [formData, setFormData] = useState({ email: "", password: "", checkbox1: false });
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    lastName: "",
+    email: "",
+    password: "",
+    checkbox1: false,
+  });
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value, type, checked } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
+    setFormData({
+      ...formData,
       [id]: type === "checkbox" ? checked : value,
-    }));
+    });
   };
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormData({ email: "", password: "", checkbox1: false });
+    setFormData({ name: "", lastName: "", email: "", password: "", checkbox1: false });
   };
   return (
     <div>
@@ -36,17 +44,44 @@ export default function LoginForm({ logoClass }: LoginFormProp) {
       </div>
       <div className="login-main">
         <Form className="theme-form" onSubmit={handleSubmit}>
-          <H2>{SignInAccount}</H2>
-          <P>{"Enter your email & password to login"}</P>
+          <H2>{CreateYourAccount}</H2>
+          <P>{"Enter your personal details to create account"}</P>
+          <FormGroup>
+            <Col>
+              <Label className="pt-0">{YourName}</Label>
+            </Col>
+            <Row className="g-2">
+              <Col xs={6}>
+                <Input
+                  type="text"
+                  id="name"
+                  required
+                  placeholder="First name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                />
+              </Col>
+              <Col xs={6}>
+                <Input
+                  type="text"
+                  id="lastName"
+                  required
+                  placeholder="Last name"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                />
+              </Col>
+            </Row>
+          </FormGroup>
           <FormGroup>
             <Col>
               <Label>{EmailAddress}</Label>
             </Col>
             <Input
               type="email"
+              id="email"
               required
               placeholder="Test@gmail.com"
-              id="email"
               value={formData.email}
               onChange={handleInputChange}
             />
@@ -58,10 +93,10 @@ export default function LoginForm({ logoClass }: LoginFormProp) {
             <div className="form-input position-relative">
               <Input
                 type={isPasswordVisible ? "text" : "password"}
+                id="password"
                 name="login[password]"
                 required
                 placeholder="*********"
-                id="password"
                 value={formData.password}
                 onChange={handleInputChange}
               />
@@ -70,7 +105,7 @@ export default function LoginForm({ logoClass }: LoginFormProp) {
               </div>
             </div>
           </FormGroup>
-          <div className="mb-0 form-group">
+          <FormGroup className="mb-0">
             <div className="checkbox p-0">
               <Input
                 id="checkbox1"
@@ -79,19 +114,17 @@ export default function LoginForm({ logoClass }: LoginFormProp) {
                 onChange={handleInputChange}
               />
               <Label className="text-muted" htmlFor="checkbox1">
-                {RememberPassword}
+                {Agreewith}
               </Label>
+              <a className="ms-2" href={Href}>
+                {PrivacyPolicy}
+              </a>
             </div>
-            <Link className="link" to={`${process.env.PUBLIC_URL}/auth/forget_password`}>
-              {ForgotPassword}
-            </Link>
-            <div className="text-end mt-3">
-              <Btn color="primary" block className="w-100">
-                {SignIn}
-              </Btn>
-            </div>
-          </div>
-          <SocialLinks />
+            <Btn color="primary" className="w-100" block>
+              {CreateAccount}
+            </Btn>
+          </FormGroup>
+          <SocialLinks logtext={"Already have an account?"} btntext={SignIn} />
         </Form>
       </div>
     </div>

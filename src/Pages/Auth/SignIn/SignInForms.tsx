@@ -2,8 +2,8 @@ import React, { FormEvent, useState } from "react";
 import { Col, Form, FormGroup, Input, Label } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Btn, H2, H6, Image, P } from "../AbstractElements";
-import { dynamicImage } from "../Utils";
+import { Btn, H2, H6, Image, P } from "../../../AbstractElements";
+import { dynamicImage } from "../../../Utils";
 import {
   CreateAccount,
   DontHaveAccount,
@@ -14,8 +14,8 @@ import {
   SignIn,
   SignInAccount,
   SignInWith,
-} from "../Utils/Constants";
-import SocialLink from "./SocialLink";
+} from "../../../Utils/Constants";
+import SocialLink from "../../../Auth/SocialLink";
 
 export default function SignInForm() {
   const navigate = useNavigate();
@@ -99,7 +99,7 @@ export default function SignInForm() {
           <SocialLink />
           <P className="mt-4 mb-0 text-center">
             {DontHaveAccount}
-            <Link className="ms-2" to={`${process.env.PUBLIC_URL}/auth/sign-up`}>
+            <Link className="ms-2" to={`${process.env.PUBLIC_URL}/sign_up`}>
               {CreateAccount}
             </Link>
           </P>

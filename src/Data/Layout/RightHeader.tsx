@@ -75,7 +75,7 @@ export const cartHeaderData = [
 export const profileHeaderData = [
   {
     id: 1,
-    link: `auth/sign_up`,
+    link: `sign_up`,
     icon: "user",
     text: "Account",
   },

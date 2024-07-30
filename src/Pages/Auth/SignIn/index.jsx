@@ -1,14 +1,14 @@
 import React from "react";
 import { Col, Container, Row } from "reactstrap";
-import RegisterForm from "../../../../../Pages/Auth/Register/RegisterForm";
+import SignInForm from "./SignInForms";
 
-export default function RegisterSimple() {
+export default function SignIn() {
   return (
-    <Container fluid className="p-0">
+    <Container className="p-0" fluid>
       <Row className="m-0">
         <Col xs={12} className="p-0">
           <div className="login-card login-dark">
-            <RegisterForm />
+            <SignInForm />
           </div>
         </Col>
       </Row>
