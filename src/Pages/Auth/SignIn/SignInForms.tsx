@@ -15,7 +15,7 @@ import {
   SignInAccount,
   SignInWith,
 } from "../../../Utils/Constants";
-import SocialLink from "../../../Auth/SocialLink";
+import SocialLink from "../SocialLinks";
 
 export default function SignInForm() {
   const navigate = useNavigate();
@@ -95,14 +95,13 @@ export default function SignInForm() {
               </Btn>
             </div>
           </div>
-          <H6 className="text-muted mt-4 or">{SignInWith}</H6>
           <SocialLink />
-          <P className="mt-4 mb-0 text-center">
+          {/* <P className="mt-4 mb-0 text-center">
             {DontHaveAccount}
             <Link className="ms-2" to={`${process.env.PUBLIC_URL}/sign_up`}>
               {CreateAccount}
             </Link>
-          </P>
+          </P> */}
         </Form>
       </div>
     </div>
