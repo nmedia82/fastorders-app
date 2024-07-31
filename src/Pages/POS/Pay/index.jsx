@@ -1,32 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./paycart.css"; // Ensure the CSS file is imported
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "reactstrap";
 import {
   backToCart,
   cartPaid,
+  payingCart,
 } from "../../../ReduxToolkit/Reducers/CartReducer";
 
 const PayCart = () => {
   const { total, discount } = useSelector((state) => state.cart);
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("0");
   const dispatch = useDispatch();
 
-  const payableAmount = parseFloat(total).toFixed;
+  useEffect(() => {
+    dispatch(payingCart(amount));
+  }, [amount]);
+
+  const canPay = () => parseFloat(amount) >= parseFloat(total);
 
   const handleNumberClick = (number) => {
-    setAmount((prevAmount) => parseFloat(prevAmount) + parseFloat(number));
+    setAmount((prevAmount) =>
+      prevAmount === "0" ? number : prevAmount + number
+    );
   };
 
   const handleClear = () => {
-    setAmount("");
+    setAmount("0");
   };
 
   const handleQuickPayment = (quickAmount) => {
     setAmount((prevAmount) =>
-      prevAmount
-        ? parseFloat(prevAmount) + parseFloat(quickAmount)
-        : quickAmount
+      prevAmount === "0"
+        ? quickAmount.toString()
+        : (parseFloat(prevAmount) + parseFloat(quickAmount)).toString()
     );
   };
 
@@ -104,6 +111,7 @@ const PayCart = () => {
           color="success"
           className="btn-success btn-lg mt-3"
           onClick={() => dispatch(cartPaid())}
+          disabled={!canPay()}
         >
           Pay
         </Button>

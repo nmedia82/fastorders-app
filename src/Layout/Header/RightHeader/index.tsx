@@ -9,6 +9,8 @@ import NotificationBox from "./NotificationBox";
 import ChatHeader from "./ChatHeader";
 // import CartHeader from "./CartHeader";
 import ProfileHeader from "./ProfileHeader";
+import HoldCarts from "./HoldCarts";
+import CartHeaderList from "./CartHeader/CartHeaderList";
 // import MaximizeScreen from "./MaximizeScreen";
 // import BookmarkHeader from "./BookmarkHeader";
 
@@ -27,7 +29,8 @@ export default function RightHeader() {
         </span>
       </LI>
       <NotificationBox />
-      <ChatHeader />
+      <HoldCarts />
+      {/* <ChatHeader /> */}
 
       <ProfileHeader />
     </UL>

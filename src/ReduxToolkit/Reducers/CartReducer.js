@@ -1,19 +1,29 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
+import http from "../../services/http";
+import data from "../../services/config";
+const { api_url, vendor_id } = data;
 
 // Helper functions to interact with localStorage
 const saveCartToLocalStorage = (cart) => {
-  localStorage.setItem("cart", JSON.stringify(cart));
-};
-
-const saveOrdersToLocalStorage = (orders) => {
-  localStorage.setItem("orders", JSON.stringify(orders));
+  const { cartItems, total, discount, amountPaid, isPaying, cartId } = cart;
+  localStorage.setItem(
+    "cart",
+    JSON.stringify({ cartItems, total, discount, amountPaid, isPaying, cartId })
+  );
 };
 
 const loadCartFromLocalStorage = () => {
   const cart = localStorage.getItem("cart");
   return cart
     ? JSON.parse(cart)
-    : { cartItems: [], total: 0, discount: 0, isPaying: false };
+    : {
+        cartItems: [],
+        total: 0,
+        discount: 0,
+        amountPaid: 0,
+        isPaying: false,
+        cartId: nanoid(),
+      };
 };
 
 const saveHoldCartsToLocalStorage = (holdCarts) => {
@@ -25,15 +35,33 @@ const loadHoldCartsFromLocalStorage = () => {
   return holdCarts ? JSON.parse(holdCarts) : [];
 };
 
+const saveOrdersToLocalStorage = (orders) => {
+  localStorage.setItem("orders", JSON.stringify(orders));
+};
+
 const loadOrdersFromLocalStorage = () => {
   const orders = localStorage.getItem("orders");
   return orders ? JSON.parse(orders) : [];
 };
 
+// Thunk to fetch products
+export const fetchProducts = createAsyncThunk(
+  "cart/fetchProducts",
+  async () => {
+    const response = await http.get(
+      `${api_url}/get-products?vendor_id=${vendor_id}`
+    );
+    return response.data.data;
+  }
+);
+
 const initialState = {
   ...loadCartFromLocalStorage(),
   holdCarts: loadHoldCartsFromLocalStorage(),
-  localOrders: loadOrdersFromLocalStorage(),
+  orders: loadOrdersFromLocalStorage(),
+  products: [],
+  status: "idle",
+  error: null,
 };
 
 const cartSlice = createSlice({
@@ -103,6 +131,7 @@ const cartSlice = createSlice({
     },
     holdCart: (state) => {
       state.holdCarts.push({
+        id: state.cartId,
         cartItems: [...state.cartItems],
         total: state.total,
         discount: state.discount,
@@ -110,36 +139,51 @@ const cartSlice = createSlice({
       state.cartItems = [];
       state.total = 0;
       state.discount = 0;
+      state.amountPaid = 0;
       state.isPaying = false;
+      state.cartId = nanoid();
       saveCartToLocalStorage(state);
       saveHoldCartsToLocalStorage(state.holdCarts);
     },
-    payingCart: (state) => {
+    payingCart: (state, action) => {
+      state.amountPaid = action.payload;
       state.isPaying = true;
+      saveCartToLocalStorage(state);
     },
     backToCart: (state) => {
       state.isPaying = false;
+      saveCartToLocalStorage(state);
     },
     cartPaid: (state) => {
       state.isPaying = false;
-      state.localOrders.push({
+      state.orders.push({
+        id: state.cartId,
         cartItems: [...state.cartItems],
         total: state.total,
         discount: state.discount,
+        paid: state.amountPaid,
       });
       state.cartItems = [];
       state.total = 0;
       state.discount = 0;
+      state.amountPaid = 0;
+      state.cartId = nanoid();
       saveCartToLocalStorage(state);
-      saveOrdersToLocalStorage(state.localOrders);
+      saveOrdersToLocalStorage(state.orders);
     },
     retrieveCart: (state, action) => {
-      const holdCart = state.holdCarts[action.payload];
+      const holdCart = state.holdCarts.find(
+        (cart) => cart.id === action.payload
+      );
       if (holdCart) {
         state.cartItems = holdCart.cartItems;
         state.total = holdCart.total;
         state.discount = holdCart.discount;
-        state.holdCarts.splice(action.payload, 1);
+        state.amountPaid = 0;
+        state.cartId = holdCart.id;
+        state.holdCarts = state.holdCarts.filter(
+          (cart) => cart.id !== action.payload
+        );
         saveCartToLocalStorage(state);
         saveHoldCartsToLocalStorage(state.holdCarts);
       }
@@ -148,9 +192,25 @@ const cartSlice = createSlice({
       state.cartItems = [];
       state.total = 0;
       state.discount = 0;
+      state.amountPaid = 0;
       state.isPaying = false;
+      state.cartId = nanoid();
       saveCartToLocalStorage(state);
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchProducts.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.products = action.payload;
+      })
+      .addCase(fetchProducts.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      });
   },
 });
 

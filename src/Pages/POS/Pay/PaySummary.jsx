@@ -11,7 +11,10 @@ import {
 
 export const PaySummary = () => {
   const dispatch = useDispatch();
-  const { total, discount } = useSelector((state) => state.cart);
+  const { total, discount, amountPaid } = useSelector((state) => state.cart);
+
+  const payableAmount = total - discount;
+  const balance = amountPaid - payableAmount;
 
   return (
     <div className="pay-summary-section">
@@ -26,10 +29,20 @@ export const PaySummary = () => {
           <span className="cart-total-value">Rs. -{discount}</span>
         </div>
         <div className="cart-total-item">
-          <span className="cart-total-label">Total:</span>
-          <span className="cart-total-value">Rs. {total}</span>
+          <span className="cart-total-label">Total Payable:</span>
+          <span className="cart-total-value">Rs. {payableAmount}</span>
+        </div>
+        <div className="cart-total-item">
+          <span className="cart-total-label">Amount Paid:</span>
+          <span className="cart-total-value">Rs. {amountPaid}</span>
+        </div>
+        <div className="cart-total-item">
+          <span className="cart-total-label">Balance:</span>
+          <span className="cart-total-value">Rs. {balance}</span>
         </div>
       </div>
     </div>
   );
 };
+
+export default PaySummary;
