@@ -1188,7 +1188,7 @@ export const EmiTitle: string = "EMI";
 export const NetBankingTitle: string = "Net Banking";
 
 //Order history
-export const DatatableOrderHistoryTitle: string = "Datatable Order History";
+export const DatatableOrderHistoryTitle: string = "Order History";
 //Cart
 export const CartTitle: string = "Cart";
 //Ecommerce

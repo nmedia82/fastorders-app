@@ -130,6 +130,7 @@ export interface CheckoutFormType {
   pincode: string;
 }
 export interface OrderHistoryDataTableProps {
+  id: number;
   product: string;
   productName: string;
   orderClass?: string;

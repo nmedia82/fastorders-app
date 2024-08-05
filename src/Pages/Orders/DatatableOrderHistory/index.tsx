@@ -4,10 +4,7 @@ import DataTable from "react-data-table-component";
 import CommonCardHeader from "../../../Utils/CommonComponents/CommonCardHeader";
 import { DatatableOrderHistoryTitle } from "../../../Utils/Constants";
 import FilterComponent from "../../../Components/Tables/DataTables/Common/FilterComponent";
-import {
-  orderHistoryColumns,
-  orderHistoryDataTable,
-} from "../../../Data/Applications/ECommerce/OrderHistory";
+import { orderHistoryColumns, orderHistoryDataTable } from "./OrderHistoryData";
 import { OrderHistoryDataTableProps } from "../../../Types/ECommerce.type";
 
 export default function DatatableOrderHistory() {

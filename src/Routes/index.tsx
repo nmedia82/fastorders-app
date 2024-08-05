@@ -5,7 +5,7 @@ import SignIn from "../Pages/Auth/SignIn";
 import PrivateRoutes from "./PrivateRoutes";
 
 export default function Routers() {
-  const login = localStorage.getItem("logins");
+  const login = localStorage.getItem("login");
 
   return (
     <BrowserRouter basename={"/"}>

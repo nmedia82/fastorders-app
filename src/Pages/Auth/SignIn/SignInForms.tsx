@@ -69,7 +69,9 @@ export default function SignInForm() {
             </Col>
             <div className="form-input position-relative">
               <Input
-                type={isPasswordVisible ? "text" : "password"}
+                type={isPasswordVisible ? "text" : "password"}  
+                valid
+
                 defaultValue={password}
                 onChange={(event) => setPassword(event.target.value)}
                 name="login[password]"

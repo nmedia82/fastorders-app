@@ -244,6 +244,7 @@ export const orderHistoryData = [
 
 export const orderHistoryDataTable: OrderHistoryDataTableProps[] = [
     {
+        id: 1,
         product: '1.png',
         productName: 'Long Top',
         order: 'Processing',
@@ -254,6 +255,7 @@ export const orderHistoryDataTable: OrderHistoryDataTableProps[] = [
         price: '$21',
     },
     {
+        id: 1,
         product: '13.png',
         productName: 'Fancy Watch',
         order: 'Processing',
@@ -264,6 +266,7 @@ export const orderHistoryDataTable: OrderHistoryDataTableProps[] = [
         price: '$10',
     },
     {
+        id: 1,
         product: '4.png',
         productName: 'Man Shoes',
         order: 'Processing',
@@ -274,6 +277,7 @@ export const orderHistoryDataTable: OrderHistoryDataTableProps[] = [
         price: '$ 18',
     },
     {
+        id: 1,
         product: '10.png',
         productName: 'Ledis side bag',
         order: 'Shipped',
@@ -285,6 +289,7 @@ export const orderHistoryDataTable: OrderHistoryDataTableProps[] = [
         price: '$13',
     },
     {
+        id: 1,
         product: '12.png',
         productName: 'Ledis slipper',
         order: 'Shipped',
@@ -296,6 +301,7 @@ export const orderHistoryDataTable: OrderHistoryDataTableProps[] = [
         price: '$6',
     },
     {
+        id: 1,
         product: '3.png',
         productName: 'Fancy ledis Jacket',
         order: 'Shipped',
@@ -307,6 +313,7 @@ export const orderHistoryDataTable: OrderHistoryDataTableProps[] = [
         price: '$24',
     },
     {
+        id: 1,
         product: '2.png',
         productName: 'Ledis Handbag',
         order: 'Shipped',
@@ -318,6 +325,7 @@ export const orderHistoryDataTable: OrderHistoryDataTableProps[] = [
         price: '$12',
     },
     {
+        id: 1,
         product: '15.png',
         productName: 'Iphone6 mobile',
         order: 'Cancelled',
@@ -329,6 +337,7 @@ export const orderHistoryDataTable: OrderHistoryDataTableProps[] = [
         price: '$25',
     },
     {
+        id: 1,
         product: '14.png',
         productName: 'Watch',
         order: 'Cancelled',
@@ -340,6 +349,7 @@ export const orderHistoryDataTable: OrderHistoryDataTableProps[] = [
         price: '$12',
     },
     {
+        id: 1,
         product: '11.png',
         productName: 'Watch',
         order: 'Cancelled',

@@ -5,7 +5,7 @@ import CommonCardHeader from "../../../Utils/CommonComponents/CommonCardHeader";
 import { Btn, H6, Image } from "../../../AbstractElements";
 import { dynamicImage } from "../../../Utils";
 import { Dollar, Href } from "../../../Utils/Constants";
-import { orderHistoryData } from "../../../Data/Applications/ECommerce/OrderHistory";
+import { orderHistoryData } from "../DatatableOrderHistory/OrderHistoryData";
 
 export default function OrderCards() {
   const [closedCards, setClosedCards] = useState<number[]>([]);
@@ -29,35 +29,35 @@ export default function OrderCards() {
                   {!isCardClosed(product.id) && (
                     <div className="prooduct-details-box">
                       <div className="d-flex">
-                        <Image
-                          className="align-self-center img-fluid img-60"
-                          src={dynamicImage(`ecommerce/product-table-${product.image}`)}
-                          alt="#"
-                        />
                         <div className="flex-grow-1 ms-3">
-                          <div className="product-name">
+                          <div className="product-id">
+                            <H6>
+                              <a href={Href}>{product.id}</a>
+                            </H6>
+                          </div>
+                          <div className="product-name mt-2" >
                             <H6>
                               <a href={Href}>{product.name}</a>
                             </H6>
                           </div>
-                          {/* <div className="rating">
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                          </div> */}
+
                           <div className="price d-flex">
                             <div className="text-muted me-2">{"Price"}</div>: {Dollar}
                             {product.price}
                           </div>
                           <div className="avaiabilty">
-                            {/* <div className="txt-success f-w-600">{"Processing"}</div> */}
                             <Btn color={product.color} size="xs" style={{ position: "unset" }}>
                               {product.avaiabilty}
                             </Btn>
                           </div>
-                          {/* <X className="close" onClick={() => toggleCard(product.id)} /> */}
+                          <div className="d-flex flex-column align-items-end mt-2">
+                            <Btn color="success" size="sm" style={{ marginBottom: 35 }}>
+                              Completed
+                            </Btn>
+                            <Btn color="danger" size="sm">
+                              Cancel
+                            </Btn>
+                          </div>
                         </div>
                       </div>
                     </div>
