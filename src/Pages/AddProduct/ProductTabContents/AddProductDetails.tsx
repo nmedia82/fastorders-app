@@ -9,8 +9,20 @@ import { PublishStatus } from "../../../Utils/Constants";
 import { publishStatusItem } from "../../Common/Product";
 import SelectCategory from "./Common/SelectCategory";
 
-export default function AddProductDetails({ activeCallBack }: ActiveCallbackProp) {
-  const [formData, setFormData] = useState({ productTitle: "", category: "", status: "" });
+export default function AddProductDetails({
+  activeCallBack,
+  product,
+  onFormChange,
+}: {
+  activeCallBack: any;
+  onFormChange: any;
+  product: any;
+}) {
+  const [formData, setFormData] = useState({
+    productTitle: "",
+    category: "",
+    status: "",
+  });
   const [borderTab, setBorderTab] = useState(1);
   const activeBorder = useCallback((val: number) => {
     setBorderTab(val);
@@ -22,11 +34,14 @@ export default function AddProductDetails({ activeCallBack }: ActiveCallbackProp
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
+
   const handleNextButton = () => {
     if (productTitle !== "") {
       activeCallBack(2);
     } else {
-      return toast.error("Please fill out details before moving on to the next step");
+      return toast.error(
+        "Please fill out details before moving on to the next step"
+      );
     }
   };
 
@@ -43,29 +58,13 @@ export default function AddProductDetails({ activeCallBack }: ActiveCallbackProp
             <Input
               className="is-invalid"
               type="text"
-              name="productTitle"
-              value={productTitle}
-              onChange={updateFormData}
+              name="name"
+              value={product.name}
+              onChange={(e) => onFormChange(e.target.name, e.target.value)}
             />
           </Col>
           <Col xs={12}>
-            <Row className="g-3">
-              <Col sm={6}>
-                <Row className="g-2">
-                  <Col xs={12}>
-                    <Label>{PublishStatus}</Label>
-                    <Input type="select" name="status" value={status} onChange={updateFormData}>
-                      {publishStatusItem.map((item, index) => (
-                        <option key={index}>{item}</option>
-                      ))}
-                    </Input>
-                    <P className="f-light">{"Choose the status"}</P>
-                  </Col>
-                </Row>
-              </Col>
-              {/* <ProductTag title={"Select Category"} subTitle={true} /> */}
-              <SelectCategory title={"Select Category"} />
-            </Row>
+            <SelectCategory title={"Select Category"} />
           </Col>
           {/* <Inventory activeBorder={activeBorder} activeCallBack={activeCallBack} /> */}
           {/* <ToolbarBox paragraph={"Improve product visibility by adding a compelling description."} /> */}

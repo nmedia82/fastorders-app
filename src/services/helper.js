@@ -1,3 +1,4 @@
+import data from "./config";
 export async function filterNonBrokenImages(imageUrls) {
   const checkImage = (url) => {
     return new Promise((resolve, reject) => {
@@ -15,4 +16,9 @@ export async function filterNonBrokenImages(imageUrls) {
     .map((result) => result.value);
 
   return validUrls;
+}
+
+export function getAPIURL() {
+  const { api_url } = data;
+  return api_url;
 }

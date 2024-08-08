@@ -21,7 +21,10 @@ export default function AddProduct() {
               <CardBody>
                 <Row className="g-xl-5 g-3">
                   <ProductFormNav steps={steps} setSteps={setSteps} />
-                  <ProductTabContents steps={steps} activeCallBack={activeCallBack} />
+                  <ProductTabContents
+                    steps={steps}
+                    activeCallBack={activeCallBack}
+                  />
                 </Row>
               </CardBody>
             </Card>
