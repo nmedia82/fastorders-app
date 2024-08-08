@@ -6,6 +6,7 @@ import { DatatableOrderHistoryTitle } from "../../../Utils/Constants";
 import FilterComponent from "../../../Components/Tables/DataTables/Common/FilterComponent";
 import { orderHistoryColumns, orderHistoryDataTable } from "./OrderHistoryData";
 import { OrderHistoryDataTableProps } from "../../../Types/ECommerce.type";
+import OrderFilter from "./OrderFilter";
 
 export default function DatatableOrderHistory() {
   const [filterText, setFilterText] = useState("");
@@ -21,11 +22,12 @@ export default function DatatableOrderHistory() {
       <Card>
         <CommonCardHeader title={DatatableOrderHistoryTitle} />
         <CardBody>
-          <FilterComponent
+          <OrderFilter
             onFilter={(e: React.ChangeEvent<HTMLInputElement>) => setFilterText(e.target.value)}
             filterText={filterText}
           />
           <div className="order-history table-responsive">
+            <br></br>
             <DataTable
               className="custom-scrollbar"
               data={filteredItems}

@@ -30,12 +30,19 @@ export default function OrderCards() {
                     <div className="prooduct-details-box">
                       <div className="d-flex">
                         <div className="flex-grow-1 ms-3">
-                          <div className="product-id">
+                          <div className="product-id d-flex align-items-center">
                             <H6>
                               <a href={Href}>{product.id}</a>
                             </H6>
+                            <Btn
+                              color={product.color}
+                              size="xs"
+                              style={{ marginLeft: "auto", position: "unset" }}
+                            >
+                              {product.avaiabilty}
+                            </Btn>
                           </div>
-                          <div className="product-name mt-2" >
+                          <div className="product-name mt-2">
                             <H6>
                               <a href={Href}>{product.name}</a>
                             </H6>
@@ -46,16 +53,33 @@ export default function OrderCards() {
                             {product.price}
                           </div>
                           <div className="avaiabilty">
-                            <Btn color={product.color} size="xs" style={{ position: "unset" }}>
-                              {product.avaiabilty}
+                            <Btn
+                              color="success"
+                              size="xs"
+                              style={{ position: "unset", marginRight: 8 }}
+                            >
+                              {"Completed"}
                             </Btn>
-                          </div>
-                          <div className="d-flex flex-column align-items-end mt-2">
-                            <Btn color="success" size="sm" style={{ marginBottom: 35 }}>
-                              Completed
+                            <Btn
+                              color="danger"
+                              size="xs"
+                              style={{ position: "unset", marginRight: 8 }}
+                            >
+                              {"Cancel"}
                             </Btn>
-                            <Btn color="danger" size="sm">
-                              Cancel
+                            <Btn
+                              color="info"
+                              size="xs"
+                              style={{ position: "unset", marginRight: 8 }}
+                            >
+                              {"Delivered"}
+                            </Btn>
+                            <Btn
+                              color="warning"
+                              size="xs"
+                              style={{ position: "unset", marginRight: 8 }}
+                            >
+                              {"Shipped"}
                             </Btn>
                           </div>
                         </div>
