@@ -1,10 +1,9 @@
 import React from "react";
 import { Col, Input, Label, Row } from "reactstrap";
-import { FilterComponentProps } from "../../../../Types/Tables.type";
-
-export default function FilterComponent({ onFilter, filterText }: FilterComponentProps) {
+import { FilterComponentProps } from "../../../Types/ECommerce.type";
+export default function OrderFilter({ onFilter, filterText }: FilterComponentProps) {
   return (
-    <Row className="align-items-center justify-content-end">
+    <Row className="align-items-center ">
       <Col xs="auto">
         <Label>{"Search"}:</Label>
       </Col>
