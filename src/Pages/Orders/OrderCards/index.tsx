@@ -6,92 +6,71 @@ import { Btn, H6, Image } from "../../../AbstractElements";
 import { dynamicImage } from "../../../Utils";
 import { Dollar, Href } from "../../../Utils/Constants";
 import { orderHistoryData } from "../DatatableOrderHistory/OrderHistoryData";
+import { useSelector } from "react-redux";
 
 export default function OrderCards() {
-  const [closedCards, setClosedCards] = useState<number[]>([]);
-  const toggleCard = (index: number) => {
-    setClosedCards((prevClosedCards) =>
-      prevClosedCards.includes(index)
-        ? prevClosedCards.filter((item) => item !== index)
-        : [...prevClosedCards, index]
-    );
-  };
-  const isCardClosed = (index: number) => closedCards.includes(index);
+  // Selector to get orders from state
+  const { allOrders, allOrderStatuses } = useSelector(
+    (state: any) => state.orders
+  );
+
   return (
     <Col sm={12}>
-      {orderHistoryData.map((item) => (
-        <Card key={item.id}>
-          <CommonCardHeader title={item.heading} />
-          <CardBody>
-            <Row className="g-sm-4 g-3">
-              {item.details.map((product) => (
-                <Col xl={4} md={6} key={product.id}>
-                  {!isCardClosed(product.id) && (
-                    <div className="prooduct-details-box">
-                      <div className="d-flex">
-                        <div className="flex-grow-1 ms-3">
-                          <div className="product-id d-flex align-items-center">
-                            <H6>
-                              <a href={Href}>{product.id}</a>
-                            </H6>
-                            <Btn
-                              color={product.color}
-                              size="xs"
-                              style={{ marginLeft: "auto", position: "unset" }}
-                            >
-                              {product.avaiabilty}
-                            </Btn>
-                          </div>
-                          <div className="product-name mt-2">
-                            <H6>
-                              <a href={Href}>{product.name}</a>
-                            </H6>
-                          </div>
+      <Card>
+        <CommonCardHeader title={"Takeaway"} />
+        <CardBody>
+          <Row className="g-sm-4 g-3">
+            {allOrders
+              .filter((item: any) => item.order_type === "take-away")
+              .map((item: any) => (
+                <Col xl={4} md={6} key={item.id}>
+                  <div className="prooduct-details-box">
+                    <div className="d-flex">
+                      <div className="flex-grow-1 ms-3">
+                        <div className="product-id d-flex align-items-center">
+                          <H6>
+                            <a href={Href}>{`Order # ${item.id}`}</a>
+                          </H6>
+                          <Btn
+                            color={item.color}
+                            size="xs"
+                            style={{ marginLeft: "auto", position: "unset" }}
+                          >
+                            {item.order_status}
+                          </Btn>
+                        </div>
+                        <div className="product-name mt-2"></div>
 
-                          <div className="price d-flex">
-                            <div className="text-muted me-2">{"Price"}</div>: {Dollar}
-                            {product.price}
-                          </div>
-                          <div className="avaiabilty">
-                            <Btn
-                              color="success"
-                              size="xs"
-                              style={{ position: "unset", marginRight: 8 }}
-                            >
-                              {"Completed"}
-                            </Btn>
-                            <Btn
-                              color="danger"
-                              size="xs"
-                              style={{ position: "unset", marginRight: 8 }}
-                            >
-                              {"Cancel"}
-                            </Btn>
-                            <Btn
-                              color="info"
-                              size="xs"
-                              style={{ position: "unset", marginRight: 8 }}
-                            >
-                              {"Delivered"}
-                            </Btn>
-                            <Btn
-                              color="warning"
-                              size="xs"
-                              style={{ position: "unset", marginRight: 8 }}
-                            >
-                              {"Shipped"}
-                            </Btn>
-                          </div>
+                        <div className="price d-flex">
+                          <div className="text-muted">{"Amount"}</div>:
+                          {` ${item.grandTotal}`}
+                        </div>
+                        <div className="avaiabilty d-flex justify-content-even align-items-center mt-2">
+                          {Object.keys(allOrderStatuses)
+                            .filter((s: any) => s !== item.order_status)
+                            .map((status: any) => (
+                              <Btn
+                                className="btn-square"
+                                key={status}
+                                color="primary"
+                                size="md"
+                                style={{
+                                  position: "unset",
+                                  marginRight: 5,
+                                }}
+                              >
+                                {allOrderStatuses[status]}
+                              </Btn>
+                            ))}
                         </div>
                       </div>
                     </div>
-                  )}
+                  </div>
                 </Col>
               ))}
-            </Row>
-          </CardBody>
-        </Card>
-      ))}
+          </Row>
+        </CardBody>
+      </Card>
     </Col>
   );
 }

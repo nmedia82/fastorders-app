@@ -22,3 +22,8 @@ export function getAPIURL() {
   const { api_url } = data;
   return api_url;
 }
+
+export function getVendorID() {
+  const { vendor_id } = data;
+  return vendor_id;
+}

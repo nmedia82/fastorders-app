@@ -14,6 +14,7 @@ import FilterReducer from "./Reducers/ECommerce/FilterReducer";
 import ProjectReducer from "./Reducers/Applications/ProjectReducer";
 import JobSearchReducer from "./Reducers/JobSearchReducer";
 import CartReducer from "./Reducers/CartReducer";
+import OrderReducer from "./Reducers/OrdersReducer";
 
 export const store = configureStore({
   reducer: {
@@ -32,6 +33,7 @@ export const store = configureStore({
     project: ProjectReducer,
     jobSearch: JobSearchReducer,
     cart: CartReducer,
+    orders: OrderReducer,
   },
 });
 

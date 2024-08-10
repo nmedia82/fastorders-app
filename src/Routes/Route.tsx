@@ -8,6 +8,7 @@ import POSHome from "../Pages/POS";
 import AddCustomers from "../Pages/Customers";
 import ProductCategories from "../Pages/Categories";
 import AllEmployees from "../Pages/Employees";
+import OrderInvoice from "../Pages/Orders/Invoice";
 
 export const routes = [
   {
@@ -49,5 +50,9 @@ export const routes = [
   {
     path: `${process.env.PUBLIC_URL}/employees`,
     element: <AllEmployees />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/invoice/:order_id`,
+    element: <OrderInvoice />,
   },
 ];
