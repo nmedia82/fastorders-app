@@ -1,12 +1,10 @@
 import { ChangeEvent, useState } from "react";
 import { toast } from "react-toastify";
 import { Col, Form, Input, Label, Row } from "reactstrap";
-import { Btn, P } from "../../../../AbstractElements";
-import { ActiveBorderProp } from "../../../../Types/ECommerce.type";
-import SvgIcon from "../../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
-import { AdditionalTagTitle, SpecificTags } from "../../../../Utils/Constants";
-import ProductTag from "../Common/ProductTag";
-import ToolbarBox from "../Common/ToolbarBox";
+import { Btn, P } from "../../../AbstractElements";
+import { ActiveBorderProp } from "../../../Types/ECommerce.type";
+import SvgIcon from "../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
+import { AdditionalTagTitle, SpecificTags } from "../../../Utils/Constants";
 
 export default function AdditionalOptions({ activeBorder }: ActiveBorderProp) {
   const [formData, setFormData] = useState({ additionalTag: "" });
@@ -47,15 +45,15 @@ export default function AdditionalOptions({ activeBorder }: ActiveBorderProp) {
                   </Col>
                 </Row>
               </Col>
-              <ProductTag title={SpecificTags} />
+              {/* <ProductTag title={SpecificTags} /> */}
               <Col xs={12}>
                 <Row>
-                  <ToolbarBox
+                  {/* <ToolbarBox
                     label={true}
                     paragraph={
                       "Enhance your SEO ranking with an added tag description for the product."
                     }
-                  />
+                  /> */}
                 </Row>
               </Col>
             </Row>

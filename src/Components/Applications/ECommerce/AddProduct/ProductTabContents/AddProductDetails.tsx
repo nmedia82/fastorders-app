@@ -5,7 +5,7 @@ import { ActiveCallbackProp } from "../../../../../Types/ECommerce.type";
 import { ProductTitleLabel } from "../../../../../Utils/Constants";
 import { Btn } from "../../../../../AbstractElements";
 import SvgIcon from "../../../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
-import ToolbarBox from "../../../../../Pages/AddProduct/ProductTabContents/Common/ToolbarBox";
+import ToolbarBox from "./Common/ToolbarBox";
 
 export default function AddProductDetails({ activeCallBack }: ActiveCallbackProp) {
   const [formData, setFormData] = useState({ productTitle: "" });

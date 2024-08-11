@@ -1,10 +1,10 @@
 import React, { ChangeEvent, useState } from "react";
 import { toast } from "react-toastify";
-import { AdvanceCallBackProp } from "../../../../Types/ECommerce.type";
+import { AdvanceCallBackProp } from "../../../Types/ECommerce.type";
 import { Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
-import { Btn } from "../../../../AbstractElements";
-import SvgIcon from "../../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
-import { customSwitchData } from "../../../../Data/Forms/FormWidgets";
+import { Btn } from "../../../AbstractElements";
+import SvgIcon from "../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
+import { customSwitchData } from "../../../Data/Forms/FormWidgets";
 
 export default function Inventory({ activeCallBack }: AdvanceCallBackProp) {
   const [formData, setFormData] = useState({

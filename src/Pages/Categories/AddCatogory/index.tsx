@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent } from "react";
 import { Col, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { CreateNewCategory, Add, Cancel, CategoryName } from "../../../Utils/Constants";
 import { Btn } from "../../../AbstractElements";
-import ToolbarBox from "../../AddProduct/ProductTabContents/Common/ToolbarBox";
+// import ToolbarBox from "../../AddProduct/ProductTabContents/Common/ToolbarBox";
 
 export default function NewCategoryModal() {
   const [tableform, setTableform] = useState({
@@ -44,9 +44,9 @@ export default function NewCategoryModal() {
                 onChange={handleChange}
               />
             </div>
-            <ToolbarBox
+            {/* <ToolbarBox
               paragraph={"Improve product visibility by adding a compelling description."}
-            />
+            /> */}
           </div>
         </ModalBody>
         <ModalFooter>

@@ -7,7 +7,7 @@ import { Btn, P } from "../../../AbstractElements";
 import SvgIcon from "../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
 import { PublishStatus } from "../../../Utils/Constants";
 import { publishStatusItem } from "../../Common/Product";
-import SelectCategory from "./Common/SelectCategory";
+import SelectCategory from "../ProductFormNav/SelectCategory";
 
 export default function AddProductDetails({
   activeCallBack,
@@ -39,9 +39,7 @@ export default function AddProductDetails({
     if (productTitle !== "") {
       activeCallBack(2);
     } else {
-      return toast.error(
-        "Please fill out details before moving on to the next step"
-      );
+      return toast.error("Please fill out details before moving on to the next step");
     }
   };
 

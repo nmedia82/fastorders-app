@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Select, { MultiValue } from "react-select";
-import { ProductTagProp } from "../../../../Types/ECommerce.type";
+import { ProductTagProp } from "../../../Types/ECommerce.type";
 import { Col, Label, Row } from "reactstrap";
 
 export default function SelectCategory({ title }: ProductTagProp) {

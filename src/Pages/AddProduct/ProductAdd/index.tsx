@@ -3,14 +3,9 @@ import { ProductTabContentProp } from "../../../Types/ECommerce.type";
 import { Col, TabContent, TabPane } from "reactstrap";
 import AddProductDetails from "./AddProductDetails";
 import ProductGallery from "./ProductGallery";
-import ProductCategories from "./ProductCategories";
-import SellingPrice from "./SellingPrice";
-import AdvanceSection from "./AdvanceSection";
+import AdvanceSection from "../AdvanceSection";
 
-export default function ProductTabContents({
-  steps,
-  activeCallBack,
-}: ProductTabContentProp) {
+export default function ProductAdd({ steps, activeCallBack }: ProductTabContentProp) {
   const [product, setProduct] = useState({});
 
   const handleFormChange = (key: any, value: any) => {
@@ -32,12 +27,6 @@ export default function ProductTabContents({
         <TabPane tabId={3}>
           <ProductGallery activeCallBack={activeCallBack} product={product} />
         </TabPane>
-        {/* <TabPane tabId={3}>
-          <ProductCategories activeCallBack={activeCallBack} />
-        </TabPane>
-        <TabPane tabId={4}>
-          <SellingPrice activeCallBack={activeCallBack} />
-        </TabPane> */}
       </TabContent>
     </Col>
   );
