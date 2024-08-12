@@ -4,6 +4,14 @@ const data = {
   loginSite: "https://order2day.nmdevteam.com",
   consumerKey: "ck_c533e14187f5ba5306f570b44c2a5165046d3777",
   consumerSecret: "cs_397163f3077ae28d8ddd583cda839ba55cbd3a37",
+  settings: {
+    store_name: "Java Sizling Bites",
+    store_address: "College Road, Chenab Nagar",
+    store_phone: "92 335 4590 894",
+    store_slug: "java",
+    store_email: "java.bite@gmail.com",
+    show_invoice_billing: false,
+  },
 };
 
 export default data;

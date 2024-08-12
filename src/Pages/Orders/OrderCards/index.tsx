@@ -7,6 +7,8 @@ import { dynamicImage } from "../../../Utils";
 import { Dollar, Href } from "../../../Utils/Constants";
 import { orderHistoryData } from "../DatatableOrderHistory/OrderHistoryData";
 import { useSelector } from "react-redux";
+import { getFormattedDate, getFormattedPrice } from "../../../services/helper";
+import { NavLink } from "react-router-dom";
 
 export default function OrderCards() {
   // Selector to get orders from state
@@ -29,7 +31,9 @@ export default function OrderCards() {
                       <div className="flex-grow-1 ms-3">
                         <div className="product-id d-flex align-items-center">
                           <H6>
-                            <a href={Href}>{`Order # ${item.id}`}</a>
+                            <NavLink to={`/invoice/${item.id}`}>{`Order # ${
+                              item.id
+                            } / ${getFormattedDate(item.date)}`}</NavLink>
                           </H6>
                           <Btn
                             color={item.color}
@@ -43,7 +47,7 @@ export default function OrderCards() {
 
                         <div className="price d-flex">
                           <div className="text-muted">{"Amount"}</div>:
-                          {` ${item.grandTotal}`}
+                          {` ${getFormattedPrice(item.grandTotal)}`}
                         </div>
                         <div className="avaiabilty d-flex justify-content-even align-items-center mt-2">
                           {Object.keys(allOrderStatuses)
@@ -53,7 +57,7 @@ export default function OrderCards() {
                                 className="btn-square"
                                 key={status}
                                 color="primary"
-                                size="md"
+                                size="sm"
                                 style={{
                                   position: "unset",
                                   marginRight: 5,

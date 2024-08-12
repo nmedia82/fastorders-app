@@ -18,6 +18,17 @@ export async function filterNonBrokenImages(imageUrls) {
   return validUrls;
 }
 
+export function getFormattedPrice(p) {
+  p = `Rs.${parseFloat(p).toFixed(2)}`;
+  return p;
+}
+
+export function getFormattedDate(date) {
+  const options = { month: "short", day: "numeric", year: "2-digit" };
+  const formattedDate = new Date(date).toLocaleDateString("en-US", options);
+  return formattedDate;
+}
+
 export function getAPIURL() {
   const { api_url } = data;
   return api_url;
@@ -26,4 +37,9 @@ export function getAPIURL() {
 export function getVendorID() {
   const { vendor_id } = data;
   return vendor_id;
+}
+
+export function getVendorSettings(key) {
+  const { settings } = data;
+  return settings[key] || null;
 }
