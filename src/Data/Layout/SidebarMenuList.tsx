@@ -25,6 +25,13 @@ export const menuList: SidebarMenuType[] = [
         url: `${process.env.PUBLIC_URL}/orders`,
         icon: "widget",
         type: "link",
+        menu: [
+          {
+            title: "History",
+            type: "link",
+            url: `/orders-history`,
+          },
+        ],
       },
       {
         id: 4,

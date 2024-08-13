@@ -4,28 +4,29 @@ import DataTable from "react-data-table-component";
 import CommonCardHeader from "../../../../../Utils/CommonComponents/CommonCardHeader";
 import { DatatableOrderHistoryTitle } from "../../../../../Utils/Constants";
 import FilterComponent from "../../Common/FilterComponent";
-import {
-  orderHistoryColumns,
-  orderHistoryDataTable,
-} from "../../../../../Pages/Orders/DatatableOrderHistory/OrderHistoryData";
 import { OrderHistoryDataTableProps } from "../../../../../Types/ECommerce.type";
+import { orderHistoryDataTable } from "../../../../../Data/Applications/ECommerce/OrderHistory";
+import { orderHistoryColumns } from "../../../../../Pages/Orders/History/OrderHistoryData";
 
 export default function DatatableOrderHistory() {
   const [filterText, setFilterText] = useState("");
-  const filteredItems: OrderHistoryDataTableProps[] = orderHistoryDataTable.filter(
-    (item: OrderHistoryDataTableProps) => {
+  const filteredItems: OrderHistoryDataTableProps[] =
+    orderHistoryDataTable.filter((item: OrderHistoryDataTableProps) => {
       return Object.values(item).some(
-        (value) => value && value.toString().toLowerCase().includes(filterText.toLowerCase())
+        (value) =>
+          value &&
+          value.toString().toLowerCase().includes(filterText.toLowerCase())
       );
-    }
-  );
+    });
   return (
     <Col sm={12}>
       <Card>
         <CommonCardHeader title={DatatableOrderHistoryTitle} />
         <CardBody>
           <FilterComponent
-            onFilter={(e: React.ChangeEvent<HTMLInputElement>) => setFilterText(e.target.value)}
+            onFilter={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setFilterText(e.target.value)
+            }
             filterText={filterText}
           />
           <div className="order-history table-responsive">

@@ -9,6 +9,7 @@ import AddCustomers from "../Pages/Customers";
 import ProductCategories from "../Pages/Categories";
 import AllEmployees from "../Pages/Employees";
 import OrderInvoice from "../Pages/Orders/Invoice";
+import OrdersHistory from "../Pages/Orders/History";
 
 export const routes = [
   {
@@ -18,6 +19,10 @@ export const routes = [
   {
     path: `${process.env.PUBLIC_URL}/orders`,
     element: <AllOrders />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/orders-history`,
+    element: <OrdersHistory />,
   },
   {
     path: `${process.env.PUBLIC_URL}/sample_page`,

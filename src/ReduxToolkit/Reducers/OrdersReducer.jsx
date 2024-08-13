@@ -22,7 +22,12 @@ export const fetchOrders = createAsyncThunk("orders/fetchOrders", async () => {
   return response.data;
 });
 
-const initialState = { allOrders: [], allOrderStatuses: [], isLoading: false };
+const initialState = {
+  allOrders: [],
+  currentOrders: [],
+  allOrderStatuses: [],
+  isLoading: false,
+};
 
 const OrdersSlice = createSlice({
   name: "orders",
@@ -35,16 +40,25 @@ const OrdersSlice = createSlice({
       state.isLoading = action.payload;
     },
     setOrderStatus: (state, action) => {
-      const { orderId, status } = action.payload;
-      const order = state.allOrders.find((order) => order.id === orderId);
-      if (order) {
-        order.status = status;
-      }
+      const updatedOrder = action.payload;
+
+      // Update allOrders
+      state.allOrders = state.allOrders.map((order) =>
+        order.id === updatedOrder.id ? updatedOrder : order
+      );
+
+      // Update currentOrders
+      state.currentOrders = state.currentOrders.map((order) =>
+        order.id === updatedOrder.id ? updatedOrder : order
+      );
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchOrders.fulfilled, (state, action) => {
       state.allOrders = action.payload.data;
+      state.currentOrders = action.payload.data.filter(
+        (order) => order.order_status != "completed"
+      );
     });
     builder.addCase(fetchOrderStatuses.fulfilled, (state, action) => {
       state.allOrderStatuses = action.payload;
