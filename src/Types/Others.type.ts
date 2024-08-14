@@ -1,45 +1,44 @@
+import { City } from "./../Utils/Constants/index";
 import { ChangeEvent } from "react";
 
 export interface CommonErrorPageProps {
-    error1?: boolean;
-    color: string;
-    title: string;
+  error1?: boolean;
+  color: string;
+  title: string;
 }
 
 export interface CountdownRendererProps {
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-    completed: boolean;
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  completed: boolean;
 }
 
 export interface LoginFormProp {
-    logoClass?: string;
+  logoClass?: string;
 }
 
 export interface SocialLinksProp {
-    logtext?: string;
-    btntext?: string;
+  logtext?: string;
+  btntext?: string;
 }
 
 export interface RegisterWizardProp {
-    level: number;
+  level: number;
 }
 
 interface FormValueInterFace {
-    firstName: string;
-    lastName: string;
-    contactNumber: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-    birthDate: string;
-    country: string;
-    state: string;
+  fullName: string;
+  contactNumber: string;
+  email: string;
+  businessAddress: string;
+  businessName: string;
+  appDomain: string;
+  city: string;
 }
 
 export interface RegisterWizardForm {
-    updateUserData: (event: ChangeEvent<HTMLInputElement>) => void;
-    formValue: FormValueInterFace;
+  updateUserData: (event: ChangeEvent<HTMLInputElement>) => void;
+  formValue: FormValueInterFace;
 }

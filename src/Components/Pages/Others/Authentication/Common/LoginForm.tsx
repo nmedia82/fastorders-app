@@ -11,13 +11,22 @@ import {
   SignIn,
   SignInAccount,
 } from "../../../../../Utils/Constants";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLinks from "../../../../../Pages/Auth/SocialLinks";
+import { loginUser } from "../../../../../services/auth";
+import { toast } from "react-toastify";
 
 export default function LoginForm({ logoClass }: LoginFormProp) {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
   const toggle = () => setPasswordVisible(!isPasswordVisible);
-  const [formData, setFormData] = useState({ email: "", password: "", checkbox1: false });
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    checkbox1: false,
+  });
+  const navigate = useNavigate();
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value, type, checked } = e.target;
     setFormData((prevData) => ({
@@ -27,13 +36,26 @@ export default function LoginForm({ logoClass }: LoginFormProp) {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormData({ email: "", password: "", checkbox1: false });
+    setLoading(true);
+    loginUser(formData)
+      .then((data) => {
+        console.log(data);
+        navigate(`/dashboard`);
+      })
+      .catch((error) => {
+        toast.error(error.message);
+        setLoading(false);
+      })
+      .finally(() => {
+        setLoading(false);
+        setFormData((prevData) => ({
+          ...prevData,
+          password: "",
+        }));
+      });
   };
   return (
     <div>
-      <div>
-        <CommonLogo logoClass={logoClass} />
-      </div>
       <div className="login-main">
         <Form className="theme-form" onSubmit={handleSubmit}>
           <H2>{SignInAccount}</H2>
@@ -82,7 +104,10 @@ export default function LoginForm({ logoClass }: LoginFormProp) {
                 {RememberPassword}
               </Label>
             </div>
-            <Link className="link" to={`${process.env.PUBLIC_URL}/auth/forget_password`}>
+            <Link
+              className="link"
+              to={`${process.env.PUBLIC_URL}/auth/forget_password`}
+            >
               {ForgotPassword}
             </Link>
             <div className="text-end mt-3">
@@ -90,6 +115,7 @@ export default function LoginForm({ logoClass }: LoginFormProp) {
                 {SignIn}
               </Btn>
             </div>
+            {loading && <p className="text-success">Please wait ...</p>}
           </div>
           <SocialLinks />
         </Form>

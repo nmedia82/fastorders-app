@@ -35,7 +35,13 @@ export default function RegisterForm({ logoClass }: LoginFormProp) {
   };
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormData({ name: "", lastName: "", email: "", password: "", checkbox1: false });
+    setFormData({
+      name: "",
+      lastName: "",
+      email: "",
+      password: "",
+      checkbox1: false,
+    });
   };
   return (
     <div>

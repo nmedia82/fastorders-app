@@ -14,12 +14,12 @@ import {
 export default function SocialLinks({ logtext, btntext }: SocialLinksProp) {
   return (
     <>
-      <H6 className="text-muted mt-4 or">{SignInWith}</H6>
+      {/* <H6 className="text-muted mt-4 or">{SignInWith}</H6> */}
 
       <P className="mt-4 mb-0 text-center">
         {logtext ? logtext : "Don't have account?"}
         {!logtext && !btntext ? (
-          <Link className="ms-2" to={`${process.env.PUBLIC_URL}/sign_up`}>
+          <Link className="ms-2" to={`${process.env.PUBLIC_URL}/register`}>
             {CreateAccount}
           </Link>
         ) : (
