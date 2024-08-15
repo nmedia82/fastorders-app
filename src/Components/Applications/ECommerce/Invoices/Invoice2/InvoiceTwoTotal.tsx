@@ -104,8 +104,14 @@ export default function InvoiceTwoTotal({ order }: { order: any }) {
               </span>
               <span style={{ marginLeft: 8 }}>:</span>
             </td>
-            <td style={{ padding: "12px 24px 22px 0", textAlign: "right" }}>
-              <span style={{ fontWeight: 500, fontSize: 18, color: "#009DB5" }}>
+            <td
+              style={{
+                padding: "5px 0",
+                textAlign: "right",
+                paddingTop: 0,
+              }}
+            >
+              <span style={{ fontSize: 16, color: "#009DB5" }}>
                 {getFormattedPrice(grandTotal)}
               </span>
             </td>

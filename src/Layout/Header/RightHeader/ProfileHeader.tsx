@@ -5,11 +5,15 @@ import { dynamicImage } from "../../../Utils";
 import { BasilAhmad } from "../../../Utils/Constants";
 import { profileHeaderData } from "../../../Data/Layout/RightHeader";
 import SvgIcon from "../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
+import { getCurrentUser } from "../../../services/auth";
 
 export default function ProfileHeader() {
   const logout = () => {
     localStorage.clear();
   };
+
+  const user = getCurrentUser();
+
   return (
     <LI className="profile-nav onhover-dropdown">
       <div className="onhover-click">
@@ -18,8 +22,10 @@ export default function ProfileHeader() {
           <span className="status status-success"></span>
         </div>
         <div className="sidebar-content">
-          <H4>{BasilAhmad}</H4>
-          <span className="f-12 f-w-600 f-light">{"Manager"}</span>
+          <H4>{user && user.user.display_name}</H4>
+          <span className="f-12 f-w-600 f-light">
+            {user && user?.business_info?.business_name}
+          </span>
         </div>
       </div>
       <UL className="profile-dropdown onhover-show-div simple-list">

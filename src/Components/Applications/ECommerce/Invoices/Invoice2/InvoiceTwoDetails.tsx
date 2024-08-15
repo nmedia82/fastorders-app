@@ -30,7 +30,7 @@ export default function InvoiceTwoDetails({ order }: { order: any }) {
                   fontWeight: 500,
                 }}
               >
-                {"Invoice No."}
+                {"Invoice#."}
               </span>
               <H4 style={{ margin: 0, fontWeight: 400, fontSize: 16 }}>
                 {`#${order.id}`}
@@ -60,7 +60,7 @@ export default function InvoiceTwoDetails({ order }: { order: any }) {
                   fontWeight: 500,
                 }}
               >
-                {"Order Status"} :
+                {"Status"} :
               </span>
               <H4
                 style={{
@@ -85,7 +85,7 @@ export default function InvoiceTwoDetails({ order }: { order: any }) {
                   fontWeight: 500,
                 }}
               >
-                {"Total Amount"} :
+                {"Total"} :
               </span>
               <H4 style={{ margin: 0, fontWeight: 500, fontSize: 16 }}>
                 {getFormattedPrice(order.grandTotal)}
