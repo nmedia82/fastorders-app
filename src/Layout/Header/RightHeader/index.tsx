@@ -28,8 +28,8 @@ export default function RightHeader() {
           <SvgIcon iconId="search" onClick={handleSearch} />
         </span>
       </LI>
-      <NotificationBox />
       <HoldCarts />
+      {/* <NotificationBox /> */}
       {/* <ChatHeader /> */}
 
       <ProfileHeader />

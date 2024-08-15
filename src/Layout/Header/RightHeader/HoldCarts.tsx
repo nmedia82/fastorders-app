@@ -16,7 +16,7 @@ export default function HoldCarts() {
   return (
     <LI className="onhover-dropdown">
       <div className="notification-box onhover-click">
-        <SvgIcon iconId="notification" />
+        <SvgIcon iconId="pause" />
         <Badges color="success" pill>
           {holdCarts.length}
         </Badges>
@@ -25,11 +25,7 @@ export default function HoldCarts() {
         <H6 className="f-18 mb-0 dropdown-title">Hold Cart</H6>
         <UL className="simple-list">
           {holdCarts.map((cart: any, index: any) => (
-            <LI
-              className="d-flex"
-              key={index}
-              onClick={() => dispatch(retrieveCart(cart.id))}
-            >
+            <LI className="d-flex" key={index} onClick={() => dispatch(retrieveCart(cart.id))}>
               <div>
                 <P>
                   <span className="f-w-500 me-1">{`Total items`}</span>

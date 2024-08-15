@@ -73,12 +73,12 @@ export const cartHeaderData = [
 
 //Profile
 export const profileHeaderData = [
-  {
-    id: 1,
-    link: `sign_up`,
-    icon: "user",
-    text: "Account",
-  },
+  // {
+  //   id: 1,
+  //   link: `sign_up`,
+  //   icon: "user",
+  //   text: "Account",
+  // },
   // {
   //     id: 2,
   //     link: `applications/email/letter_box`,
