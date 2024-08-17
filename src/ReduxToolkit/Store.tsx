@@ -15,6 +15,7 @@ import ProjectReducer from "./Reducers/Applications/ProjectReducer";
 import JobSearchReducer from "./Reducers/JobSearchReducer";
 import CartReducer from "./Reducers/CartReducer";
 import OrderReducer from "./Reducers/OrdersReducer";
+import ProductsReducer from "./Reducers/ProductsReducer";
 
 export const store = configureStore({
   reducer: {
@@ -34,6 +35,7 @@ export const store = configureStore({
     jobSearch: JobSearchReducer,
     cart: CartReducer,
     orders: OrderReducer,
+    products: ProductsReducer,
   },
 });
 

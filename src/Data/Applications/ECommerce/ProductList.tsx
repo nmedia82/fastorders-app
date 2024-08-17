@@ -287,7 +287,11 @@ export const productListColumns: TableColumn<ProductListType>[] = [
     cell: (row) => (
       <div className="product-names">
         <div className="light-product-box">
-          <Image className="img-fluid" src={dynamicImage(row.imageSrc)} alt="" />
+          <Image
+            className="img-fluid"
+            src={dynamicImage(row.imageSrc)}
+            alt=""
+          />
         </div>
         <P>{row.productName}</P>
       </div>
@@ -323,7 +327,11 @@ export const productListColumns: TableColumn<ProductListType>[] = [
     selector: (row) => row.status,
     sortable: true,
     cell: (row) => (
-      <Badges color={`${row.status === "Sold Out" ? "light-secondary" : "light-primary"}`}>
+      <Badges
+        color={`${
+          row.status === "Sold Out" ? "light-secondary" : "light-primary"
+        }`}
+      >
         {row.status}
       </Badges>
     ),
@@ -347,7 +355,9 @@ export const productListColumns: TableColumn<ProductListType>[] = [
     name: "Action",
     cell: (row) => (
       <div className="product-action">
-        <Link to={`${process.env.PUBLIC_URL}/applications/ecommerce/add_products`}>
+        <Link
+          to={`${process.env.PUBLIC_URL}/applications/ecommerce/add_products`}
+        >
           <SvgIcon iconId="edit-content" />
         </Link>
         <SvgIcon iconId="trash1" />

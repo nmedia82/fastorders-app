@@ -175,3 +175,53 @@ export interface ProductQuantityProp {
   dataId: undefined | number;
   modelData: ProductDataTypes | undefined;
 }
+
+export interface ProductCategory {
+  id: number;
+  name: string;
+}
+
+export interface ProductType {
+  id: number;
+  name: string;
+  regular_price: string;
+  sale_price: string;
+  price: string;
+  stock: number;
+  vendor_id: number;
+  cost: string;
+  date_created: string;
+  images: string[];
+  categories: ProductCategory[];
+}
+
+export interface ProductColumnType {
+  name: string;
+  selector: (row: ProductType) => string | number | JSX.Element;
+  sortable?: boolean;
+}
+
+export interface ProductCategory {
+  id: number;
+  name: string;
+}
+
+export interface ProductType {
+  id: number;
+  name: string;
+  regular_price: string;
+  sale_price: string;
+  price: string;
+  stock: number;
+  vendor_id: number;
+  cost: string;
+  date_created: string;
+  images: string[];
+  categories: ProductCategory[];
+}
+
+export interface ProductColumnType {
+  name: string;
+  selector: (row: ProductType) => string | number | JSX.Element;
+  sortable?: boolean;
+}
