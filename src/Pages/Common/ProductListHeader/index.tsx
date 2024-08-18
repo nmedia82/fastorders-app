@@ -14,7 +14,7 @@ export default function ProductListHeader({ linkTitle }: ProductListHeaderProp) 
   return (
     <div className="list-product-header">
       <div>
-        <div className="light-box">
+        {/* <div className="light-box">
           <a href={Href} onClick={handleFilterToggle}>
             {isFilterOpen ? (
               <i className="icon-close filter-close" />
@@ -22,7 +22,7 @@ export default function ProductListHeader({ linkTitle }: ProductListHeaderProp) 
               <Filter className="filter-icon" />
             )}
           </a>
-        </div>
+        </div> */}
         <Link className="btn btn-primary" to={`${process.env.PUBLIC_URL}/add-product`}>
           <i className="fa fa-plus me-2"></i> {linkTitle}
         </Link>

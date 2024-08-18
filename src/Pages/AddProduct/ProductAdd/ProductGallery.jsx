@@ -7,9 +7,7 @@ import { ActiveCallbackProp } from "../../../Types/ECommerce.type";
 export default function ProductGallery({
   activeCallBack,
   product,
-}: {
-  activeCallBack: any;
-  product: any;
+  onFormChange
 }) {
   const [productImages, setProductImages] = useState([]);
 
@@ -27,7 +25,7 @@ export default function ProductGallery({
         multiple={true}
         label={"Upload Images"}
         existingImages={productImages}
-        onUploaded={(images: any) => setProductImages(images)}
+        onUploaded={(images) => setProductImages(images)}
       />
 
       <div className="product-buttons">

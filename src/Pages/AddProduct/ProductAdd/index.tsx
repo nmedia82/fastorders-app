@@ -4,6 +4,7 @@ import { Col, TabContent, TabPane } from "reactstrap";
 import AddProductDetails from "./AddProductDetails";
 import ProductGallery from "./ProductGallery";
 import AdvanceSection from "../AdvanceSection";
+import ProductPricing from "./ProductPricing";
 
 export default function ProductAdd({ steps, activeCallBack }: ProductTabContentProp) {
   const [product, setProduct] = useState({});
@@ -19,13 +20,21 @@ export default function ProductAdd({ steps, activeCallBack }: ProductTabContentP
             activeCallBack={activeCallBack}
             onFormChange={handleFormChange}
             product={product}
-          />
+            />
         </TabPane>
         <TabPane tabId={2}>
-          <AdvanceSection activeCallBack={activeCallBack} />
+          <ProductPricing 
+            activeCallBack={activeCallBack}
+            onFormChange={handleFormChange}
+            product={product}
+          
+          />
         </TabPane>
         <TabPane tabId={3}>
-          <ProductGallery activeCallBack={activeCallBack} product={product} />
+          <ProductGallery
+           activeCallBack={activeCallBack}
+            onFormChange={handleFormChange}
+            product={product} />
         </TabPane>
       </TabContent>
     </Col>

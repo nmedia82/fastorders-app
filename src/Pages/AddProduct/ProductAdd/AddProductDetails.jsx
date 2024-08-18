@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState, useCallback } from "react";
-import { Col, Form, Input, Label, Row } from "reactstrap";
+import { Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { toast } from "react-toastify";
 import { ActiveCallbackProp } from "../../../Types/ECommerce.type";
 import { ProductTitleLabel } from "../../../Utils/Constants";
@@ -13,10 +13,6 @@ export default function AddProductDetails({
   activeCallBack,
   product,
   onFormChange,
-}: {
-  activeCallBack: any;
-  onFormChange: any;
-  product: any;
 }) {
   const [formData, setFormData] = useState({
     productTitle: "",
@@ -24,13 +20,13 @@ export default function AddProductDetails({
     status: "",
   });
   const [borderTab, setBorderTab] = useState(1);
-  const activeBorder = useCallback((val: number) => {
+  const activeBorder = useCallback((val) => {
     setBorderTab(val);
   }, []);
   const { productTitle } = formData;
   const { category, status } = formData;
 
-  const updateFormData = (event: ChangeEvent<HTMLInputElement>) => {
+  const updateFormData = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -39,7 +35,9 @@ export default function AddProductDetails({
     if (productTitle !== "") {
       activeCallBack(2);
     } else {
-      return toast.error("Please fill out details before moving on to the next step");
+      return toast.error(
+        "Please fill out details before moving on to the next step"
+      );
     }
   };
 
@@ -47,22 +45,40 @@ export default function AddProductDetails({
     <div className="sidebar-body">
       <Form id="advance-tab">
         <Row className="g-2">
-          <Col xs={12} className="m-0">
-            <Label>
-              {ProductTitleLabel} <span className="txt-danger">{"*"}</span>
-            </Label>
+          <Col xs={6} className="m-0">
+            <FormGroup>
+              <Label>
+                Product Name <span className="txt-danger">{"*"}</span>
+              </Label>
+              <Input
+                className="is-invalid"
+                type="text"
+                name="name"
+                value={product.name}
+                onChange={(e) => onFormChange(e.target.name, e.target.value)}
+              />
+            </FormGroup>
           </Col>
-          <Col xs={12} className="custom-input">
-            <Input
-              className="is-invalid"
-              type="text"
-              name="name"
-              value={product.name}
-              onChange={(e) => onFormChange(e.target.name, e.target.value)}
-            />
+          <Col xs={6} className="m-0">
+            <FormGroup>
+              <SelectCategory
+                title={"Select Category"}
+                onFormChange={onFormChange}
+              />
+            </FormGroup>
           </Col>
-          <Col xs={12}>
-            <SelectCategory title={"Select Category"} />
+          <Col xs={6} className="m-0">
+            <FormGroup>
+              <Label>
+                Product Stock <span className="txt-danger">{"*"}</span>
+              </Label>
+              <Input
+                type="number"
+                name="stock"
+                value={product.name}
+                onChange={(e) => onFormChange(e.target.name, e.target.value)}
+              />
+            </FormGroup>
           </Col>
           {/* <Inventory activeBorder={activeBorder} activeCallBack={activeCallBack} /> */}
           {/* <ToolbarBox paragraph={"Improve product visibility by adding a compelling description."} /> */}
