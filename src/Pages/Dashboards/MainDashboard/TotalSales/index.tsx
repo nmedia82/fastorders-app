@@ -7,11 +7,15 @@ import SvgIcon from "../../../../Utils/CommonComponents/CommonIcons/CommonSvgIco
 import { progressDetailsData } from "../../../../Data/Dashboard/Project";
 import { ProjectWidgetProp } from "../../../../Types/Dashboard.type";
 import { dailyDropdownList } from "../../../../Data/Dashboard/Default";
+import { getFormattedPrice } from "../../../../services/helper";
 
 export default function TotalOrders({ colClass }: ProjectWidgetProp) {
   return (
     <Col xl={3} sm={6} className={colClass ? colClass : ""}>
-      <Card className="project-widget widget-1 title-line" style={{ paddingBottom: "40px" }}>
+      <Card
+        className="project-widget widget-1 title-line"
+        style={{ paddingBottom: "40px" }}
+      >
         <CardHeader className="card-no-border pb-100">
           <div className="header-top">
             <div>
@@ -30,7 +34,7 @@ export default function TotalOrders({ colClass }: ProjectWidgetProp) {
           </div>
           <div className="widget-middle-content">
             <div className="d-flex align-items-center">
-              <H2>$4233</H2>
+              <H2>{getFormattedPrice(34000)}</H2>
             </div>
           </div>
         </CardHeader>

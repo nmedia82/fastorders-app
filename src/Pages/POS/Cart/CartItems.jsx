@@ -27,30 +27,41 @@ const CartItems = () => {
 
   return (
     <div className="cart-items">
-      {cartItems.map((item) => (
-        <div key={item.id} className="cart-item">
-          <span className="cart-item-name txt-dark">
-            {item.name}
-            <span className="cart-item-price">x Rs. {item.price}</span>
-          </span>
-          <span className="cart-item-quantity-container txt-dark">
-            <i
-              role="button"
-              className="icofont icofont-plus-circle"
-              onClick={() => handleIncreaseQuantity(item.id)}
-            ></i>
-            <span className="cart-item-quantity">{item.quantity}</span>
-            <i
-              role="button"
-              className="icofont icofont-minus-circle"
-              onClick={() => handleDecreaseQuantity(item.id)}
-            ></i>
-          </span>
-          <span className="cart-item-total txt-dark f-w-600">
-            Rs. {(item.price * item.quantity).toFixed(2)}
-          </span>
+      {cartItems.length === 0 ? (
+        <div className="empty-cart waving-cart">
+          <span>Your cart is empty</span>
         </div>
-      ))}
+      ) : (
+        cartItems.map((item) => (
+          <div
+            key={item.id}
+            className="cart-item d-flex align-items-center justify-content-between"
+          >
+            {/* Title */}
+            <div className="cart-item-name text-center flex-grow-1">
+              <span>{item.name}</span>
+            </div>
+            {/* Quantity */}
+            <div className="cart-item-quantity-container text-center d-flex justify-content-center flex-grow-1">
+              <i
+                role="button"
+                className="icofont icofont-minus-circle"
+                onClick={() => handleDecreaseQuantity(item.id)}
+              ></i>
+              <span className="cart-item-quantity mx-2">{item.quantity}</span>
+              <i
+                role="button"
+                className="icofont icofont-plus-circle"
+                onClick={() => handleIncreaseQuantity(item.id)}
+              ></i>
+            </div>
+            {/* Price */}
+            <div className="cart-item-total text-center flex-grow-1">
+              <span>Rs. {(item.price * item.quantity).toFixed(2)}</span>
+            </div>
+          </div>
+        ))
+      )}
     </div>
   );
 };

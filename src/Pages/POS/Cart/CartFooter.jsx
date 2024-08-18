@@ -48,24 +48,24 @@ export const CartFooter = () => {
         <div className="d-flex justify-content-between">
           <Button
             color="primary"
-            className="btn-square"
+            className="btn-square w-100 mx-1"
             onClick={handleHoldCart}
           >
             Hold
           </Button>
           <Button
             color="success"
-            className="btn-square"
+            className="btn-square w-100 mx-1"
             onClick={handlePayCart}
           >
             Pay
           </Button>
           <Button
             color="danger"
-            className="btn-square"
+            className="btn-square w-100 mx-1"
             onClick={handleClearCart}
           >
-            Clear Cart
+            Clear
           </Button>
         </div>
       </div>

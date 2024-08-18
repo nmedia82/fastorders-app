@@ -1,3 +1,4 @@
+import { dynamicImage } from "../Utils";
 import data from "./config";
 export async function filterNonBrokenImages(imageUrls) {
   const checkImage = (url) => {
@@ -16,6 +17,16 @@ export async function filterNonBrokenImages(imageUrls) {
     .map((result) => result.value);
 
   return validUrls;
+}
+
+export function getProductMainImage(product) {
+  // Check if the product has images and the first image exists
+  if (product.images && product.images.length > 0) {
+    return product.images[0];
+  }
+
+  // Return the default image if no images are available
+  return dynamicImage("user.png");
 }
 
 export function getFormattedPrice(p) {

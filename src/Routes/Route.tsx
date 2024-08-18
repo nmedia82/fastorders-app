@@ -24,10 +24,7 @@ export const routes = [
     path: `${process.env.PUBLIC_URL}/orders-history`,
     element: <OrdersHistory />,
   },
-  {
-    path: `${process.env.PUBLIC_URL}/sample_page`,
-    element: <SamplePage />,
-  },
+
   {
     path: `${process.env.PUBLIC_URL}/products`,
     element: <ProductListContainer />,

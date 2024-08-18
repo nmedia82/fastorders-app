@@ -1,5 +1,7 @@
 const data = {
   vendor_id: 12,
+  biller_id: 19,
+  register_id: 156,
   api_url: "https://order2day.nmdevteam.com/wp-json/foody/v1",
   loginSite: "https://order2day.nmdevteam.com",
   consumerKey: "ck_c533e14187f5ba5306f570b44c2a5165046d3777",
@@ -11,6 +13,7 @@ const data = {
     store_slug: "java",
     store_email: "java.bite@gmail.com",
     show_invoice_billing: false,
+    vendor_id: 12,
   },
 };
 

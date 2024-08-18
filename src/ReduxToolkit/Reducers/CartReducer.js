@@ -49,7 +49,7 @@ export const fetchProducts = createAsyncThunk(
   "cart/fetchProducts",
   async () => {
     const response = await http.get(
-      `${api_url}/get-products?vendor_id=${vendor_id}`
+      `${api_url}/products?vendor_id=${vendor_id}`
     );
     return response.data.data;
   }

@@ -31,11 +31,11 @@ export default function Print({
         to={"/orders-history"}
         download
       >
-        {"Back"}
         <i
           className="icon-arrow-left"
           style={{ fontSize: 13, fontWeight: "bold", marginLeft: 10 }}
         />
+        {" Back"}
       </Link>
       <Link
         onClick={handlePrint}

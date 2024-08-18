@@ -47,9 +47,9 @@ const OrdersSlice = createSlice({
         order.id === updatedOrder.id ? updatedOrder : order
       );
 
-      // Update currentOrders
-      state.currentOrders = state.currentOrders.map((order) =>
-        order.id === updatedOrder.id ? updatedOrder : order
+      // Update currentOrders as well, assuming you only want non-completed orders here
+      state.currentOrders = state.allOrders.filter(
+        (order) => order.order_status !== "completed"
       );
     },
   },
