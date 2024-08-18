@@ -4,15 +4,6 @@
         <path opacity="0.4" d="M22 22L20 20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
 
-    <svg fill="none">
-    <symbol id="pause" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 19H9V5H6V19Z" fill="currentColor"/>
-      <path d="M15 5V19H18V5H15Z" fill="currentColor"/>
-    </symbol>
-  </svg>
-
- 
-
     <symbol id="email" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M22 10.5V15.5C22 19 20 20.5 17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H14" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
         <path opacity="0.4" d="M7 9L10.13 11.5C11.16 12.32 12.85 12.32 13.88 11.5L15.06 10.56" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -475,13 +466,6 @@
         <path d="M10.0001 14.167C8.60841 14.167 7.91675 14.8587 7.91675 16.2503V18.3337H12.0834V16.2503C12.0834 14.8587 11.3917 14.167 10.0001 14.167Z" opacity="0.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M15.2583 10.0003C16.9416 10.0003 18.175 8.63366 18.0083 6.95866L17.775 4.66699C17.475 2.50033 16.6416 1.66699 14.4583 1.66699H11.9166L12.5 7.50866C12.6416 8.88366 13.8833 10.0003 15.2583 10.0003Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M4.70002 10.0003C6.07502 10.0003 7.31669 8.88366 7.45002 7.50866L7.63336 5.66699L8.03336 1.66699H5.49169C3.30836 1.66699 2.47502 2.50033 2.17502 4.66699L1.95002 6.95866C1.78336 8.63366 3.01669 10.0003 4.70002 10.0003Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </symbol>
-
-    <symbol id="stroke-categories" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4 4H10V10H4V4Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M14 4H20V10H14V4Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M4 14H10V20H4V14Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M14 14H20V20H14V14Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </symbol>
 
     <symbol id="stroke-email" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
