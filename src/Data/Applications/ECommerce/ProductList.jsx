@@ -6,7 +6,7 @@ import { Badges, Image, P } from "../../../AbstractElements";
 import { dynamicImage } from "../../../Utils";
 import SvgIcon from "../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
 
-export const productListTableData: ProductListType[] = [
+export const productListTableData = [
   {
     imageSrc: "product/product-categories/laptop.png",
     productName: "Apple Desktop 2024",
@@ -269,7 +269,7 @@ export const productListTableData: ProductListType[] = [
   },
 ];
 
-export const productListColumns: TableColumn<ProductListType>[] = [
+export const productListColumns = [
   {
     name: "",
     cell: () => (
@@ -282,59 +282,39 @@ export const productListColumns: TableColumn<ProductListType>[] = [
   },
   {
     name: "Product Name",
-    selector: (row) => row.productName,
+    selector: (row) => row.name,
     sortable: true,
     cell: (row) => (
       <div className="product-names">
         <div className="light-product-box">
           <Image
             className="img-fluid"
-            src={dynamicImage(row.imageSrc)}
+            src={row.images[0]}
             alt=""
           />
         </div>
-        <P>{row.productName}</P>
+        <P>{row.name}</P>
       </div>
     ),
     width: "20%",
   },
   {
-    name: "SKU",
-    selector: (row) => row.sku,
+    name: "Stock",
+    selector: (row) => row.stock,
     sortable: true,
-    cell: (row) => <P className="f-light">{row.sku}</P>,
+    cell: (row) => <P className="f-light">{row.stock}</P>,
   },
   {
-    name: "Category",
-    selector: (row) => row.category,
+    name: "Regular Price",
+    selector: (row) => row.regular_price,
     sortable: true,
-    cell: (row) => <P className="f-light">{row.category}</P>,
+    cell: (row) => <P className="f-light">{row.regular_price}</P>,
   },
   {
-    name: "Price",
-    selector: (row) => row.price,
+    name: "Sale Price",
+    selector: (row) => row.sale_price,
     sortable: true,
-    cell: (row) => <P className="f-light">{row.price}</P>,
-  },
-  {
-    name: "Qty",
-    selector: (row) => row.quantity,
-    sortable: true,
-    cell: (row) => <P className="f-light">{row.quantity}</P>,
-  },
-  {
-    name: "Status",
-    selector: (row) => row.status,
-    sortable: true,
-    cell: (row) => (
-      <Badges
-        color={`${
-          row.status === "Sold Out" ? "light-secondary" : "light-primary"
-        }`}
-      >
-        {row.status}
-      </Badges>
-    ),
+    cell: (row) => <P className="f-light">{row.sale_price}</P>,
   },
   // {
   //     name: 'Rating',

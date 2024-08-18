@@ -9,11 +9,11 @@ import {
 import { useSelector } from "react-redux";
 
 export default function ProductListTable() {
-  const { products } = useSelector((state: any) => state.products);
+  const { products } = useSelector((state) => state.products);
 
   const [filterText, setFilterText] = useState("");
-  const filteredItems: ProductListType[] = productListTableData.filter(
-    (item: ProductListType) => {
+  const filteredItems= products.filter(
+    (item) => {
       return Object.values(item).some(
         (value) =>
           value &&
@@ -21,10 +21,11 @@ export default function ProductListTable() {
       );
     }
   );
+  console.log(products)
   return (
     <div className="list-product product-list">
       <FilterComponent
-        onFilter={(e: React.ChangeEvent<HTMLInputElement>) =>
+        onFilter={(e) =>
           setFilterText(e.target.value)
         }
         filterText={filterText}
