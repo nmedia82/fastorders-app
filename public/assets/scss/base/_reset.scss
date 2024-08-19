@@ -52,10 +52,10 @@ $i: 0;
 
 @while $i<=50 {
   .p-#{$i} {
-    padding:#{$i}px;
+    padding: #{$i}px;
   }
 
-  $i: $i+5;
+  $i: $i + 5;
 }
 
 /*====== Padding css ends ======*/
@@ -65,11 +65,10 @@ $i: 0;
 
 @while $i<=50 {
   .p-l-#{$i} {
-    padding-left:#{$i}px;
+    padding-left: #{$i}px;
   }
 
-  $i: $i+5;
-
+  $i: $i + 5;
 }
 
 /*====== Padding-left css ends ======*/
@@ -79,24 +78,23 @@ $i: 0;
 
 @while $i<=50 {
   .p-t-#{$i} {
-    padding-top:#{$i}px !important;
+    padding-top: #{$i}px !important;
   }
 
-  $i: $i+5;
+  $i: $i + 5;
 }
 
 /*====== Padding-top css ends ======*/
-
 
 /*====== Padding-bottom css starts ======*/
 $i: 0;
 
 @while $i<=50 {
   .p-b-#{$i} {
-    padding-bottom:#{$i}px !important;
+    padding-bottom: #{$i}px !important;
   }
 
-  $i: $i+5;
+  $i: $i + 5;
 }
 
 /*====== Padding-bottom css ends ======*/
@@ -106,24 +104,23 @@ $i: 0;
 
 @while $i<=50 {
   .p-r-#{$i} {
-    padding-right:#{$i}px;
+    padding-right: #{$i}px;
   }
 
-  $i: $i+5;
+  $i: $i + 5;
 }
 
 /*====== Padding-right css ends ======*/
-
 
 /*====== Margin css starts ======*/
 $i: 0;
 
 @while $i<=50 {
   .m-#{$i} {
-    margin:#{$i}px !important;
+    margin: #{$i}px !important;
   }
 
-  $i: $i+5;
+  $i: $i + 5;
 }
 
 /*====== Margin css ends ======*/
@@ -133,10 +130,10 @@ $i: 0;
 
 @while $i<=50 {
   .m-t-#{$i} {
-    margin-top:#{$i}px !important;
+    margin-top: #{$i}px !important;
   }
 
-  $i: $i+5;
+  $i: $i + 5;
 }
 
 /*====== Margin-top css ends ======*/
@@ -146,10 +143,10 @@ $i: 0;
 
 @while $i<=50 {
   .m-b-#{$i} {
-    margin-bottom:#{$i}px !important;
+    margin-bottom: #{$i}px !important;
   }
 
-  $i: $i+5;
+  $i: $i + 5;
 }
 
 /*====== Margin-Bottom css ends ======*/
@@ -159,10 +156,10 @@ $i: 0;
 
 @while $i<=50 {
   .m-l-#{$i} {
-    margin-left:#{$i}px !important;
+    margin-left: #{$i}px !important;
   }
 
-  $i: $i+5;
+  $i: $i + 5;
 }
 
 /*====== Margin-left css ends ======*/
@@ -172,10 +169,10 @@ $i: 0;
 
 @while $i<=50 {
   .m-r-#{$i} {
-    margin-right:#{$i}px;
+    margin-right: #{$i}px;
   }
 
-  $i: $i+5;
+  $i: $i + 5;
 }
 
 /*====== Margin-right css ends ======*/
@@ -185,37 +182,29 @@ $i: 0;
 
 @while $i<=35 {
   .b-r-#{$i} {
-    border-radius:#{$i}px !important;
+    border-radius: #{$i}px !important;
   }
 
-  $i: $i+1;
+  $i: $i + 1;
 }
 
 /*====== Border-radius css ends ======*/
-
 
 /*====== Font-size css starts ======*/
 $i: 12;
 
 @while $i<=100 {
   .f-#{$i} {
-    font-size:#{$i}px !important;
+    font-size: #{$i}px !important;
   }
 
-  $i: $i+2;
+  $i: $i + 2;
 }
 
 /*====== Font-size css ends ======*/
 
-
 /*====== Font-weight css starts ======*/
-$i: 100,
-  300,
-  500,
-  400,
-  600,
-  700,
-  900;
+$i: 100, 300, 500, 400, 600, 700, 900;
 
 @each $val in $i {
   .f-w-#{$val} {
@@ -225,13 +214,8 @@ $i: 100,
 
 /*====== Font-weight css ends ======*/
 
-
 /*====== Font-style css starts ======*/
-$i: normal,
-  italic,
-  oblique,
-  initial,
-  inherit;
+$i: normal, italic, oblique, initial, inherit;
 
 @each $val in $i {
   .f-s-#{$val} {
@@ -241,21 +225,10 @@ $i: normal,
 
 /*====== Font-style css ends ======*/
 
-
 /*====== Text-Decoration css starts ======*/
 
-$i: overline,
-  line-through,
-  underline,
-  dashed,
-  blink,
-  dotted,
-  initial,
-  none,
-  solid,
-  wavy,
-  inherit,
-  double;
+$i: overline, line-through, underline, dashed, blink, dotted, initial, none,
+  solid, wavy, inherit, double;
 
 @each $val in $i {
   .text-#{$val} {
@@ -265,17 +238,8 @@ $i: overline,
 
 /*====== Text-Decoration css ends ======*/
 
-
 /*====== Vertical-Align css starts ======*/
-$i: baseline,
-  sub,
-  super,
-  top,
-  text-top,
-  middle,
-  bottom,
-  text-bottom,
-  initial,
+$i: baseline, sub, super, top, text-top, middle, bottom, text-bottom, initial,
   inherit;
 
 @each $val in $i {
@@ -286,15 +250,9 @@ $i: baseline,
 
 /*====== Vertical-Align css ends ======*/
 
-
 /*====== Position css starts ======*/
 
-$i: static,
-  absolute,
-  fixed,
-  relative,
-  initial,
-  inherit;
+$i: static, absolute, fixed, relative, initial, inherit;
 
 @each $val in $i {
   .p-#{$val} {
@@ -305,9 +263,7 @@ $i: static,
 /*====== Position css ends ======*/
 
 /*====== Float css starts ======*/
-$i: left,
-  right,
-  none;
+$i: left, right, none;
 
 @each $val in $i {
   .f-#{$val} {
@@ -317,11 +273,8 @@ $i: left,
 
 /*====== Float css ends ======*/
 
-
 /*====== Overflow css starts ======*/
-$i: hidden,
-  visible,
-  auto;
+$i: hidden, visible, auto;
 
 @each $val in $i {
   .o-#{$val} {
@@ -331,41 +284,27 @@ $i: hidden,
 
 /*====== Overflow css ends ======*/
 
-
 /*====== Image-sizes css starts ======*/
 $i: 10;
 
 @while $i<=100 {
   .img-#{$i} {
-    width:#{$i}px !important;
+    width: #{$i}px !important;
   }
 
   .img-h-#{$i} {
-    height:#{$i}px !important;
+    height: #{$i}px !important;
   }
 
-  $i: $i+10;
+  $i: $i + 10;
 }
 
 /*====== Image-sizes css ends ======*/
 
 /*======= Text css starts ===========*/
-$text-name: primary,
-  secondary,
-  success,
-  danger,
-  info,
-  light,
-  dark,
-  warning;
-$text-color : $primary-color,
-$secondary-color,
-$success-color,
-$danger-color,
-$info-color,
-$light-color,
-$dark-color,
-$warning-color;
+$text-name: primary, secondary, success, danger, info, light, dark, warning;
+$text-color: $primary-color, $secondary-color, $success-color, $danger-color,
+  $info-color, $light-color, $dark-color, $warning-color;
 
 @each $var in $text-name {
   $i: index($text-name, $var);
@@ -385,7 +324,6 @@ $warning-color;
 
 /*======= Text css ends ===========*/
 
-
 /*======= Label-color css starts  ======= */
 
 .label {
@@ -397,24 +335,10 @@ $warning-color;
   text-transform: capitalize;
 }
 
-$label-name: theme,
-  primary,
-  secondary,
-  success,
-  danger,
-  info,
-  light,
-  dark,
+$label-name: theme, primary, secondary, success, danger, info, light, dark,
   warning;
-$label-color: $primary-color,
-  $primary-color,
-  $secondary-color,
-  $success-color,
-  $danger-color,
-  $info-color,
-  $light-color,
-  $dark-color,
-  $warning-color;
+$label-color: $primary-color, $primary-color, $secondary-color, $success-color,
+  $danger-color, $info-color, $light-color, $dark-color, $warning-color;
 
 @each $var in $label-name {
   $i: index($label-name, $var);
@@ -424,29 +348,14 @@ $label-color: $primary-color,
   }
 }
 
-
 /*======= Label-color css ends  ======= */
 
 /*======= status color css start  ======= */
 
-$status-name: theme,
-  primary,
-  secondary,
-  success,
-  danger,
-  info,
-  light,
-  dark,
+$status-name: theme, primary, secondary, success, danger, info, light, dark,
   warning;
-$status-color: $primary-color,
-  $primary-color,
-  $secondary-color,
-  $success-color,
-  $danger-color,
-  $info-color,
-  $light-color,
-  $dark-color,
-  $warning-color;
+$status-color: $primary-color, $primary-color, $secondary-color, $success-color,
+  $danger-color, $info-color, $light-color, $dark-color, $warning-color;
 
 @each $var in $status-name {
   $i: index($status-name, $var);
@@ -456,7 +365,6 @@ $status-color: $primary-color,
   }
 
   .radio-#{$var} {
-
     &.form-check-input {
       &:checked {
         border-color: nth($status-color, $i);
@@ -470,22 +378,9 @@ $status-color: $primary-color,
 
 /*======= Badge-color css starts  ======= */
 
-$badge-name: primary,
-  secondary,
-  success,
-  danger,
-  info,
-  light,
-  dark,
-  warning;
-$badge-color: $primary-color,
-  $secondary-color,
-  $success-color,
-  $danger-color,
-  $info-color,
-  $light-color,
-  $dark-color,
-  $warning-color;
+$badge-name: primary, secondary, success, danger, info, light, dark, warning;
+$badge-color: $primary-color, $secondary-color, $success-color, $danger-color,
+  $info-color, $light-color, $dark-color, $warning-color;
 
 @each $var in $badge-name {
   $i: index($badge-name, $var);
@@ -493,7 +388,7 @@ $badge-color: $primary-color,
   .badge-#{$var} {
     background-color: nth($badge-color, $i);
 
-    @if($badge-name=="light") {
+    @if ($badge-name== "light") {
       color: $theme-body-font-color !important;
     }
   }
@@ -509,25 +404,12 @@ $badge-color: $primary-color,
 
 /*======= Badge-color css end  ======= */
 
-
 /*======= Background-color css starts  ======= */
 
-$background-name: primary,
-  secondary,
-  success,
-  danger,
-  info,
-  light,
-  dark,
+$background-name: primary, secondary, success, danger, info, light, dark,
   warning;
-$background-color: $primary-color,
-  $secondary-color,
-  $success-color,
-  $danger-color,
-  $info-color,
-  $light-color,
-  $dark-color,
-  $warning-color;
+$background-color: $primary-color, $secondary-color, $success-color,
+  $danger-color, $info-color, $light-color, $dark-color, $warning-color;
 
 @each $var in $background-name {
   $i: index($background-name, $var);
@@ -535,6 +417,8 @@ $background-color: $primary-color,
   .bg-#{$var} {
     background-color: nth($background-color, $i) !important;
     color: $white;
+    border: 2px solid nth($background-color, $i);
+    font-weight: 600;
   }
 
   .bg-#{$var}-light {
@@ -549,45 +433,45 @@ $background-color: $primary-color,
       fill: nth($background-color, $i);
     }
   }
-
 }
 
 .bg-primary {
   background-color: var(--theme-default) !important;
+  border-color: var(--theme-default);
 }
 
 .bg-secondary {
   background-color: var(--theme-secondary) !important;
 }
-
+.todo-list-container {
+  .bg-danger {
+    border: 2px solid var(--theme-blue) !important;
+    color: white !important;
+    background-color: var(--theme-blue) !important;
+    // font-weight: 500;
+  }
+  .bg-theme-orange {
+    border: 2px solid var(--theme-orange) !important;
+    color: white !important;
+    background-color: var(--theme-orange) !important;
+    // font-weight: 500;
+  }
+  .bg-pill-green {
+    border: 2px solid var(--theme-green) !important;
+    background-color: var(--theme-green) !important;
+    color: white !important;
+    // font-weight: 500;
+  }
+}
 /*======= Background-color css end  ======= */
 
 /*======= Font-color css starts  ======= */
 
-$text-name: primary,
-  secondary,
-  success,
-  danger,
-  info,
-  light,
-  dark,
-  warning,
-  google-plus,
-  twitter,
-  linkedin,
-  fb;
-$label-color: $primary-color,
-  $secondary-color,
-  $success-color,
-  $danger-color,
-  $info-color,
-  $light-color,
-  $dark-color,
-  $warning-color,
-  $google-plus,
-  $twitter,
-  $linkedin,
-  $fb;
+$text-name: primary, secondary, success, danger, info, light, dark, warning,
+  google-plus, twitter, linkedin, fb;
+$label-color: $primary-color, $secondary-color, $success-color, $danger-color,
+  $info-color, $light-color, $dark-color, $warning-color, $google-plus, $twitter,
+  $linkedin, $fb;
 
 @each $var in $text-name {
   $i: index($text-name, $var);
@@ -619,22 +503,18 @@ $label-color: $primary-color,
   }
 }
 
-@each $btn-name,
-$btn-color in (primary, $primary-color),
-(secondary, $secondary-color),
-(success, $success-color),
-(danger, $danger-color),
-(info, $info-color),
-(light, $light-color),
-(dark, $dark-color),
-(warning, $warning-color) {
+@each $btn-name, $btn-color in (primary, $primary-color),
+  (secondary, $secondary-color), (success, $success-color),
+  (danger, $danger-color), (info, $info-color), (light, $light-color),
+  (dark, $dark-color), (warning, $warning-color)
+{
   .btn-#{$btn-name} {
     background-color: $btn-color !important;
     border-color: $btn-color !important;
     -webkit-tap-highlight-color: transparent;
     transform: translateZ(0);
 
-    @if($btn-name=="info") {
+    @if ($btn-name== "info") {
       color: $white;
 
       &:hover,
@@ -685,15 +565,11 @@ $btn-color in (primary, $primary-color),
 }
 
 /*======= Button-color css ends  ======= */
-@each $btn-name,
-$btn-color in (primary, $primary-color),
-(secondary, $secondary-color),
-(success, $success-color),
-(danger, $danger-color),
-(info, $info-color),
-(light, $light-color),
-(dark, $dark-color),
-(warning, $warning-color) {
+@each $btn-name, $btn-color in (primary, $primary-color),
+  (secondary, $secondary-color), (success, $success-color),
+  (danger, $danger-color), (info, $info-color), (light, $light-color),
+  (dark, $dark-color), (warning, $warning-color)
+{
   .btn-outline-#{$btn-name}-2x {
     border-width: 2px;
     border-color: $btn-color;
@@ -713,15 +589,11 @@ $btn-color in (primary, $primary-color),
 }
 
 // outline buttons//
-@each $btn-name,
-$btn-color in (primary, $primary-color),
-(secondary, $secondary-color),
-(success, $success-color),
-(danger, $danger-color),
-(info, $info-color),
-(light, $light-color),
-(dark, $dark-color),
-(warning, $warning-color) {
+@each $btn-name, $btn-color in (primary, $primary-color),
+  (secondary, $secondary-color), (success, $success-color),
+  (danger, $danger-color), (info, $info-color), (light, $light-color),
+  (dark, $dark-color), (warning, $warning-color)
+{
   .btn-outline-#{$btn-name} {
     border-color: $btn-color;
     color: $btn-color;
@@ -738,7 +610,6 @@ $btn-color in (primary, $primary-color),
       color: $btn-color;
       border-color: $btn-color;
     }
-
   }
 
   .btn-check {
@@ -767,7 +638,7 @@ $btn-color in (primary, $primary-color),
           color: $btn-color;
         }
 
-        @if($btn-name=="light") {
+        @if ($btn-name== "light") {
           color: $theme-body-font-color;
         }
 
@@ -788,15 +659,11 @@ $btn-color in (primary, $primary-color),
 
 //active button css //
 
-@each $btn-name,
-$btn-color in (primary, $primary-color),
-(secondary, $secondary-color),
-(success, $success-color),
-(danger, $danger-color),
-(info, $info-color),
-(light, $light-color),
-(dark, $dark-color),
-(warning, $warning-color) {
+@each $btn-name, $btn-color in (primary, $primary-color),
+  (secondary, $secondary-color), (success, $success-color),
+  (danger, $danger-color), (info, $info-color), (light, $light-color),
+  (dark, $dark-color), (warning, $warning-color)
+{
   .btn-#{$btn-name}:not([disabled]):not(.disabled).active {
     background-color: darken($btn-color, 10%);
     border-color: darken($btn-color, 10%);
@@ -815,16 +682,11 @@ $btn-color in (primary, $primary-color),
 
 //* active button css end *//
 
-@each $btn-name,
-$btn-color in (primary, $primary-color),
-(secondary, $secondary-color),
-(success, $success-color),
-(danger, $danger-color),
-(info, $info-color),
-(light, $light-color),
-(dark, $dark-color),
-(warning, $warning-color) {
-
+@each $btn-name, $btn-color in (primary, $primary-color),
+  (secondary, $secondary-color), (success, $success-color),
+  (danger, $danger-color), (info, $info-color), (light, $light-color),
+  (dark, $dark-color), (warning, $warning-color)
+{
   .btn-outline-#{$btn-name}-2x:not([disabled]):not(.disabled).active {
     background-color: $btn-color;
     border-color: $btn-color;
@@ -856,18 +718,13 @@ $btn-color in (primary, $primary-color),
   }
 }
 
-
 /*======= light button-color css starts  ======= */
 
-@each $btn-light-name,
-$btn-light-color in (primary, $light-primary),
-(secondary, $light-secondary),
-(success, $light-success),
-(danger, $light-danger),
-(info, $light-info),
-(light, $light-white),
-(dark, $light-dark),
-(warning, $light-warning) {
+@each $btn-light-name, $btn-light-color in (primary, $light-primary),
+  (secondary, $light-secondary), (success, $light-success),
+  (danger, $light-danger), (info, $light-info), (light, $light-white),
+  (dark, $light-dark), (warning, $light-warning)
+{
   .btn-light-#{$btn-light-name} {
     background-color: darken($btn-light-color, 10%) !important;
     border-color: darken($btn-light-color, 10%) !important;
@@ -882,22 +739,17 @@ $btn-light-color in (primary, $light-primary),
   .btn-lighter-#{$btn-light-name} {
     background-color: rgba($btn-light-color, 0.1);
   }
-
 }
 
 /*======= button-color css ends  ======= */
 
 /*======= badge-light-color css starts  ======= */
 
-@each $badge-light-name,
-$badge-light-color in (primary, $primary-color),
-(secondary, $secondary-color),
-(success, $success-color),
-(danger, $danger-color),
-(info, $info-color),
-(light, $badge-light-color),
-(dark, $dark-color),
-(warning, $warning-color) {
+@each $badge-light-name, $badge-light-color in (primary, $primary-color),
+  (secondary, $secondary-color), (success, $success-color),
+  (danger, $danger-color), (info, $info-color), (light, $badge-light-color),
+  (dark, $dark-color), (warning, $warning-color)
+{
   .badge-light-#{$badge-light-name} {
     background-color: lighten($badge-light-color, 38%);
     color: $badge-light-color;
@@ -914,8 +766,8 @@ $badge-light-color in (primary, $primary-color),
 
 .badge-light-primary {
   background-color: rgba($primary-color, 0.1);
-  &:hover{
-    background-color: rgba($primary-color, 0.1) !important; 
+  &:hover {
+    background-color: rgba($primary-color, 0.1) !important;
   }
 }
 
@@ -929,25 +781,11 @@ $badge-light-color in (primary, $primary-color),
 
 /*======= badge-light-color css ends  ======= */
 
-
 /*======= Table-Border-Bottom-color css starts  ======= */
 
-$border-name: primary,
-  secondary,
-  success,
-  danger,
-  info,
-  light,
-  dark,
-  warning;
-$border-color: $primary-color,
-  $secondary-color,
-  $success-color,
-  $danger-color,
-  $info-color,
-  $light-color,
-  $dark-color,
-  $warning-color;
+$border-name: primary, secondary, success, danger, info, light, dark, warning;
+$border-color: $primary-color, $secondary-color, $success-color, $danger-color,
+  $info-color, $light-color, $dark-color, $warning-color;
 
 @each $var in $border-name {
   $i: index($border-name, $var);
@@ -963,22 +801,9 @@ $border-color: $primary-color,
 
 /*======= Table styling css starts  ======= */
 
-$table-name: primary,
-  secondary,
-  success,
-  danger,
-  info,
-  light,
-  dark,
-  warning;
-$table-color: $primary-color,
-  $secondary-color,
-  $success-color,
-  $danger-color,
-  $info-color,
-  $light-color,
-  $dark-color,
-  $warning-color;
+$table-name: primary, secondary, success, danger, info, light, dark, warning;
+$table-color: $primary-color, $secondary-color, $success-color, $danger-color,
+  $info-color, $light-color, $dark-color, $warning-color;
 
 @each $var in $table-name {
   $i: index($table-name, $var);
@@ -1004,22 +829,9 @@ $table-color: $primary-color,
 /*======= Table styling css ends  ======= */
 
 /*======= Svg stroke css start  ======= */
-$stroke-name: primary,
-  secondary,
-  success,
-  danger,
-  info,
-  light,
-  dark,
-  warning;
-$stroke-color: $primary-color,
-  $secondary-color,
-  $success-color,
-  $danger-color,
-  $info-color,
-  $light-color,
-  $dark-color,
-  $warning-color;
+$stroke-name: primary, secondary, success, danger, info, light, dark, warning;
+$stroke-color: $primary-color, $secondary-color, $success-color, $danger-color,
+  $info-color, $light-color, $dark-color, $warning-color;
 
 @each $var in $stroke-name {
   $i: index($stroke-name, $var);
@@ -1032,33 +844,18 @@ $stroke-color: $primary-color,
 /*======= Svg stroke css end  ======= */
 
 /*======= Checkbox color css start  ======= */
-$checkbox-name: primary,
-  secondary,
-  success,
-  danger,
-  info,
-  light,
-  dark,
-  warning;
-$checkbox-color: $primary-color,
-  $secondary-color,
-  $success-color,
-  $danger-color,
-  $info-color,
-  $light-color,
-  $dark-color,
-  $warning-color;
+$checkbox-name: primary, secondary, success, danger, info, light, dark, warning;
+$checkbox-color: $primary-color, $secondary-color, $success-color, $danger-color,
+  $info-color, $light-color, $dark-color, $warning-color;
 
 @each $var in $checkbox-name {
   $i: index($stroke-name, $var);
 
   .checkbox-#{$var} {
-
     &.form-check-input {
       &:checked {
         background-color: nth($checkbox-color, $i);
         border-color: nth($checkbox-color, $i);
-
       }
     }
   }
@@ -1067,23 +864,10 @@ $checkbox-color: $primary-color,
 /*======= Checkbox color css end  ======= */
 
 /*======= Alert color css start  ======= */
-$alert-name: primary,
-  secondary,
-  success,
-  danger,
-  warning,
-  info,
-  light,
-  dark;
+$alert-name: primary, secondary, success, danger, warning, info, light, dark;
 
-$alert-color : $primary-color,
-$secondary-color,
-$success-color,
-$danger-color,
-$warning-color,
-$info-color,
-$light-color,
-$dark-color;
+$alert-color: $primary-color, $secondary-color, $success-color, $danger-color,
+  $warning-color, $info-color, $light-color, $dark-color;
 
 @each $var in $alert-name {
   $i: index($alert-name, $var);
@@ -1110,12 +894,12 @@ $dark-color;
     .alert-link {
       color: nth($alert-color, $i);
 
-      @if($var =="light") {
+      @if ($var == "light") {
         color: $dark-color;
       }
     }
 
-    @if($var =="light") {
+    @if ($var == "light") {
       color: $dark-color;
       background-color: $light-color;
 
@@ -1133,7 +917,7 @@ $dark-color;
     border-color: nth($alert-color, $i) !important;
   }
 
-  // touchspin 
+  // touchspin
   .touchspin-wrapper {
     .btn-touchspin {
       &.touchspin-#{$var} {
@@ -1149,7 +933,7 @@ $dark-color;
       }
     }
 
-    input[type='number'] {
+    input[type="number"] {
       &.spin-outline-#{$var} {
         outline: 1px solid nth($alert-color, $i);
         border: none;
@@ -1159,7 +943,6 @@ $dark-color;
   }
 
   .pre-post-touchspin {
-
     .btn-touchspin {
       &.touchspin-#{$var} {
         background-color: nth($alert-color, $i);
@@ -1194,7 +977,6 @@ $dark-color;
   }
 
   .list-group-horizontal {
-
     &-sm,
     &-md,
     &-lg,
@@ -1218,7 +1000,7 @@ $dark-color;
     .btn-check {
       &.radio-light-#{$var} {
         &:focus {
-          +.btn {
+          + .btn {
             box-shadow: 0 0 0 4px rgba(nth($alert-color, $i), 0.55);
           }
         }
@@ -1230,8 +1012,8 @@ $dark-color;
   .fill-radios {
     .radio {
       &.radio-#{$var} {
-        input[type='radio']:checked {
-          &+label {
+        input[type="radio"]:checked {
+          & + label {
             &::before {
               border: 10px solid nth($alert-color, $i);
             }
@@ -1246,9 +1028,8 @@ $dark-color;
   }
 
   .list-group {
-
-    .form-check-input:checked[type=checkbox],
-    [type=radio] {
+    .form-check-input:checked[type="checkbox"],
+    [type="radio"] {
       &.checkbox-#{$var} {
         background-color: unset;
         border-color: nth($alert-color, $i);
@@ -1274,7 +1055,7 @@ $dark-color;
       .alert-link {
         color: $white;
 
-        @if($var =="light") {
+        @if ($var == "light") {
           color: $dark-color;
         }
       }
@@ -1283,7 +1064,7 @@ $dark-color;
       border-color: nth($alert-color, $i);
       color: $auth-bg-color;
 
-      @if($var =="light") {
+      @if ($var == "light") {
         color: $dark-color;
       }
     }
@@ -1298,7 +1079,7 @@ $dark-color;
         filter: unset;
       }
 
-      @if($var =="light") {
+      @if ($var == "light") {
         color: $dark-color;
       }
     }
@@ -1353,22 +1134,9 @@ $dark-color;
 
 /*======= All-Borders-color css starts  ======= */
 
-$b-name: primary,
-  secondary,
-  success,
-  danger,
-  info,
-  light,
-  dark,
-  warning;
-$b-color: $primary-color,
-  $secondary-color,
-  $success-color,
-  $danger-color,
-  $info-color,
-  $light-color,
-  $dark-color,
-  $warning-color;
+$b-name: primary, secondary, success, danger, info, light, dark, warning;
+$b-color: $primary-color, $secondary-color, $success-color, $danger-color,
+  $info-color, $light-color, $dark-color, $warning-color;
 
 @each $var in $b-name {
   $i: index($b-name, $var);
@@ -1417,10 +1185,10 @@ $i: 1;
 
 @while $i<=10 {
   .border-#{$i} {
-    border-width:#{$i}px !important;
+    border-width: #{$i}px !important;
   }
 
-  $i: $i+1;
+  $i: $i + 1;
 }
 
 /*====== Border width css ends ======*/
@@ -1477,7 +1245,7 @@ $i: 1;
   flex-wrap: wrap;
   gap: 10px;
 
-  >div {
+  > div {
     color: var(--body-light-font-color);
     padding: 2px 10px;
     border: 1px solid;
@@ -1497,14 +1265,13 @@ $i: 1;
 }
 
 .img-cropper {
-
   .img-container {
     min-height: auto;
     margin-bottom: 0;
   }
 
   .docs-data {
-    >.input-group {
+    > .input-group {
       &:last-child {
         margin-bottom: 0;
       }
@@ -1574,7 +1341,7 @@ $i: 1;
   }
 
   75% {
-    opacity: .6;
+    opacity: 0.6;
     top: 0;
   }
 
@@ -1646,22 +1413,22 @@ form {
 
 /* Override the default tooltip arrow color */
 .bs-tooltip-top .tooltip-arrow::before,
-.bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before {
+.bs-tooltip-auto[data-popper-placement^="top"] .tooltip-arrow::before {
   border-top-color: $light-primary;
 }
 
 .bs-tooltip-end .tooltip-arrow::before,
-.bs-tooltip-auto[data-popper-placement^=right] .tooltip-arrow::before {
+.bs-tooltip-auto[data-popper-placement^="right"] .tooltip-arrow::before {
   border-right-color: $light-primary;
 }
 
 .bs-tooltip-bottom .tooltip-arrow::before,
-.bs-tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow::before {
+.bs-tooltip-auto[data-popper-placement^="bottom"] .tooltip-arrow::before {
   border-bottom-color: $light-primary;
 }
 
 .bs-tooltip-start .tooltip-arrow::before,
-.bs-tooltip-auto[data-popper-placement^=left] .tooltip-arrow::before {
+.bs-tooltip-auto[data-popper-placement^="left"] .tooltip-arrow::before {
   border-left-color: $light-primary;
 }
 

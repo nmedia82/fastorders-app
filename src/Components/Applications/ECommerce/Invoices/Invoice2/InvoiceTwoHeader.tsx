@@ -56,7 +56,7 @@ export default function InvoiceTwoHeader() {
                     fontWeight: 500,
                   }}
                 >
-                  {`Website :${getVendorSettings("store_slug")}.order2day.com`}
+                  {`Website :${getVendorSettings("store_slug")}.getorder.pk`}
                 </span>
               )}
               {getVendorSettings("store_email") && (

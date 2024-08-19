@@ -398,6 +398,14 @@ $activity-dot-color in (primary, $primary-color),
         max-width: 30%;
         flex: 0 0 30%;
     }
+    .xl-50 {
+        max-width: 50%;
+        flex: 0 0 50%;
+    }
+    .xl-25 {
+        max-width: 25%;
+        flex: 0 0 25%;
+    }
     .xl-70 {
         max-width: 70%;
         flex: 0 0 70%;

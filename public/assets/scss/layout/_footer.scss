@@ -1,59 +1,112 @@
 /**=====================
-    5.1 Footer CSS Start
+5.1 Footer CSS Start
 ==========================**/
-.footer {
-  background-color: $footer_bg_color;
-  box-shadow: $footer_box_shadow;
-  padding: 15px;
-  bottom: 0;
-  left: 0;
-  margin-left: $sidebar-compact-width;
-  transition: 0.5s;
+@import url("https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-  @media (max-width: 576px) {
-    padding: 15px 10px;
-  }
-
-  .d-flex {
-    align-items: center;
-    gap: 16px;
-    justify-content: flex-end;
-
-    @media (max-width:767px) {
-      justify-content: center;
-    }
-
-    @media (max-width: 360px) {
-      font-size: 12px;
-    }
-  }
-
-  .lang-title {
-    svg {
-      width: 16px;
-      height: 16px;
-      vertical-align: -2px;
-    }
-  }
-
-  &.footer-dark {
-    background-color: $footer_dark_color;
-
-    p {
-      color: $white;
-    }
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #ECECED;
+  padding: 20px 2px 20px 13px;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  .link:hover {
+    border-bottom: 2px solid orange !important;
+    transition: all 0.2s ease;
+    color: orange !important;
   }
 }
-
-.footer-fix {
-  width: calc(100% - $sidebar-compact-width);
-  position: fixed;
+.img-size {
+  width: 170px;
+  padding-top: 5px;
+}
+.padding {
+  margin: 0px;
+  padding: 0px;
+}
+.container-width {
+  max-width: 240px;
+  padding: 5px 15px;
 }
 
-.footer-language {
-  text-align: right;
+.p-t {
+  padding-top: 15px;
+}
+.pt-img-text {
+  padding-top: 25px;
+}
+.font-bold {
+  font-weight: 700;
+}
+.flex-imprint {
+  display: flex;
+  margin-top: 8px;
+  gap: 3px;
+  align-items: center;
 }
 
+.b-p {
+  padding-top: 8px;
+}
+.b-bottom {
+  border-bottom: 2px solid #DBDBDB;
+}
+.icon-flex {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-bottom: 5px;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+}
+.contact-style {
+  margin-top: 12px;
+}
+
+
+@media screen and (min-width: 750px) and (max-width: 860px) {
+  footer {
+    flex-wrap: wrap;
+    gap: 10px;
+    font-weight: 500;
+    font-size: 30px;
+  }
+  .container-width {
+    padding: 5px 2px;
+  }
+  .icon-flex {
+    font-weight: 500;
+    font-size: 30px;
+  }
+
+  .contact-style {
+    margin-top: 10px;
+  }
+}
+@media screen and (min-width: 713px) and (max-width: 915px) {
+  .contact-us {
+    max-width: 80%;
+  }
+}
 /**=====================
     5.1 Footer CSS Ends
 ==========================**/
+
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 576px) {
+  footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .img-size {
+    width: 150px;
+  }
+  .contact-style {
+    margin-top: 15px;
+  }
+}

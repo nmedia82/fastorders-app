@@ -11,6 +11,7 @@
   background-color: $white;
   z-index: 25;
   top: 0;
+  left: 0;
 
   .loader {
     position: relative;
@@ -31,7 +32,7 @@
       border-radius: 50%;
       border: 3px solid transparent;
       border-top-color: $danger-color;
-      animation: spin-reverse .6s linear infinite;
+      animation: spin-reverse 0.6s linear infinite;
     }
 
     &:after {
@@ -68,7 +69,6 @@
       transform: rotate(-360deg);
     }
   }
-
 }
 
 /**=====================
