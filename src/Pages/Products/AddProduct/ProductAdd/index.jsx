@@ -3,8 +3,8 @@ import { Col, TabContent, TabPane } from "reactstrap";
 import AddProductDetails from "./AddProductDetails";
 import ProductGallery from "./ProductGallery";
 import { toast } from "react-toastify";
-import { getVendorID } from "../../../services/auth";
-import { addProduct } from "../../../ReduxToolkit/Reducers/ProductsReducer";
+import { getVendorID } from "../../../../services/auth";
+import { addProduct } from "../../../../ReduxToolkit/Reducers/ProductsReducer";
 import { useDispatch } from "react-redux";
 
 export default function ProductAdd({ steps, activeCallBack }) {
@@ -45,14 +45,6 @@ export default function ProductAdd({ steps, activeCallBack }) {
             product={product}
           />
         </TabPane>
-        {/* <TabPane tabId={2}>
-          <ProductPricing 
-            activeCallBack={activeCallBack}
-            onFormChange={handleFormChange}
-            product={product}
-          
-          />
-        </TabPane> */}
         <TabPane tabId={2}>
           <ProductGallery
             activeCallBack={activeCallBack}

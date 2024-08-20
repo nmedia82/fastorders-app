@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
-import CommonCardHeader from "../../Utils/CommonComponents/CommonCardHeader";
-import { AddProducts } from "../../Utils/Constants";
 import ProductFormNav from "./ProductFormNav";
 import ProductAdd from "./ProductAdd";
+import CommonCardHeader from "../../../Utils/CommonComponents/CommonCardHeader";
+import { AddProducts } from "../../../Utils/Constants";
 
 export default function AddProduct() {
   const [steps, setSteps] = useState(1);

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Select, { MultiValue } from "react-select";
-import { ProductTagProp } from "../../../Types/ECommerce.type";
 import { Col, Label, Row } from "reactstrap";
 import { useSelector } from "react-redux";
 

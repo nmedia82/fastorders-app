@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Btn, H6, P } from "../../../AbstractElements";
-import SvgIcon from "../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
-import MultiImageUploader from "../../../Components/NM/ImageUploader";
-import { ActiveCallbackProp } from "../../../Types/ECommerce.type";
+import { Btn, H6, P } from "../../../../AbstractElements";
+import SvgIcon from "../../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
+import MultiImageUploader from "../../../../Components/NM/ImageUploader";
 
 export default function ProductGallery({
   activeCallBack,

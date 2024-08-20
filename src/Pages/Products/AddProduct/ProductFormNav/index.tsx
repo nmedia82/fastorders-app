@@ -1,12 +1,15 @@
 import React from "react";
 import { Col, Nav, NavItem, NavLink } from "reactstrap";
-import { ProductFormNavProps } from "../../../Types/ECommerce.type";
-import { Href } from "../../../Utils/Constants";
-import SvgIcon from "../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
-import { H6, P } from "../../../AbstractElements";
-import { addProductNav } from "../../Common/Product";
+import { ProductFormNavProps } from "../../../../Types/ECommerce.type";
+import { Href } from "../../../../Utils/Constants";
+import SvgIcon from "../../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
+import { H6, P } from "../../../../AbstractElements";
+import { addProductNav } from "../../../Common/Product";
 
-export default function ProductFormNav({ steps, setSteps }: ProductFormNavProps) {
+export default function ProductFormNav({
+  steps,
+  setSteps,
+}: ProductFormNavProps) {
   return (
     <Col xxl={3} xl={4} className="box-col-4e sidebar-left-wrapper">
       <Nav className="sidebar-left-icons" pills>

@@ -1,12 +1,8 @@
-import React, { ChangeEvent, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { toast } from "react-toastify";
-import { ActiveCallbackProp } from "../../../Types/ECommerce.type";
-import { ProductTitleLabel } from "../../../Utils/Constants";
-import { Btn, P } from "../../../AbstractElements";
-import SvgIcon from "../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
-import { PublishStatus } from "../../../Utils/Constants";
-import { publishStatusItem } from "../../Common/Product";
+import { Btn, P } from "../../../../AbstractElements";
+import SvgIcon from "../../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
 import SelectCategory from "./SelectCategory";
 
 export default function AddProductDetails({
