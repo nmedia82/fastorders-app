@@ -55,9 +55,9 @@ export const addCategory = createAsyncThunk(
 export const deleteProduct = createAsyncThunk(
   "products/deleteProduct",
   async (productId) => {
-    const response = await axios.delete(
-      `${api_url}/delete-product/${productId}?vendor_id=${vendor_id}`
-    );
+    const response = await axios.post(`${api_url}/delete-product`, {
+      id: productId,
+    });
     return response.data;
   }
 );
