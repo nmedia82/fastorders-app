@@ -7,17 +7,14 @@ import { ActiveCallbackProp } from "../../../Types/ECommerce.type";
 export default function ProductGallery({
   activeCallBack,
   product,
-  onFormChange
+  onSaveProduct,
+  onFormChange,
 }) {
   const [productImages, setProductImages] = useState([]);
 
   useEffect(() => {
     setProductImages(product.images || []);
   }, [product]);
-
-  const handleSubmitButton = () => {
-    console.log(product);
-  };
 
   return (
     <div className="sidebar-body">
@@ -38,7 +35,7 @@ export default function ProductGallery({
             <SvgIcon iconId="back-arrow" /> {"Previous"}
           </div>
         </Btn>
-        <Btn color="transparent" onClick={handleSubmitButton}>
+        <Btn color="transparent" onClick={onSaveProduct}>
           <div className="d-flex align-items-center gap-sm-2 gap-1">
             <SvgIcon iconId="front-arrow" /> {"Add Product"}
           </div>

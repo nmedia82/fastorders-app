@@ -15,8 +15,8 @@ export default function AddProductDetails({
   onFormChange,
 }) {
   const [formData, setFormData] = useState({
-    productTitle: "",
-    category: "",
+    name: "",
+    category: [],
     status: "",
   });
   const [borderTab, setBorderTab] = useState(1);
@@ -24,7 +24,6 @@ export default function AddProductDetails({
     setBorderTab(val);
   }, []);
   const { productTitle } = formData;
-  const { category, status } = formData;
 
   const updateFormData = (event) => {
     const { name, value } = event.target;
@@ -51,7 +50,7 @@ export default function AddProductDetails({
                 Product Name <span className="txt-danger">{"*"}</span>
               </Label>
               <Input
-                className="is-invalid"
+                // className="is-invalid"
                 type="text"
                 name="name"
                 value={product.name}
@@ -74,8 +73,41 @@ export default function AddProductDetails({
               </Label>
               <Input
                 type="number"
-                name="stock"
-                value={product.name}
+                name="stock_quantity"
+                value={product.stock_quantity}
+                onChange={(e) => onFormChange(e.target.name, e.target.value)}
+              />
+            </FormGroup>
+          </Col>
+          <Col xs={6} className="m-0">
+            <FormGroup>
+              <Label>Regular Price</Label>
+              <Input
+                type="number"
+                name="regular_price"
+                value={product.regular_price}
+                onChange={(e) => onFormChange(e.target.name, e.target.value)}
+              />
+            </FormGroup>
+          </Col>
+          <Col xs={6} className="m-0">
+            <FormGroup>
+              <Label>Discount Price</Label>
+              <Input
+                type="number"
+                name="discount_price"
+                value={product.discount_price}
+                onChange={(e) => onFormChange(e.target.name, e.target.value)}
+              />
+            </FormGroup>
+          </Col>
+          <Col xs={6} className="m-0">
+            <FormGroup>
+              <Label> Product Cost</Label>
+              <Input
+                type="number"
+                name="product_cost"
+                value={product.product_cost}
                 onChange={(e) => onFormChange(e.target.name, e.target.value)}
               />
             </FormGroup>
