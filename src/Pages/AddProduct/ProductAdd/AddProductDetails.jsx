@@ -7,7 +7,7 @@ import { Btn, P } from "../../../AbstractElements";
 import SvgIcon from "../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
 import { PublishStatus } from "../../../Utils/Constants";
 import { publishStatusItem } from "../../Common/Product";
-import SelectCategory from "../ProductFormNav/SelectCategory";
+import SelectCategory from "./SelectCategory";
 
 export default function AddProductDetails({
   activeCallBack,
@@ -81,11 +81,11 @@ export default function AddProductDetails({
           </Col>
           <Col xs={6} className="m-0">
             <FormGroup>
-              <Label>Regular Price</Label>
+              <Label>Price</Label>
               <Input
                 type="number"
-                name="regular_price"
-                value={product.regular_price}
+                name="price"
+                value={product.price}
                 onChange={(e) => onFormChange(e.target.name, e.target.value)}
               />
             </FormGroup>

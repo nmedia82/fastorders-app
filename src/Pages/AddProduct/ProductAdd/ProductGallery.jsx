@@ -11,7 +11,7 @@ export default function ProductGallery({
   onFormChange,
 }) {
   const [productImages, setProductImages] = useState([]);
-
+  console.log(productImages);
   useEffect(() => {
     setProductImages(product.images || []);
   }, [product]);

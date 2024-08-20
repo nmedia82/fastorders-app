@@ -7,7 +7,7 @@ import { Btn, P } from "../../../AbstractElements";
 import SvgIcon from "../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
 import { PublishStatus } from "../../../Utils/Constants";
 import { publishStatusItem } from "../../Common/Product";
-import SelectCategory from "../ProductFormNav/SelectCategory";
+import SelectCategory from "./SelectCategory";
 
 export default function ProductPricing({
   activeCallBack,

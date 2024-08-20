@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import { ProductTabContentProp } from "../../../Types/ECommerce.type";
 import { Col, TabContent, TabPane } from "reactstrap";
 import AddProductDetails from "./AddProductDetails";
 import ProductGallery from "./ProductGallery";
-import AdvanceSection from "../AdvanceSection";
-import ProductPricing from "./ProductPricing";
 import { toast } from "react-toastify";
 import { getVendorID } from "../../../services/auth";
 import { addProduct } from "../../../ReduxToolkit/Reducers/ProductsReducer";
