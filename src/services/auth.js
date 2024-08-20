@@ -33,7 +33,7 @@ export function logout() {
 
 export function getCurrentUser() {
   try {
-    const user = localStorage.getItem("getorder_vendor");
+    const { user } = localStorage.getItem("getorder_vendor");
     if (!user) return null;
     return JSON.parse(user);
   } catch (ex) {
@@ -45,7 +45,7 @@ export async function getVendorID() {
   try {
     const user = await getCurrentUser();
     if (!user) return null;
-    return user.vendor_id;
+    return user.ID;
   } catch (ex) {
     return null;
   }
