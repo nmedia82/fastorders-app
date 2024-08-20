@@ -38,7 +38,7 @@ export const routes = [
     element: <Tables />,
   },
   {
-    path: `${process.env.PUBLIC_URL}/add-product`,
+    path: `${process.env.PUBLIC_URL}/products/new`,
     element: <AddProduct />,
   },
   {

@@ -6,7 +6,9 @@ import { Href } from "../../../Utils/Constants";
 import { ProductListHeaderProp } from "../../../Types/ECommerce.type";
 import ProductListBody from "./ProductListBody";
 
-export default function ProductListHeader({ linkTitle }: ProductListHeaderProp) {
+export default function ProductListHeader({
+  linkTitle,
+}: ProductListHeaderProp) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const handleFilterToggle = () => {
     setIsFilterOpen((prevState) => !prevState);
@@ -23,7 +25,10 @@ export default function ProductListHeader({ linkTitle }: ProductListHeaderProp) 
             )}
           </a>
         </div> */}
-        <Link className="btn btn-primary" to={`${process.env.PUBLIC_URL}/add-product`}>
+        <Link
+          className="btn btn-primary"
+          to={`${process.env.PUBLIC_URL}/products/new`}
+        >
           <i className="fa fa-plus me-2"></i> {linkTitle}
         </Link>
       </div>
