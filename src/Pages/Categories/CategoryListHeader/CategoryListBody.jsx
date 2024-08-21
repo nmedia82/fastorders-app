@@ -1,8 +1,8 @@
 import React from "react";
 import { Col, Input, Row } from "reactstrap";
-import { productListBodyData } from "../../../Data/Applications/ECommerce/CategoryPage";
 
 export default function CategoryListBody() {
+  const productListBodyData = [];
   return (
     <Row className="row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2 g-3">
       {productListBodyData.map((item, index) => (

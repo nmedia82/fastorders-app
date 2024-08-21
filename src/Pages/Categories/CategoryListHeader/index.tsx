@@ -12,7 +12,7 @@ export default function CategoryListHeader() {
   return (
     <div className="list-product-header">
       <div>
-        <div className="light-box">
+        {/* <div className="light-box">
           <a href={Href} onClick={handleFilterToggle}>
             {isFilterOpen ? (
               <i className="icon-close filter-close" />
@@ -20,18 +20,18 @@ export default function CategoryListHeader() {
               <Filter className="filter-icon" />
             )}
           </a>
-        </div>
+        </div> */}
         <div>
           <NewCategoryModal />
         </div>
       </div>
-      <Collapse className={isFilterOpen ? "show" : ""}>
+      {/* <Collapse className={isFilterOpen ? "show" : ""}>
         <Card className="list-product-body">
           <CardBody>
             <CategoryListBody />
           </CardBody>
         </Card>
-      </Collapse>
+      </Collapse> */}
     </div>
   );
 }
