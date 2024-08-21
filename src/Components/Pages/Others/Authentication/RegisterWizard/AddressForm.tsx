@@ -15,7 +15,7 @@ export default function AddressForm({
     <div id="addrescont">
       <FormGroup>
         <Label className="col-form-label" htmlFor="contactNumber">
-          Contact Number
+          WhatsApp Number
         </Label>
         <Input
           value={formValue.contactNumber}
@@ -25,6 +25,9 @@ export default function AddressForm({
           type="number"
           placeholder="123456745"
         />
+        <FormText className="text-muted" id="emailHelp">
+          Password will be sent via WhatsApp
+        </FormText>
       </FormGroup>
       <FormGroup>
         <Label className="col-form-label">{"Business Name"}</Label>
@@ -36,7 +39,7 @@ export default function AddressForm({
           placeholder=""
         />
         <FormText className="text-muted" id="emailHelp">
-          {"Java Grill & BBQ."}
+          {"e.g: Java Grill & BBQ."}
         </FormText>
       </FormGroup>
       <FormGroup>
@@ -49,7 +52,7 @@ export default function AddressForm({
           placeholder=""
         />
         <FormText className="text-muted" id="emailHelp">
-          {"Business Location, City"}
+          {"Business Location"}
         </FormText>
       </FormGroup>
       <FormGroup>
