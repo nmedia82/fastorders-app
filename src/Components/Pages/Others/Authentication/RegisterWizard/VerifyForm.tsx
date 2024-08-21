@@ -11,6 +11,9 @@ export default function VerifyForm({
     <div id="verifycont">
       <FormGroup>
         <Label className="col-form-label">App Domain Name</Label>
+        {formValue.appDomain && (
+          <FormText>{` [${formValue.appDomain}.getorder.pk]`}</FormText>
+        )}
         <Input
           name="appDomain"
           onChange={updateUserData}

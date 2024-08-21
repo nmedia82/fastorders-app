@@ -13,9 +13,11 @@ import {
 import PersonalForm from "./PersonalForm";
 import AddressForm from "./AddressForm";
 import VerifyForm from "./VerifyForm";
+import FinalRegisterForm from "./FinalRegister";
 
 export default function RegisterWizard() {
   const [level, setLevel] = useState(1);
+  const [formCompleted, setFormCompleted] = useState(false);
   const [formValue, setFormValue] = useState({
     fullName: "",
     contactNumber: "",
@@ -61,6 +63,7 @@ export default function RegisterWizard() {
       level === 2
     ) {
       setLevel(level + 1);
+      setShowFinish(true);
     } else if (appDomain !== "" && level === 3) {
       setShowFinish(true);
     } else {
@@ -70,6 +73,12 @@ export default function RegisterWizard() {
     }
   };
   const handleFinish = () => {
+    console.log(formValue);
+    if (formValue.appDomain === "") {
+      return toast.error("Domain name is required");
+    }
+    setLevel(0);
+    setFormCompleted(true);
     toast.success("Congratulation ! All step Done.");
   };
   const calculateProgressBarValue = () => {
@@ -84,63 +93,67 @@ export default function RegisterWizard() {
         <Col lg={9} md={8} className="p-0">
           <div className="step-container login-card">
             <div>
-              <div className="wizard-title text-center">
-                <H2>{SignUpAccount}</H2>
-                <H5 className="text-muted mb-4">{EnterDetails}</H5>
-              </div>
+              {!formCompleted && (
+                <div className="wizard-title text-center mb-4">
+                  <H2>{SignUpAccount}</H2>
+                </div>
+              )}
               <div className="login-main">
                 <ProgressBar value={calculateProgressBarValue()} />
-                <Form className="theme-form">
-                  <Input
-                    type="hidden"
-                    name="_token"
-                    value="iJquRbgH4Np4OcWzjk8Bd03CaexHzse7gz2vHrml"
-                  />
-                  <div className="registration-content">
-                    {level === 1 && (
-                      <PersonalForm
-                        formValue={formValue}
-                        updateUserData={updateUserData}
-                      />
-                    )}
-                    {level === 2 && (
-                      <AddressForm
-                        formValue={formValue}
-                        updateUserData={updateUserData}
-                      />
-                    )}
-                    {level === 3 && (
-                      <VerifyForm
-                        formValue={formValue}
-                        updateUserData={updateUserData}
-                      />
-                    )}
-                  </div>
-                  <div className="wizard-navigation mt-3">
-                    <div>
-                      {level > 1 && (
-                        <Btn
-                          color="primary"
-                          outline
-                          size="lg"
-                          onClick={handleBackButton}
-                        >
-                          {Previous}
-                        </Btn>
+                {!formCompleted && (
+                  <Form className="theme-form">
+                    <Input
+                      type="hidden"
+                      name="_token"
+                      value="iJquRbgH4Np4OcWzjk8Bd03CaexHzse7gz2vHrml"
+                    />
+                    <div className="registration-content">
+                      {level === 1 && (
+                        <PersonalForm
+                          formValue={formValue}
+                          updateUserData={updateUserData}
+                        />
+                      )}
+                      {level === 2 && (
+                        <AddressForm
+                          formValue={formValue}
+                          updateUserData={updateUserData}
+                        />
+                      )}
+                      {level === 3 && (
+                        <VerifyForm
+                          formValue={formValue}
+                          updateUserData={updateUserData}
+                        />
                       )}
                     </div>
-                    <div>
-                      <Btn
-                        color="primary"
-                        size="lg"
-                        className="text-center"
-                        onClick={showFinish ? handleFinish : handleNextButton}
-                      >
-                        {showFinish ? Finish : Next}
-                      </Btn>
+                    <div className="wizard-navigation mt-3">
+                      <div>
+                        {level > 1 && (
+                          <Btn
+                            color="primary"
+                            outline
+                            size="lg"
+                            onClick={handleBackButton}
+                          >
+                            {Previous}
+                          </Btn>
+                        )}
+                      </div>
+                      <div>
+                        <Btn
+                          color="primary"
+                          size="lg"
+                          className="text-center"
+                          onClick={showFinish ? handleFinish : handleNextButton}
+                        >
+                          {showFinish ? Finish : Next}
+                        </Btn>
+                      </div>
                     </div>
-                  </div>
-                </Form>
+                  </Form>
+                )}
+                {formCompleted && <FinalRegisterForm />}
               </div>
             </div>
           </div>
