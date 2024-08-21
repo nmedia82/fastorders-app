@@ -30,16 +30,20 @@ export const routes = [
     element: <ProductListContainer />,
   },
   {
+    path: `${process.env.PUBLIC_URL}/products/new`,
+    element: <AddProduct />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/products/:product_id`,
+    element: <AddProduct />,
+  },
+  {
     path: `${process.env.PUBLIC_URL}/categories`,
     element: <ProductCategories />,
   },
   {
     path: `${process.env.PUBLIC_URL}/tables`,
     element: <Tables />,
-  },
-  {
-    path: `${process.env.PUBLIC_URL}/products/new`,
-    element: <AddProduct />,
   },
   {
     path: `${process.env.PUBLIC_URL}/customers`,
