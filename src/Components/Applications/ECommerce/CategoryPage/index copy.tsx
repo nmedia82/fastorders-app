@@ -11,7 +11,7 @@ export default function CategoryContainer() {
           <Card>
             <CardBody>
               <ProductListHeader linkTitle="Add Category" />
-              <CategoryListTable />
+              {/* <CategoryListTable /> */}
             </CardBody>
           </Card>
         </Col>
