@@ -7,15 +7,18 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  background: url('../../images/login/login_bg.jpg');
+  //background: url('../../images/login/login_bg.jpg');
   background-position: center;
-  padding: 20px 12px;
+  padding: 20px 22px;
   .logo {
     display: block;
     margin-bottom: 20px;
     text-align: center;
-    >img {
-      height: calc(28px + (40 - 28) * ((100vw - 320px) / (1920 - 320)));
+    > img {
+      display: block;
+      margin: auto;
+      height: calc(28px + (40 - 28) * ((100vw - 320px) / (260)));
+      min-height: 75px;
     }
   }
   .btn-showcase {
@@ -23,7 +26,7 @@
       line-height: 1;
       padding: 10px 15px;
       margin: 0;
-      &+.btn {
+      & + .btn {
         margin-left: 5px;
       }
       svg {
@@ -65,7 +68,7 @@
         }
       }
       input {
-        background-color: rgba($light-primary, 0.6);
+        background-color: #ededed;
         transition: all 0.3s ease;
         &::-webkit-input-placeholder {
           color: $light-text;
@@ -111,7 +114,7 @@
     color: var(--theme-default);
     &.show {
       &:before {
-        content: "show";
+        content: "dekho na";
       }
     }
     &:before {

@@ -220,7 +220,7 @@
     height: 33px;
     box-shadow: 0px 7.7982px 17.3293px rgba(0, 157, 181, 0.07);
     border-radius: 2px;
-    background-color: var(--white);
+    background-color: var(--theme-orange);
     cursor: pointer;
     display: none;
     @media (max-width:991px) {
@@ -232,13 +232,13 @@
     svg {
       width: $header-wrapper-nav-icon-size;
       height: $header-wrapper-nav-icon-size;
-      stroke: var(--body-light-font-color);
+      stroke: white;
     }
 
     &:hover {
       >svg {
-        color: var(--theme-default) !important;
-        stroke: var(--theme-default) !important;
+        color: white !important;
+        stroke: white !important;
       }
     }
 

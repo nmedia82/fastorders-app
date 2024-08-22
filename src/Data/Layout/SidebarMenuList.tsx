@@ -1,3 +1,5 @@
+/** @format */
+
 import { SidebarMenuType } from "../../Types/Layout.type";
 export const menuList: SidebarMenuType[] = [
   {
@@ -44,7 +46,7 @@ export const menuList: SidebarMenuType[] = [
         id: 4,
         title: "Categories",
         url: `${process.env.PUBLIC_URL}/categories`,
-        icon: "categories",
+        icon: "category",
         type: "link",
       },
       // {

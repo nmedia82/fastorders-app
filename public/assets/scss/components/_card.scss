@@ -403,14 +403,24 @@
       right: 0;
       bottom: 0;
 
-      svg {
+      i {
         width: 20px;
         height: 20px;
         border-radius: 100%;
         border: 2px solid var(--white);
-        background: var(--white);
+        color: white;
+        font-size: 10px;
+        font-weight: 800;
+        padding: 5px;
       }
     }
+    .icon-check{
+      background: var(--theme-green);
+
+    }
+        .icon-close{
+         background: var(--theme-red);
+        }
   }
 
   &-img {
@@ -421,6 +431,7 @@
     img {
       height: 68px;
       border-radius: 100%;
+      aspect-ratio: 1/1;
     }
   }
 }

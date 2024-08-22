@@ -228,7 +228,9 @@
     img {
       width: 42px;
       height: 42px;
-
+      &.rounded {
+        border-radius: 50px !important;
+      }
       @media (max-width:1650px) {
         width: 33px;
         height: 33px;

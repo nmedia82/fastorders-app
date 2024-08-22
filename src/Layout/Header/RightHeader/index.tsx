@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { LI, UL } from "../../../AbstractElements";
@@ -23,11 +25,11 @@ export default function RightHeader() {
 
   return (
     <UL className="nav-menus simple-list flex-row">
-      <LI>
+      {/* <LI>
         <span className="header-search">
           <SvgIcon iconId="search" onClick={handleSearch} />
         </span>
-      </LI>
+      </LI> */}
       <HoldCarts />
       {/* <NotificationBox /> */}
       {/* <ChatHeader /> */}

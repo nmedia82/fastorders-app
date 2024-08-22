@@ -8,7 +8,7 @@
       .task-container {
         div.d-flex {
           min-width: 308px;
-          justify-content: flex-end;
+          // justify-content: flex-end;
         }
       }
     }
@@ -1050,21 +1050,41 @@
     }
   }
 }
+
+@media only screen and (min-width: 991.98px) {
+  .todo-mobile-nav {
+    display: none !important;
+    .onhover-dropdown {
+      .nav-item {
+        gap: 3px;
+        .badge {
+          padding: 3px 6px;
+        }
+      }
+    }
+  }
+}
 @media only screen and (max-width: 991.98px) {
+  .todo-wrap {
+    margin-top: 40px;
+  }
   .todo-list-wrapper {
     #todo-list {
       li {
         .task-container {
           .task-label {
-            min-width: 460px;
+            // min-width: 460px;
           }
         }
       }
     }
   }
+  .email-sidebar.md-sidebar {
+    display: none;
+  }
   .simplebar-mask {
-    // top: 70px;
-    top: 250px;
+    top: 140px;
+    // top: 250px;
   }
   .project-cards {
     .tab-content {
@@ -1290,7 +1310,7 @@
             }
           }
           .logo-wrapper {
-            padding: 17px 30px;
+            padding: 17px 20px;
             .back-btn {
               display: inline-block;
               float: right;
@@ -1303,7 +1323,8 @@
           }
           .sidebar-main {
             .sidebar-links {
-              height: calc(100vh - 244px);
+              // height: calc(100vh - 244px); if search bar is included
+              height: calc(100vh - 145px);
             }
           }
           &.close_icon {
@@ -2003,7 +2024,7 @@
     &.compact-wrapper {
       .page-body-wrapper {
         .page-body {
-          margin-top: 68px;
+          margin-top: 0px;
         }
       }
     }
@@ -2836,6 +2857,20 @@
       }
     }
   }
+  .todo-wrap {
+    margin-top: 35px;
+  }
+  .todo-mobile-nav {
+    top: 64px;
+    .onhover-dropdown {
+      .nav-item {
+        gap: 3px;
+        .badge {
+          padding: 2px 4px;
+        }
+      }
+    }
+  }
   .border-tab {
     &.nav-tabs {
       display: block;
@@ -3021,6 +3056,9 @@
       }
     }
   }
+  .page-wrapper .page-header .header-wrapper .nav-right > ul {
+    gap: 10px;
+  }
   .page-wrapper .page-header .header-wrapper .nav-right > ul > li {
     padding: 4px 6px;
   }
@@ -3053,7 +3091,7 @@
       .header-wrapper .nav-right ul {
         li {
           i {
-            font-size: 14px !important;
+            font-size: 20px;
           }
           svg {
             width: 18px;
@@ -3171,7 +3209,7 @@
     &.compact-wrapper {
       .page-body-wrapper {
         .page-body {
-          margin-top: 85px;
+          margin-top: 10px;
         }
         &.sidebar-wrapper {
           .sidebar-main {
@@ -3224,7 +3262,7 @@
     .step-container {
       div.content {
         .wizard-title {
-          width: 280px;
+          width: 80px;
         }
       }
     }
@@ -4317,22 +4355,22 @@
       }
     }
   }
-  .onhover-dropdown {
-    &:hover {
-      .onhover-show-div {
-        opacity: 0;
-        transform: none;
-        visibility: hidden;
-        &.active {
-          opacity: 1;
-          transform: translateY(0px);
-          visibility: visible;
-          border-radius: 5px;
-          overflow: hidden;
-        }
-      }
-    }
-  }
+  // .onhover-dropdown {
+  //   &:hover {
+  //     .onhover-show-div {
+  //       opacity: 0;
+  //       transform: none;
+  //       visibility: hidden;
+  //       &.active {
+  //         opacity: 1;
+  //         transform: translateY(0px);
+  //         visibility: visible;
+  //         border-radius: 5px;
+  //         overflow: hidden;
+  //       }
+  //     }
+  //   }
+  // }
   .page-wrapper {
     .page-header {
       .header-wrapper {
@@ -4371,8 +4409,16 @@
   }
 }
 @media only screen and (max-width: 480px) {
+  .todo .todo-list-wrapper .todo-list-footer .add-task-btn-wrapper {
+    flex-wrap: wrap;
+    width: 220px;
+    justify-content: flex-end;
+  }
   .page-wrapper .page-header .header-wrapper .nav-right .onhover-show-div {
     width: 280px;
+    i {
+      font-size: 15px;
+    }
   }
   .page-wrapper.only-body .page-header .header-wrapper .nav-right {
     display: none;
@@ -4400,7 +4446,7 @@
   }
   .prooduct-details-box {
     .flex-grow-1 {
-      margin-left: 0.5rem !important;
+      margin-left: 0rem !important;
     }
   }
   .knob-block {
@@ -4661,6 +4707,9 @@
         }
       }
     }
+  }
+  .page-wrapper .page-header .header-wrapper .nav-right > ul {
+    gap: 0px;
   }
 }
 @media only screen and (max-width: 360px) {
