@@ -67,7 +67,7 @@ const MultiImageUploader = ({
         className="product-upload"
         style={{ border: "1px dashed #ccc", padding: "20px" }}
       >
-        <Form>
+        <Form onSubmit={(e) => e.preventDefault()}>
           <Dropzone
             multiple={multiple}
             onSubmit={handleSubmit}

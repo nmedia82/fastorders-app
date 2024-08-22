@@ -3,7 +3,11 @@ import { Clock, CreditCard, Gift, Truck } from "react-feather";
 export const countryMenu = ["Choose...", "U.K", "U.S", "India"];
 
 //pricing
-export const pricingContentList = ["50 Email Accounts", "Maintenance", "15 Subdomains"];
+export const pricingContentList = [
+  "50 Email Accounts",
+  "Maintenance",
+  "15 Subdomains",
+];
 export const becomeMemberData = [
   {
     id: 1,
@@ -58,8 +62,20 @@ export const simplePricingData = [
   },
 ];
 
-export const productColorList = ["primary", "secondary", "success", "info", "warning"];
-export const brandData = ["Clothing", "Bags", "Footwear", "Watches", "Accessories"];
+export const productColorList = [
+  "primary",
+  "secondary",
+  "success",
+  "info",
+  "warning",
+];
+export const brandData = [
+  "Clothing",
+  "Bags",
+  "Footwear",
+  "Watches",
+  "Accessories",
+];
 export const productPageMainNav = ["Febric", "Video", "Details", "Brand"];
 
 export const productIconList = [
@@ -151,7 +167,14 @@ export const productPageTab = [
 //Payment-detals
 export const cardListType = ["Select Type", "Master", "Visa", "PayPal", "COD"];
 export const selectMonth = ["Select Month", "Jan", "Fab", "March", "April"];
-export const selectYear = ["Select Year", "2023", "2024", "2025", "2026", "2027"];
+export const selectYear = [
+  "Select Year",
+  "2023",
+  "2024",
+  "2025",
+  "2026",
+  "2027",
+];
 export const bankName = ["Bank Name", "SBI", "ICICI", "KOTAK", "BOB"];
 export const selectDuration = [
   "Select Duration",
@@ -163,7 +186,14 @@ export const selectDuration = [
 export const paymentOption = ["mastercard", "visa", "paypal"];
 
 //cart
-export const cartTableHead = ["Product", "Product Name", "Price", "Quantity", "Action", "Total"];
+export const cartTableHead = [
+  "Product",
+  "Product Name",
+  "Price",
+  "Quantity",
+  "Action",
+  "Total",
+];
 //Add product data
 export const addProductNav = [
   {
@@ -172,14 +202,14 @@ export const addProductNav = [
     title: "Add Product Details",
     subTitle: "Add product name & details",
   },
+  // {
+  //   id: 2,
+  //   icon: "pricing",
+  //   title: "Product Pricing",
+  //   subTitle: "Add pricing & inventory details",
+  // },
   {
     id: 2,
-    icon: "pricing",
-    title: "Product Pricing",
-    subTitle: "Add pricing & inventory details",
-  },
-  {
-    id: 3,
     icon: "product-gallery",
     title: "Product Gallery",
     subTitle: "Thumbnail & add product gallery",

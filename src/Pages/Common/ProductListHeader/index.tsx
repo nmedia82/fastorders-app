@@ -6,7 +6,9 @@ import { Href } from "../../../Utils/Constants";
 import { ProductListHeaderProp } from "../../../Types/ECommerce.type";
 import ProductListBody from "./ProductListBody";
 
-export default function ProductListHeader({ linkTitle }: ProductListHeaderProp) {
+export default function ProductListHeader({
+  linkTitle,
+}: ProductListHeaderProp) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const handleFilterToggle = () => {
     setIsFilterOpen((prevState) => !prevState);
@@ -14,7 +16,7 @@ export default function ProductListHeader({ linkTitle }: ProductListHeaderProp) 
   return (
     <div className="list-product-header">
       <div>
-        <div className="light-box">
+        {/* <div className="light-box">
           <a href={Href} onClick={handleFilterToggle}>
             {isFilterOpen ? (
               <i className="icon-close filter-close" />
@@ -22,8 +24,11 @@ export default function ProductListHeader({ linkTitle }: ProductListHeaderProp) 
               <Filter className="filter-icon" />
             )}
           </a>
-        </div>
-        <Link className="btn btn-primary" to={`${process.env.PUBLIC_URL}/add-product`}>
+        </div> */}
+        <Link
+          className="btn btn-primary"
+          to={`${process.env.PUBLIC_URL}/products/new`}
+        >
           <i className="fa fa-plus me-2"></i> {linkTitle}
         </Link>
       </div>

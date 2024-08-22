@@ -31,7 +31,7 @@ export const fetchCategories = createAsyncThunk(
 export const addProduct = createAsyncThunk(
   "products/addProduct",
   async (productData) => {
-    const response = await axios.post(`${api_url}/add-product`, {
+    const response = await axios.post(`${api_url}/save-product`, {
       ...productData,
       vendor_id,
     });
@@ -43,7 +43,7 @@ export const addProduct = createAsyncThunk(
 export const addCategory = createAsyncThunk(
   "products/addCategory",
   async (categoryData) => {
-    const response = await axios.post(`${api_url}/add-category`, {
+    const response = await axios.post(`${api_url}/categories`, {
       ...categoryData,
       vendor_id,
     });
@@ -55,9 +55,9 @@ export const addCategory = createAsyncThunk(
 export const deleteProduct = createAsyncThunk(
   "products/deleteProduct",
   async (productId) => {
-    const response = await axios.delete(
-      `${api_url}/delete-product/${productId}?vendor_id=${vendor_id}`
-    );
+    const response = await axios.post(`${api_url}/delete-product`, {
+      id: productId,
+    });
     return response.data;
   }
 );
@@ -66,9 +66,7 @@ export const deleteProduct = createAsyncThunk(
 export const deleteCategory = createAsyncThunk(
   "products/deleteCategory",
   async (categoryId) => {
-    const response = await axios.delete(
-      `${api_url}/delete-category/${categoryId}?vendor_id=${vendor_id}`
-    );
+    const response = await axios.delete(`${api_url}/categories/${categoryId}`);
     return response.data;
   }
 );
@@ -88,14 +86,11 @@ export const updateProduct = createAsyncThunk(
 // Update a category
 export const updateCategory = createAsyncThunk(
   "products/updateCategory",
-  async ({ categoryId, updatedData }) => {
-    const response = await axios.put(
-      `${api_url}/update-category/${categoryId}`,
-      {
-        ...updatedData,
-        vendor_id,
-      }
-    );
+  async (updatedData) => {
+    const categoryId = updatedData.term_id;
+    const response = await axios.put(`${api_url}/categories/${categoryId}`, {
+      name: updatedData.name,
+    });
     return response.data;
   }
 );
@@ -161,7 +156,7 @@ const ProductsSlice = createSlice({
       // Handle delete category
       .addCase(deleteCategory.fulfilled, (state, action) => {
         state.categories = state.categories.filter(
-          (category) => category.id !== action.meta.arg
+          (category) => category.term_id !== action.meta.arg
         ); // Remove the deleted category from the state
       })
       // Handle update product
