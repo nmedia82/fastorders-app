@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Card, CardBody, Collapse } from "reactstrap";
 import { Link } from "react-router-dom";
-import { Filter } from "react-feather";
-import { Href } from "../../../Utils/Constants";
 import { ProductListHeaderProp } from "../../../Types/ECommerce.type";
 import ProductListBody from "./ProductListBody";
 
