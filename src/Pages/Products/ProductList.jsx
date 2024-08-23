@@ -63,9 +63,7 @@ export default function ProductListTable() {
       name: "Action",
       cell: (row) => (
         <div className="product-action">
-          <Link
-            to={`${process.env.PUBLIC_URL}/applications/ecommerce/add_products`}
-          >
+          <Link to={`${process.env.PUBLIC_URL}/products/${row.id}`}>
             <SvgIcon iconId="edit-content" />
           </Link>
           <SvgIcon iconId="trash1" onClick={() => handleDelete(row.id)} />
@@ -95,6 +93,7 @@ export default function ProductListTable() {
         value.toString().toLowerCase().includes(filterText.toLowerCase())
     );
   });
+  const handleEdit = (product) => {};
   const handleDelete = async (id) => {
     const result = await Swal.fire({
       title: "Are you sure?",

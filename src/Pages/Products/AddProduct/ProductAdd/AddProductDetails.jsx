@@ -10,24 +10,14 @@ export default function AddProductDetails({
   product,
   onFormChange,
 }) {
-  const [formData, setFormData] = useState({
-    name: "",
-    category: [],
-    status: "",
-  });
   const [borderTab, setBorderTab] = useState(1);
   const activeBorder = useCallback((val) => {
     setBorderTab(val);
   }, []);
-  const { productTitle } = formData;
-
-  const updateFormData = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const { name } = product;
 
   const handleNextButton = () => {
-    if (productTitle !== "") {
+    if (name !== "") {
       activeCallBack(2);
     } else {
       return toast.error(
@@ -58,6 +48,7 @@ export default function AddProductDetails({
             <FormGroup>
               <SelectCategory
                 title={"Select Category"}
+                value={product.categories}
                 onFormChange={onFormChange}
               />
             </FormGroup>
@@ -65,7 +56,7 @@ export default function AddProductDetails({
           <Col xs={6} className="m-0">
             <FormGroup>
               <Label>
-                Product Stock <span className="txt-danger">{"*"}</span>
+                Stock Quantity <span className="txt-danger">{"*"}</span>
               </Label>
               <Input
                 type="number"
