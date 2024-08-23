@@ -12,7 +12,7 @@ const data = {
     store_phone: "92 335 4590 894",
     store_slug: "java",
     store_email: "java.bite@gmail.com",
-    show_invoice_billing: false,
+    show_invoice_billing: true,
     vendor_id: 12,
   },
 };

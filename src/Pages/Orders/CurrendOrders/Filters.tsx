@@ -20,7 +20,7 @@ const OrdersFilter: React.FC<OrdersFilterProps> = ({
   handleResetFilters,
 }) => {
   return (
-    <Row className="justify-content-end mb-3" style={{ maxWidth: "50%" }}>
+    <Row className="justify-content-start mb-3" style={{ maxWidth: "50%" }}>
       <Col md={6}>
         <FormGroup>
           <Label for="filterType">Filter by Order Type:</Label>
@@ -39,27 +39,8 @@ const OrdersFilter: React.FC<OrdersFilterProps> = ({
         </FormGroup>
       </Col>
 
-      <Col md={4}>
-        <FormGroup>
-          <Label for="filterStatus">Filter by Status:</Label>
-          <Input
-            type="select"
-            value={filterStatus}
-            onChange={(e) => setFilterStatus(e.target.value)}
-            id="filterStatus"
-          >
-            <option value="All">All</option>
-            {Object.keys(allOrderStatuses).map((status) => (
-              <option key={status} value={status}>
-                {allOrderStatuses[status]}
-              </option>
-            ))}
-          </Input>
-        </FormGroup>
-      </Col>
-
       <Col md={2} className="d-flex align-items-center">
-        <Btn className="btn btn-sm" onClick={handleResetFilters}>
+        <Btn className="btn btn-sm btn-info" onClick={handleResetFilters}>
           Reset Filter
         </Btn>
       </Col>

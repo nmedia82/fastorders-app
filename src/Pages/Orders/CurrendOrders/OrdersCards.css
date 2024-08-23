@@ -1,0 +1,22 @@
+.status-row {
+  display: flex;
+}
+
+.status-column {
+  flex: 1 1 30%;
+  /* border-right: 1px solid #ddd; */
+  padding: 15px 5px;
+}
+
+/* Responsive: On mobile view, flex-wrap: wrap */
+@media (max-width: 768px) {
+  .status-row {
+    flex-wrap: wrap;
+  }
+
+  .status-column {
+    flex: 1 1 100%; /* Make each column full-width on mobile */
+    border-right: none; /* Remove the border on smaller screens */
+    padding-right: 0;
+  }
+}

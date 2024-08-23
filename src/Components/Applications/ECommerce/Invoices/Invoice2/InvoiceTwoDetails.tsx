@@ -7,7 +7,6 @@ import {
 } from "../../../../../services/helper";
 
 export default function InvoiceTwoDetails({ order }: { order: any }) {
-  console.log(order);
   return (
     <td>
       <Table style={{ width: "100%" }} borderless>

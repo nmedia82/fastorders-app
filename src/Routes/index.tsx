@@ -6,9 +6,10 @@ import PrivateRoutes from "./PrivateRoutes";
 import VisualLogin2 from "../Components/Pages/Others/Authentication/VisualLogin2";
 import ForgetPassword from "../Components/Pages/Others/Authentication/ForgetPassword";
 import RegisterWizard from "../Components/Pages/Others/Authentication/RegisterWizard";
+import { getCurrentUser } from "../services/auth";
 
 export default function Routers() {
-  const login = localStorage.getItem("login");
+  const login = getCurrentUser();
 
   return (
     <BrowserRouter basename={"/"}>

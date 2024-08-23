@@ -30,7 +30,7 @@ export default function Invoice2Container({ order }: { order: any }) {
                 </tr>
                 {getVendorSettings("show_invoice_billing") && (
                   <tr>
-                    <InvoiceTwoBilling />
+                    <InvoiceTwoBilling order={order} />
                   </tr>
                 )}
                 <tr>
