@@ -50,7 +50,7 @@ export function getVendorID() {
   return vendor_id;
 }
 
-export function getVendorSettings(key) {
+export function getVendorSettings(key, default_val = null) {
   const { settings } = data;
-  return settings[key] || null;
+  return settings[key] || default_val;
 }

@@ -10,6 +10,7 @@ import AllEmployees from "../Pages/Employees";
 import OrderInvoice from "../Pages/Orders/Invoice";
 import OrdersHistory from "../Pages/Orders/History";
 import AddProduct from "../Pages/Products/AddProduct";
+import QRCodePage from "../Pages/QRCode";
 
 export const routes = [
   {
@@ -60,5 +61,9 @@ export const routes = [
   {
     path: `${process.env.PUBLIC_URL}/invoice/:order_id`,
     element: <OrderInvoice />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/qrcode`,
+    element: <QRCodePage />,
   },
 ];

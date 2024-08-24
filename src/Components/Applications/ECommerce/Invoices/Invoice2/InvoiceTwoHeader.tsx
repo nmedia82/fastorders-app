@@ -47,7 +47,7 @@ export default function InvoiceTwoHeader() {
                 textAlign: "end",
               }}
             >
-              {getVendorSettings("store_slug") && (
+              {getVendorSettings("domain_slug") && (
                 <span
                   style={{
                     display: "block",
@@ -56,7 +56,7 @@ export default function InvoiceTwoHeader() {
                     fontWeight: 500,
                   }}
                 >
-                  {`Website :${getVendorSettings("store_slug")}.getorder.pk`}
+                  {`Website :${getVendorSettings("domain_slug")}.getorder.pk`}
                 </span>
               )}
               {getVendorSettings("store_email") && (

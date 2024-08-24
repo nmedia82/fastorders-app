@@ -14,6 +14,7 @@ import ProfileHeader from "./ProfileHeader";
 import HoldCarts from "./HoldCarts";
 import CartHeaderList from "./CartHeader/CartHeaderList";
 import OrdersNotificationBox from "./OrderNotifications";
+import QRCodePage from "./QRCode";
 // import MaximizeScreen from "./MaximizeScreen";
 // import BookmarkHeader from "./BookmarkHeader";
 
@@ -36,6 +37,7 @@ export default function RightHeader() {
       <OrdersNotificationBox newOrders={newOrders} />
       {/* <Registers /> */}
       <Registers />
+      <QRCodePage />
 
       <ProfileHeader />
     </UL>
