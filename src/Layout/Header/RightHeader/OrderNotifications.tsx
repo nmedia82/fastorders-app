@@ -5,17 +5,19 @@ import { CheckAll, Href, Notifications } from "../../../Utils/Constants";
 import { dynamicImage } from "../../../Utils";
 import { notiticationsData } from "../../../Data/Layout/RightHeader";
 
-export default function NotificationBox() {
+export default function OrdersNotificationBox({
+  newOrders,
+}: {
+  newOrders: any;
+}) {
   return (
     <LI className="onhover-dropdown">
       <div className="notification-box onhover-click">
         <SvgIcon iconId="notification" />
-        <Badges color="success" pill style={{ color: "white" }}>
-          {"3 "}
-        </Badges>
+        <Badges color="success" pill style={{ color: "white" }}></Badges>
       </div>
       <div className="onhover-show-div notification-dropdown">
-        <H6 className="f-18 mb-0 dropdown-title">{Notifications} </H6>
+        <H6 className="f-18 mb-0 dropdown-title">New Orders </H6>
         <UL className="simple-list">
           {notiticationsData.map((item) => (
             <LI className="d-flex" key={item.id}>

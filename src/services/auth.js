@@ -25,6 +25,7 @@ export function loginUser(user_info) {
 
 export function login_user_locally(user_data) {
   localStorage.setItem("getorder_vendor", JSON.stringify(user_data));
+  localStorage.setItem("getorder_orders_ts", user_data.server_ts);
 }
 
 export function logout() {
