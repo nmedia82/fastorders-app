@@ -6,12 +6,12 @@ import DataTable from "react-data-table-component";
 import { H2 } from "../../../../AbstractElements";
 import { Href, ProjectsStatusTitle } from "../../../../Utils/Constants";
 import SvgIcon from "../../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
+import { recentOrder, recentOrderData } from "./Data/RecentOrder";
 import {
-  projectsStatusColumn,
-  projectsStatusData,
-} from "../../../../Data/Dashboard/Project";
-
-export default function ProjectsStatus() {
+  RecentActivities,
+  RecentActivitiesData,
+} from "./Data/RecentActivities";
+export default function ActivitiesStatus() {
   return (
     <Row>
       {/* First Column */}
@@ -21,7 +21,7 @@ export default function ProjectsStatus() {
             <div className="header-top">
               <H2>{"Recent Orders"}</H2>
               <div className="card-header-right-icon">
-                <a className="link-with-icon" href={Href}>
+                <a className="link-with-icon" href="/orders-history">
                   {"View all"}
                   <SvgIcon iconId="arrow-two-tone" />
                 </a>
@@ -31,8 +31,8 @@ export default function ProjectsStatus() {
           <CardBody className="project-table p-0">
             <DataTable
               className="custom-scrollbar"
-              data={projectsStatusData}
-              columns={projectsStatusColumn}
+              data={recentOrderData}
+              columns={recentOrder}
             />
           </CardBody>
         </Card>
@@ -45,7 +45,7 @@ export default function ProjectsStatus() {
             <div className="header-top">
               <H2>{"Activities "}</H2>
               <div className="card-header-right-icon">
-                <a className="link-with-icon" href={Href}>
+                <a className="link-with-icon" href="/activities">
                   {"View all"}
                   <SvgIcon iconId="arrow-two-tone" />
                 </a>
@@ -56,8 +56,8 @@ export default function ProjectsStatus() {
             {/* Add your second DataTable or other content here */}
             <DataTable
               className="custom-scrollbar"
-              data={projectsStatusData}
-              columns={projectsStatusColumn}
+              data={RecentActivitiesData}
+              columns={RecentActivities}
             />
           </CardBody>
         </Card>

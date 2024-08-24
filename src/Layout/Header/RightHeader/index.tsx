@@ -32,7 +32,7 @@ export default function RightHeader() {
       </LI> */}
       <HoldCarts />
       {/* <NotificationBox /> */}
-      {/* <ChatHeader /> */}
+      <ChatHeader />
 
       <ProfileHeader />
     </UL>

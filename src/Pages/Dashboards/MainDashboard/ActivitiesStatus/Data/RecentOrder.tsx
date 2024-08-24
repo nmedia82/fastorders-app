@@ -1,13 +1,22 @@
+/** @format */
+
 import { ApexOptions } from "apexcharts";
-import { Badges, Image, LI, ProgressBar, UL } from "../../AbstractElements";
-import { dynamicImage } from "../../Utils";
+import {
+  Badges,
+  Image,
+  LI,
+  ProgressBar,
+  UL,
+} from "../../../../../AbstractElements";
+import { dynamicImage } from "../../../../../Utils";
 import {
   CustomComponentProps,
   CustomTeamProps,
   ProjectDataTypes,
-} from "../../Types/Dashboard.type";
+} from "../../../../../Types/Dashboard.type";
+
 import { TableColumn } from "react-data-table-component";
-import CommonDropdown from "../../Utils/CommonComponents/CommonDropdown";
+import CommonDropdown from "../../../../../Utils/CommonComponents/CommonDropdown";
 
 //charts
 export const projectsEarningsOptions: ApexOptions = {
@@ -672,7 +681,7 @@ const CustomBadge = ({ span, color, spanClass }: CustomComponentProps) => (
 
 const actionDropdownList = ["Edit", "Delete"];
 
-export const projectsStatusData: ProjectDataTypes[] = [
+export const recentOrderData: ProjectDataTypes[] = [
   {
     id: 1,
     detail: "",
@@ -727,43 +736,43 @@ export const projectsStatusData: ProjectDataTypes[] = [
   },
 ];
 
-export const projectsStatusColumn: TableColumn<ProjectDataTypes>[] = [
+export const recentOrder: TableColumn<ProjectDataTypes>[] = [
   {
-    name: "Project",
-    selector: (row) => row.project,
+    name: "ID",
+    selector: (row) => row.id,
     sortable: true,
     center: false,
   },
   {
-    name: "Team",
-    selector: (row) => row.extraTeam,
-    sortable: true,
-    center: false,
-    cell: (row) => <CustomTeam data={row.team} extra={row.extraTeam} />,
-  },
-  {
-    name: "Start Date",
-    selector: (row) => row.startDate,
-    sortable: true,
-    center: false,
-    cell: (row) => <CustomDate span={row.startDate} />,
-  },
-  {
-    name: "Due Date",
+    name: "Date",
     selector: (row) => row.dueDate,
     sortable: true,
     center: false,
     cell: (row) => <CustomDate span={row.dueDate} />,
   },
   {
-    name: "Progress",
-    selector: (row) => row.progressValue,
+    name: "Amount",
+    selector: (row) => row.startDate,
     sortable: true,
     center: false,
-    cell: (row) => (
-      <CommonProgress value={row.progressValue} color={row.progressColor} />
-    ),
+    cell: (row) => <CustomDate span={row.startDate} />,
   },
+  {
+    name: "Type",
+    selector: (row) => row.dueDate,
+    sortable: true,
+    center: false,
+    cell: (row) => <CustomDate span={row.dueDate} />,
+  },
+  //   {
+  //     name: "Progress",
+  //     selector: (row) => row.progressValue,
+  //     sortable: true,
+  //     center: false,
+  //     cell: (row) => (
+  //       <CommonProgress value={row.progressValue} color={row.progressColor} />
+  //     ),
+  //   },
   {
     name: "Status",
     selector: (row) => row.status,
@@ -773,22 +782,22 @@ export const projectsStatusColumn: TableColumn<ProjectDataTypes>[] = [
       <CustomBadge span={row.status} color={row.progressColor} spanClass="" />
     ),
   },
-  {
-    name: "Action",
-    selector: (row) => row.action,
-    sortable: true,
-    center: false,
-    cell: () => {
-      return (
-        <CommonDropdown
-          dropDownList={actionDropdownList}
-          dropDownClass="icon-dropdown text-center"
-          dropDownIcon
-          end
-        />
-      );
-    },
-  },
+  //   {
+  //     name: "Action",
+  //     selector: (row) => row.action,
+  //     sortable: true,
+  //     center: false,
+  //     cell: () => {
+  //       return (
+  //         <CommonDropdown
+  //           dropDownList={actionDropdownList}
+  //           dropDownClass="icon-dropdown text-center"
+  //           dropDownIcon
+  //           end
+  //         />
+  //       );
+  //     },
+  //   },
 ];
 
 export const budgetDetailsList = [

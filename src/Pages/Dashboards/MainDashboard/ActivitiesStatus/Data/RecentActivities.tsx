@@ -1,13 +1,22 @@
+/** @format */
+
 import { ApexOptions } from "apexcharts";
-import { Badges, Image, LI, ProgressBar, UL } from "../../AbstractElements";
-import { dynamicImage } from "../../Utils";
+import {
+  Badges,
+  Image,
+  LI,
+  ProgressBar,
+  UL,
+} from "../../../../../AbstractElements";
+import { dynamicImage } from "../../../../../Utils";
 import {
   CustomComponentProps,
   CustomTeamProps,
   ProjectDataTypes,
-} from "../../Types/Dashboard.type";
+} from "../../../../../Types/Dashboard.type";
+
 import { TableColumn } from "react-data-table-component";
-import CommonDropdown from "../../Utils/CommonComponents/CommonDropdown";
+import CommonDropdown from "../../../../../Utils/CommonComponents/CommonDropdown";
 
 //charts
 export const projectsEarningsOptions: ApexOptions = {
@@ -672,10 +681,10 @@ const CustomBadge = ({ span, color, spanClass }: CustomComponentProps) => (
 
 const actionDropdownList = ["Edit", "Delete"];
 
-export const projectsStatusData: ProjectDataTypes[] = [
+export const RecentActivitiesData: ProjectDataTypes[] = [
   {
     id: 1,
-    detail: "",
+    detail: "Order Details Here",
     project: "Development",
     team: ["1.png", "2.png", "3.png"],
     extraTeam: 3,
@@ -688,7 +697,7 @@ export const projectsStatusData: ProjectDataTypes[] = [
   },
   {
     id: 2,
-    detail: "",
+    detail: "Order Details Here",
     project: "Web Landing",
     team: ["4.png", "5.png"],
     extraTeam: 9,
@@ -701,7 +710,7 @@ export const projectsStatusData: ProjectDataTypes[] = [
   },
   {
     id: 3,
-    detail: "",
+    detail: "Order Details Here",
     project: "Development",
     team: ["6.png", "7.png", "8.png"],
     extraTeam: 3,
@@ -714,7 +723,7 @@ export const projectsStatusData: ProjectDataTypes[] = [
   },
   {
     id: 4,
-    detail: "",
+    detail: "Order Details Here",
     project: "Marketing",
     team: ["9.png", "10.png", "11.png"],
     extraTeam: 4,
@@ -727,68 +736,62 @@ export const projectsStatusData: ProjectDataTypes[] = [
   },
 ];
 
-export const projectsStatusColumn: TableColumn<ProjectDataTypes>[] = [
+export const RecentActivities: TableColumn<ProjectDataTypes>[] = [
   {
-    name: "Project",
-    selector: (row) => row.project,
-    sortable: true,
-    center: false,
-  },
-  {
-    name: "Team",
-    selector: (row) => row.extraTeam,
-    sortable: true,
-    center: false,
-    cell: (row) => <CustomTeam data={row.team} extra={row.extraTeam} />,
-  },
-  {
-    name: "Start Date",
-    selector: (row) => row.startDate,
-    sortable: true,
-    center: false,
-    cell: (row) => <CustomDate span={row.startDate} />,
-  },
-  {
-    name: "Due Date",
+    name: "Date",
     selector: (row) => row.dueDate,
     sortable: true,
     center: false,
     cell: (row) => <CustomDate span={row.dueDate} />,
   },
   {
-    name: "Progress",
-    selector: (row) => row.progressValue,
+    name: "Detail",
+    selector: (row) => row.detail,
     sortable: true,
     center: false,
-    cell: (row) => (
-      <CommonProgress value={row.progressValue} color={row.progressColor} />
-    ),
+    cell: (row) => <CustomDate span={row.detail} />,
   },
-  {
-    name: "Status",
-    selector: (row) => row.status,
-    sortable: true,
-    center: false,
-    cell: (row) => (
-      <CustomBadge span={row.status} color={row.progressColor} spanClass="" />
-    ),
-  },
-  {
-    name: "Action",
-    selector: (row) => row.action,
-    sortable: true,
-    center: false,
-    cell: () => {
-      return (
-        <CommonDropdown
-          dropDownList={actionDropdownList}
-          dropDownClass="icon-dropdown text-center"
-          dropDownIcon
-          end
-        />
-      );
+    {
+    //   name: "Type",
+    //   selector: (row) => row.dueDate,
+    //   sortable: true,
+    //   center: false,
+    //   cell: (row) => <CustomDate span={row.dueDate} />,
     },
-  },
+  //   {
+  //     name: "Progress",
+  //     selector: (row) => row.progressValue,
+  //     sortable: true,
+  //     center: false,
+  //     cell: (row) => (
+  //       <CommonProgress value={row.progressValue} color={row.progressColor} />
+  //     ),
+  //   },
+  //   {
+  //     name: "Status",
+  //     selector: (row) => row.status,
+  //     sortable: true,
+  //     center: false,
+  //     cell: (row) => (
+  //       <CustomBadge span={row.status} color={row.progressColor} spanClass="" />
+  //     ),
+  //   },
+  //   {
+  //     name: "Action",
+  //     selector: (row) => row.action,
+  //     sortable: true,
+  //     center: false,
+  //     cell: () => {
+  //       return (
+  //         <CommonDropdown
+  //           dropDownList={actionDropdownList}
+  //           dropDownClass="icon-dropdown text-center"
+  //           dropDownIcon
+  //           end
+  //         />
+  //       );
+  //     },
+  //   },
 ];
 
 export const budgetDetailsList = [
