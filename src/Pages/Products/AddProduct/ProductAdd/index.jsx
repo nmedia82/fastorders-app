@@ -4,9 +4,12 @@ import AddProductDetails from "./AddProductDetails";
 import ProductGallery from "./ProductGallery";
 import { toast } from "react-toastify";
 import { getVendorID } from "../../../../services/auth";
-import { addProduct } from "../../../../ReduxToolkit/Reducers/ProductsReducer";
+import {
+  addProduct,
+  updateProduct,
+} from "../../../../ReduxToolkit/Reducers/ProductsReducer";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function ProductAdd({ steps, activeCallBack }) {
@@ -19,12 +22,12 @@ export default function ProductAdd({ steps, activeCallBack }) {
     discount_price: "",
     categories: [],
     sku: "",
-    manage_stock: false,
+    manage_stock: true,
     stock_quantity: "",
     product_cost: "",
     images: [],
   });
-  console.log(product);
+  const navigate = useNavigate();
   const { product_id } = useParams();
   useEffect(() => {
     if (product_id) {
@@ -48,11 +51,14 @@ export default function ProductAdd({ steps, activeCallBack }) {
         const productData = {
           ...product,
           categories: formatedCategories,
+          sku: "",
         };
-        console.log(product);
-        // Dispatch the addProduct action
-        // await dispatch(addProduct(product)).unwrap();
-        toast.success("Product Updated successfully");
+        // Dispatch the updateProduct action
+        const resp = await dispatch(updateProduct(productData));
+        if (resp.payload.success) {
+          toast.success("Product Updated successfully");
+          navigate(`${process.env.PUBLIC_URL}/products`);
+        }
       } else {
         const productData = {
           ...product,

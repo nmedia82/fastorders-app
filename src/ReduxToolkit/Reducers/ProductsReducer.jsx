@@ -74,11 +74,8 @@ export const deleteCategory = createAsyncThunk(
 // Update a product
 export const updateProduct = createAsyncThunk(
   "products/updateProduct",
-  async ({ productId, updatedData }) => {
-    const response = await axios.put(`${api_url}/update-product/${productId}`, {
-      ...updatedData,
-      vendor_id,
-    });
+  async (updatedData) => {
+    const response = await axios.post(`${api_url}/save-product`, updatedData);
     return response.data;
   }
 );
