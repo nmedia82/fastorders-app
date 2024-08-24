@@ -25,6 +25,7 @@ export const fetchOrders = createAsyncThunk("orders/fetchOrders", async () => {
 const initialState = {
   allOrders: [],
   currentOrders: [],
+  newOrders: [],
   allOrderStatuses: [],
   isLoading: false,
 };
@@ -52,6 +53,13 @@ const OrdersSlice = createSlice({
         (order) => order.order_status !== "completed"
       );
     },
+    syncNewOrders: (state, action) => {
+      state.newOrders = [action.payload, ...state.allOrders];
+      state.allOrders = [action.payload, ...state.allOrders];
+    },
+    resetNewOrders: (state) => {
+      state.newOrders = [];
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchOrders.fulfilled, (state, action) => {
@@ -66,5 +74,11 @@ const OrdersSlice = createSlice({
   },
 });
 
-export const { setOrders, setOrderStatus, setLoading } = OrdersSlice.actions;
+export const {
+  setOrders,
+  setOrderStatus,
+  setLoading,
+  syncNewOrders,
+  resetNewOrders,
+} = OrdersSlice.actions;
 export default OrdersSlice.reducer;

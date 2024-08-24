@@ -13,6 +13,7 @@
 
 
 
+
     <symbol id="email" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M22 10.5V15.5C22 19 20 20.5 17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H14" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
         <path opacity="0.4" d="M7 9L10.13 11.5C11.16 12.32 12.85 12.32 13.88 11.5L15.06 10.56" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -73,6 +74,11 @@
     <symbol id="pause" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
     <path d="M7 4H10C10.5523 4 11 4.44772 11 5V21C11 21.5523 10.5523 22 10 22H7C6.44772 22 6 21.5523 6 21V5C6 4.44772 6.44772 4 7 4ZM16 4H19C19.5523 4 20 4.44772 20 5V21C20 21.5523 19.5523 22 19 22H16C15.4477 22 15 21.5523 15 21V5C15 4.44772 15.4477 4 16 4Z"/>
 </symbol>
+<symbol id="book" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5 3H19C19.5523 3 20 3.44772 20 4V22C20 22.5523 19.5523 23 19 23H5C4.44772 23 4 22.5523 4 22V4C4 3.44772 4.44772 3 5 3ZM6 5V21H18V5H6Z"/>
+    <path d="M20 3H22C22.5523 3 23 3.44772 23 4V22C23 22.5523 22.5523 23 22 23H20V3Z"/>
+</symbol>
+
 
 
 <symbol id="categories" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
@@ -503,6 +509,13 @@
         <path d="M15.2583 10.0003C16.9416 10.0003 18.175 8.63366 18.0083 6.95866L17.775 4.66699C17.475 2.50033 16.6416 1.66699 14.4583 1.66699H11.9166L12.5 7.50866C12.6416 8.88366 13.8833 10.0003 15.2583 10.0003Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M4.70002 10.0003C6.07502 10.0003 7.31669 8.88366 7.45002 7.50866L7.63336 5.66699L8.03336 1.66699H5.49169C3.30836 1.66699 2.47502 2.50033 2.17502 4.66699L1.95002 6.95866C1.78336 8.63366 3.01669 10.0003 4.70002 10.0003Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
+    <symbol id="stroke-categories" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3" y="3" width="7" height="7" rx="1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="14" y="3" width="7" height="7" rx="1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="3" y="14" width="7" height="7" rx="1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="14" y="14" width="7" height="7" rx="1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+
 
     <symbol id="stroke-email" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M22 10.5V15.5C22 19 20 20.5 17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H14" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
