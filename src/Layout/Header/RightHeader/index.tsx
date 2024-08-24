@@ -8,20 +8,21 @@ import { RootState } from "../../../ReduxToolkit/Store";
 import { setIsSearchBarOpen } from "../../../ReduxToolkit/Reducers/Layout/LayoutReducer";
 import NotificationBox from "./NotificationBox";
 // import MoonLight from "./MoonLight";
-import ChatHeader from "./ChatHeader";
+import Registers from "./Registers";
 // import CartHeader from "./CartHeader";
 import ProfileHeader from "./ProfileHeader";
 import HoldCarts from "./HoldCarts";
 import CartHeaderList from "./CartHeader/CartHeaderList";
+import OrdersNotificationBox from "./OrderNotifications";
 // import MaximizeScreen from "./MaximizeScreen";
 // import BookmarkHeader from "./BookmarkHeader";
 
 export default function RightHeader() {
   const dispatch = useDispatch();
   const { isSearchBarOpen } = useSelector((state: RootState) => state.layout);
-  const handleSearch = () => {
-    dispatch(setIsSearchBarOpen(!isSearchBarOpen));
-  };
+  const { holdCarts, newOrders } = useSelector(
+    (state: RootState) => state.cart
+  );
 
   return (
     <UL className="nav-menus simple-list flex-row">
@@ -30,9 +31,11 @@ export default function RightHeader() {
           <SvgIcon iconId="search" onClick={handleSearch} />
         </span>
       </LI> */}
-      <HoldCarts />
+      {holdCarts.length > 0 && <HoldCarts holdCarts={holdCarts} />}
       {/* <NotificationBox /> */}
-      <ChatHeader />
+      <OrdersNotificationBox newOrders={newOrders} />
+      {/* <Registers /> */}
+      <Registers />
 
       <ProfileHeader />
     </UL>

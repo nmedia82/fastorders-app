@@ -85,12 +85,12 @@ export const profileHeaderData = [
   //     icon: 'stroke-email',
   //     text: 'Inbox'
   // },
-  // {
-  //     id: 3,
-  //     link: `applications/task`,
-  //     icon: 'notepad',
-  //     text: 'Taskboard'
-  // },
+  {
+    id: 3,
+    link: `discounts`,
+    icon: "notepad",
+    text: "Discounts",
+  },
   {
     id: 4,
     link: `applications/users/edit_profile`,

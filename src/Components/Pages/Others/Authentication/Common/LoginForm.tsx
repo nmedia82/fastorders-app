@@ -15,14 +15,6 @@ import { Link, useNavigate } from "react-router-dom";
 import SocialLinks from "../../../../../Pages/Auth/SocialLinks";
 import { loginUser } from "../../../../../services/auth";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import {
-  fetchCategories,
-  fetchProducts,
-} from "../../../../../ReduxToolkit/Reducers/ProductsReducer";
-import { AppDispatch } from "../../../../../ReduxToolkit/Store";
-import { fetchOrders } from "../../../../../ReduxToolkit/Reducers/OrdersReducer";
-
 export default function LoginForm({ logoClass }: LoginFormProp) {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -33,8 +25,6 @@ export default function LoginForm({ logoClass }: LoginFormProp) {
     checkbox1: false,
   });
   const navigate = useNavigate();
-
-  const dispatch = useDispatch<AppDispatch>();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value, type, checked } = e.target;
@@ -48,10 +38,6 @@ export default function LoginForm({ logoClass }: LoginFormProp) {
     setLoading(true);
     loginUser(formData)
       .then(async (data) => {
-        // disptching products/categories/orders
-        await dispatch(fetchProducts());
-        await dispatch(fetchCategories());
-        await dispatch(fetchOrders());
         navigate(`/dashboard`);
       })
       .catch((error) => {

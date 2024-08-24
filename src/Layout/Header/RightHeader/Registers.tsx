@@ -8,7 +8,7 @@ import { dynamicImage } from "../../../Utils";
 import { JaneCooper } from "../../../Utils/Constants";
 import { chatHeaderData } from "../../../Data/Layout/RightHeader";
 
-export default function ChatHeader() {
+export default function Registers() {
   return (
     <LI className="cart-nav onhover-dropdown">
       <div>
