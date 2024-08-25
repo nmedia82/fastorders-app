@@ -1,20 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { Btn, H6, P } from "../../../../AbstractElements";
 import SvgIcon from "../../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
-import MultiImageUploader from "../../../../Components/NM/ImageUploader";
 import MultiImageUploaderWithCrop from "../../../../Components/NM/ImageUploaderWithCrop";
 
 export default function ProductGallery({
   activeCallBack,
   product,
   onSaveProduct,
-  onFormChange,
 }) {
   const [productImages, setProductImages] = useState([]);
-  console.log(productImages);
+  const [isSaving, setIsSaving] = useState(false); // To handle loading during save
+
+  // Load existing product images when component mounts
   useEffect(() => {
     setProductImages(product.images || []);
   }, [product]);
+
+  // Handle saving the product, including a loading state
+  const handleSaveProduct = async () => {
+    setIsSaving(true);
+    try {
+      await onSaveProduct(); // Assuming onSaveProduct is async
+    } catch (error) {
+      console.error("Error saving product:", error);
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
   return (
     <div className="sidebar-body">
@@ -35,9 +47,20 @@ export default function ProductGallery({
             <SvgIcon iconId="back-arrow" /> {"Previous"}
           </div>
         </Btn>
-        <Btn color="transparent" onClick={onSaveProduct}>
+
+        {/* Save Button with loading state and disabled check */}
+        <Btn
+          color="transparent"
+          onClick={handleSaveProduct}
+          disabled={isSaving || productImages.length === 0} // Disable if saving or no images
+        >
           <div className="d-flex align-items-center gap-sm-2 gap-1">
-            <SvgIcon iconId="front-arrow" /> {"Add Product"}
+            {isSaving ? (
+              <span className="spinner-border spinner-border-sm me-2" />
+            ) : (
+              <SvgIcon iconId="front-arrow" />
+            )}
+            {"Add Product"}
           </div>
         </Btn>
       </div>

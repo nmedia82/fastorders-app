@@ -10,7 +10,7 @@ import { canvasPreview } from "./CanvasPreview";
 
 interface ProductImageCropperProps {
   fileSrc: string; // The external file source passed via props
-  onCropped: (croppedBlob: Blob | null) => void; // Callback to return the cropped image
+  onCropped: (croppedFile: File | null) => void; // Callback to return the cropped image as a File
 }
 
 export default function ProductImageCropper({
@@ -51,12 +51,20 @@ export default function ProductImageCropper({
     }
   }
 
-  // Convert canvas to Blob (cropped image)
+  // Convert canvas to File (cropped image)
   const getCroppedImage = () => {
     if (previewCanvasRef.current) {
       previewCanvasRef.current.toBlob((blob) => {
-        onCropped(blob); // Pass cropped image Blob to parent via callback
-      });
+        if (!blob) return;
+
+        // Create a File object from Blob
+        const fileName = `cropped_${Date.now()}.jpg`; // You can adjust the filename and extension here
+        const croppedFile = new File([blob], fileName, {
+          type: "image/jpeg", // Adjust the MIME type as needed
+        });
+
+        onCropped(croppedFile); // Pass the File to the parent component
+      }, "image/jpeg"); // Set the output image type (JPEG or PNG)
     }
   };
 

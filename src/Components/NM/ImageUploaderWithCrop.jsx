@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Dropzone from "react-dropzone-uploader";
 import { Form, Button } from "reactstrap";
 import SvgIcon from "../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
-import { H6 } from "../../AbstractElements";
+import { H6, Image } from "../../AbstractElements";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { getAPIURLAWS, getVendorID } from "../../services/helper";
@@ -12,39 +12,45 @@ import ProductImageCropper from "./ImageCropper/ImageCropperBody";
 const api_url_aws = getAPIURLAWS();
 const vendor_id = getVendorID();
 
-const MultiImageUploaderWithCrop = ({ label, onUploaded }) => {
+const MultiImageUploaderWithCrop = ({ label, onUploaded, existingImages }) => {
   const [imageSrc, setImageSrc] = useState(null); // For cropping and display
   const [isWorking, setIsWorking] = useState(false);
-  const [croppedImage, setCroppedImage] = useState(null); // To store the cropped image data
-  const [filesToUpload, setFilesToUpload] = useState([]); // Keep track of multiple files
+  const [croppedImage, setCroppedImage] = useState(null); // To store a single cropped image
+  const [filesToUpload, setFilesToUpload] = useState([]); // Keep track of selected files
+  const [images, setImages] = useState([]);
 
-  // Handle file selection and pass to the cropper
-  const handleSubmit = (files, allFiles) => {
-    if (files.length > 0) {
+  useEffect(() => {
+    setImages(existingImages || []);
+  }, [existingImages]);
+
+  const handleDeleteImage = (index) => {
+    const updatedImages = images.filter((_, i) => i !== index);
+    setImages(updatedImages);
+    onUploaded(updatedImages);
+  };
+
+  // Handle the file change status directly from Dropzone
+  const handleChangeStatus = (fileWithMeta, status) => {
+    if (status === "done") {
       const reader = new FileReader();
       reader.addEventListener("load", () => {
         setImageSrc(reader.result); // Set the file to crop as soon as it's selected
       });
-      setFilesToUpload(files); // Keep track of the selected files
-      reader.readAsDataURL(files[0].file); // Read the image as data URL
-      allFiles.forEach((f) => f.remove()); // Clear the file after selection
+      setFilesToUpload([fileWithMeta.file]); // Store the selected file for later upload
+      reader.readAsDataURL(fileWithMeta.file); // Read the image as a data URL for preview
     }
   };
 
   // Handle the submission of the cropped image to the server
   const handleCroppedImageUpload = async () => {
     if (!croppedImage) return;
-    console.log(croppedImage);
+
     setIsWorking(true);
+
     try {
       const formData = new FormData();
-
-      // Loop through filesToUpload and append them as in your other application
-      for (let file of filesToUpload) {
-        formData.append("files[]", croppedImage); // Append the cropped image blob to files array
-      }
-
-      formData.append("vendor_id", vendor_id); // Append vendor_id for backend processing if needed
+      formData.append("files[]", croppedImage); // Append the cropped image to the form
+      formData.append("vendor_id", vendor_id); // Append vendor_id for backend processing
 
       // Send the image to the AWS endpoint
       const { data } = await axios.post(
@@ -52,24 +58,36 @@ const MultiImageUploaderWithCrop = ({ label, onUploaded }) => {
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data", // Set the content type correctly
+            "Content-Type": "multipart/form-data",
           },
         }
       );
 
       if (data.code === 200) {
         toast.success("Cropped image uploaded successfully!");
-        onUploaded(data.uploadedImage); // Return the uploaded image to the parent component
-        setImageSrc(null); // Reset the imageSrc state
-        setCroppedImage(null); // Clear the cropped image after upload
+        onUploaded(data.uploadedImages); // Return the uploaded image to the parent component
+        resetCropper(); // Reset cropper state after upload
       } else {
         throw new Error("Upload failed");
       }
     } catch (error) {
       console.error(error);
-      toast.error(`Cropped image upload failed: ${error.message}`);
+      toast.error(`Image upload failed: ${error.message}`);
     } finally {
       setIsWorking(false);
+    }
+  };
+
+  // Reset cropper state
+  const resetCropper = () => {
+    setImageSrc(null);
+    setCroppedImage(null);
+  };
+
+  // Handle when cropping is done
+  const handleCropComplete = (croppedBlob) => {
+    if (croppedBlob) {
+      setCroppedImage(croppedBlob); // Replace the existing cropped image with the new one
     }
   };
 
@@ -86,7 +104,7 @@ const MultiImageUploaderWithCrop = ({ label, onUploaded }) => {
           <Form onSubmit={(e) => e.preventDefault()}>
             <Dropzone
               multiple={false} // Only allow one image at a time for cropping
-              onSubmit={handleSubmit}
+              onChangeStatus={handleChangeStatus} // Use onChangeStatus to handle image selection
               inputContent={
                 <div className="dz-message needsclick">
                   <SvgIcon iconId="file-upload" />
@@ -104,19 +122,56 @@ const MultiImageUploaderWithCrop = ({ label, onUploaded }) => {
           <H6>Crop your image</H6>
           <ProductImageCropper
             fileSrc={imageSrc}
-            onCropped={(croppedBlob) => {
-              setCroppedImage(croppedBlob); // Store the cropped image blob
-            }}
+            onCropped={handleCropComplete} // Store the cropped image blob
           />
           <Button
             color="primary"
             onClick={handleCroppedImageUpload}
-            disabled={!croppedImage}
+            disabled={!croppedImage} // Disable if no image is cropped
           >
-            Crop & Upload
+            Upload Cropped Image
+          </Button>
+          <Button
+            color="secondary"
+            onClick={resetCropper}
+            style={{ marginLeft: "10px" }}
+          >
+            Cancel
           </Button>
         </div>
       )}
+      <div
+        className="image-grid"
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "10px",
+          marginTop: "20px",
+        }}
+      >
+        {images.length > 0 &&
+          images.map((image, index) => (
+            <div
+              key={index}
+              className="image-item"
+              style={{ position: "relative", width: "150px" }}
+            >
+              <Image src={image} width={150} />
+              <i
+                className="icon icon-trash cursor-pointer txt-theme-red"
+                onClick={() => handleDeleteImage(index)}
+                style={{
+                  fontSize: "20px",
+                  cursor: "pointer",
+                  position: "absolute",
+                  bottom: "-30px",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                }}
+              ></i>
+            </div>
+          ))}
+      </div>
     </div>
   );
 };
