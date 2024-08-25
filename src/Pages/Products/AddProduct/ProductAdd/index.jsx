@@ -46,7 +46,7 @@ export default function ProductAdd({ steps, activeCallBack }) {
     const vendor_id = await getVendorID();
     const randomID = Math.random().toString(36).substring(2, 10);
     const formatedCategories = product.categories.map((cat) => cat.id);
-    console.log(formatedCategories);
+    // console.log(formatedCategories);
     try {
       if (product_id) {
         const productData = {
