@@ -45,6 +45,11 @@ export function getAPIURL() {
   return api_url;
 }
 
+export function getAPIURLAWS() {
+  const { api_url_aws } = data;
+  return api_url_aws;
+}
+
 export function getVendorID() {
   const { vendor_id } = data;
   return vendor_id;

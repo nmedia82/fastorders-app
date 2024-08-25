@@ -69,7 +69,7 @@ export default function Layout() {
       }
     };
 
-    const notificationInterval = setInterval(checkUnreadNotifications, 50000); // Check every 30 seconds
+    const notificationInterval = setInterval(checkUnreadNotifications, 500000); // Check every 30 seconds
 
     return () => clearInterval(notificationInterval);
   }, [dispatch]);

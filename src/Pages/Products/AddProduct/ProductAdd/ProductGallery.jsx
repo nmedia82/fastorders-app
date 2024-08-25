@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Btn, H6, P } from "../../../../AbstractElements";
 import SvgIcon from "../../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
 import MultiImageUploader from "../../../../Components/NM/ImageUploader";
+import MultiImageUploaderWithCrop from "../../../../Components/NM/ImageUploaderWithCrop";
 
 export default function ProductGallery({
   activeCallBack,
@@ -17,7 +18,7 @@ export default function ProductGallery({
 
   return (
     <div className="sidebar-body">
-      <MultiImageUploader
+      <MultiImageUploaderWithCrop
         multiple={true}
         label={"Upload Images"}
         existingImages={productImages}
