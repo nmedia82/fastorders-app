@@ -41,7 +41,8 @@ export default function ProductAdd({ steps, activeCallBack }) {
   const handleFormChange = (key, value) => {
     setProduct((prevProduct) => ({ ...prevProduct, [key]: value }));
   };
-  const handleSaveProduct = async () => {
+
+  const handleSaveProduct = async (productImages) => {
     const vendor_id = await getVendorID();
     const randomID = Math.random().toString(36).substring(2, 10);
     const formatedCategories = product.categories.map((cat) => cat.id);
@@ -50,6 +51,7 @@ export default function ProductAdd({ steps, activeCallBack }) {
       if (product_id) {
         const productData = {
           ...product,
+          images: [...productImages],
           categories: formatedCategories,
           sku: "",
         };

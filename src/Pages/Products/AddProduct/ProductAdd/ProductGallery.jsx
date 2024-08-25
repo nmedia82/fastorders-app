@@ -20,7 +20,7 @@ export default function ProductGallery({
   const handleSaveProduct = async () => {
     setIsSaving(true);
     try {
-      await onSaveProduct(); // Assuming onSaveProduct is async
+      await onSaveProduct(productImages); // Assuming onSaveProduct is async
     } catch (error) {
       console.error("Error saving product:", error);
     } finally {
