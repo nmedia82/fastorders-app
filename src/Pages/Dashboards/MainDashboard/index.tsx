@@ -26,10 +26,12 @@ export default function MainDashboard() {
     best_selling_items,
     service_fees,
     total_discount,
-    total_orders,
+    total_completed_orders,
     total_refund_amount,
     total_refunds,
     total_sales,
+    total_in_progress_orders,
+    in_progress_sales,
     total_tax,
   } = dashoardReports;
 
@@ -38,13 +40,12 @@ export default function MainDashboard() {
       {isLoading && <Loader />}
       <Row>
         {/* <WelcomeCard /> */}
-        <TotalOrders total_orders={total_orders} colClass="" />
+        <TotalOrders total_orders={total_completed_orders} colClass="" />
         <ReportWidget
           Title={"Total Sales"}
           Data={getFormattedPrice(total_sales)}
           currentRange={currentRange}
         />
-        <OrderProgress />
         <ReportWidget
           Title={"Total Fees"}
           Data={getFormattedPrice(total_discount)}
@@ -55,6 +56,18 @@ export default function MainDashboard() {
           Data={getFormattedPrice(service_fees)}
           currentRange={currentRange}
         />
+
+        <ReportWidget
+          Title={"Order (In-Progress)"}
+          Data={total_in_progress_orders}
+          currentRange={currentRange}
+        />
+        <ReportWidget
+          Title={"Sales (In-Progress)"}
+          Data={getFormattedPrice(in_progress_sales)}
+          currentRange={currentRange}
+        />
+
         <ReportWidget
           Title={"Total Refunds"}
           Data={total_refunds}
