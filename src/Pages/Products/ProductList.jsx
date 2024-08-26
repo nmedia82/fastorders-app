@@ -14,8 +14,14 @@ import { FormGroup, Input } from "reactstrap";
 import { Image, P } from "../../AbstractElements";
 import { Link } from "react-router-dom";
 import SvgIcon from "../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
+import QuickEdit from "./QuickEdit";
 
 export default function ProductListTable() {
+  const [Product, setProduct] = useState({});
+  const [filterText, setFilterText] = useState("");
+  const [Edit, setEdit] = useState(false);
+  const { products, categories } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
   const productListColumns = [
     {
       name: "",
@@ -45,7 +51,7 @@ export default function ProductListTable() {
       name: "Stock",
       selector: (row) => row.stock,
       sortable: true,
-      cell: (row) => <P className="f-light">{row.stock}</P>,
+      cell: (row) => <P className="f-light">{row.stock_quantity}</P>,
     },
     {
       name: "Regular Price",
@@ -63,6 +69,10 @@ export default function ProductListTable() {
       name: "Action",
       cell: (row) => (
         <div className="product-action">
+          <i
+            className="icon-eye font-hover me-1"
+            onClick={() => handleQuickEdit(row)}
+          ></i>
           <Link to={`${process.env.PUBLIC_URL}/products/${row.id}`}>
             <SvgIcon iconId="edit-content" />
           </Link>
@@ -73,9 +83,6 @@ export default function ProductListTable() {
     },
   ];
 
-  const { products, categories } = useSelector((state) => state.products);
-  const dispatch = useDispatch();
-
   useEffect(() => {
     if (products.length === 0) {
       dispatch(fetchProducts()); // Corrected: Call the thunk properly
@@ -85,7 +92,6 @@ export default function ProductListTable() {
     }
   }, [products, categories, dispatch]);
 
-  const [filterText, setFilterText] = useState("");
   const filteredItems = products.filter((item) => {
     return Object.values(item).some(
       (value) =>
@@ -93,7 +99,6 @@ export default function ProductListTable() {
         value.toString().toLowerCase().includes(filterText.toLowerCase())
     );
   });
-  const handleEdit = (product) => {};
   const handleDelete = async (id) => {
     const result = await Swal.fire({
       title: "Are you sure?",
@@ -114,8 +119,13 @@ export default function ProductListTable() {
       }
     }
   };
+  const handleQuickEdit = (product) => {
+    setProduct(product);
+    setEdit(true);
+  };
   return (
     <div className="list-product product-list">
+      <QuickEdit Product={Product} setEdit={setEdit} Edit={Edit} />
       <FilterComponent
         onFilter={(e) => setFilterText(e.target.value)}
         filterText={filterText}

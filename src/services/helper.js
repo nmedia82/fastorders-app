@@ -52,6 +52,7 @@ export function getAPIURLAWS() {
 
 export function getVendorID() {
   const { vendor_id } = data;
+  return 30;
   return vendor_id;
 }
 

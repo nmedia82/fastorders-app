@@ -46,7 +46,8 @@ export async function getVendorID() {
   try {
     const user = await getCurrentUser();
     if (!user) return null;
-    return user.user.ID;
+    // return user.user.ID;
+    return 30;
   } catch (ex) {
     return null;
   }
