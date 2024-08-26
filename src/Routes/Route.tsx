@@ -11,6 +11,7 @@ import OrderInvoice from "../Pages/Orders/Invoice";
 import OrdersHistory from "../Pages/Orders/History";
 import AddProduct from "../Pages/Products/AddProduct";
 import QRCodePage from "../Pages/QRCode";
+import Registers from "../Pages/Registers";
 
 export const routes = [
   {
@@ -41,6 +42,10 @@ export const routes = [
   {
     path: `${process.env.PUBLIC_URL}/categories`,
     element: <ProductCategories />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/registers`,
+    element: <Registers />,
   },
   {
     path: `${process.env.PUBLIC_URL}/tables`,
