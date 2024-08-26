@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import { setSideBarToggle } from "../ReduxToolkit/Reducers/Layout/LayoutReducer";
@@ -21,6 +21,8 @@ import {
 } from "../ReduxToolkit/Reducers/OrdersReducer";
 import axios from "axios";
 import { getAPIURL, getVendorSettings } from "../services/helper";
+import { fetchDashboardReports } from "../ReduxToolkit/Reducers/AppReducer";
+
 const vendor_id = getVendorSettings("vendor_id");
 
 export default function Layout() {
@@ -31,7 +33,7 @@ export default function Layout() {
   const dispatch = useDispatch<AppDispatch>();
   const api_url = getAPIURL();
 
-  const updateSidebarBasedOnWidth = () => {
+  const updateSidebarBasedOnWidth = useCallback(() => {
     const windowWidth = window.innerWidth;
     if (sidebar_types === "compact-wrapper") {
       if (windowWidth <= 1200) {
@@ -48,37 +50,49 @@ export default function Layout() {
         dispatch(addSidebarTypes("horizontal-wrapper"));
       }
     }
-  };
+  }, [sidebar_types, dispatch]);
+
   useEffect(() => {
     updateSidebarBasedOnWidth();
-    window.addEventListener("resize", () => {
+    const handleResize = () => {
       updateSidebarBasedOnWidth();
-    });
-  }, [sidebar_types]);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [updateSidebarBasedOnWidth]);
 
   // Checking unread notifications every 30 seconds
   useEffect(() => {
-    const checkUnreadNotifications = async () => {
-      const ts = localStorage.getItem("getorder_orders_ts");
-      console.log("checking ts");
-      if (ts) {
-        const { data: orders } = await axios.get(
-          `${api_url}/get-orders?vendor_id=${vendor_id}&ts=${ts}`
-        );
-        dispatch(syncNewOrders(orders.data));
+    const checkNewOrderNotifications = async () => {
+      try {
+        const ts = localStorage.getItem("getorder_orders_ts");
+        console.log("checking ts");
+        if (ts) {
+          const { data: orders } = await axios.get(
+            `${api_url}/get-orders?vendor_id=${vendor_id}&ts=${ts}`
+          );
+          dispatch(syncNewOrders(orders.data));
+        }
+      } catch (error) {
+        console.error("Error fetching unread notifications", error);
       }
     };
 
-    const notificationInterval = setInterval(checkUnreadNotifications, 500000); // Check every 30 seconds
+    const notificationInterval = setInterval(checkNewOrderNotifications, 30000); // Check every 30 seconds (30000 ms)
 
     return () => clearInterval(notificationInterval);
-  }, [dispatch]);
+  }, [dispatch, api_url]);
 
   useEffect(() => {
-    // disptching products/categories/orders
+    // Dispatching products/categories/orders
     dispatch(fetchProducts());
     dispatch(fetchCategories());
     dispatch(fetchOrders());
+    dispatch(fetchDashboardReports("last_24_hours"));
   }, [dispatch]);
 
   return (

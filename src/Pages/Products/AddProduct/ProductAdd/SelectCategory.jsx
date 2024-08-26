@@ -18,15 +18,14 @@ export default function SelectCategory({ title, onFormChange, value }) {
   }, [categories]);
   const handleChange = (selected) => {
     const formated = selected.map((cat) => cat.value);
-    console.log(formated);
     onFormChange("categories", formated);
   };
   const formattedValue = value.map((val) => ({
     label: val.name,
     value: val,
   }));
-  console.log(value);
-  console.log(selectData);
+  // console.log(value);
+  // console.log(selectData);
   return (
     <Row className="g-2 product-tag">
       <Col xs={12}>

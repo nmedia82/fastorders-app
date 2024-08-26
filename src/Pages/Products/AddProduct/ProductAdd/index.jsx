@@ -28,12 +28,16 @@ export default function ProductAdd({ steps, activeCallBack }) {
     images: [],
   });
   const navigate = useNavigate();
+
   const { product_id } = useParams();
   useEffect(() => {
     if (product_id) {
       const found = products.find(
         (product) => String(product.id) === String(product_id)
       );
+
+      if (!found) navigate("/products"); // if refreshed while editing
+
       setProduct({ ...found });
     }
   }, [product_id]);

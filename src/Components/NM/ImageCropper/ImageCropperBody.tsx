@@ -11,18 +11,34 @@ import { canvasPreview } from "./CanvasPreview";
 interface ProductImageCropperProps {
   fileSrc: string; // The external file source passed via props
   onCropped: (croppedFile: File | null) => void; // Callback to return the cropped image as a File
+  aspectRatio?: "square" | "vertical" | "rect"; // New prop to handle aspect ratio
 }
 
 export default function ProductImageCropper({
   fileSrc,
   onCropped,
+  aspectRatio = "rect", // Default to 'rect' (16/9)
 }: ProductImageCropperProps) {
   const [imageSrc, setImageSrc] = useState<string>(fileSrc || ""); // Initialize with fileSrc prop
   const previewCanvasRef = useRef<HTMLCanvasElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const [crop, setCrop] = useState<Crop>();
   const [completedCrop, setCompletedCrop] = useState<PixelCrop>();
-  const [aspect] = useState<number | undefined>(16 / 9); // Rectangular aspect ratio
+
+  // Map the aspect ratio from the prop
+  const getAspectRatio = () => {
+    switch (aspectRatio) {
+      case "square":
+        return 1; // 1:1 aspect ratio for square
+      case "vertical":
+        return 3 / 4; // 3:4 aspect ratio for vertical
+      case "rect":
+      default:
+        return 16 / 9; // 16:9 aspect ratio for rectangle
+    }
+  };
+
+  const [aspect] = useState<number | undefined>(getAspectRatio()); // Dynamically set aspect ratio
 
   useEffect(() => {
     // When fileSrc prop changes, update the imageSrc state
@@ -97,7 +113,7 @@ export default function ProductImageCropper({
             crop={crop}
             onChange={(_, percentCrop) => setCrop(percentCrop)}
             onComplete={(c) => setCompletedCrop(c)}
-            aspect={aspect}
+            aspect={aspect} // Set the dynamic aspect ratio here
           >
             <img
               ref={imageRef}

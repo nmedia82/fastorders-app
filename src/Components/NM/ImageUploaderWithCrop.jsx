@@ -119,17 +119,17 @@ const MultiImageUploaderWithCrop = ({ label, onUploaded, existingImages }) => {
       {/* Image cropper view */}
       {imageSrc && (
         <div style={{ marginTop: "20px" }}>
-          <H6>Crop your image</H6>
           <ProductImageCropper
             fileSrc={imageSrc}
             onCropped={handleCropComplete} // Store the cropped image blob
+            aspectRatio="square"
           />
           <Button
             color="primary"
             onClick={handleCroppedImageUpload}
             disabled={!croppedImage} // Disable if no image is cropped
           >
-            Upload Cropped Image
+            Upload Image
           </Button>
           <Button
             color="secondary"

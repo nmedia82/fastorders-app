@@ -70,6 +70,7 @@ export default function ProductListTable() {
       cell: (row) => (
         <div className="product-action">
           <i
+            role="button"
             className="icon-eye font-hover me-1"
             onClick={() => handleQuickEdit(row)}
           ></i>
