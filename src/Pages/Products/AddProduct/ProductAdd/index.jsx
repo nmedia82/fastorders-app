@@ -17,9 +17,9 @@ export default function ProductAdd({ steps, activeCallBack }) {
   const [product, setProduct] = useState({
     vendor_id: "",
     name: "",
-    price: "",
+    regular_price: "",
     description: "",
-    discount_price: "",
+    sale_price: "",
     categories: [],
     sku: "",
     manage_stock: true,

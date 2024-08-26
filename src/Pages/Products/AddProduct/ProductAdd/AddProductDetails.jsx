@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { toast } from "react-toastify";
-import { Btn, P } from "../../../../AbstractElements";
+import { Btn } from "../../../../AbstractElements";
 import SvgIcon from "../../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
 import SelectCategory from "./SelectCategory";
 
@@ -36,7 +36,6 @@ export default function AddProductDetails({
                 Product Name <span className="txt-danger">{"*"}</span>
               </Label>
               <Input
-                // className="is-invalid"
                 type="text"
                 name="name"
                 value={product.name}
@@ -53,44 +52,10 @@ export default function AddProductDetails({
               />
             </FormGroup>
           </Col>
-          <Col xs={6} className="m-0">
+
+          <Col xs={4} className="m-0">
             <FormGroup>
-              <Label>
-                Stock Quantity <span className="txt-danger">{"*"}</span>
-              </Label>
-              <Input
-                type="number"
-                name="stock_quantity"
-                value={product.stock_quantity}
-                onChange={(e) => onFormChange(e.target.name, e.target.value)}
-              />
-            </FormGroup>
-          </Col>
-          <Col xs={6} className="m-0">
-            <FormGroup>
-              <Label>Price</Label>
-              <Input
-                type="number"
-                name="price"
-                value={product.price}
-                onChange={(e) => onFormChange(e.target.name, e.target.value)}
-              />
-            </FormGroup>
-          </Col>
-          <Col xs={6} className="m-0">
-            <FormGroup>
-              <Label>Discount Price</Label>
-              <Input
-                type="number"
-                name="discount_price"
-                value={product.discount_price}
-                onChange={(e) => onFormChange(e.target.name, e.target.value)}
-              />
-            </FormGroup>
-          </Col>
-          <Col xs={6} className="m-0">
-            <FormGroup>
-              <Label> Product Cost</Label>
+              <Label>Product Cost</Label>
               <Input
                 type="number"
                 name="product_cost"
@@ -99,8 +64,56 @@ export default function AddProductDetails({
               />
             </FormGroup>
           </Col>
-          {/* <Inventory activeBorder={activeBorder} activeCallBack={activeCallBack} /> */}
-          {/* <ToolbarBox paragraph={"Improve product visibility by adding a compelling description."} /> */}
+          <Col xs={4} className="m-0">
+            <FormGroup>
+              <Label>Price</Label>
+              <Input
+                type="number"
+                name="regular_price"
+                value={product.regular_price}
+                onChange={(e) => onFormChange(e.target.name, e.target.value)}
+              />
+            </FormGroup>
+          </Col>
+          <Col xs={4} className="m-0">
+            <FormGroup>
+              <Label>Discount Price</Label>
+              <Input
+                type="number"
+                name="sale_price"
+                value={product.sale_price}
+                onChange={(e) => onFormChange(e.target.name, e.target.value)}
+              />
+            </FormGroup>
+          </Col>
+
+          <Col xs={6} className="m-0">
+            <FormGroup>
+              <FormGroup className="checkbox checkbox-primary mb-0" check>
+                <Input
+                  id="checkbox-primary-1"
+                  type="checkbox"
+                  name="manage_stock"
+                  checked={product.manage_stock || false} // Handle the checkbox state
+                  onChange={(e) =>
+                    onFormChange(e.target.name, e.target.checked)
+                  }
+                />
+                <Label htmlFor="checkbox-primary-1" check>
+                  {"Enable Stock"}
+                </Label>
+              </FormGroup>
+
+              {product.manage_stock && (
+                <Input
+                  type="number"
+                  name="stock_quantity"
+                  value={product.stock_quantity}
+                  onChange={(e) => onFormChange(e.target.name, e.target.value)}
+                />
+              )}
+            </FormGroup>
+          </Col>
         </Row>
       </Form>
       <div className="product-buttons">

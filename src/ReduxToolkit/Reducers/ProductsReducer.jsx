@@ -159,7 +159,7 @@ const ProductsSlice = createSlice({
       // Handle update product
       .addCase(updateProduct.fulfilled, (state, action) => {
         const index = state.products.findIndex(
-          (product) => product.id === action.meta.arg.productId
+          (product) => product.id === action.payload.data.id
         );
         if (index !== -1) {
           state.products[index] = action.payload.data; // Update the product in the state

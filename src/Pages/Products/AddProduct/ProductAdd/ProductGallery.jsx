@@ -41,7 +41,7 @@ export default function ProductGallery({
         <Btn
           color="transparent"
           className="me-1"
-          onClick={() => activeCallBack(2)}
+          onClick={() => activeCallBack(1)}
         >
           <div className="d-flex align-items-center gap-sm-2 gap-1">
             <SvgIcon iconId="back-arrow" /> {"Previous"}
