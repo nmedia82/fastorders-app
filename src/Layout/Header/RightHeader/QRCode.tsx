@@ -14,7 +14,7 @@ export default function QRCodePage() {
           {/* <SvgIcon iconId="qr-code" /> */}
           <Image
             className="img-fluid"
-            style={{ width: "20px", height: "20px" }}
+            style={{ width: "18px", height: "18px" }}
             src={dynamicImage(`qrcode/qrcode.png`)}
             alt=""
           />
