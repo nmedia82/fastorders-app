@@ -8,7 +8,7 @@ const vendor_id = getVendorID();
 // Fetch widget reports
 export const fetchDashboardReports = createAsyncThunk(
   "dashboard_reports",
-  async (range: string) => {
+  async (range) => {
     // const range = time === "24" ? "last_24_hours" : `last_${time}_days`;
     const payload = { range };
 
@@ -33,6 +33,7 @@ export const addActivityLog = createAsyncThunk("activity", async (payload) => {
 const initialState = {
   dashoardReports: [],
   allActivities: [],
+  registers: [],
   allRanges: [
     { key: "last_24_hours", label: "Last 24 Hours" },
     { key: "last_30_days", label: "Last 30 Days" },
@@ -42,7 +43,15 @@ const initialState = {
   currentRange: "Last 24 Hours",
   isLoading: false,
 };
-
+export const fetchRegisters = createAsyncThunk(
+  "products/fetchRegisters",
+  async () => {
+    const response = await axios.get(
+      `${api_url}/get-registers?vendor_id=${vendor_id}`
+    );
+    return response.data;
+  }
+);
 const AppSlice = createSlice({
   name: "products",
   initialState,
@@ -73,6 +82,17 @@ const AppSlice = createSlice({
       })
       .addCase(addActivityLog.fulfilled, (state, action) => {
         state.allActivities = [action.payload, ...state.allActivities];
+        state.isLoading = false;
+      })
+      // handle fetch registers
+      .addCase(fetchRegisters.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchRegisters.fulfilled, (state, action) => {
+        state.registers = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(fetchRegisters.rejected, (state) => {
         state.isLoading = false;
       });
   },

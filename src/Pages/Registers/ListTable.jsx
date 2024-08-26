@@ -1,14 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import FilterComponent from "../../Components/Applications/ECommerce/Common/FilterComponent";
 import { useSelector } from "react-redux";
 import { FormGroup, Input } from "reactstrap";
-import { Badges, Image, P } from "../../AbstractElements";
-import SvgIcon from "../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
-import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { deleteCategory } from "../../ReduxToolkit/Reducers/ProductsReducer";
-import Swal from "sweetalert2";
 
 export default function ListTable() {
   const categoryColumns = [
@@ -60,8 +55,9 @@ export default function ListTable() {
     // },
   ];
   const [filterText, setFilterText] = useState("");
+  const dispatch = useDispatch();
+  const { registers } = useSelector((state) => state.app);
   // const { registers } = useSelector((state) => state.products);
-  const registers = [];
   const filteredItems = registers.filter((item) => {
     return Object.values(item).some(
       (value) =>
