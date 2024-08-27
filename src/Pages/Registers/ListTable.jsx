@@ -22,24 +22,25 @@ export default function ListTable() {
       selector: (row) => row?.title,
       sortable: true,
       cell: (row) => <p>{row?.title}</p>,
-      width: "35%",
+      width: "30%",
     },
     {
       name: "Initial Cash",
       selector: (row) => row?.initial_cash,
       sortable: true,
       cell: (row) => <p>{row?.initial_cash}</p>,
+      width: "30%",
     },
     {
       name: "Total Ammount",
       selector: (row) => row?.final_cash,
       sortable: true,
       cell: (row) => <p>{row?.final_cash}</p>,
+      width: "30%",
     },
     {
       name: "Status",
       selector: (row) => row?.status,
-      sortable: true,
       cell: (row) => <p>{row?.status}</p>,
     },
 
