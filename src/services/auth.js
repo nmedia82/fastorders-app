@@ -30,6 +30,7 @@ export function login_user_locally(user_data) {
 
 export function logout() {
   localStorage.removeItem("getorder_vendor");
+  localStorage.removeItem("getorder_orders_ts");
 }
 
 export function getCurrentUser() {

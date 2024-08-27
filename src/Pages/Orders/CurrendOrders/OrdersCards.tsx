@@ -33,14 +33,18 @@ const OrdersCards: React.FC<OrdersListProps> = ({
   title,
 }) => {
   // Group orders by their current status
-  const groupedOrders = allOrders.reduce((acc: any, order: any) => {
-    const status = order.order_status;
-    if (!acc[status]) {
-      acc[status] = [];
-    }
-    acc[status].push(order);
-    return acc;
-  }, {});
+  const groupedOrders = allOrders
+    .filter((o: any) => o.order_type === orderType)
+    .reduce((acc: any, order: any) => {
+      const status = order.order_status;
+      if (!acc[status]) {
+        acc[status] = [];
+      }
+      acc[status].push(order);
+      return acc;
+    }, {});
+
+  console.log(groupedOrders);
 
   return (
     <div className="orders-container">

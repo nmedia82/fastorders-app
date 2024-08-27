@@ -54,8 +54,9 @@ const OrdersSlice = createSlice({
       );
     },
     syncNewOrders: (state, action) => {
-      state.newOrders = [action.payload, ...state.allOrders];
-      state.allOrders = [action.payload, ...state.allOrders];
+      console.log(action.payload);
+      state.newOrders = [...action.payload, ...state.allOrders];
+      state.allOrders = [...action.payload, ...state.allOrders];
     },
     resetNewOrders: (state) => {
       state.newOrders = [];
