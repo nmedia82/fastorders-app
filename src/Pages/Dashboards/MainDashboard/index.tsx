@@ -2,16 +2,8 @@
 
 import React from "react";
 import { Container, Row } from "reactstrap";
-import WelcomeCard from "./WelcomeCard";
 import TotalOrders from "./TotalOrder";
 import ActivitiesStatus from "./ActivitiesStatus";
-import TotalSales from "./TotalSales";
-import OrderProgress from "./OrderProgress";
-import ShippingFee from "./ShippingFee";
-import Discounts from "./Discounts";
-import Refunds from "./Refunds";
-import RefundsAmount from "./RefundAmount";
-import NetProfit from "./NetProfit";
 import { useSelector } from "react-redux";
 import Loader from "../../../Layout/Loader";
 import ReportWidget from "../ReportWidget";
@@ -79,7 +71,11 @@ export default function MainDashboard() {
           currentRange={currentRange}
         />
 
-        <NetProfit />
+        <ReportWidget
+          Title={"Net Profit"}
+          Data={"Coming Soon"}
+          currentRange={currentRange}
+        />
         <ActivitiesStatus />
       </Row>
     </Container>

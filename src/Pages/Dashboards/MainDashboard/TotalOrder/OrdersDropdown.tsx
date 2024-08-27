@@ -20,13 +20,13 @@ export default function TotalOrderDropDown({
   caret,
   dropDownClass,
   dropDownIcon,
+  onReportRangeChange,
 }: CommonHeaderWithDropdownProps) {
   const [open, setOpen] = useState(false);
   const toggle = () => {
     setOpen(!open);
   };
-  const { allRanges } = useSelector((state: any) => state.app);
-  const dispatch = useDispatch<AppDispatch>();
+  const { allRanges, currentRange } = useSelector((state: any) => state.app);
 
   return (
     <Dropdown
@@ -38,17 +38,20 @@ export default function TotalOrderDropDown({
         {dropDownIcon ? <SvgIcon iconId="more-horizontal" /> : dropDownTitle}
       </DropdownToggle>
       <DropdownMenu start={start ? "true" : "false"} end={end ? true : false}>
-        {allRanges.map(
-          (range: { key: string; label: string }, index: number) => (
+        {allRanges
+          .filter(
+            (range: { key: string; label: string }) =>
+              range.label !== currentRange
+          )
+          .map((range: { key: string; label: string }, index: number) => (
             <DropdownItem
               key={range.key}
               href={Href}
-              onClick={() => dispatch(fetchDashboardReports(range.key))}
+              onClick={() => onReportRangeChange(range.key)}
             >
               {range.label}
             </DropdownItem>
-          )
-        )}
+          ))}
       </DropdownMenu>
     </Dropdown>
   );

@@ -92,7 +92,6 @@ export default function Layout() {
     dispatch(fetchProducts());
     dispatch(fetchCategories());
     dispatch(fetchOrders());
-    dispatch(fetchDashboardReports("last_24_hours"));
   }, [dispatch]);
 
   return (

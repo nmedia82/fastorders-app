@@ -8,7 +8,7 @@ import RecentProjectUpdate from "./RecentProjectUpdate";
 import EarningTread from "./EarningTread";
 import DailyTask from "./DailyTask";
 import ProjectWidget from "../../../Utils/CommonComponents/DashboardCommon/ProjectCommon/ProjectWidget";
-import Widget1Cards from "../../../Pages/Dashboards/MainDashboard/TotalSales";
+import Widget1Cards from "../../../Utils/CommonComponents/DashboardCommon/ProjectCommon/Widget1Cards";
 import ProjectsOverview from "../../../Utils/CommonComponents/DashboardCommon/ProjectCommon/ProjectsOverview";
 
 export default function ProjectDashboard() {

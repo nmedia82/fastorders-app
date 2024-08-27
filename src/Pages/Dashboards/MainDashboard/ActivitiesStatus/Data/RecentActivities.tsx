@@ -743,21 +743,24 @@ export const RecentActivities: TableColumn<ProjectDataTypes>[] = [
     sortable: true,
     center: false,
     cell: (row) => <CustomDate span={row.dueDate} />,
+    style: {
+      width: "10%", // Set a fixed width
+    },
   },
   {
     name: "Detail",
     selector: (row) => row.detail,
     sortable: true,
     center: false,
-    cell: (row) => <CustomDate span={row.detail} />,
+    cell: (row) => row.detail,
   },
-    {
+  {
     //   name: "Type",
     //   selector: (row) => row.dueDate,
     //   sortable: true,
     //   center: false,
     //   cell: (row) => <CustomDate span={row.dueDate} />,
-    },
+  },
   //   {
   //     name: "Progress",
   //     selector: (row) => row.progressValue,

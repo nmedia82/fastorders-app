@@ -1,17 +1,15 @@
+import React from "react";
 import { Card, CardHeader, Col } from "reactstrap";
 import { H2, H3 } from "../../../../AbstractElements";
 import TotalOrderDropDown from "./OrdersDropdown";
 import { dailyDropdownList } from "../../../../Data/Dashboard/Default";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { fetchDashboardReports } from "../../../../ReduxToolkit/Reducers/AppReducer";
 
-export default function TotalOrders({
-  colClass,
-  total_orders,
-}: {
-  colClass: string;
-  total_orders: Number;
-}) {
-  const { currentRange } = useSelector((state: any) => state.app);
+const TotalOrders = ({ colClass, total_orders }) => {
+  const dispatch = useDispatch();
+  const { currentRange } = useSelector((state) => state.app);
 
   return (
     <Col xl={3} sm={6} className={colClass ? colClass : ""}>
@@ -19,7 +17,7 @@ export default function TotalOrders({
         <CardHeader className="card-no-border pb-100">
           <div className="header-top">
             <div>
-              <H3 className="f-w-600">{"Total Orders"}</H3>
+              <H3 className="f-w-600">Total Orders</H3>
               <span className="f-12 f-light f-w-500">{currentRange}</span>
             </div>
             <div className="card-header-right-icon">
@@ -29,6 +27,9 @@ export default function TotalOrders({
                 end
                 dropDownList={dailyDropdownList}
                 caret={true}
+                onReportRangeChange={(range) =>
+                  dispatch(fetchDashboardReports(range))
+                }
               />
             </div>
           </div>
@@ -41,4 +42,6 @@ export default function TotalOrders({
       </Card>
     </Col>
   );
-}
+};
+
+export default TotalOrders;

@@ -736,68 +736,56 @@ export const recentOrderData: ProjectDataTypes[] = [
   },
 ];
 
-export const recentOrder: TableColumn<ProjectDataTypes>[] = [
+export const recentOrder: TableColumn<any>[] = [
   {
     name: "ID",
     selector: (row) => row.id,
     sortable: true,
     center: false,
+    style: {
+      width: "10%", // Set a fixed width
+    },
   },
   {
     name: "Date",
-    selector: (row) => row.dueDate,
+    selector: (row) => row.date,
     sortable: true,
     center: false,
-    cell: (row) => <CustomDate span={row.dueDate} />,
+    cell: (row) => <CustomDate span={row.date} />,
+    style: {
+      width: "20%", // Set a fixed width
+    },
   },
   {
     name: "Amount",
-    selector: (row) => row.startDate,
+    selector: (row) => row.grandTotal,
     sortable: true,
     center: false,
-    cell: (row) => <CustomDate span={row.startDate} />,
+    cell: (row) => row.grandTotal,
+    style: {
+      width: "15%", // Set a fixed width
+    },
+  },
+  {
+    name: "Status",
+    selector: (row) => row.order_status,
+    sortable: true,
+    center: false,
+    cell: (row) => row.statusBadge,
+    style: {
+      width: "20%", // Set a fixed width
+    },
   },
   {
     name: "Type",
-    selector: (row) => row.dueDate,
+    selector: (row) => row.order_type,
     sortable: true,
     center: false,
-    cell: (row) => <CustomDate span={row.dueDate} />,
+    cell: (row) => row.typeBadge,
+    style: {
+      width: "20%", // Set a fixed width
+    },
   },
-  //   {
-  //     name: "Progress",
-  //     selector: (row) => row.progressValue,
-  //     sortable: true,
-  //     center: false,
-  //     cell: (row) => (
-  //       <CommonProgress value={row.progressValue} color={row.progressColor} />
-  //     ),
-  //   },
-  {
-    name: "Status",
-    selector: (row) => row.status,
-    sortable: true,
-    center: false,
-    cell: (row) => (
-      <CustomBadge span={row.status} color={row.progressColor} spanClass="" />
-    ),
-  },
-  //   {
-  //     name: "Action",
-  //     selector: (row) => row.action,
-  //     sortable: true,
-  //     center: false,
-  //     cell: () => {
-  //       return (
-  //         <CommonDropdown
-  //           dropDownList={actionDropdownList}
-  //           dropDownClass="icon-dropdown text-center"
-  //           dropDownIcon
-  //           end
-  //         />
-  //       );
-  //     },
-  //   },
 ];
 
 export const budgetDetailsList = [
