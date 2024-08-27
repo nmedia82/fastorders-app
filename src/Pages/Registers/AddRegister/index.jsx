@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 
 import { getVendorID } from "../../../services/helper";
+import { addRegister } from "../../../ReduxToolkit/Reducers/AppReducer";
 // import ToolbarBox from "../../AddProduct/ProductTabContents/Common/ToolbarBox";
 
 export default function AddRegister() {
@@ -38,9 +39,10 @@ export default function AddRegister() {
       biller_id: vendor_id,
     };
     try {
-      const result = {};
+      const result = await dispatch(addRegister(formatedData));
+      console.log(result);
       if (result.payload.success) {
-        toast.success("Category Saved Successfully");
+        toast.success("Register Saved Successfully");
       }
     } catch (error) {
       console.log(error);

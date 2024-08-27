@@ -789,10 +789,10 @@
           }
           &:nth-child(3) {
             @media (min-width: 1280px) {
-              min-width: 60%;
+              min-width: 30%;
             }
             @media (min-width: 1200px) and (max-width: 1280px) {
-              min-width: 50%;
+              min-width: 25%;
             }
             @media (max-width: 1200px) {
               min-width: 300px;
@@ -842,10 +842,10 @@
           }
           &:nth-child(3) {
             @media (min-width: 1280px) {
-              min-width: 60%;
+              min-width: 30%;
             }
             @media (min-width: 1200px) and (max-width: 1280px) {
-              min-width: 50%;
+              min-width: 25%;
             }
             @media (max-width: 1200px) {
               min-width: 300px;
