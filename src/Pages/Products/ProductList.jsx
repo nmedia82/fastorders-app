@@ -11,10 +11,11 @@ import {
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { FormGroup, Input } from "reactstrap";
-import { Image, P } from "../../AbstractElements";
+import { Badges, Image, P } from "../../AbstractElements";
 import { Link } from "react-router-dom";
 import SvgIcon from "../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
 import QuickEdit from "./QuickEdit";
+import { getFormattedPrice } from "../../services/helper";
 
 export default function ProductListTable() {
   const [Product, setProduct] = useState({});
@@ -22,6 +23,7 @@ export default function ProductListTable() {
   const [Edit, setEdit] = useState(false);
   const { products, categories } = useSelector((state) => state.products);
   const dispatch = useDispatch();
+
   const productListColumns = [
     {
       name: "",
@@ -45,26 +47,65 @@ export default function ProductListTable() {
           <P>{row.name}</P>
         </div>
       ),
-      width: "20%",
+      width: "30%",
     },
+
     {
       name: "Stock",
-      selector: (row) => row.stock,
+      selector: (row) => row.stock_quantity,
       sortable: true,
-      cell: (row) => <P className="f-light">{row.stock_quantity}</P>,
+      cell: (row) =>
+        !row.manage_stock ? (
+          <Badges color={`light-info`} className={`txt-info`}>
+            In stock
+          </Badges>
+        ) : (
+          row.stock_quantity
+        ),
+    },
+    {
+      name: "Cost",
+      selector: (row) => row.product_cost,
+      sortable: true,
+      cell: (row) => getFormattedPrice(row.product_cost),
     },
     {
       name: "Regular Price",
       selector: (row) => row.regular_price,
       sortable: true,
-      cell: (row) => <P className="f-light">{row.regular_price}</P>,
+      cell: (row) => (
+        <P className="f-light">{getFormattedPrice(row.regular_price)}</P>
+      ),
     },
     {
       name: "Sale Price",
       selector: (row) => row.sale_price,
       sortable: true,
-      cell: (row) => <P className="f-light">{row.sale_price}</P>,
+      cell: (row) => (
+        <P className="f-light">{getFormattedPrice(row.sale_price)}</P>
+      ),
     },
+    {
+      name: "Net Profit",
+      selector: (row) => row.sale_price,
+      sortable: true,
+      cell: (row) => {
+        // Use sale_price if available, else use regular_price
+        const price = parseFloat(row.price);
+        const cost = parseFloat(row.product_cost);
+        const profit = price - cost;
+        const profitPercentage = ((profit / cost) * 100).toFixed(2); // Calculate profit percentage
+
+        return (
+          <P className="f-light">
+            {getFormattedPrice(profit)} {/* Display the profit in currency */}
+            <Badges color="light-success">{profitPercentage}%</Badges>{" "}
+            {/* Display profit percentage */}
+          </P>
+        );
+      },
+    },
+
     {
       name: "Action",
       cell: (row) => (
@@ -100,6 +141,7 @@ export default function ProductListTable() {
         value.toString().toLowerCase().includes(filterText.toLowerCase())
     );
   });
+
   const handleDelete = async (id) => {
     const result = await Swal.fire({
       title: "Are you sure?",

@@ -70,7 +70,29 @@ export default function QuickEdit({ Product, setEdit, Edit }) {
         <ModalBody className="custom-input">
           <div className="create-category">
             <Row>
-              <Col sm={6} className="m-0">
+              <Col sm={3} className="m-0">
+                <FormGroup>
+                  <Label>Product Cost</Label>
+                  <Input
+                    type="number"
+                    name="product_cost"
+                    value={product.product_cost}
+                    onChange={(e) => handleChange(e)}
+                  />
+                </FormGroup>
+              </Col>
+              <Col sm={3} className="m-0">
+                <FormGroup>
+                  <Label>Regular Price</Label>
+                  <Input
+                    type="number"
+                    name="regular_price"
+                    value={product.regular_price}
+                    onChange={(e) => handleChange(e)}
+                  />
+                </FormGroup>
+              </Col>
+              <Col sm={3} className="m-0">
                 <FormGroup>
                   <Label>Sale Price</Label>
                   <Input
@@ -81,23 +103,20 @@ export default function QuickEdit({ Product, setEdit, Edit }) {
                   />
                 </FormGroup>
               </Col>
-              <Col sm={6} className="m-0">
-                <FormGroup>
-                  <Label>stock</Label>
-                  <Input
-                    disabled={!product?.manage_stock}
-                    type="number"
-                    name="stock_quantity"
-                    value={product.stock_quantity}
-                    onChange={(e) => handleChange(e)}
-                  />
-                  {!product?.manage_stock && (
-                    <H6 className="txt-danger">
-                      Please Enable Stock to Update this
-                    </H6>
-                  )}
-                </FormGroup>
-              </Col>
+              {product?.manage_stock && (
+                <Col sm={3} className="m-0">
+                  <FormGroup>
+                    <Label>Stock</Label>
+                    <Input
+                      disabled={!product?.manage_stock}
+                      type="number"
+                      name="stock_quantity"
+                      value={product.stock_quantity}
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </FormGroup>
+                </Col>
+              )}
             </Row>
           </div>
         </ModalBody>
@@ -111,7 +130,7 @@ export default function QuickEdit({ Product, setEdit, Edit }) {
             {Cancel}
           </Btn>
           <Btn color="primary" onClick={handleSave}>
-            {Add}
+            {"Update"}
           </Btn>
         </ModalFooter>
       </Modal>
