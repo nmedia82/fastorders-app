@@ -52,6 +52,13 @@ export const fetchRegisters = createAsyncThunk(
     return response.data;
   }
 );
+export const addRegister = createAsyncThunk(
+  "products/addRegister",
+  async (data) => {
+    const response = await axios.post(`${api_url}/open-register`, data);
+    return response.data;
+  }
+);
 const AppSlice = createSlice({
   name: "products",
   initialState,
@@ -94,6 +101,10 @@ const AppSlice = createSlice({
       })
       .addCase(fetchRegisters.rejected, (state) => {
         state.isLoading = false;
+      })
+      // add register
+      .addCase(addRegister.fulfilled, (state, action) => {
+        state.registers.push(action.payload); // Add the new product to the state
       });
   },
 });
