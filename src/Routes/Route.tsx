@@ -1,3 +1,5 @@
+/** @format */
+
 import SamplePage from "../Pages/Pages/SamplePage";
 import ProductListContainer from "../Pages/Products";
 import DashBoard from "../Pages/Dashboards";
@@ -13,6 +15,7 @@ import AddProduct from "../Pages/Products/AddProduct";
 import QRCodePage from "../Pages/QRCode";
 import Registers from "../Pages/Registers";
 import Discounts from "../Pages/Discounts";
+import UserSettings from "../Pages/Applications/Users";
 
 export const routes = [
   {
@@ -75,5 +78,9 @@ export const routes = [
   {
     path: `${process.env.PUBLIC_URL}/qrcode`,
     element: <QRCodePage />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/edit-profile`,
+    element: <UserSettings />,
   },
 ];
