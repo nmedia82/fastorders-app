@@ -93,7 +93,7 @@ export const profileHeaderData = [
   },
   {
     id: 4,
-    link: `applications/users/edit_profile`,
+    link: `edit-profile`,
     icon: "settings",
     text: "Settings",
   },
