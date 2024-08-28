@@ -1,5 +1,9 @@
 import { dynamicImage } from "../Utils";
+import { getCurrentUser } from "./auth";
 import data from "./config";
+
+const VendorData = getCurrentUser();
+
 export async function filterNonBrokenImages(imageUrls) {
   const checkImage = (url) => {
     return new Promise((resolve, reject) => {
@@ -41,17 +45,34 @@ export function getFormattedDate(date) {
 }
 
 export function getAPIURL() {
-  const { api_url } = data;
+  const api_url = process.env.REACT_APP_API_URL;
   return api_url;
 }
 
 export function getAPIURLAWS() {
-  const { api_url_aws } = data;
+  const api_url_aws = process.env.REACT_APP_API_URL_AWS;
   return api_url_aws;
 }
 
+export function getUserID() {
+  try {
+    const user = getCurrentUser();
+    if (!user) return null;
+    return user.user.ID;
+  } catch (ex) {
+    return null;
+  }
+}
+
 export function getVendorID() {
-  const { vendor_id } = data;
+  if (!VendorData || !VendorData.vendor_settings) return null;
+
+  const { vendor_id } = VendorData.vendor_settings;
+  return vendor_id;
+}
+
+export function getOpenRegisterID() {
+  const { vendor_id } = VendorData && VendorData.vendor_settings;
   // return 30;
   return vendor_id;
 }

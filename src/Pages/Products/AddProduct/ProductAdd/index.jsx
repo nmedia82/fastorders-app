@@ -3,7 +3,6 @@ import { Col, TabContent, TabPane } from "reactstrap";
 import AddProductDetails from "./AddProductDetails";
 import ProductGallery from "./ProductGallery";
 import { toast } from "react-toastify";
-import { getVendorID } from "../../../../services/auth";
 import {
   addProduct,
   updateProduct,
@@ -11,6 +10,7 @@ import {
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { getVendorID } from "../../../../services/helper";
 
 export default function ProductAdd({ steps, activeCallBack }) {
   const { products } = useSelector((state) => state.products);
@@ -47,7 +47,7 @@ export default function ProductAdd({ steps, activeCallBack }) {
   };
 
   const handleSaveProduct = async (productImages) => {
-    const vendor_id = await getVendorID();
+    const vendor_id = getVendorID();
     const randomID = Math.random().toString(36).substring(2, 10);
     const formatedCategories = product.categories.map((cat) => cat.id);
     // console.log(formatedCategories);

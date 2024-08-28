@@ -1,7 +1,10 @@
 import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
 import http from "../../services/http";
 import data from "../../services/config";
-const { api_url, vendor_id } = data;
+import { getAPIURL, getVendorID } from "../../services/helper";
+
+const api_url = getAPIURL();
+const vendor_id = getVendorID();
 
 // Helper functions to interact with localStorage
 const saveCartToLocalStorage = (cart) => {
@@ -36,11 +39,11 @@ const loadHoldCartsFromLocalStorage = () => {
 };
 
 const saveOrdersToLocalStorage = (orders) => {
-  localStorage.setItem("orders", JSON.stringify(orders));
+  localStorage.setItem("getorders_pos_orders", JSON.stringify(orders));
 };
 
 const loadOrdersFromLocalStorage = () => {
-  const orders = localStorage.getItem("orders");
+  const orders = localStorage.getItem("getorders_pos_orders");
   return orders ? JSON.parse(orders) : [];
 };
 
@@ -158,10 +161,10 @@ const cartSlice = createSlice({
       state.isPaying = false;
       state.orders.push({
         id: state.cartId,
-        cartItems: [...state.cartItems],
-        total: state.total,
-        discount: state.discount,
-        paid: state.amountPaid,
+        items: [...state.cartItems],
+        amount_received: parseFloat(state.total),
+        discount: parseFloat(state.discount),
+        paid: parseFloat(state.amountPaid),
       });
       state.cartItems = [];
       state.total = 0;
@@ -171,6 +174,7 @@ const cartSlice = createSlice({
       saveCartToLocalStorage(state);
       saveOrdersToLocalStorage(state.orders);
     },
+
     retrieveCart: (state, action) => {
       const holdCart = state.holdCarts.find(
         (cart) => cart.id === action.payload

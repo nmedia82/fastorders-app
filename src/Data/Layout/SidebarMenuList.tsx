@@ -49,6 +49,13 @@ export const menuList: SidebarMenuType[] = [
         icon: "categories",
         type: "link",
       },
+      {
+        id: 5,
+        title: "POS",
+        url: `${process.env.PUBLIC_URL}/pos`,
+        icon: "shopping-cart",
+        type: "link",
+      },
       // {
       //   id: 4,
       //   title: "Employees",

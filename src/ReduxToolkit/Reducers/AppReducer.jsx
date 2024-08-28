@@ -42,6 +42,7 @@ const initialState = {
   ],
   currentRange: "Last 24 Hours",
   isLoading: false,
+  isBackgroundWorking: false,
 };
 export const fetchRegisters = createAsyncThunk(
   "products/fetchRegisters",
@@ -65,6 +66,9 @@ const AppSlice = createSlice({
   reducers: {
     setLoading: (state, action) => {
       state.isLoading = action.payload;
+    },
+    setBackgroundSyncing: (state, action) => {
+      state.isBackgroundWorking = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -109,5 +113,5 @@ const AppSlice = createSlice({
   },
 });
 
-export const { setLoading } = AppSlice.actions;
+export const { setLoading, setBackgroundSyncing } = AppSlice.actions;
 export default AppSlice.reducer;

@@ -10,13 +10,16 @@
 .cart-item-quantity-container,
 .cart-item-total {
   flex-grow: 1; /* Ensures equal space distribution */
-  text-align: center; /* Centers the text */
   font-weight: normal;
+}
+
+.cart-item-name {
+  font-size: 0.8rem;
 }
 
 .cart-item-total {
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .cart-item-quantity-container i {

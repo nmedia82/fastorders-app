@@ -35,10 +35,10 @@ const CartItems = () => {
         cartItems.map((item) => (
           <div
             key={item.id}
-            className="cart-item d-flex align-items-center justify-content-between"
+            className="cart-item d-flex align-items-center justify-content-start"
           >
             {/* Title */}
-            <div className="cart-item-name text-center flex-grow-1">
+            <div className="cart-item-name flex-grow-1">
               <span>{item.name}</span>
             </div>
             {/* Quantity */}
@@ -56,8 +56,11 @@ const CartItems = () => {
               ></i>
             </div>
             {/* Price */}
-            <div className="cart-item-total text-center flex-grow-1">
-              <span>Rs. {(item.price * item.quantity).toFixed(2)}</span>
+            <div className="text-center flex-grow-1 d-flex flex-column align-items-center">
+              <span>{`${item.price}x${item.quantity}`}</span>
+              <span className="cart-item-total">
+                Rs. {(item.price * item.quantity).toFixed(2)}
+              </span>
             </div>
           </div>
         ))

@@ -58,6 +58,9 @@ const OrdersSlice = createSlice({
       state.newOrders = [...action.payload, ...state.allOrders];
       state.allOrders = [...action.payload, ...state.allOrders];
     },
+    addNewOrder: (state, action) => {
+      state.allOrders = [action.payload, ...state.allOrders];
+    },
     resetNewOrders: (state) => {
       state.newOrders = [];
     },
@@ -80,6 +83,7 @@ export const {
   setOrderStatus,
   setLoading,
   syncNewOrders,
+  addNewOrder,
   resetNewOrders,
 } = OrdersSlice.actions;
 export default OrdersSlice.reducer;

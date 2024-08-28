@@ -22,8 +22,7 @@ import {
 import axios from "axios";
 import { getAPIURL, getVendorSettings } from "../services/helper";
 import { fetchDashboardReports } from "../ReduxToolkit/Reducers/AppReducer";
-
-const vendor_id = getVendorSettings("vendor_id");
+import BackgroundOrdersSync from "./BackgroundOrdersSync";
 
 export default function Layout() {
   const { sidebar_types } = useSelector(
@@ -96,6 +95,7 @@ export default function Layout() {
 
   return (
     <>
+      {1 && <BackgroundOrdersSync />}
       <Loader />
       <Taptop />
       <div

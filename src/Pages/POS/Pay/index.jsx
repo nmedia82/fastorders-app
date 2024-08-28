@@ -104,7 +104,11 @@ const PayCart = () => {
       </div>
 
       <div className="d-grid">
-        <Button className="btn-lg btn" onClick={() => dispatch(backToCart())}>
+        <Button
+          color="warning"
+          className="btn-lg"
+          onClick={() => dispatch(backToCart())}
+        >
           Back
         </Button>
         <Button
