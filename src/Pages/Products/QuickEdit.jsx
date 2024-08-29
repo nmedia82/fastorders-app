@@ -46,7 +46,6 @@ export default function QuickEdit({ Product, setEdit, Edit }) {
       const productData = {
         ...product,
         categories: formatedCategories,
-        sku: "",
       };
       // Dispatch the updateProduct action
       const resp = await dispatch(updateProduct(productData));
@@ -70,6 +69,17 @@ export default function QuickEdit({ Product, setEdit, Edit }) {
         <ModalBody className="custom-input">
           <div className="create-category">
             <Row>
+              <Col sm={12} className="m-0">
+                <FormGroup>
+                  <Label>Product SKU</Label>
+                  <Input
+                    type="text"
+                    name="sku"
+                    value={product.sku}
+                    onChange={(e) => handleChange(e)}
+                  />
+                </FormGroup>
+              </Col>
               <Col sm={3} className="m-0">
                 <FormGroup>
                   <Label>Product Cost</Label>

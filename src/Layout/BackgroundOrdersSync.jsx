@@ -32,10 +32,7 @@ const syncOrders = async (dispatch) => {
       biller_id: getUserID(),
     }; // Get the first unsent order
 
-    console.log(order);
-
     try {
-      console.log("sending to server");
       // Send order to the server
       const response = await axios.post(`${api_url}/create-pos-order`, order);
 

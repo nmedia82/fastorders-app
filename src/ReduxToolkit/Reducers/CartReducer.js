@@ -162,7 +162,7 @@ const cartSlice = createSlice({
       state.orders.push({
         id: state.cartId,
         items: [...state.cartItems],
-        amount_received: parseFloat(state.total),
+        sale_amount: parseFloat(state.total),
         discount: parseFloat(state.discount),
         paid: parseFloat(state.amountPaid),
       });

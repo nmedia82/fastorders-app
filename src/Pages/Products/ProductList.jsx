@@ -49,7 +49,12 @@ export default function ProductListTable() {
       ),
       width: "30%",
     },
-
+    {
+      name: "SKU",
+      selector: (row) => row.sku,
+      sortable: true,
+      cell: (row) => row.sku,
+    },
     {
       name: "Stock",
       selector: (row) => row.stock_quantity,

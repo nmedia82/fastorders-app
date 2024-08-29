@@ -4,6 +4,7 @@ import {
   updateQuantity,
   removeItem,
 } from "../../../ReduxToolkit/Reducers/CartReducer";
+import POSTouchSpin from "./Touchspin";
 
 const CartItems = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -42,8 +43,8 @@ const CartItems = () => {
               <span>{item.name}</span>
             </div>
             {/* Quantity */}
-            <div className="cart-item-quantity-container text-center d-flex justify-content-center flex-grow-1">
-              <i
+            <div className="rounded-touchspin">
+              {/* <i
                 role="button"
                 className="icofont icofont-minus-circle"
                 onClick={() => handleDecreaseQuantity(item.id)}
@@ -53,7 +54,12 @@ const CartItems = () => {
                 role="button"
                 className="icofont icofont-plus-circle"
                 onClick={() => handleIncreaseQuantity(item.id)}
-              ></i>
+              ></i> */}
+              <POSTouchSpin
+                color="dark"
+                arrowIcon={true}
+                btnClass={`touchspin-dark`}
+              />
             </div>
             {/* Price */}
             <div className="text-center flex-grow-1 d-flex flex-column align-items-center">

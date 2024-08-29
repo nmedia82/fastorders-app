@@ -13,14 +13,12 @@ export const POSCart = () => {
 
   return (
     <div className="cart-section border-3">
-      <div className="barcode-section">
-        <InputGroup size="lg">
-          <InputGroupText className="list-light-warning">
-            <i className="icofont icofont-barcode txt-warning"></i>
-          </InputGroupText>
-          <Input type="text" />
-        </InputGroup>
-      </div>
+      <InputGroup size="lg">
+        <InputGroupText className="list-light-warning">
+          <i className="icofont icofont-barcode txt-warning"></i>
+        </InputGroupText>
+        <Input type="text" />
+      </InputGroup>
       <div className={`line-items-section ${isCartEmpty ? "no-items" : ""}`}>
         {!isCartEmpty ? (
           <CartItems />
