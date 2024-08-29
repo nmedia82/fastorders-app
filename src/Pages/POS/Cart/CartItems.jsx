@@ -44,21 +44,13 @@ const CartItems = () => {
             </div>
             {/* Quantity */}
             <div className="rounded-touchspin">
-              {/* <i
-                role="button"
-                className="icofont icofont-minus-circle"
-                onClick={() => handleDecreaseQuantity(item.id)}
-              ></i>
-              <span className="cart-item-quantity mx-2">{item.quantity}</span>
-              <i
-                role="button"
-                className="icofont icofont-plus-circle"
-                onClick={() => handleIncreaseQuantity(item.id)}
-              ></i> */}
               <POSTouchSpin
                 color="dark"
                 arrowIcon={true}
                 btnClass={`touchspin-dark`}
+                onDecrement={() => handleDecreaseQuantity(item.id)}
+                onIncrement={() => handleIncreaseQuantity(item.id)}
+                item={item}
               />
             </div>
             {/* Price */}

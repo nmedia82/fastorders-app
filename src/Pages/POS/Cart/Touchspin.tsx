@@ -1,12 +1,24 @@
 import React, { useState } from "react";
-import { TouchspinProp } from "../../../Types/Forms.type";
 import { Btn } from "../../../AbstractElements";
+
+export interface TouchspinProp {
+  color: string;
+  arrowIcon?: boolean;
+  outline?: boolean;
+  btnClass?: string;
+  onIncrement: any;
+  onDecrement: any;
+  item: any;
+}
 
 export default function POSTouchSpin({
   color,
   arrowIcon,
   outline,
   btnClass,
+  onIncrement,
+  onDecrement,
+  item,
 }: TouchspinProp) {
   const [touchspinValue, setTouchspinValue] = useState(
     Math.floor(Math.random() * 10)
@@ -24,7 +36,7 @@ export default function POSTouchSpin({
   return (
     <div className="touchspin-wrapper d-flex align-items-center justify-content-center">
       <Btn
-        onClick={decrementHandle}
+        onClick={onDecrement}
         color="transparent"
         outline={outline}
         className={`me-1 decrement-touchspin btn-touchspin ${
@@ -38,13 +50,14 @@ export default function POSTouchSpin({
         )}
       </Btn>
       <input
+        style={{ width: 60 }}
         className={`me-1 input-touchspin spin-outline-${color}`}
         type="number"
-        value={touchspinValue}
+        value={item.quantity}
         readOnly
       />
       <Btn
-        onClick={incrementHandle}
+        onClick={onIncrement}
         color="transparent"
         outline={outline}
         className={`increment-touchspin btn-touchspin ${

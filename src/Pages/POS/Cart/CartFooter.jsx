@@ -8,6 +8,7 @@ import {
   applyDiscount,
   payingCart,
 } from "../../../ReduxToolkit/Reducers/CartReducer";
+import { getFormattedPrice } from "../../../services/helper";
 
 export const CartFooter = () => {
   const dispatch = useDispatch();
@@ -47,19 +48,30 @@ export const CartFooter = () => {
         </div>
         <div className="d-flex justify-content-between">
           <Button
-            color="primary"
-            className="btn-square w-100 mx-1"
-            onClick={handleHoldCart}
-          >
-            Hold
-          </Button>
-          <Button
             color="success"
             className="btn-square w-100 mx-1"
             onClick={handlePayCart}
           >
             Pay
           </Button>
+          <Button
+            color="dark"
+            className="btn-square w-100 mx-1"
+            onClick={handlQuickPay}
+          >
+            {"Quick "}
+            <small className="text-sm">{getFormattedPrice(total)}</small>
+          </Button>
+        </div>
+        <div className="d-flex justify-content-between">
+          <Button
+            color="primary"
+            className="btn-square w-100 mx-1"
+            onClick={handleHoldCart}
+          >
+            Hold
+          </Button>
+
           <Button
             color="danger"
             className="btn-square w-100 mx-1"
