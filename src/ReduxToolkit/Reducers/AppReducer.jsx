@@ -34,6 +34,7 @@ const initialState = {
   dashoardReports: [],
   allActivities: [],
   registers: [],
+  discounts: [],
   allRanges: [
     { key: "last_24_hours", label: "Last 24 Hours" },
     { key: "last_30_days", label: "Last 30 Days" },
@@ -44,6 +45,13 @@ const initialState = {
   isLoading: false,
   isBackgroundWorking: false,
 };
+export const addDiscount = createAsyncThunk(
+  "products/addDiscount",
+  async (data) => {
+    const response = await axios.post(`${api_url}/vendor-coupon`, data);
+    return response.data;
+  }
+);
 export const fetchRegisters = createAsyncThunk(
   "products/fetchRegisters",
   async () => {
@@ -53,6 +61,7 @@ export const fetchRegisters = createAsyncThunk(
     return response.data;
   }
 );
+
 export const addRegister = createAsyncThunk(
   "products/addRegister",
   async (data) => {
@@ -109,6 +118,10 @@ const AppSlice = createSlice({
       // add register
       .addCase(addRegister.fulfilled, (state, action) => {
         state.registers.push(action.payload); // Add the new product to the state
+      })
+      // add discount
+      .addCase(addDiscount.fulfilled, (state, action) => {
+        state.discounts.push(action.payload); // Add the new product to the state
       });
   },
 });

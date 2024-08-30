@@ -19,12 +19,13 @@ import {
 import { Btn } from "../../../AbstractElements";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
+import { addDiscount } from "../../../ReduxToolkit/Reducers/AppReducer";
+import { getVendorID } from "../../../services/helper";
 
 export default function AddDiscount() {
-  const [tableform, setTableform] = useState({
-    name: "",
-  });
+  const [tableform, setTableform] = useState();
   const dispatch = useDispatch();
+  const vendor_id = getVendorID();
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const handleChange = (e) => {
@@ -33,10 +34,12 @@ export default function AddDiscount() {
       ...prevForm,
       [name]: value,
     }));
+    console.log("here");
   };
-  const handleSaveCategory = async () => {
+  const handleSave = async () => {
+    const formatedData = await { ...tableform, vendor_id };
     try {
-      const result = {};
+      const result = dispatch(addDiscount(formatedData));
       if (result.payload.success) {
         toast.success("Discount Saved Successfully");
       }
@@ -60,11 +63,22 @@ export default function AddDiscount() {
             <Row>
               <Col sm={6} className="m-0">
                 <FormGroup>
+                  <Label>Coupon Code</Label>
+                  <Input
+                    type="text"
+                    name="coupon"
+                    value={tableform?.coupon}
+                    onChange={(e) => handleChange(e)}
+                  />
+                </FormGroup>
+              </Col>
+              <Col sm={6} className="m-0">
+                <FormGroup>
                   <Label>Discount Ammount</Label>
                   <Input
                     type="number"
                     name="amount"
-                    value={tableform?.sale_price}
+                    value={tableform?.amount}
                     onChange={(e) => handleChange(e)}
                   />
                 </FormGroup>
@@ -128,7 +142,7 @@ export default function AddDiscount() {
           >
             {Cancel}
           </Btn>
-          <Btn color="primary" onClick={handleSaveCategory}>
+          <Btn color="primary" onClick={handleSave}>
             {Add}
           </Btn>
         </ModalFooter>

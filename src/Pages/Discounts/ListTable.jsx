@@ -54,14 +54,9 @@ export default function ListTable() {
     },
   ];
   const dispatch = useDispatch();
-  const CustomType = ({ color, text }) => (
-    <Badges color={`light-${color}`} className={`txt-${color}`}>
-      {text}
-    </Badges>
-  );
   const [filterText, setFilterText] = useState("");
-  const { categories } = useSelector((state) => state.products);
-  const filteredItems = categories.filter((item) => {
+  const { discounts } = useSelector((state) => state.app);
+  const filteredItems = discounts.filter((item) => {
     return Object.values(item).some(
       (value) =>
         value &&
