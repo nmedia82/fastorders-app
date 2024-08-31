@@ -1,1 +1,9 @@
-@import '../public/assets/scss/app.scss';
+@import "../public/assets/scss/app.scss";
+.edit-icon img {
+  width: 20px;
+  padding: 3px;
+  background: #ff0000;
+  border: 2px solid white;
+  border-radius: 80px;
+  stroke: white;
+}

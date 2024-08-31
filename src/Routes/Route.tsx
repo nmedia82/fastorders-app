@@ -16,6 +16,7 @@ import QRCodePage from "../Pages/QRCode";
 import Registers from "../Pages/Registers";
 import Discounts from "../Pages/Discounts";
 import UserSettings from "../Pages/Applications/Users";
+import Users from "../Pages/Users";
 
 export const routes = [
   {
@@ -82,5 +83,9 @@ export const routes = [
   {
     path: `${process.env.PUBLIC_URL}/edit-profile`,
     element: <UserSettings />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/users`,
+    element: <Users />,
   },
 ];
