@@ -49,7 +49,14 @@ export const addDiscount = createAsyncThunk(
   "products/addDiscount",
   async (data) => {
     const response = await axios.post(`${api_url}/vendor-coupon`, data);
-    return response.data;
+    return response;
+  }
+);
+export const deleteDiscount = createAsyncThunk(
+  "products/deleteDiscount",
+  async (data) => {
+    const response = await axios.delete(`${api_url}/vendor-coupon`, data);
+    return response;
   }
 );
 export const fetchRegisters = createAsyncThunk(
@@ -121,7 +128,12 @@ const AppSlice = createSlice({
       })
       // add discount
       .addCase(addDiscount.fulfilled, (state, action) => {
-        state.discounts.push(action.payload); // Add the new product to the state
+        state.discounts.push(action.payload.data); // Add the new product to the state
+      })
+      .addCase(deleteDiscount.fulfilled, (state, action) => {
+        state.discounts = state.discounts.filter(
+          (discount) => discount.cupon !== action.meta.arg
+        ); // Add the new product to the state
       });
   },
 });

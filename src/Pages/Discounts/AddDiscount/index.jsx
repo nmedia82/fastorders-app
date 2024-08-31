@@ -39,8 +39,8 @@ export default function AddDiscount() {
   const handleSave = async () => {
     const formatedData = await { ...tableform, vendor_id };
     try {
-      const result = dispatch(addDiscount(formatedData));
-      if (result.payload.success) {
+      const result = await dispatch(addDiscount(formatedData)).unwrap();
+      if (result.data.success) {
         toast.success("Discount Saved Successfully");
       }
     } catch (error) {
