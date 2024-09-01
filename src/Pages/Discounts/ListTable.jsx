@@ -37,11 +37,35 @@ export default function ListTable() {
     //   width: "15%",
     // },
     {
-      name: "Name",
-      selector: (row) => row.name,
+      name: "Code",
+      selector: (row) => row.code,
       sortable: true,
-      cell: (row) => <p>{row.name}</p>,
+      cell: (row) => <p>{row.code}</p>,
       width: "35%",
+    },
+    {
+      name: "Amount",
+      selector: (row) => row.amount,
+      sortable: true,
+      cell: (row) => <p>{row.amount}</p>,
+    },
+    {
+      name: "Description",
+      selector: (row) => row.description,
+      sortable: true,
+      cell: (row) => <p>{row.description}</p>,
+    },
+    {
+      name: "discount_type",
+      selector: (row) => row.discount_type,
+      sortable: true,
+      cell: (row) => <p>{row.discount_type}</p>,
+    },
+    {
+      name: "Expiry Date",
+      selector: (row) => row.date_expires,
+      sortable: true,
+      cell: (row) => <p>{row.date_expires}</p>,
     },
     {
       name: "Action",
