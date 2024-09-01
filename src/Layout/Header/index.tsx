@@ -26,7 +26,10 @@ export default function Header() {
             className="header-logo-wrapper p-0 left-header"
             onClick={handleSidebarToggle}
           />
-          <Col xs={"auto"} className="nav-right pull-right right-header p-0 ms-auto">
+          <Col
+            xs={"auto"}
+            className="nav-right pull-right right-header p-0 ms-auto"
+          >
             <RightHeader />
           </Col>
         </Row>
