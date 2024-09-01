@@ -13,7 +13,9 @@ export default function SocialProfileCards() {
     dispatch(fetchEmployees());
   }, [dispatch]);
   const [filterValue, setFilterValue] = useState();
-  const GetProfileIcon = () => {};
+  const GetProfileIcon = (status) => {
+    return status === "active" ? "icon-check" : "icon-close";
+  };
   const handleUserStatusUpdate = () => {};
 
   const handleUserDelete = () => {};
@@ -51,7 +53,7 @@ export default function SocialProfileCards() {
                   />
                 </div>
                 <div className="edit-icon">
-                  <i className={GetProfileIcon(item?.user_isactive)}></i>
+                  <i className={GetProfileIcon(item?.status)}></i>
                 </div>
               </div>
 
