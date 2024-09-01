@@ -93,7 +93,7 @@ export default function AddDiscount() {
                     value={tableform?.discount_type}
                   >
                     <option value={"percent"}>Percent</option>
-                    <option value={"fix_cost"}>Fix Cost</option>
+                    <option value={"fixed_cart"}>Fix Price</option>
                   </Input>
                 </FormGroup>
               </Col>

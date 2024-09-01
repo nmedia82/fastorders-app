@@ -7,6 +7,7 @@ import {
   clearCart,
   applyDiscount,
   payingCart,
+  cartPaid,
 } from "../../../ReduxToolkit/Reducers/CartReducer";
 import { getFormattedPrice } from "../../../services/helper";
 
@@ -24,6 +25,11 @@ export const CartFooter = () => {
 
   const handleClearCart = () => {
     dispatch(clearCart());
+  };
+
+  const handlQuickPay = () => {
+    // console.log("quickpay");
+    dispatch(cartPaid());
   };
   return (
     <div className="cart-total-section">

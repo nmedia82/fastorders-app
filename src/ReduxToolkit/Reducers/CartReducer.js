@@ -159,12 +159,14 @@ const cartSlice = createSlice({
     },
     cartPaid: (state) => {
       state.isPaying = false;
+      const amount_paid =
+        state.amountPaid === 0 ? state.total : state.amountPaid;
       state.orders.push({
         id: state.cartId,
         items: [...state.cartItems],
         sale_amount: parseFloat(state.total),
         discount: parseFloat(state.discount),
-        paid: parseFloat(state.amountPaid),
+        paid: parseFloat(amount_paid),
       });
       state.cartItems = [];
       state.total = 0;
@@ -174,7 +176,6 @@ const cartSlice = createSlice({
       saveCartToLocalStorage(state);
       saveOrdersToLocalStorage(state.orders);
     },
-
     retrieveCart: (state, action) => {
       const holdCart = state.holdCarts.find(
         (cart) => cart.id === action.payload

@@ -3,6 +3,7 @@ import { Card, CardBody, CardHeader, Col, Container, Row } from "reactstrap";
 import CommonCardHeader from "../../Utils/CommonComponents/CommonCardHeader";
 import AddDiscount from "./AddDiscount";
 import ListTable from "./ListTable";
+import { useDispatch } from "react-redux";
 
 export default function Discounts() {
   return (
