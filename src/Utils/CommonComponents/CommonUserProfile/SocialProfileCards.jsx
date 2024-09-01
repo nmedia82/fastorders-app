@@ -2,60 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Card, CardBody, Col, Input } from "reactstrap";
 import { Link } from "react-router-dom";
-import { fetchUsersData } from "../../../ReduxToolkit/Reducers/UsersReducer";
 import { H3, H5, Image, LI, UL } from "../../../AbstractElements";
 import FeatherIcons from "../../../Pages/Icons/FeatherIcons";
+import { fetchEmployees } from "../../../ReduxToolkit/Reducers/AppReducer";
 
 export default function SocialProfileCards() {
-  const { allUsers } = useSelector((state) => state.userCards);
+  const { allEmployees } = useSelector((state) => state.app) || [];
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchUsersData());
+    dispatch(fetchEmployees());
   }, [dispatch]);
   const [filterValue, setFilterValue] = useState();
-  // Empty function for GetProfileIcon
-  function GetProfileIcon() {
-    // Implement the functionality here or leave it empty for now
-  }
+  const GetProfileIcon = () => {};
+  const handleUserStatusUpdate = () => {};
 
-  // Empty function for handleVacationOpen
-  function handleVacationOpen() {
-    // Implement the functionality here or leave it empty for now
-  }
-
-  // Empty function for navigate
-  function navigate() {
-    // Implement the functionality here or leave it empty for now
-  }
-
-  // Empty function for handleUserStatusUpdate
-  function handleUserStatusUpdate() {
-    // Implement the functionality here or leave it empty for now
-  }
-
-  // Empty function for handleUserDelete
-  function handleUserDelete() {
-    // Implement the functionality here or leave it empty for now
-  }
-
-  // Empty function for toggleVacationPopup
-  function toggleVacationPopup() {
-    // Implement the functionality here or leave it empty for now
-  }
-
-  // Empty function for VacationsPopup
-  function VacationsPopup() {
-    // Implement the functionality here or leave it empty for now
-  }
-
-  // Empty function for handleClosePopup
-  function handleClosePopup() {
-    // Implement the functionality here or leave it empty for now
-  }
-
-  // Placeholder for userSelected
-  const userSelected = {}; // Or set it to null, undefined, or any initial value as per your needs
-
+  const handleUserDelete = () => {};
   return (
     <>
       {/* <div className="m-b-20">
@@ -72,7 +33,7 @@ export default function SocialProfileCards() {
           </Input>
         </div>
       </div> */}
-      {allUsers.map((item) => (
+      {allEmployees.map((item) => (
         <Col
           sm={6}
           xxl={3}
@@ -99,11 +60,12 @@ export default function SocialProfileCards() {
                   <Link
                     to={`${process.env.PUBLIC_URL}/applications/social_app`}
                   >
-                    {item?.user_fullname}
+                    {item?.first_name}
+                    {item?.last_name}
                   </Link>
                 </H5>
-                <p className="f-light">{item?.user_email}</p>
-                <div className="p-2">
+                <p className="f-light">{item?.phone_number1}</p>
+                {/* <div className="p-2">
                   <span className="mx-2 hover-effect">
                     <i className="icon-timer fs-5y"></i>
                   </span>
@@ -122,7 +84,7 @@ export default function SocialProfileCards() {
                   <span className="mx-2 hover-effect">
                     <i className="icon-settings"></i>
                   </span>
-                </div>
+                </div> */}
                 <Button
                   color="theme-primary"
                   onClick={() =>

@@ -33,6 +33,7 @@ export const addActivityLog = createAsyncThunk("activity", async (payload) => {
 const initialState = {
   dashoardReports: [],
   allActivities: [],
+  allEmployees: [],
   registers: [],
   discounts: [],
   allRanges: [
@@ -86,6 +87,17 @@ export const addRegister = createAsyncThunk(
     return response.data;
   }
 );
+export const fetchEmployees = createAsyncThunk(
+  "products/fetchEmployees",
+  async () => {
+    const response = await axios.get(
+      `${api_url}/employees?vendor_id=12`
+      // `${api_url}/employees?vendor_id=${vendor_id}`
+    );
+    console.log(response.data);
+    return response.data;
+  }
+);
 const AppSlice = createSlice({
   name: "products",
   initialState,
@@ -135,6 +147,17 @@ const AppSlice = createSlice({
       // add register
       .addCase(addRegister.fulfilled, (state, action) => {
         state.registers.push(action.payload); // Add the new product to the state
+      })
+      // handle fetch employees
+      .addCase(fetchEmployees.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchEmployees.fulfilled, (state, action) => {
+        state.allEmployees = action.payload.data;
+        state.isLoading = false;
+      })
+      .addCase(fetchEmployees.rejected, (state) => {
+        state.isLoading = false;
       })
       // handle fetch discounts
       .addCase(fetchDiscounts.pending, (state) => {
