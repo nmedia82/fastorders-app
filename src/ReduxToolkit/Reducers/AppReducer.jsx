@@ -59,6 +59,16 @@ export const deleteDiscount = createAsyncThunk(
     return response;
   }
 );
+export const fetchDiscounts = createAsyncThunk(
+  "products/fetchDiscounts",
+  async () => {
+    const response = await axios.get(
+      `${api_url}/vendor-coupons?vendor_id=${vendor_id}`
+    );
+
+    return response.data;
+  }
+);
 export const fetchRegisters = createAsyncThunk(
   "products/fetchRegisters",
   async () => {
@@ -125,6 +135,17 @@ const AppSlice = createSlice({
       // add register
       .addCase(addRegister.fulfilled, (state, action) => {
         state.registers.push(action.payload); // Add the new product to the state
+      })
+      // handle fetch discounts
+      .addCase(fetchDiscounts.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchDiscounts.fulfilled, (state, action) => {
+        state.discounts = action.payload.data;
+        state.isLoading = false;
+      })
+      .addCase(fetchDiscounts.rejected, (state) => {
+        state.isLoading = false;
       })
       // add discount
       .addCase(addDiscount.fulfilled, (state, action) => {

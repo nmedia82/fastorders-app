@@ -4,8 +4,11 @@ import CommonCardHeader from "../../Utils/CommonComponents/CommonCardHeader";
 import AddDiscount from "./AddDiscount";
 import ListTable from "./ListTable";
 import { useDispatch } from "react-redux";
+import { fetchDiscounts } from "../../ReduxToolkit/Reducers/AppReducer";
 
 export default function Discounts() {
+  const dispatch = useDispatch();
+  dispatch(fetchDiscounts());
   return (
     <div className="page-body main-project">
       <Container fluid>
