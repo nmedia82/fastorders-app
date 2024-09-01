@@ -15,6 +15,7 @@ import HoldCarts from "./HoldCarts";
 import CartHeaderList from "./CartHeader/CartHeaderList";
 import OrdersNotificationBox from "./OrderNotifications";
 import QRCodePage from "./QRCode";
+import Syncing from "./Syncing";
 // import MaximizeScreen from "./MaximizeScreen";
 // import BookmarkHeader from "./BookmarkHeader";
 
@@ -38,7 +39,7 @@ export default function RightHeader() {
       {/* <Registers /> */}
       <Registers />
       <QRCodePage />
-
+      <Syncing />
       <ProfileHeader />
     </UL>
   );

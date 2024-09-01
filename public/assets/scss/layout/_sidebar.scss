@@ -255,6 +255,10 @@
             padding: 6px 10px;
             display: inline-block;
             position: relative;
+            i {
+              color: white;
+              font-size: 19px;
+            }
             .linked-icon {
               transition: all 0.2s ease;
             }
