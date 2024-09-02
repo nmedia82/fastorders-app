@@ -44,7 +44,7 @@ const OrdersCards: React.FC<OrdersListProps> = ({
       return acc;
     }, {});
 
-  console.log(groupedOrders);
+  // console.log(groupedOrders);
 
   return (
     <div className="orders-container">

@@ -10,12 +10,15 @@ import {
   setOrderStatus,
 } from "../../../ReduxToolkit/Reducers/OrdersReducer";
 import OrdersFilter from "./Filters";
+import { orderToCart } from "../../../ReduxToolkit/Reducers/CartReducer";
+import { useNavigate } from "react-router-dom";
 
 const CurrentOrders = () => {
   const { currentOrders, allOrderStatuses, isLoading } = useSelector(
     (state) => state.orders
   );
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [filterType, setFilterType] = useState("All");
   const [filterStatus, setFilterStatus] = useState("All");
@@ -31,6 +34,11 @@ const CurrentOrders = () => {
       if (resp.success) {
         dispatch(setLoading(false));
         dispatch(setOrderStatus(resp.data));
+
+        // if billed then add to cart
+        if (order_status === "billed") {
+          navigate(`/pos/${order_id}`);
+        }
       }
     } catch (e) {
       dispatch(setLoading(false));

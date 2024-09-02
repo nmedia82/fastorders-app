@@ -29,8 +29,8 @@ export default function ProfileHeader() {
         </div>
       </div>
       <UL className="profile-dropdown onhover-show-div simple-list">
-        {profileHeaderData.map((item) => (
-          <LI key={item.id}>
+        {profileHeaderData.map((item, index) => (
+          <LI key={index}>
             <Link to={`${process.env.PUBLIC_URL}/${item.link}`}>
               <div className="profile-icon">
                 <SvgIcon iconId={item.icon} />

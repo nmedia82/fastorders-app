@@ -69,6 +69,10 @@ export const routes = [
     element: <POSHome />,
   },
   {
+    path: `${process.env.PUBLIC_URL}/pos/:order_id`,
+    element: <POSHome />,
+  },
+  {
     path: `${process.env.PUBLIC_URL}/employees`,
     element: <AllEmployees />,
   },
