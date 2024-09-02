@@ -1275,7 +1275,7 @@
                         }
                       }
                       &:hover {
-                        background-color: #f2b573;
+                        background-color: var(--theme-default);
                         > ul {
                           opacity: 1;
                           visibility: visible;
