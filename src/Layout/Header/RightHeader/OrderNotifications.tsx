@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import { Badges, H6, Image, LI, P, UL } from "../../../AbstractElements";
 import SvgIcon from "../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
@@ -14,6 +16,7 @@ export default function OrdersNotificationBox({
     <LI className="onhover-dropdown">
       <div className="notification-box onhover-click">
         <SvgIcon iconId="notification" />
+
         <Badges color="success" pill style={{ color: "white" }}></Badges>
       </div>
       <div className="onhover-show-div notification-dropdown">
