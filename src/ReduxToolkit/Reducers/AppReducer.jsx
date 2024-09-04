@@ -56,8 +56,10 @@ export const addDiscount = createAsyncThunk(
 export const deleteDiscount = createAsyncThunk(
   "products/deleteDiscount",
   async (data) => {
+    console.log(data);
     const response = await axios.delete(`${api_url}/vendor-coupon`, data);
-    return response;
+    console.log(response);
+    return response.data;
   }
 );
 export const fetchDiscounts = createAsyncThunk(
@@ -94,7 +96,6 @@ export const fetchEmployees = createAsyncThunk(
       `${api_url}/employees?vendor_id=12`
       // `${api_url}/employees?vendor_id=${vendor_id}`
     );
-    console.log(response.data);
     return response.data;
   }
 );

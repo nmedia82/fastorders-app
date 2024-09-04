@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { deleteCategory } from "../../ReduxToolkit/Reducers/ProductsReducer";
 import Swal from "sweetalert2";
+import { deleteDiscount } from "../../ReduxToolkit/Reducers/AppReducer";
 
 export default function ListTable() {
   const categoryColumns = [
@@ -41,7 +42,7 @@ export default function ListTable() {
       selector: (row) => row.code,
       sortable: true,
       cell: (row) => <p>{row.code}</p>,
-      width: "35%",
+      width: "15%",
     },
     {
       name: "Amount",
@@ -54,6 +55,7 @@ export default function ListTable() {
       selector: (row) => row.description,
       sortable: true,
       cell: (row) => <p>{row.description}</p>,
+      width: "400px !important",
     },
     {
       name: "discount_type",
@@ -87,7 +89,7 @@ export default function ListTable() {
         value.toString().toLowerCase().includes(filterText.toLowerCase())
     );
   });
-  const handleDelete = async (cat) => {
+  const handleDelete = async (item) => {
     const result = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -99,13 +101,15 @@ export default function ListTable() {
     });
     if (result.isConfirmed) {
       try {
-        const resp = await dispatch(deleteCategory(cat.term_id));
+        const data = { coupon: item.code };
+        const resp = await dispatch(deleteDiscount(data));
+        console.log(resp);
         if (resp.payload.success) {
-          toast.success("Category Deleted");
+          toast.success("Discount Deleted");
         }
       } catch (error) {
         console.log(error);
-        toast.error("Error Deleting Category");
+        toast.error("Error Deleting Discount");
       }
     }
   };
