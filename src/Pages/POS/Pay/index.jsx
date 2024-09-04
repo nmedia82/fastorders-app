@@ -5,13 +5,21 @@ import { Button } from "reactstrap";
 import {
   backToCart,
   cartPaid,
+  clearCart,
   payingCart,
 } from "../../../ReduxToolkit/Reducers/CartReducer";
+import http from "../../../services/http";
+import { getAPIURL } from "../../../services/helper";
+import { useNavigate } from "react-router-dom";
 
 const PayCart = () => {
-  const { total, discount } = useSelector((state) => state.cart);
+  const { order_id, total, discount, order_type } = useSelector(
+    (state) => state.cart
+  );
   const [amount, setAmount] = useState("0");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const api_url = getAPIURL();
 
   useEffect(() => {
     dispatch(payingCart(amount));
@@ -35,6 +43,22 @@ const PayCart = () => {
         ? quickAmount.toString()
         : (parseFloat(prevAmount) + parseFloat(quickAmount)).toString()
     );
+  };
+
+  const handleCartPay = async () => {
+    // console.log(discount, order_id);
+    try {
+      const { data: order } = await http.post(`${api_url}/pay-order`, {
+        discount,
+        order_id,
+        order_status: "completed",
+      });
+      // console.log(order.data);
+      dispatch(clearCart());
+      navigate("/orders");
+    } catch (error) {
+      console.error("Failed to load order", error);
+    }
   };
 
   return (
@@ -111,14 +135,26 @@ const PayCart = () => {
         >
           Back
         </Button>
-        <Button
-          color="success"
-          className="btn-success btn-lg mt-3"
-          onClick={() => dispatch(cartPaid())}
-          disabled={!canPay()}
-        >
-          Pay
-        </Button>
+        {order_type === "pos" && (
+          <Button
+            color="success"
+            className="btn-success btn-lg mt-3"
+            onClick={() => dispatch(cartPaid())}
+            disabled={!canPay()}
+          >
+            Pay
+          </Button>
+        )}
+        {order_type !== "pos" && (
+          <Button
+            color="success"
+            className="btn-success btn-lg mt-3"
+            onClick={handleCartPay}
+            disabled={!canPay()}
+          >
+            Pay1
+          </Button>
+        )}
       </div>
     </div>
   );

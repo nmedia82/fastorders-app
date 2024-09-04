@@ -64,6 +64,8 @@ const initialState = {
   orders: loadOrdersFromLocalStorage(),
   products: [],
   status: "idle",
+  order_type: "pos",
+  order_id: null,
   error: null,
 };
 
@@ -200,6 +202,20 @@ const cartSlice = createSlice({
       state.amountPaid = 0;
       state.isPaying = false;
       state.cartId = nanoid();
+      state.order_id = null;
+      state.order_type = "pos";
+      saveCartToLocalStorage(state);
+    },
+    orderToCart: (state, action) => {
+      const { id, items, order_type } = action.payload;
+      state.order_id = id;
+      state.order_type = order_type;
+      state.cartItems = [...items];
+      state.total = items.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0
+      );
+      state.isPaying = false;
       saveCartToLocalStorage(state);
     },
   },
@@ -230,5 +246,6 @@ export const {
   payingCart,
   backToCart,
   cartPaid,
+  orderToCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;
