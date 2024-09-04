@@ -87,9 +87,9 @@ export const profileHeaderData = [
   // },
   {
     id: 3,
-    link: `users`,
+    link: `employees`,
     icon: "user",
-    text: "Users",
+    text: "Employees",
   },
   {
     id: 3,

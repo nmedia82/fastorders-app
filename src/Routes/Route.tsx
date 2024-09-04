@@ -75,7 +75,7 @@ export const routes = [
   },
   {
     path: `${process.env.PUBLIC_URL}/employees`,
-    element: <AllEmployees />,
+    element: <Users />,
   },
   {
     path: `${process.env.PUBLIC_URL}/invoice/:order_id`,
@@ -88,10 +88,6 @@ export const routes = [
   {
     path: `${process.env.PUBLIC_URL}/edit-profile`,
     element: <UserSettings />,
-  },
-  {
-    path: `${process.env.PUBLIC_URL}/users`,
-    element: <Users />,
   },
   {
     path: `${process.env.PUBLIC_URL}/activities`,
