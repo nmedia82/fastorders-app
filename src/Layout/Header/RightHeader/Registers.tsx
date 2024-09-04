@@ -8,7 +8,6 @@ import { dynamicImage } from "../../../Utils";
 import { JaneCooper } from "../../../Utils/Constants";
 import { chatHeaderData } from "../../../Data/Layout/RightHeader";
 import { Link } from "react-router-dom";
-
 export default function Registers() {
   return (
     <LI className="cart-nav onhover-dropdown">

@@ -50,12 +50,7 @@ export default function UserProfile() {
               </Col>
 
               <div className="form-footer">
-                <button
-                  type="submit"
-                  className="btn"
-                  style={{ backgroundColor: "#945bfa", color: "white" }}>
-                  Save
-                </button>
+                <Btn color="primary">{Save}</Btn>
               </div>
             </Row>
           </Form>

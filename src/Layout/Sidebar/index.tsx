@@ -44,17 +44,17 @@ export default function Sidebar() {
         <ProfileSection />
         {/* <SidebarSearch /> */}
         <nav className="sidebar-main">
-          <div
+          {/* <div
             className={`left-arrow ${leftArrow ? "disabled" : ""}`}
             id="left-arrow"
             onClick={scrollToLeft}
           >
             <ArrowLeft />
-          </div>
+          </div> */}
           <div id="sidebar-menu" style={{ marginLeft: margin + "px" }}>
             <SidebarNav />
           </div>
-          {wrapper === "horizontal-wrapper" && (
+          {/* {wrapper === "horizontal-wrapper" && (
             <div
               className="right-arrow"
               onClick={scrollToRight}
@@ -62,7 +62,7 @@ export default function Sidebar() {
             >
               <ArrowRight />
             </div>
-          )}
+          )} */}
         </nav>
       </div>
     </div>

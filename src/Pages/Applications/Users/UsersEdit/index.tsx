@@ -19,18 +19,25 @@ import {
 } from "reactstrap";
 import CommonCardHeader from "../../../../Utils/CommonComponents/CommonCardHeader";
 import classnames from "classnames";
+import { Btn } from "../../../../AbstractElements";
 
 // Define an interface for form data
 interface FormData {
   home_video_url: string;
   shipping_charges: number;
   shipping_charges_label: string;
-  logo_url: FileList;
+  logo_url: string;
   show_invoice_shipping: boolean;
   name: string;
   address: string;
   city: string;
   email: string;
+  first_name: string;
+  last_name: string;
+  phone_number: string;
+  title: string;
+  profile_address: string;
+  profile_city: string;
 }
 
 export default function UserEdit() {
@@ -61,10 +68,21 @@ export default function UserEdit() {
         <Nav tabs>
           <NavItem>
             <NavLink
+              className={classnames({ active: activeTab === "3" })}
+              onClick={() => toggle("3")}
+              style={{
+                backgroundColor: activeTab === "3" ? "#f39324" : "transparent",
+                color: activeTab === "3" ? "white" : "black",
+              }}>
+              Profile Settings
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
               className={classnames({ active: activeTab === "1" })}
               onClick={() => toggle("1")}
               style={{
-                backgroundColor: activeTab === "1" ? "#945bfa" : "transparent",
+                backgroundColor: activeTab === "1" ? "#f39324" : "transparent",
                 color: activeTab === "1" ? "white" : "black",
               }}>
               Vendor Settings
@@ -75,8 +93,8 @@ export default function UserEdit() {
               className={classnames({ active: activeTab === "2" })}
               onClick={() => toggle("2")}
               style={{
-                backgroundColor: activeTab === "2" ? "#945bfa" : "transparent",
-                color: activeTab === "1" ? "black" : "white",
+                backgroundColor: activeTab === "2" ? "#f39324" : "transparent",
+                color: activeTab === "2" ? "white" : "black",
               }}>
               Business Info
             </NavLink>
@@ -85,6 +103,86 @@ export default function UserEdit() {
 
         <Form onSubmit={handleSubmit(onEditSubmit)}>
           <TabContent activeTab={activeTab}>
+            {/* Profile Settings Tab */}
+            <TabPane tabId="3">
+              <CardBody>
+                <Row className="g-3">
+                  <Col md={6}>
+                    <Label>First Name</Label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      placeholder="First Name"
+                      {...register("first_name", { required: true })}
+                    />
+                    <span style={{ color: "red" }}>
+                      {errors.first_name && "First name is required"}{" "}
+                    </span>
+                  </Col>
+                  <Col md={6}>
+                    <Label>Last Name</Label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      placeholder="Last Name"
+                      {...register("last_name", { required: true })}
+                    />
+                    <span style={{ color: "red" }}>
+                      {errors.last_name && "Last name is required"}{" "}
+                    </span>
+                  </Col>
+                  <Col md={6}>
+                    <Label>Phone Number</Label>
+                    <input
+                      className="form-control"
+                      type="tel"
+                      placeholder="Phone Number"
+                      {...register("phone_number", { required: true })}
+                    />
+                    <span style={{ color: "red" }}>
+                      {errors.phone_number && "Phone number is required"}{" "}
+                    </span>
+                  </Col>
+                  <Col md={6}>
+                    <Label>Title</Label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      placeholder="Title"
+                      {...register("title", { required: true })}
+                    />
+                    <span style={{ color: "red" }}>
+                      {errors.title && "Title is required"}{" "}
+                    </span>
+                  </Col>
+                  <Col md={6}>
+                    <Label>Address</Label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      placeholder="Address"
+                      {...register("profile_address", { required: true })}
+                    />
+                    <span style={{ color: "red" }}>
+                      {errors.profile_address && "Address is required"}{" "}
+                    </span>
+                  </Col>
+                  <Col md={6}>
+                    <Label>City</Label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      placeholder="City"
+                      {...register("profile_city", { required: true })}
+                    />
+                    <span style={{ color: "red" }}>
+                      {errors.profile_city && "City is required"}{" "}
+                    </span>
+                  </Col>
+                </Row>
+              </CardBody>
+            </TabPane>
+
             {/* Vendor Settings Tab */}
             <TabPane tabId="1">
               <CardBody>
@@ -199,30 +297,26 @@ export default function UserEdit() {
                       {errors.city && "City is required"}{" "}
                     </span>
                   </Col>
-                  <Col md={6}>
-                    <Label>Email</Label>
-                    <input
-                      className="form-control"
-                      type="email"
-                      placeholder="Email"
-                      {...register("email", { required: true })}
-                    />
-                    <span style={{ color: "red" }}>
-                      {errors.email && "Email is required"}{" "}
-                    </span>
-                  </Col>
+                    {/* <Col md={6}>
+                      <Label>Email</Label>
+                      <input
+                        className="form-control"
+                        type="email"
+                        placeholder="Email"
+                        {...register("email", { required: true })}
+                      />
+                      <span style={{ color: "red" }}>
+                        {errors.email && "Email is required"}{" "}
+                      </span>
+                    </Col> */}
                 </Row>
               </CardBody>
             </TabPane>
           </TabContent>
-
           <CardFooter className="text-end">
-            <button
-              type="submit"
-              className="btn "
-              style={{ backgroundColor: "#945bfa", color: "white" }}>
+            <Btn color="primary" attrBtn={{ type: "submit" }}>
               Update Profile
-            </button>
+            </Btn>
           </CardFooter>
         </Form>
       </Card>
