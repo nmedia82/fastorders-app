@@ -54,7 +54,7 @@ const OrdersSlice = createSlice({
       );
     },
     syncNewOrders: (state, action) => {
-      console.log(action.payload);
+      // console.log(action.payload);
       state.newOrders = [...action.payload, ...state.allOrders];
       state.allOrders = [...action.payload, ...state.allOrders];
     },
@@ -66,11 +66,15 @@ const OrdersSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(fetchOrders.pending, (state) => {
+      state.isLoading = true;
+    });
     builder.addCase(fetchOrders.fulfilled, (state, action) => {
       state.allOrders = action.payload.data;
       state.currentOrders = action.payload.data.filter(
-        (order) => order.order_status != "completed"
+        (order) => order.order_status !== "completed"
       );
+      state.isLoading = false;
     });
     builder.addCase(fetchOrderStatuses.fulfilled, (state, action) => {
       state.allOrderStatuses = action.payload;

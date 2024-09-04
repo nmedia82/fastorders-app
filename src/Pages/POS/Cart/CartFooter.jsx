@@ -13,7 +13,7 @@ import { getFormattedPrice } from "../../../services/helper";
 
 export const CartFooter = () => {
   const dispatch = useDispatch();
-  const { total, discount } = useSelector((state) => state.cart);
+  const { total, discount, order_type } = useSelector((state) => state.cart);
 
   const handleHoldCart = () => {
     dispatch(holdCart());
@@ -60,14 +60,16 @@ export const CartFooter = () => {
           >
             Pay
           </Button>
-          <Button
-            color="dark"
-            className="btn-square w-100 mx-1"
-            onClick={handlQuickPay}
-          >
-            {"Quick "}
-            <small className="text-sm">{getFormattedPrice(total)}</small>
-          </Button>
+          {order_type === "pos" && (
+            <Button
+              color="dark"
+              className="btn-square w-100 mx-1"
+              onClick={handlQuickPay}
+            >
+              {"Quick "}
+              <small className="text-sm">{getFormattedPrice(total)}</small>
+            </Button>
+          )}
         </div>
         <div className="d-flex justify-content-between">
           <Button

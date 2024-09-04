@@ -17,6 +17,7 @@ import Registers from "../Pages/Registers";
 import Discounts from "../Pages/Discounts";
 import UserSettings from "../Pages/Applications/Users";
 import Users from "../Pages/Users";
+import ActivitiesPage from "../Pages/Activities";
 
 export const routes = [
   {
@@ -91,5 +92,9 @@ export const routes = [
   {
     path: `${process.env.PUBLIC_URL}/users`,
     element: <Users />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/activities`,
+    element: <ActivitiesPage />,
   },
 ];

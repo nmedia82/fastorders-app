@@ -16,6 +16,7 @@ import {
   getFormattedDate,
   getFormattedPrice,
 } from "../../../../services/helper";
+import DashboardRecentActivities from "./RecentActivities";
 
 interface Order {
   id: number;
@@ -56,7 +57,7 @@ const CustomBadge = ({
   </Badges>
 );
 
-export default function ActivitiesStatus() {
+export default function DashboardRecentOrders() {
   const { allOrders } = useSelector((state: any) => state.orders);
 
   const recentOrders = allOrders.slice(-5);
@@ -121,12 +122,7 @@ export default function ActivitiesStatus() {
             </div>
           </CardHeader>
           <CardBody className="p-0">
-            {/* Add your second DataTable or other content here */}
-            <DataTable
-              className="custom-scrollbar"
-              data={RecentActivitiesData}
-              columns={RecentActivities}
-            />
+            <DashboardRecentActivities />
           </CardBody>
         </Card>
       </Col>

@@ -11,6 +11,9 @@ import {
 import http from "../../../services/http";
 import { getAPIURL } from "../../../services/helper";
 import { useNavigate } from "react-router-dom";
+import { setOrderStatus } from "../../../ReduxToolkit/Reducers/OrdersReducer";
+import { toast } from "react-toastify";
+import Loader from "../../../Layout/Loader";
 
 const PayCart = () => {
   const { order_id, total, discount, order_type } = useSelector(
@@ -19,6 +22,7 @@ const PayCart = () => {
   const [amount, setAmount] = useState("0");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isWorking, setIsWorking] = useState(false);
   const api_url = getAPIURL();
 
   useEffect(() => {
@@ -48,6 +52,7 @@ const PayCart = () => {
   const handleCartPay = async () => {
     // console.log(discount, order_id);
     try {
+      setIsWorking(true);
       const { data: order } = await http.post(`${api_url}/pay-order`, {
         discount,
         order_id,
@@ -55,14 +60,19 @@ const PayCart = () => {
       });
       // console.log(order.data);
       dispatch(clearCart());
+      dispatch(setOrderStatus(order.data));
       navigate("/orders");
+      setIsWorking(false);
     } catch (error) {
+      setIsWorking(false);
+      toast.error(error);
       console.error("Failed to load order", error);
     }
   };
 
   return (
     <div className="pay-cart-section">
+      {isWorking && <Loader />}
       <div className="amount-display">{amount}</div>
       <div className="keys-wrapper">
         <div className="keypad-section">

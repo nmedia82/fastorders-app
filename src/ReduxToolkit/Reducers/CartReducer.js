@@ -10,13 +10,13 @@ const vendor_id = getVendorID();
 const saveCartToLocalStorage = (cart) => {
   const { cartItems, total, discount, amountPaid, isPaying, cartId } = cart;
   localStorage.setItem(
-    "cart",
+    "getorder_cart",
     JSON.stringify({ cartItems, total, discount, amountPaid, isPaying, cartId })
   );
 };
 
 const loadCartFromLocalStorage = () => {
-  const cart = localStorage.getItem("cart");
+  const cart = localStorage.getItem("getorder_cart");
   return cart
     ? JSON.parse(cart)
     : {
@@ -30,11 +30,11 @@ const loadCartFromLocalStorage = () => {
 };
 
 const saveHoldCartsToLocalStorage = (holdCarts) => {
-  localStorage.setItem("holdCarts", JSON.stringify(holdCarts));
+  localStorage.setItem("getorder_holdCarts", JSON.stringify(holdCarts));
 };
 
 const loadHoldCartsFromLocalStorage = () => {
-  const holdCarts = localStorage.getItem("holdCarts");
+  const holdCarts = localStorage.getItem("getorder_holdCarts");
   return holdCarts ? JSON.parse(holdCarts) : [];
 };
 
@@ -61,7 +61,6 @@ export const fetchProducts = createAsyncThunk(
 const initialState = {
   ...loadCartFromLocalStorage(),
   holdCarts: loadHoldCartsFromLocalStorage(),
-  orders: loadOrdersFromLocalStorage(),
   products: [],
   status: "idle",
   order_type: "pos",
@@ -160,23 +159,41 @@ const cartSlice = createSlice({
       saveCartToLocalStorage(state);
     },
     cartPaid: (state) => {
+      let pending_orders = loadOrdersFromLocalStorage() || []; // Ensure it's an array, fallback to an empty array
+
       state.isPaying = false;
       const amount_paid =
         state.amountPaid === 0 ? state.total : state.amountPaid;
-      state.orders.push({
+
+      // Create the new order object
+      const newOrder = {
         id: state.cartId,
-        items: [...state.cartItems],
+        items: [...state.cartItems], // Copy items
         sale_amount: parseFloat(state.total),
         discount: parseFloat(state.discount),
         paid: parseFloat(amount_paid),
-      });
+      };
+
+      // Add the new order to pending orders (without directly mutating the array)
+      pending_orders = [...pending_orders, newOrder];
+
+      // Reset cart state
       state.cartItems = [];
       state.total = 0;
       state.discount = 0;
       state.amountPaid = 0;
-      state.cartId = nanoid();
-      saveCartToLocalStorage(state);
-      saveOrdersToLocalStorage(state.orders);
+      state.cartId = nanoid(); // Generate new cart ID
+
+      // Save updated cart and pending orders back to localStorage
+      saveCartToLocalStorage({
+        cartItems: state.cartItems,
+        total: state.total,
+        discount: state.discount,
+        amountPaid: state.amountPaid,
+        cartId: state.cartId,
+      });
+
+      saveOrdersToLocalStorage(pending_orders);
     },
     retrieveCart: (state, action) => {
       const holdCart = state.holdCarts.find(

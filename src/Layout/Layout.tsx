@@ -21,8 +21,8 @@ import {
 } from "../ReduxToolkit/Reducers/OrdersReducer";
 import axios from "axios";
 import { getAPIURL, getVendorSettings } from "../services/helper";
-import { fetchDashboardReports } from "../ReduxToolkit/Reducers/AppReducer";
 import BackgroundOrdersSync from "./BackgroundOrdersSync";
+import { fetchActivityLog } from "../ReduxToolkit/Reducers/AppReducer";
 
 export default function Layout() {
   const { sidebar_types } = useSelector(
@@ -91,6 +91,7 @@ export default function Layout() {
     dispatch(fetchProducts());
     dispatch(fetchCategories());
     dispatch(fetchOrders());
+    dispatch(fetchActivityLog());
   }, [dispatch]);
 
   return (

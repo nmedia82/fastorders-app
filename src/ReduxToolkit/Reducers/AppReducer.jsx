@@ -21,6 +21,17 @@ export const fetchDashboardReports = createAsyncThunk(
   }
 );
 
+// Fetch activities by vendor
+export const fetchActivityLog = createAsyncThunk(
+  "fetchActivityLog",
+  async () => {
+    const { data: activities } = await axios.get(
+      `${api_url}/activities/${vendor_id}`
+    );
+    return activities.data;
+  }
+);
+
 // Add a activity
 export const addActivityLog = createAsyncThunk("activity", async (payload) => {
   const response = await axios.post(`${api_url}/activit`, {
@@ -126,6 +137,9 @@ const AppSlice = createSlice({
       })
       .addCase(fetchDashboardReports.rejected, (state) => {
         state.isLoading = false;
+      })
+      .addCase(fetchActivityLog.fulfilled, (state, action) => {
+        state.allActivities = action.payload;
       })
       .addCase(addActivityLog.pending, (state) => {
         state.isLoading = true;

@@ -9,8 +9,7 @@ import { dynamicImage } from "../../../Utils";
 export default function Syncing() {
   return (
     <LI className="cart-nav onhover-dropdown flex">
-      {/* <SvgIcon iconId="qr-code" /> */}
-      <i className="fa fa-refresh flex font-white"></i>
+      <i className="fa fa-spin fa-refresh"></i>
     </LI>
   );
 }

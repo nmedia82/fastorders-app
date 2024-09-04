@@ -22,6 +22,7 @@ import Syncing from "./Syncing";
 export default function RightHeader() {
   const dispatch = useDispatch();
   const { isSearchBarOpen } = useSelector((state: RootState) => state.layout);
+  const { isBackgroundWorking } = useSelector((state: RootState) => state.app);
   const { holdCarts, newOrders } = useSelector(
     (state: RootState) => state.cart
   );
@@ -39,7 +40,7 @@ export default function RightHeader() {
       {/* <Registers /> */}
       <Registers />
       <QRCodePage />
-      <Syncing />
+      {isBackgroundWorking && <Syncing />}
       <ProfileHeader />
     </UL>
   );

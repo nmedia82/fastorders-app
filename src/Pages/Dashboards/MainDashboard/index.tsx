@@ -3,11 +3,11 @@
 import React from "react";
 import { Container, Row } from "reactstrap";
 import TotalOrders from "./TotalOrder";
-import ActivitiesStatus from "./ActivitiesStatus";
 import { useSelector } from "react-redux";
 import Loader from "../../../Layout/Loader";
 import ReportWidget from "../ReportWidget";
 import { getFormattedPrice } from "../../../services/helper";
+import DashboardRecentOrders from "./RecentOrders";
 
 export default function MainDashboard() {
   const { isLoading, dashoardReports, currentRange } = useSelector(
@@ -76,7 +76,7 @@ export default function MainDashboard() {
           Data={"Coming Soon"}
           currentRange={currentRange}
         />
-        <ActivitiesStatus />
+        <DashboardRecentOrders />
       </Row>
     </Container>
   );

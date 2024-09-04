@@ -5,6 +5,7 @@ import { getPOSRegisterID } from "../services/auth";
 import { useSelector, useDispatch } from "react-redux";
 import { setBackgroundSyncing } from "../ReduxToolkit/Reducers/AppReducer"; // Assuming you have an action like orderSynced
 import { addNewOrder } from "../ReduxToolkit/Reducers/OrdersReducer";
+import { toast } from "react-toastify";
 
 // API endpoint
 const api_url = getAPIURL();
@@ -32,6 +33,8 @@ const syncOrders = async (dispatch) => {
       biller_id: getUserID(),
     }; // Get the first unsent order
 
+    dispatch(setBackgroundSyncing(true)); // Update the background syncing state
+
     try {
       // Send order to the server
       const response = await axios.post(`${api_url}/create-pos-order`, order);
@@ -40,9 +43,12 @@ const syncOrders = async (dispatch) => {
         // Order was successfully sent, remove it from the queue
         orders.shift(); // Remove the first order
         saveOrdersToLocalStorage(orders);
-        console.log("Order sent successfully:", order);
+        // console.log("Order sent successfully:", order);
 
         const { data: new_order } = response;
+        if (!new_order.success) {
+          return toast.error(new_order.data);
+        }
         // Dispatch a success event after the order is synced
         dispatch(addNewOrder(new_order.data)); // You can dispatch your custom action here
         dispatch(setBackgroundSyncing(false));
@@ -59,7 +65,6 @@ export default function BackgroundOrdersSync() {
   useEffect(() => {
     // Start the background sync process
     const interval = setInterval(() => {
-      dispatch(setBackgroundSyncing(true)); // Update the background syncing state
       syncOrders(dispatch); // Pass the dispatch function to syncOrders
     }, 5000); // Sync every 5 seconds (adjust as needed)
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Input, Button, InputGroup, InputGroupText } from "reactstrap";
 import CartItems from "./CartItems";
@@ -8,21 +8,28 @@ import { useParams } from "react-router-dom";
 import http from "../../../services/http";
 import { getAPIURL } from "../../../services/helper";
 import { orderToCart } from "../../../ReduxToolkit/Reducers/CartReducer";
+import { toast } from "react-toastify";
+import Loader from "../../../Layout/Loader";
 
 export const POSCart = () => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
   const { order_id } = useParams();
+  const [isWorking, setIsWorking] = useState(false);
   const api_url = getAPIURL();
 
   useEffect(() => {
     const loadOrderToCart = async () => {
       try {
+        setIsWorking(true);
         const { data: order } = await http.get(`${api_url}/order/${order_id}`);
         // console.log(order.data);
         dispatch(orderToCart(order.data));
+        setIsWorking(false);
       } catch (error) {
         console.error("Failed to load order", error);
+        setIsWorking(false);
+        toast.error(error);
       }
     };
 
@@ -33,6 +40,7 @@ export const POSCart = () => {
 
   return (
     <div className="cart-section border-3">
+      {isWorking && <Loader />}
       <InputGroup size="lg">
         <InputGroupText className="list-light-warning">
           <i className="icofont icofont-barcode txt-warning"></i>
