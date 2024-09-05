@@ -18,6 +18,7 @@ import Discounts from "../Pages/Discounts";
 import UserSettings from "../Pages/Applications/Users";
 import Users from "../Pages/Users";
 import ActivitiesPage from "../Pages/Activities";
+import AddEmployee from "../Pages/Employees/AddEmployee";
 
 export const routes = [
   {
@@ -76,6 +77,10 @@ export const routes = [
   {
     path: `${process.env.PUBLIC_URL}/employees`,
     element: <Users />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/employees/add`,
+    element: <AddEmployee />,
   },
   {
     path: `${process.env.PUBLIC_URL}/invoice/:order_id`,
