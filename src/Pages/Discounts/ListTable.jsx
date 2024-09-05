@@ -14,30 +14,6 @@ import { deleteDiscount } from "../../ReduxToolkit/Reducers/AppReducer";
 export default function ListTable() {
   const categoryColumns = [
     {
-      name: "",
-      cell: () => (
-        <FormGroup check>
-          <Input className="checkbox-primary" type="checkbox" />
-        </FormGroup>
-      ),
-      sortable: false,
-      width: "3%",
-    },
-    // {
-    //   name: "Category",
-    //   selector: (row) => row.categoryName,
-    //   sortable: true,
-    //   cell: (row) => (
-    //     <div className="product-names">
-    //       <div className="light-product-box">
-    //         <Image className="img-fluid" src={row.image} alt="t-shirt" />
-    //       </div>
-    //       <P>{row.categoryName}</P>
-    //     </div>
-    //   ),
-    //   width: "15%",
-    // },
-    {
       name: "Code",
       selector: (row) => row.code,
       sortable: true,
@@ -55,13 +31,21 @@ export default function ListTable() {
       selector: (row) => row.description,
       sortable: true,
       cell: (row) => <p>{row.description}</p>,
-      width: "400px !important",
+      width: "300px !important",
     },
     {
-      name: "discount_type",
+      name: "Discount",
       selector: (row) => row.discount_type,
       sortable: true,
-      cell: (row) => <p>{row.discount_type}</p>,
+      cell: (row) => (
+        <p>{row.discount_type === "fixed_cart" ? "Fixed Cart " : "Percent"}</p>
+      ),
+    },
+    {
+      name: "Usage Count",
+      selector: (row) => row.usage_count,
+      sortable: true,
+      cell: (row) => <p>{row.usage_count}</p>,
     },
     {
       name: "Expiry Date",
