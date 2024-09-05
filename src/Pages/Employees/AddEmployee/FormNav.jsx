@@ -3,8 +3,20 @@ import { Col, Nav, NavItem, NavLink } from "reactstrap";
 import { Href } from "../../../Utils/Constants";
 import SvgIcon from "../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
 import { H6, P } from "../../../AbstractElements";
-import { addProductNav } from "../../Common/Product";
-
+const addProductNav = [
+  {
+    id: 1,
+    icon: "product-detail",
+    title: "Add Employee Details",
+    subTitle: "Add Employee name & details",
+  },
+  {
+    id: 2,
+    icon: "Employee-gallery",
+    title: "Employee Gallery",
+    subTitle: "Picture",
+  },
+];
 export default function FormNav({ steps, setSteps }) {
   return (
     <Col xxl={3} xl={4} className="box-col-4e sidebar-left-wrapper">

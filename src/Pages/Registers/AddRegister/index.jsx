@@ -40,7 +40,6 @@ export default function AddRegister() {
     };
     try {
       const result = await dispatch(addRegister(formatedData));
-      console.log(result);
       if (result.payload.success) {
         toast.success("Register Saved Successfully");
       }

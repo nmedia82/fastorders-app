@@ -6,14 +6,14 @@ import SvgIcon from "../../../../Utils/CommonComponents/CommonIcons/CommonSvgIco
 
 export default function EmployeeDetails({
   activeCallBack,
-  product,
+  employee,
   onFormChange,
 }) {
   const [borderTab, setBorderTab] = useState(1);
   const activeBorder = useCallback((val) => {
     setBorderTab(val);
   }, []);
-  const { name } = product;
+  const { name } = employee;
 
   const handleNextButton = () => {
     if (name !== "") {
@@ -29,83 +29,104 @@ export default function EmployeeDetails({
     <div className="sidebar-body">
       <Form id="advance-tab">
         <Row className="g-2">
+          {/* First Name */}
           <Col xs={6} className="m-0">
             <FormGroup>
               <Label>
-                Product Name <span className="txt-danger">{"*"}</span>
+                First Name <span className="txt-danger">{"*"}</span>
               </Label>
               <Input
                 type="text"
-                name="name"
-                value={product.name}
-                onChange={(e) => onFormChange(e.target.name, e.target.value)}
-              />
-            </FormGroup>
-          </Col>
-          <Col xs={4} className="m-0">
-            <FormGroup>
-              <Label>Product Cost</Label>
-              <Input
-                type="number"
-                name="product_cost"
-                value={product.product_cost}
-                onChange={(e) => onFormChange(e.target.name, e.target.value)}
-              />
-            </FormGroup>
-          </Col>
-          <Col xs={4} className="m-0">
-            <FormGroup>
-              <Label>Price</Label>
-              <Input
-                type="number"
-                name="regular_price"
-                value={product.regular_price}
-                onChange={(e) => onFormChange(e.target.name, e.target.value)}
-              />
-            </FormGroup>
-          </Col>
-          <Col xs={4} className="m-0">
-            <FormGroup>
-              <Label>Discount Price</Label>
-              <Input
-                type="number"
-                name="sale_price"
-                value={product.sale_price}
+                name="first_name"
+                value={employee?.first_name}
                 onChange={(e) => onFormChange(e.target.name, e.target.value)}
               />
             </FormGroup>
           </Col>
 
+          {/* Last Name */}
           <Col xs={6} className="m-0">
             <FormGroup>
-              <FormGroup className="checkbox checkbox-primary mb-0" check>
-                <Input
-                  id="checkbox-primary-1"
-                  type="checkbox"
-                  name="manage_stock"
-                  checked={product.manage_stock || false} // Handle the checkbox state
-                  onChange={(e) =>
-                    onFormChange(e.target.name, e.target.checked)
-                  }
-                />
-                <Label htmlFor="checkbox-primary-1" check>
-                  {"Enable Stock"}
-                </Label>
-              </FormGroup>
+              <Label>
+                Last Name <span className="txt-danger">{"*"}</span>
+              </Label>
+              <Input
+                type="text"
+                name="last_name"
+                value={employee?.last_name}
+                onChange={(e) => onFormChange(e.target.name, e.target.value)}
+              />
+            </FormGroup>
+          </Col>
 
-              {product.manage_stock && (
-                <Input
-                  type="number"
-                  name="stock_quantity"
-                  value={product.stock_quantity}
-                  onChange={(e) => onFormChange(e.target.name, e.target.value)}
-                />
-              )}
+          {/* Phone Number 1 */}
+          <Col xs={6} className="m-0">
+            <FormGroup>
+              <Label>Phone Number 1</Label>
+              <Input
+                type="text"
+                name="phone_number1"
+                value={employee?.phone_number1}
+                onChange={(e) => onFormChange(e.target.name, e.target.value)}
+              />
+            </FormGroup>
+          </Col>
+
+          {/* Phone Number 2 */}
+          <Col xs={6} className="m-0">
+            <FormGroup>
+              <Label>Phone Number 2</Label>
+              <Input
+                type="text"
+                name="phone_number2"
+                value={employee?.phone_number2}
+                onChange={(e) => onFormChange(e.target.name, e.target.value)}
+              />
+            </FormGroup>
+          </Col>
+
+          {/* Title */}
+          <Col xs={6} className="m-0">
+            <FormGroup>
+              <Label>Title</Label>
+              <Input
+                type="text"
+                name="title"
+                value={employee?.title}
+                onChange={(e) => onFormChange(e.target.name, e.target.value)}
+              />
+            </FormGroup>
+          </Col>
+
+          {/* Address */}
+          <Col xs={6} className="m-0">
+            <FormGroup>
+              <Label>Address</Label>
+              <Input
+                type="text"
+                name="address"
+                value={employee?.address}
+                onChange={(e) => onFormChange(e.target.name, e.target.value)}
+              />
+            </FormGroup>
+          </Col>
+
+          {/* City */}
+          <Col xs={6} className="m-0">
+            <FormGroup>
+              <Label>City</Label>
+              <Input
+                type="text"
+                name="city"
+                value={employee?.city}
+                onChange={(e) => onFormChange(e.target.name, e.target.value)}
+              />
             </FormGroup>
           </Col>
         </Row>
       </Form>
-      <div className="product-buttons">
+
+      <div className="employee-buttons">
         <Btn color="transparent" onClick={handleNextButton}>
           <div className="d-flex align-items-center gap-sm-2 gap-1">
             <SvgIcon iconId="front-arrow" /> {"Next"}

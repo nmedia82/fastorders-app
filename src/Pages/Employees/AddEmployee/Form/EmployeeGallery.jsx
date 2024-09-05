@@ -6,21 +6,22 @@ import MultiImageUploaderWithCrop from "../../../../Components/NM/ImageUploaderW
 export default function EmployeeGallery({
   activeCallBack,
   product,
-  onSaveProduct,
+  employee,
+  onSave,
 }) {
   const [productImages, setProductImages] = useState([]);
   const [isSaving, setIsSaving] = useState(false); // To handle loading during save
 
   // Load existing product images when component mounts
   useEffect(() => {
-    setProductImages(product.images || []);
-  }, [product]);
+    setProductImages(employee?.images || []);
+  }, [employee]);
 
-  // Handle saving the product, including a loading state
-  const handleSaveProduct = async () => {
+  // Handle saving the employee, including a loading state
+  const handleSave = async () => {
     setIsSaving(true);
     try {
-      await onSaveProduct(productImages); // Assuming onSaveProduct is async
+      await onSave(productImages); // Assuming onSave is async
     } catch (error) {
       console.error("Error saving product:", error);
     } finally {
@@ -51,8 +52,8 @@ export default function EmployeeGallery({
         {/* Save Button with loading state and disabled check */}
         <Btn
           color="transparent"
-          onClick={handleSaveProduct}
-          disabled={isSaving || productImages.length === 0} // Disable if saving or no images
+          onClick={handleSave}
+          // disabled={isSaving || productImages.length === 0} // Disable if saving or no images
         >
           <div className="d-flex align-items-center gap-sm-2 gap-1">
             {isSaving ? (

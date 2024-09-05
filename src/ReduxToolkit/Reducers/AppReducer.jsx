@@ -100,6 +100,13 @@ export const addRegister = createAsyncThunk(
     return response.data;
   }
 );
+export const addEmployee = createAsyncThunk(
+  "products/addEmployee",
+  async (data) => {
+    const response = await axios.post(`${api_url}/employees`, data);
+    return response.data;
+  }
+);
 export const fetchEmployees = createAsyncThunk(
   "products/fetchEmployees",
   async () => {
@@ -162,6 +169,10 @@ const AppSlice = createSlice({
       // add register
       .addCase(addRegister.fulfilled, (state, action) => {
         state.registers.push(action.payload); // Add the new product to the state
+      })
+      // add Employee
+      .addCase(addEmployee.fulfilled, (state, action) => {
+        state.allEmployees.push(action.payload); // Add the new product to the state
       })
       // handle fetch employees
       .addCase(fetchEmployees.pending, (state) => {
