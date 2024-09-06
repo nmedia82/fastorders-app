@@ -239,12 +239,12 @@ const AppSlice = createSlice({
       })
       // add discount
       .addCase(addPaymentType.fulfilled, (state, action) => {
-        state.paymentTypes.push(action.payload.data); // Add the new product to the state
+        state.paymentTypes.push(action.payload.data);
       })
       .addCase(deletePaymentType.fulfilled, (state, action) => {
         state.paymentTypes = state.paymentTypes.filter(
-          (paymentType) => paymentType.cupon !== action.meta.arg
-        ); // Add the new product to the state
+          (paymentType) => paymentType.id !== action.meta.arg
+        );
       });
   },
 });
