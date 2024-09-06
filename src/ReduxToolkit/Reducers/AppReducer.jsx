@@ -112,9 +112,15 @@ export const fetchEmployees = createAsyncThunk(
   "products/fetchEmployees",
   async () => {
     const response = await axios.get(
-      `${api_url}/employees?vendor_id=12`
-      // `${api_url}/employees?vendor_id=${vendor_id}`
+      `${api_url}/employees?vendor_id=${vendor_id}`
     );
+    return response.data;
+  }
+);
+export const fetchPaymentTypes = createAsyncThunk(
+  "products/fetchPaymentTypes",
+  async () => {
+    const response = await axios.get(`${api_url}/payment-types`);
     return response.data;
   }
 );
@@ -122,6 +128,13 @@ export const addPaymentType = createAsyncThunk(
   "products/addPaymentType",
   async (data) => {
     const response = await axios.post(`${api_url}/payment-types`, data);
+    return response.data;
+  }
+);
+export const deletePaymentType = createAsyncThunk(
+  "products/deletePaymentType",
+  async (id) => {
+    const response = await axios.delete(`${api_url}/payment-types/${id}`);
     return response.data;
   }
 );
@@ -213,9 +226,25 @@ const AppSlice = createSlice({
           (discount) => discount.cupon !== action.meta.arg
         ); // Add the new product to the state
       })
+      // handle fetch paymentTypes
+      .addCase(fetchPaymentTypes.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchPaymentTypes.fulfilled, (state, action) => {
+        state.paymentTypes = action.payload.data;
+        state.isLoading = false;
+      })
+      .addCase(fetchPaymentTypes.rejected, (state) => {
+        state.isLoading = false;
+      })
       // add discount
       .addCase(addPaymentType.fulfilled, (state, action) => {
         state.paymentTypes.push(action.payload.data); // Add the new product to the state
+      })
+      .addCase(deletePaymentType.fulfilled, (state, action) => {
+        state.paymentTypes = state.paymentTypes.filter(
+          (paymentType) => paymentType.cupon !== action.meta.arg
+        ); // Add the new product to the state
       });
   },
 });

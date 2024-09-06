@@ -86,10 +86,16 @@ export const profileHeaderData = [
   //     text: 'Inbox'
   // },
   {
-    id: 3,
+    id: 1,
     link: `employees`,
     icon: "user",
     text: "Employees",
+  },
+  {
+    id: 2,
+    link: `payment-types`,
+    icon: "bill",
+    text: "Payment Types",
   },
   {
     id: 3,
