@@ -47,6 +47,7 @@ const initialState = {
   allEmployees: [],
   registers: [],
   discounts: [],
+  paymentTypes: [],
   allRanges: [
     { key: "last_24_hours", label: "Last 24 Hours" },
     { key: "last_30_days", label: "Last 30 Days" },
@@ -114,6 +115,13 @@ export const fetchEmployees = createAsyncThunk(
       `${api_url}/employees?vendor_id=12`
       // `${api_url}/employees?vendor_id=${vendor_id}`
     );
+    return response.data;
+  }
+);
+export const addPaymentType = createAsyncThunk(
+  "products/addPaymentType",
+  async (data) => {
+    const response = await axios.post(`${api_url}/payment-types`, data);
     return response.data;
   }
 );
@@ -204,6 +212,10 @@ const AppSlice = createSlice({
         state.discounts = state.discounts.filter(
           (discount) => discount.cupon !== action.meta.arg
         ); // Add the new product to the state
+      })
+      // add discount
+      .addCase(addPaymentType.fulfilled, (state, action) => {
+        state.paymentTypes.push(action.payload.data); // Add the new product to the state
       });
   },
 });
