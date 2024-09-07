@@ -1,10 +1,10 @@
 import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
 import http from "../../services/http";
-import data from "../../services/config";
-import { getAPIURL, getVendorID } from "../../services/helper";
+import { getAPIURL, getUserID, getVendorID } from "../../services/helper";
 
 const api_url = getAPIURL();
 const vendor_id = getVendorID();
+const biller_id = getUserID();
 
 // Helper functions to interact with localStorage
 const saveCartToLocalStorage = (cart) => {
@@ -58,6 +58,17 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
+// Thunk to fetch registers
+export const fetchRegisters = createAsyncThunk(
+  "registers/fetchRegisters",
+  async () => {
+    const { data: registers } = await http.get(
+      `${api_url}/get-registers?biller_id=${biller_id}`
+    );
+    return registers;
+  }
+);
+
 const initialState = {
   ...loadCartFromLocalStorage(),
   holdCarts: loadHoldCartsFromLocalStorage(),
@@ -66,6 +77,7 @@ const initialState = {
   order_type: "pos",
   order_id: null,
   error: null,
+  register_id: null,
 };
 
 const cartSlice = createSlice({
@@ -248,6 +260,21 @@ const cartSlice = createSlice({
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+      })
+      .addCase(fetchRegisters.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchRegisters.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        console.log(action.payload);
+        const registers = action.payload;
+        const open_registers = registers.filter((r) => r.status === "open");
+        if (open_registers.length > 1) {
+          state.error =
+            "More than one registered is opend, plz contact admin to resolve this issue";
+        } else if (open_registers.length === 1) {
+          state.register_id = open_registers[0].id;
+        }
       });
   },
 });
