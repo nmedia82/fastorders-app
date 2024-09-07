@@ -13,7 +13,12 @@ import SvgIcon from "../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
 import IcoIcon from "../../Pages/Icons/IcoIcon";
 import ConfigDB from "../../Config/ThemeConfig";
 
-export default function SidebarSubMenu({ menu, setActiveMenu, activeMenu, level }: MenuListType) {
+export default function SidebarSubMenu({
+  menu,
+  setActiveMenu,
+  activeMenu,
+  level,
+}: MenuListType) {
   const layout = ConfigDB.settings.sidebar.type;
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -62,7 +67,9 @@ export default function SidebarSubMenu({ menu, setActiveMenu, activeMenu, level 
             item.title && pinedMenu.includes(item.title) ? "pined" : ""
           } ${
             (item.menu
-              ? item.menu.map((innerItem) => ActiveNavLinkUrl(innerItem.url)).includes(true)
+              ? item.menu
+                  .map((innerItem) => ActiveNavLinkUrl(innerItem.url))
+                  .includes(true)
               : ActiveNavLinkUrl(item.url)) || activeMenu[level] === item.title
               ? "active"
               : ""
@@ -74,12 +81,19 @@ export default function SidebarSubMenu({ menu, setActiveMenu, activeMenu, level 
               onClick={() => item.title && handlePined(item.title)}
             ></i>
           )}
-          {item.badge ? <Badges color={item.badgeColor}>{item.badgeName}</Badges> : ""}
+          {item.badge ? (
+            <Badges color={item.badgeColor}>{item.badgeName}</Badges>
+          ) : (
+            ""
+          )}
           <Link
             className={`${level === 0 ? "sidebar-link sidebar-title" : ""} ${
               (item.menu
-                ? item.menu.map((innerItem) => ActiveNavLinkUrl(innerItem.url)).includes(true)
-                : ActiveNavLinkUrl(item.url)) || activeMenu[level] === item.title
+                ? item.menu
+                    .map((innerItem) => ActiveNavLinkUrl(innerItem.url))
+                    .includes(true)
+                : ActiveNavLinkUrl(item.url)) ||
+              activeMenu[level] === item.title
                 ? "active"
                 : ""
             }`}
@@ -90,9 +104,15 @@ export default function SidebarSubMenu({ menu, setActiveMenu, activeMenu, level 
               setActiveMenu([...temp]);
             }}
           >
-            {item.icon && <SvgIcon className="stroke-icon" iconId={`stroke-${item.icon}`} />}
+            {item.icon && (
+              <SvgIcon className="stroke-icon" iconId={`stroke-${item.icon}`} />
+            )}
 
-            {level === 0 ? <span className="lan-3">{t(`${item.title}`)}</span> : t(`${item.title}`)}
+            {level === 0 ? (
+              <span className="lan-3">{t(`${item.title}`)}</span>
+            ) : (
+              t(`${item.title}`)
+            )}
             {item.menu && (
               <>
                 {layout === "compact-wrapper" && (
@@ -119,13 +139,18 @@ export default function SidebarSubMenu({ menu, setActiveMenu, activeMenu, level 
           {item.menu && (
             <UL
               className={`simple-list ${
-                level !== 0 ? "nav-sub-childmenu submenu-content" : "sidebar-submenu"
+                level !== 0
+                  ? "nav-sub-childmenu submenu-content"
+                  : "sidebar-submenu"
               }`}
               style={{
                 display: `${
                   (item.menu
-                    ? item.menu.map((innerItem) => ActiveNavLinkUrl(innerItem.url)).includes(true)
-                    : ActiveNavLinkUrl(item.url)) || activeMenu[level] === item.title
+                    ? item.menu
+                        .map((innerItem) => ActiveNavLinkUrl(innerItem.url))
+                        .includes(true)
+                    : ActiveNavLinkUrl(item.url)) ||
+                  activeMenu[level] === item.title
                     ? "block"
                     : "none"
                 }`,
