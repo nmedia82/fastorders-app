@@ -131,6 +131,16 @@ export const addPaymentType = createAsyncThunk(
     return response.data;
   }
 );
+export const updatePaymentType = createAsyncThunk(
+  "products/updatePaymentType",
+  async (data) => {
+    const response = await axios.post(
+      `${api_url}/payment-types/${data.id}`,
+      data
+    );
+    return response.data;
+  }
+);
 export const deletePaymentType = createAsyncThunk(
   "products/deletePaymentType",
   async (id) => {
@@ -240,6 +250,14 @@ const AppSlice = createSlice({
       // add discount
       .addCase(addPaymentType.fulfilled, (state, action) => {
         state.paymentTypes.push(action.payload.data);
+      })
+      .addCase(updatePaymentType.fulfilled, (state, action) => {
+        const index = state.paymentTypes.findIndex(
+          (payment) => payment.id === action.payload.data
+        );
+        if (index !== -1) {
+          state.paymentTypes[index] = action.payload.data; // Update the product in the state
+        }
       })
       .addCase(deletePaymentType.fulfilled, (state, action) => {
         state.paymentTypes = state.paymentTypes.filter(
