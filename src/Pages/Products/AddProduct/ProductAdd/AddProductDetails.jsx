@@ -1,9 +1,12 @@
+/** @format */
+
 import React, { useState, useCallback } from "react";
 import { Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { toast } from "react-toastify";
 import { Btn } from "../../../../AbstractElements";
 import SvgIcon from "../../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
 import SelectCategory from "./SelectCategory";
+import ToolbarBox from "../../../Common/ToolbarBox";
 
 export default function AddProductDetails({
   activeCallBack,
@@ -52,7 +55,18 @@ export default function AddProductDetails({
               />
             </FormGroup>
           </Col>
-
+          <Col xs={12} className="m-0">
+            <FormGroup>
+              <ToolbarBox
+                name="product_description"
+                value={product.product_description}
+                onChange={(e) => onFormChange(e.target.name, e.target.value)}
+                paragraph={
+                  "Improve product visibility by adding a compelling description."
+                }
+              />
+            </FormGroup>
+          </Col>
           <Col xs={4} className="m-0">
             <FormGroup>
               <Label>Product Cost</Label>
