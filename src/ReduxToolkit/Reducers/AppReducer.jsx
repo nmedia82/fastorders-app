@@ -134,7 +134,7 @@ export const addPaymentType = createAsyncThunk(
 export const updatePaymentType = createAsyncThunk(
   "products/updatePaymentType",
   async (data) => {
-    const response = await axios.post(
+    const response = await axios.put(
       `${api_url}/payment-types/${data.id}`,
       data
     );
@@ -253,7 +253,7 @@ const AppSlice = createSlice({
       })
       .addCase(updatePaymentType.fulfilled, (state, action) => {
         const index = state.paymentTypes.findIndex(
-          (payment) => payment.id === action.payload.data
+          (payment) => payment.id === action.payload.data.id
         );
         if (index !== -1) {
           state.paymentTypes[index] = action.payload.data; // Update the product in the state

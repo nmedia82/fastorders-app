@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Col,
   Input,
@@ -12,7 +12,10 @@ import { Add, Cancel } from "../../../Utils/Constants";
 import { Btn } from "../../../AbstractElements";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { addPaymentType } from "../../../ReduxToolkit/Reducers/AppReducer";
+import {
+  addPaymentType,
+  updatePaymentType,
+} from "../../../ReduxToolkit/Reducers/AppReducer";
 import { getVendorID } from "../../../services/helper";
 // import ToolbarBox from "../../AddProduct/ProductTabContents/Common/ToolbarBox";
 
@@ -43,10 +46,10 @@ export default function AddNewModal({ paymentType, setPaymentType }) {
     };
     try {
       if (paymentType?.id) {
-        // const result = await dispatch(updatePaymentType(data));
-        // if (result.payload.success) {
-        //   toast.success("PaymentType Updated Successfully");
-        // }
+        const result = await dispatch(updatePaymentType(data));
+        if (result.payload.success) {
+          toast.success("PaymentType Updated Successfully");
+        }
       } else {
         const result = await dispatch(addPaymentType(data));
         if (result.payload.success) {
