@@ -57,9 +57,22 @@ export default function AddRegister() {
         </Btn>
       </div>
       <Modal isOpen={modal} toggle={toggle} size="lg">
-        <ModalHeader toggle={toggle}>Add New Register</ModalHeader>
+        <ModalHeader toggle={toggle}>Open New Register</ModalHeader>
         <ModalBody className="custom-input">
           <div className="create-category">
+            <div>
+              <Label>
+                Title<span className="txt-danger">*</span>
+              </Label>
+              <Input
+                className="m-0"
+                type="text"
+                required
+                value={tableform.register_title}
+                name="register_title"
+                onChange={handleChange}
+              />
+            </div>
             <div>
               <Label>
                 Initial Cash<span className="txt-danger">*</span>
@@ -88,7 +101,7 @@ export default function AddRegister() {
             {Cancel}
           </Btn>
           <Btn color="primary" onClick={handleSave}>
-            {Add}
+            {tableform.id ? "Update" : "Open"}
           </Btn>
         </ModalFooter>
       </Modal>
