@@ -48,6 +48,7 @@ const initialState = {
   registers: [],
   discounts: [],
   paymentTypes: [],
+  expenseTypes: [],
   allRanges: [
     { key: "last_24_hours", label: "Last 24 Hours" },
     { key: "last_30_days", label: "Last 30 Days" },
