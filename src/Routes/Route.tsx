@@ -20,6 +20,7 @@ import Users from "../Pages/Users";
 import ActivitiesPage from "../Pages/Activities";
 import AddEmployee from "../Pages/Employees/AddEmployee";
 import PaymentTypes from "../Pages/PaymentTypes";
+import ExpenseTypes from "../Pages/ExpenseTypes";
 
 export const routes = [
   {
@@ -102,5 +103,9 @@ export const routes = [
   {
     path: `${process.env.PUBLIC_URL}/payment-types`,
     element: <PaymentTypes />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/expense-types`,
+    element: <ExpenseTypes />,
   },
 ];

@@ -6,10 +6,7 @@ import SvgIcon from "../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
-import {
-  deletePaymentType,
-  fetchPaymentTypes,
-} from "../../ReduxToolkit/Reducers/AppReducer";
+import { fetchExpenseTypes } from "../../ReduxToolkit/Reducers/AppReducer";
 
 export default function ListTable({ setExpenseType }) {
   const Columns = [
@@ -47,7 +44,7 @@ export default function ListTable({ setExpenseType }) {
   ];
   const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(fetchPaymentTypes());
+    dispatch(fetchExpenseTypes());
   }, []);
 
   const [filterText, setFilterText] = useState("");
@@ -72,9 +69,9 @@ export default function ListTable({ setExpenseType }) {
     if (result.isConfirmed) {
       try {
         // const resp = await dispatch(deletePaymentType(data.id));
-        if (resp.payload.success) {
-          toast.success("Expense Type Deleted");
-        }
+        // if (resp.payload.success) {
+        //   toast.success("Expense Type Deleted");
+        // }
       } catch (error) {
         console.log(error);
         toast.error("Error Deleting Expense Type");

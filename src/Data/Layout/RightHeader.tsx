@@ -99,12 +99,18 @@ export const profileHeaderData = [
   },
   {
     id: 3,
+    link: `expense-types`,
+    icon: "bill",
+    text: "Expense Types",
+  },
+  {
+    id: 4,
     link: `discounts`,
     icon: "notepad",
     text: "Discounts",
   },
   {
-    id: 4,
+    id: 5,
     link: `edit-profile`,
     icon: "settings",
     text: "Settings",

@@ -48,6 +48,7 @@ const initialState = {
   registers: [],
   discounts: [],
   paymentTypes: [],
+  expenseTypes: [],
   allRanges: [
     { key: "last_24_hours", label: "Last 24 Hours" },
     { key: "last_30_days", label: "Last 30 Days" },
@@ -141,7 +142,7 @@ export const addPaymentType = createAsyncThunk(
 export const updatePaymentType = createAsyncThunk(
   "products/updatePaymentType",
   async (data) => {
-    const response = await axios.post(
+    const response = await axios.put(
       `${api_url}/payment-types/${data.id}`,
       data
     );
@@ -155,6 +156,41 @@ export const deletePaymentType = createAsyncThunk(
     return response.data;
   }
 );
+export const fetchExpenseTypes = createAsyncThunk(
+  "products/fetchExpenseTypes",
+  async () => {
+    const response = await axios.get(`${api_url}/expense-types`);
+    return response.data;
+  }
+);
+
+export const addExpenseType = createAsyncThunk(
+  "products/addExpenseType",
+  async (data) => {
+    const response = await axios.post(`${api_url}/expense-types`, data);
+    return response.data;
+  }
+);
+
+export const updateExpenseType = createAsyncThunk(
+  "products/updateExpenseType",
+  async (data) => {
+    const response = await axios.put(
+      `${api_url}/expense-types/${data.id}`,
+      data
+    );
+    return response.data;
+  }
+);
+
+export const deleteExpenseType = createAsyncThunk(
+  "products/deleteExpenseType",
+  async (id) => {
+    const response = await axios.delete(`${api_url}/expense-types/${id}`);
+    return response.data;
+  }
+);
+
 const AppSlice = createSlice({
   name: "products",
   initialState,
@@ -279,7 +315,7 @@ const AppSlice = createSlice({
       })
       .addCase(updatePaymentType.fulfilled, (state, action) => {
         const index = state.paymentTypes.findIndex(
-          (payment) => payment.id === action.payload.data
+          (payment) => payment.id === action.payload.data.id
         );
         if (index !== -1) {
           state.paymentTypes[index] = action.payload.data; // Update the product in the state
@@ -288,6 +324,34 @@ const AppSlice = createSlice({
       .addCase(deletePaymentType.fulfilled, (state, action) => {
         state.paymentTypes = state.paymentTypes.filter(
           (paymentType) => paymentType.id !== action.meta.arg
+        );
+      })
+      // handle fetch expenseTypes
+      .addCase(fetchExpenseTypes.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchExpenseTypes.fulfilled, (state, action) => {
+        state.expenseTypes = action.payload.data;
+        state.isLoading = false;
+      })
+      .addCase(fetchExpenseTypes.rejected, (state) => {
+        state.isLoading = false;
+      })
+      // add expense type
+      .addCase(addExpenseType.fulfilled, (state, action) => {
+        state.expenseTypes.push(action.payload.data);
+      })
+      .addCase(updateExpenseType.fulfilled, (state, action) => {
+        const index = state.expenseTypes.findIndex(
+          (expense) => expense.id === action.payload.data.id
+        );
+        if (index !== -1) {
+          state.expenseTypes[index] = action.payload.data;
+        }
+      })
+      .addCase(deleteExpenseType.fulfilled, (state, action) => {
+        state.expenseTypes = state.expenseTypes.filter(
+          (expenseType) => expenseType.id !== action.meta.arg
         );
       });
   },

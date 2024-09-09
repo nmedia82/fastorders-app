@@ -12,7 +12,10 @@ import { Add, Cancel } from "../../../Utils/Constants";
 import { Btn } from "../../../AbstractElements";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { addPaymentType } from "../../../ReduxToolkit/Reducers/AppReducer";
+import {
+  addExpenseType,
+  addPaymentType,
+} from "../../../ReduxToolkit/Reducers/AppReducer";
 import { getVendorID } from "../../../services/helper";
 // import ToolbarBox from "../../AddProduct/ProductTabContents/Common/ToolbarBox";
 
@@ -42,13 +45,13 @@ export default function AddNewModal({ expenseType, setExpenseType }) {
       vendor_id: getVendorID(),
     };
     try {
-      if (paymentType?.id) {
+      if (expenseType?.id) {
         // const result = await dispatch(updateExpenseType(data));
         // if (result.payload.success) {
         //   toast.success("ExpenseType Updated Successfully");
         // }
       } else {
-        // const result = await dispatch(addExpenseType(data));
+        const result = await dispatch(addExpenseType(data));
         if (result.payload.success) {
           toast.success("Expense Type Saved Successfully");
         }
