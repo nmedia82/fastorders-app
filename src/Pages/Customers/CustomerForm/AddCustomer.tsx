@@ -19,7 +19,9 @@ import {
 } from "../../../Utils/Constants";
 import SocialLink from "../../../Auth/SocialLink";
 
-export default function AddCustomerForm({ updateUserData }: RegisterWizardForm) {
+export default function AddCustomerForm({
+  updateUserData,
+}: RegisterWizardForm) {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -31,10 +33,19 @@ export default function AddCustomerForm({ updateUserData }: RegisterWizardForm) 
     city: "",
     status: "",
   });
-  const { first_name, last_name, phone_number1, phone_number2, address, city, status } = formData;
+  const {
+    first_name,
+    last_name,
+    phone_number1,
+    phone_number2,
+    address,
+    city,
+    status,
+  } = formData;
   const updateFormData = (event: ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
-    const value = name === "allowBackorders" ? event.target.checked : event.target.value;
+    const value =
+      name === "allowBackorders" ? event.target.checked : event.target.value;
     setFormData({ ...formData, [name]: value });
   };
   const handleSubmitButton = () => {
@@ -48,13 +59,15 @@ export default function AddCustomerForm({ updateUserData }: RegisterWizardForm) 
       status !== ""
     ) {
     } else {
-      return toast.error("Please fill out details before moving on to the next step");
+      return toast.error(
+        "Please fill out details before moving on to the next step"
+      );
     }
   };
 
   return (
     <div>
-      <div>
+      {/* <div>
         <Link className="logo" to={`${process.env.PUBLIC_URL}/dashboard/default`}>
           <Image
             className="img-fluid for-light"
@@ -67,7 +80,7 @@ export default function AddCustomerForm({ updateUserData }: RegisterWizardForm) 
             alt="looginpage"
           ></Image>
         </Link>
-      </div>
+      </div> */}
       <div className="login-main">
         <Form className="theme-form" onSubmit={handleSubmitButton}>
           <Row className="g-3 custom-input">

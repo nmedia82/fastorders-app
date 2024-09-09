@@ -5,64 +5,56 @@ import {
   AgreeTerms,
   ContactNumber,
   Email,
-  FirstName,
-  LastName,
-  State,
-  ZipCode,
+  FullName,
+  City,
+  Address,
 } from "../../../Utils/Constants";
 
-export default function YourInfoForm({ formData, updateFormData }: CustomerFormProps) {
+export default function YourInfoForm({
+  formData,
+  updateFormData,
+}: CustomerFormProps) {
   return (
-    <Form className="needs-validation custom-input" noValidate>
+    <Form className="needs-validation custom-input">
       <Row className="g-3">
-        <Col xxl={4} sm={6}>
+        <Col xxl={6} sm={6}>
           <Label>
-            {FirstName}
+            {FullName}
             <span className="txt-danger">*</span>
           </Label>
           <Input
-            placeholder="Enter first name"
+            placeholder="Enter full name"
             type="text"
-            name="first_name"
-            value={formData.first_name}
+            name="full_name"
+            value={formData.full_name}
             onChange={updateFormData}
           />
         </Col>
-        <Col xxl={4} sm={6}>
+        <Col xxl={6} sm={6}>
           <Label>
-            {LastName}
+            {Email}
             <span className="txt-danger">*</span>
           </Label>
           <Input
-            type="text"
-            placeholder="Enter last name"
-            name="last_name"
-            value={formData.last_name}
+            type="email"
+            placeholder="Enter email"
+            name="email"
+            value={formData.email}
             onChange={updateFormData}
           />
         </Col>
-        <Col xxl={4} sm={6}>
-          <Label>{"Phone Number 1"}</Label>
+        <Col xxl={6} sm={6}>
+          <Label>{ContactNumber}</Label>
           <Input
-            name="phone_number1"
-            placeholder="Enter your phone number "
+            name="phone_number"
+            placeholder="Enter phone number"
             type="text"
-            value={formData.phone_number1}
+            value={formData.phone_number}
             onChange={updateFormData}
           />
         </Col>
-        <Col xxl={4} sm={6}>
-          <Label>{"Phone Number 2"}</Label>
-          <Input
-            name="phone_number2"
-            placeholder="Enter your phone number"
-            type="text"
-            value={formData.phone_number2}
-            onChange={updateFormData}
-          />
-        </Col>
-        <Col xxl={4} sm={6}>
-          <Label>{"Address"}</Label>
+        <Col xxl={6} sm={6}>
+          <Label>{Address}</Label>
           <Input
             placeholder="Enter your address"
             name="address"
@@ -71,31 +63,15 @@ export default function YourInfoForm({ formData, updateFormData }: CustomerFormP
             onChange={updateFormData}
           />
         </Col>
-        <Col xxl={4} sm={6}>
-          <Label>{"City"}</Label>
+        <Col xxl={6} sm={6}>
+          <Label>{City}</Label>
           <Input
-            placeholder="your city"
+            placeholder="Enter your city"
             name="city"
             type="text"
             value={formData.city}
             onChange={updateFormData}
           />
-        </Col>
-        <Col xxl={4} sm={6}>
-          <Label>{"Status"}</Label>
-          <Input type="select" name="status" value={formData.status} onChange={updateFormData}>
-            <option value={"active"}>{"active"}</option>
-            <option value={"deactive"}>{"deactive "}</option>
-          </Input>
-        </Col>
-
-        <Col xs={12}>
-          <FormGroup check>
-            <Input id="invalidCheck-n" type="checkbox" required />
-            <Label htmlFor="invalidCheck-n" check>
-              {AgreeTerms}
-            </Label>
-          </FormGroup>
         </Col>
       </Row>
     </Form>
