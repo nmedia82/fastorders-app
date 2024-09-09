@@ -80,13 +80,11 @@ export interface VerticalWizardFormData {
   feedBack: string;
 }
 export interface CustomerFormData {
-  first_name: string;
-  last_name: string;
-  phone_number1: string;
-  phone_number2: string;
+  full_name: string;
+  email: string;
+  phone_number: string;
   address: string;
   city: string;
-  status: string;
 }
 
 export interface VerticalWizardFormProps {

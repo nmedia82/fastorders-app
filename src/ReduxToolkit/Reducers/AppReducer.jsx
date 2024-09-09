@@ -102,6 +102,15 @@ export const addRegister = createAsyncThunk(
     return response.data;
   }
 );
+export const fetchEmployees = createAsyncThunk(
+  "app/fetchEmployees",
+  async () => {
+    const response = await axios.get(
+      `${api_url}/employess?vendor_id=${vendor_id}`
+    );
+    return response.data;
+  }
+);
 export const addEmployee = createAsyncThunk(
   "products/addEmployee",
   async (data) => {
