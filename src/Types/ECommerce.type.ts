@@ -19,6 +19,15 @@ export interface CategoryTableTypes {
   action: true;
 }
 
+export interface TableTableTypes {
+  id: number;
+  title: string; // Renamed from categoryName to match 'Title'
+  description: string;
+  statusColor: string; // Renamed from categoryColor to better reflect status
+  status: string; // Renamed from categoryType to match 'Status'
+  serving_persons: string;
+}
+
 export interface FilterComponentProps {
   onFilter: (event: React.ChangeEvent<HTMLInputElement>) => void;
   filterText: string;

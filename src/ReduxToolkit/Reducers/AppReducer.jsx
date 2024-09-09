@@ -45,6 +45,7 @@ const initialState = {
   dashoardReports: [],
   allActivities: [],
   vendorCustomers: [],
+  vendorTables: [],
   registers: [],
   discounts: [],
   paymentTypes: [],
@@ -133,7 +134,15 @@ export const deleteCustomer = createAsyncThunk(
     return response.data;
   }
 );
-
+export const fetchTables = createAsyncThunk("app/fetchTables", async () => {
+  const response = await axios.get(`${api_url}/tables/${vendor_id}`);
+  return response.data;
+});
+// Delete a category
+export const deleteTable = createAsyncThunk("app/deleteTable", async (id) => {
+  const response = await axios.delete(`${api_url}/tables/${id}`);
+  return response.data;
+});
 export const fetchPaymentTypes = createAsyncThunk(
   "products/fetchPaymentTypes",
   async () => {
@@ -214,6 +223,10 @@ const AppSlice = createSlice({
       state.vendorCustomers = [action.payload, ...state.vendorCustomers];
       state.isLoading = false;
     },
+    addNewTable: (state, action) => {
+      state.vendorTables = [action.payload, ...state.vendorTables];
+      state.isLoading = false;
+    },
     updateCustomer: (state, action) => {
       const index = state.vendorCustomers.findIndex(
         (c) => c.id === parseInt(action.payload.id)
@@ -281,6 +294,29 @@ const AppSlice = createSlice({
       .addCase(fetchCustomers.rejected, (state) => {
         state.isLoading = false;
       })
+      // Handle delete customer
+      .addCase(deleteCustomer.fulfilled, (state, action) => {
+        state.vendorCustomers = state.vendorCustomers.filter(
+          (customer) => customer.id !== action.meta.arg
+        ); // Remove the deleted customer from the state
+      })
+      // handle fetch tables
+      .addCase(fetchTables.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchTables.fulfilled, (state, action) => {
+        state.vendorTables = action.payload.data;
+        state.isLoading = false;
+      })
+      .addCase(fetchTables.rejected, (state) => {
+        state.isLoading = false;
+      })
+      // Handle delete customer
+      .addCase(deleteTable.fulfilled, (state, action) => {
+        state.vendorTables = state.vendorTables.filter(
+          (customer) => customer.id !== action.meta.arg
+        ); // Remove the deleted customer from the state
+      })
       // handle fetch discounts
       .addCase(fetchDiscounts.pending, (state) => {
         state.isLoading = true;
@@ -301,12 +337,7 @@ const AppSlice = createSlice({
           (discount) => discount.cupon !== action.meta.arg
         ); // Add the new product to the state
       })
-      // Handle delete category
-      .addCase(deleteCustomer.fulfilled, (state, action) => {
-        state.vendorCustomers = state.vendorCustomers.filter(
-          (customer) => customer.id !== action.meta.arg
-        ); // Remove the deleted customer from the state
-      })
+
       // handle fetch paymentTypes
       .addCase(fetchPaymentTypes.pending, (state) => {
         state.isLoading = true;
@@ -370,6 +401,7 @@ export const {
   setLoading,
   setBackgroundSyncing,
   addNewCustomer,
+  addNewTable,
   updateCustomer,
 } = AppSlice.actions;
 export default AppSlice.reducer;

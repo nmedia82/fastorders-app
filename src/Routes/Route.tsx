@@ -21,6 +21,7 @@ import ActivitiesPage from "../Pages/Activities";
 import AddEmployee from "../Pages/Employees/AddEmployee";
 import PaymentTypes from "../Pages/PaymentTypes";
 import ExpenseTypes from "../Pages/ExpenseTypes";
+import CustomersList from "../Pages/Customers/CustomersList";
 
 export const routes = [
   {
@@ -66,6 +67,14 @@ export const routes = [
   },
   {
     path: `${process.env.PUBLIC_URL}/customers`,
+    element: <CustomersList />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/customers/new`,
+    element: <AddCustomers />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/customers/:customer_id`,
     element: <AddCustomers />,
   },
   {

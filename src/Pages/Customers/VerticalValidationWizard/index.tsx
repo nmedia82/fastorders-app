@@ -1,15 +1,10 @@
-import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Card, CardBody, Col, Row, TabContent, TabPane } from "reactstrap";
 import CommonCardHeader from "../../../Utils/CommonComponents/CommonCardHeader";
-import { verticalValidationWizardSubTitle } from "../../../Data/Forms/FormLayout";
-import {
-  Previous,
-  VerticalValidationWizardTitle,
-} from "../../../Utils/Constants";
 import CustomerNav from "./VerticalWizardNav";
 import { Btn } from "../../../AbstractElements";
-import YourInfoForm from "./YourInfoForm";
+import YourInfoForm from "./CustomerForm";
 import http from "../../../services/http";
 import { getAPIURL, getVendorID } from "../../../services/helper";
 import { useSelector } from "react-redux";

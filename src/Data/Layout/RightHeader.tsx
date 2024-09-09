@@ -92,6 +92,12 @@ export const profileHeaderData = [
     text: "Employees",
   },
   {
+    id: 11,
+    link: `customers`,
+    icon: "user",
+    text: "Customers",
+  },
+  {
     id: 2,
     link: `payment-types`,
     icon: "bill",
