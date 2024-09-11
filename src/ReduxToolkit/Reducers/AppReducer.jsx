@@ -44,7 +44,8 @@ export const addActivityLog = createAsyncThunk("activity", async (payload) => {
 const initialState = {
   dashoardReports: [],
   allActivities: [],
-  allEmployees: [],
+  vendorCustomers: [],
+  vendorTables: [],
   registers: [],
   discounts: [],
   paymentTypes: [],
@@ -102,6 +103,15 @@ export const addRegister = createAsyncThunk(
     return response.data;
   }
 );
+export const fetchEmployees = createAsyncThunk(
+  "app/fetchEmployees",
+  async () => {
+    const response = await axios.get(
+      `${api_url}/employess?vendor_id=${vendor_id}`
+    );
+    return response.data;
+  }
+);
 export const addEmployee = createAsyncThunk(
   "products/addEmployee",
   async (data) => {
@@ -109,15 +119,30 @@ export const addEmployee = createAsyncThunk(
     return response.data;
   }
 );
-export const fetchEmployees = createAsyncThunk(
-  "products/fetchEmployees",
+export const fetchCustomers = createAsyncThunk(
+  "app/fetchCustomers",
   async () => {
-    const response = await axios.get(
-      `${api_url}/employees?vendor_id=${vendor_id}`
-    );
+    const response = await axios.get(`${api_url}/customers/${vendor_id}`);
     return response.data;
   }
 );
+// Delete a category
+export const deleteCustomer = createAsyncThunk(
+  "app/deleteCustomer",
+  async (id) => {
+    const response = await axios.delete(`${api_url}/customers/${id}`);
+    return response.data;
+  }
+);
+export const fetchTables = createAsyncThunk("app/fetchTables", async () => {
+  const response = await axios.get(`${api_url}/tables/${vendor_id}`);
+  return response.data;
+});
+// Delete a category
+export const deleteTable = createAsyncThunk("app/deleteTable", async (id) => {
+  const response = await axios.delete(`${api_url}/tables/${id}`);
+  return response.data;
+});
 export const fetchPaymentTypes = createAsyncThunk(
   "products/fetchPaymentTypes",
   async () => {
@@ -194,6 +219,23 @@ const AppSlice = createSlice({
     setBackgroundSyncing: (state, action) => {
       state.isBackgroundWorking = action.payload;
     },
+    addNewCustomer: (state, action) => {
+      state.vendorCustomers = [action.payload, ...state.vendorCustomers];
+      state.isLoading = false;
+    },
+    addNewTable: (state, action) => {
+      state.vendorTables = [action.payload, ...state.vendorTables];
+      state.isLoading = false;
+    },
+    updateCustomer: (state, action) => {
+      const index = state.vendorCustomers.findIndex(
+        (c) => c.id === parseInt(action.payload.id)
+      );
+      if (index !== -1) {
+        state.vendorCustomers[index] = action.payload;
+      }
+      state.isLoading = false;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -239,18 +281,41 @@ const AppSlice = createSlice({
       })
       // add Employee
       .addCase(addEmployee.fulfilled, (state, action) => {
-        state.allEmployees.push(action.payload); // Add the new product to the state
+        state.vendorCustomers.push(action.payload); // Add the new product to the state
       })
       // handle fetch employees
-      .addCase(fetchEmployees.pending, (state) => {
+      .addCase(fetchCustomers.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(fetchEmployees.fulfilled, (state, action) => {
-        state.allEmployees = action.payload.data;
+      .addCase(fetchCustomers.fulfilled, (state, action) => {
+        state.vendorCustomers = action.payload.data;
         state.isLoading = false;
       })
-      .addCase(fetchEmployees.rejected, (state) => {
+      .addCase(fetchCustomers.rejected, (state) => {
         state.isLoading = false;
+      })
+      // Handle delete customer
+      .addCase(deleteCustomer.fulfilled, (state, action) => {
+        state.vendorCustomers = state.vendorCustomers.filter(
+          (customer) => customer.id !== action.meta.arg
+        ); // Remove the deleted customer from the state
+      })
+      // handle fetch tables
+      .addCase(fetchTables.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchTables.fulfilled, (state, action) => {
+        state.vendorTables = action.payload.data;
+        state.isLoading = false;
+      })
+      .addCase(fetchTables.rejected, (state) => {
+        state.isLoading = false;
+      })
+      // Handle delete customer
+      .addCase(deleteTable.fulfilled, (state, action) => {
+        state.vendorTables = state.vendorTables.filter(
+          (customer) => customer.id !== action.meta.arg
+        ); // Remove the deleted customer from the state
       })
       // handle fetch discounts
       .addCase(fetchDiscounts.pending, (state) => {
@@ -272,6 +337,7 @@ const AppSlice = createSlice({
           (discount) => discount.cupon !== action.meta.arg
         ); // Add the new product to the state
       })
+
       // handle fetch paymentTypes
       .addCase(fetchPaymentTypes.pending, (state) => {
         state.isLoading = true;
@@ -331,5 +397,11 @@ const AppSlice = createSlice({
   },
 });
 
-export const { setLoading, setBackgroundSyncing } = AppSlice.actions;
+export const {
+  setLoading,
+  setBackgroundSyncing,
+  addNewCustomer,
+  addNewTable,
+  updateCustomer,
+} = AppSlice.actions;
 export default AppSlice.reducer;

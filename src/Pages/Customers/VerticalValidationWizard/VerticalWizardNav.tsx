@@ -4,7 +4,10 @@ import { CustomerNavProps } from "../../../Types/Forms.type";
 import { verticalWizardNav } from "../../../Data/Forms/FormLayout";
 import { H6, P } from "../../../AbstractElements";
 
-export default function CustomerNav({ steps, activeCallBack }: CustomerNavProps) {
+export default function CustomerNav({
+  steps,
+  activeCallBack,
+}: CustomerNavProps) {
   return (
     <Nav className="flex-column header-vertical-wizard" id="wizard-tab">
       {verticalWizardNav.map((data) => (
@@ -18,8 +21,7 @@ export default function CustomerNav({ steps, activeCallBack }: CustomerNavProps)
               <i className={`fa fa-${data.icon}`}></i>
             </div>
             <div className="vertical-wizard-content">
-              <H6>{data.title}</H6>
-              <P>{data.subTitle}</P>
+              <H6>Customer Details</H6>
             </div>
           </div>
         </NavLink>

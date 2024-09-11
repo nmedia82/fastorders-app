@@ -13,7 +13,7 @@ export default function TableListHeader() {
   return (
     <div className="list-product-header">
       <div>
-        <div className="light-box">
+        {/* <div className="light-box">
           <a href={Href} onClick={handleFilterToggle}>
             {isFilterOpen ? (
               <i className="icon-close filter-close" />
@@ -21,7 +21,7 @@ export default function TableListHeader() {
               <Filter className="filter-icon" />
             )}
           </a>
-        </div>
+        </div> */}
         <div>
           <NewTableModal />
         </div>

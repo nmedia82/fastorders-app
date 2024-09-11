@@ -1,230 +1,83 @@
-import { FormGroup, Input } from "reactstrap";
-import { Badges, Image, P } from "../../../AbstractElements";
-import { CategoryTableTypes, CustomCompoentType } from "../../../Types/ECommerce.type";
-import { dynamicImage } from "../../../Utils";
-import SvgIcon from "../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
+import { Badges, P } from "../../../AbstractElements";
+import { Button } from "reactstrap";
+import {
+  CustomCompoentType,
+  TableTableTypes,
+} from "../../../Types/ECommerce.type";
 import { TableColumn } from "react-data-table-component";
 
-const CustomImage = ({ src, name }: CustomCompoentType) => (
-  <div className="product-names">
-    <div className="light-product-box">
-      <Image className="img-fluid" src={dynamicImage(src)} alt="t-shirt" />
-    </div>
-    <P>{name}</P>
+// Component for showing description
+const CustomDescription = ({ text }: CustomCompoentType) => (
+  <P className="f-light">{text}</P>
+);
+
+// Component for showing status with badges
+const CustomStatus = ({ text }: { text: string }) => {
+  const color =
+    text === "available" ? "success" : text === "book" ? "danger" : "secondary"; // Default to secondary for any other status
+  return (
+    <Badges color={`light-${color}`} className={`txt-${color}`}>
+      {text}
+    </Badges>
+  );
+};
+
+// Adding Delete and Show buttons
+const ActionButtons = ({
+  onDelete,
+  row,
+}: {
+  onDelete: (id: number) => void;
+  row: TableTableTypes;
+}) => (
+  <div className="action-buttons">
+    <Button
+      color="danger"
+      size="sm"
+      onClick={() => onDelete(row.id)}
+      style={{ marginRight: "5px" }}
+    >
+      Delete
+    </Button>
   </div>
 );
 
-const CustomDescrioption = ({ text }: CustomCompoentType) => <P className="f-light">{text}</P>;
-
-const CustomType = ({ color, text }: CustomCompoentType) => (
-  <Badges color={`light-${color}`} className={`txt-${color}`}>
-    {text}
-  </Badges>
-);
-
-export const TableListData: CategoryTableTypes[] = [
-  {
-    id: 1,
-    image: "product/1.png",
-    categoryName: "T-Shirts",
-    description: "Special PriceGet at flat ₹229",
-    categoryColor: "primary",
-    categoryType: "Clothing",
-    action: true,
-  },
-  {
-    id: 2,
-    image: "product/category/1.png",
-    categoryName: "Shoes",
-    description: "Up to ₹300, on orders of ₹1750 and above T&C",
-    categoryColor: "primary",
-    categoryType: "Footwear",
-    action: true,
-  },
-  {
-    id: 3,
-    image: "product/category/2.png",
-    categoryName: "Handbags",
-    description: "Passed 30+ quality checks performed by experts for Comfort & Design.",
-    categoryColor: "secondary",
-    categoryType: "Accessories",
-    action: true,
-  },
-  {
-    id: 4,
-    image: "product/products/1.png",
-    categoryName: "Chairs",
-    description: "Passed 30+ quality checks performed by experts for Comfort & Design.",
-    categoryColor: "secondary",
-    categoryType: "Accessories",
-    action: true,
-  },
-  {
-    id: 5,
-    image: "product/category/3.png",
-    categoryName: "Toys",
-    description: "Assembling Shape Educational Toys (Multicolor)",
-    categoryColor: "success",
-    categoryType: "Electronic",
-    action: true,
-  },
-  {
-    id: 6,
-    image: "product/category/4.png",
-    categoryName: "Slipper",
-    description: "Easy to wear and comfortable slip on slippers",
-    categoryColor: "primary",
-    categoryType: "Footwear",
-    action: true,
-  },
-  {
-    id: 7,
-    image: "product/category/5.png",
-    categoryName: "Cameras",
-    description: "Our computers and tablets include all the big brands.",
-    categoryColor: "success",
-    categoryType: "Electronic",
-    action: true,
-  },
-  {
-    id: 8,
-    image: "product/2.png",
-    categoryName: "T-Shirts",
-    description: "Special PriceGet at flat ₹100",
-    categoryColor: "primary",
-    categoryType: "Clothing",
-    action: true,
-  },
-  {
-    id: 9,
-    image: "product/product-categories/watch.png",
-    categoryName: "Watches",
-    description: "Experience luxury and precision with our meticulously crafted timepieces",
-    categoryColor: "success",
-    categoryType: "Electronic",
-    action: true,
-  },
-  {
-    id: 10,
-    image: "product/12.png",
-    categoryName: "T-Shirts",
-    description: "Special PriceGet at flat ₹300",
-    categoryColor: "primary",
-    categoryType: "Clothing",
-    action: true,
-  },
-  {
-    id: 11,
-    image: "product/category/1.png",
-    categoryName: "Shoes",
-    description: "Up to ₹300, on orders of ₹1750 and above T&C",
-    categoryColor: "primary",
-    categoryType: "Footwear",
-    action: true,
-  },
-  {
-    id: 12,
-    image: "product/category/3.png",
-    categoryName: "Toys",
-    description: "Assembling Shape Educational Toys (Multicolor)",
-    categoryColor: "success",
-    categoryType: "Electronic",
-    action: true,
-  },
-  {
-    id: 13,
-    image: "product/category/4.png",
-    categoryName: "Slipper",
-    description: "Easy to wear and comfortable slip on slippers",
-    categoryColor: "primary",
-    categoryType: "Footwear",
-    action: true,
-  },
-  {
-    id: 14,
-    image: "product/category/5.png",
-    categoryName: "Cameras",
-    description: "Our computers and tablets include all the big brands.",
-    categoryColor: "success",
-    categoryType: "Electronic",
-    action: true,
-  },
-  {
-    id: 15,
-    image: "product/product-categories/watch.png",
-    categoryName: "Watches",
-    description: "Experience luxury and precision with our meticulously crafted timepieces",
-    categoryColor: "success",
-    categoryType: "Electronic",
-    action: true,
-  },
-  {
-    id: 16,
-    image: "product/1.png",
-    categoryName: "T-Shirts",
-    description: "Special PriceGet at flat ₹229",
-    categoryColor: "primary",
-    categoryType: "Clothing",
-    action: true,
-  },
-  {
-    id: 17,
-    image: "product/category/1.png",
-    categoryName: "Shoes",
-    description: "Up to ₹300, on orders of ₹1750 and above T&C",
-    categoryColor: "primary",
-    categoryType: "Footwear",
-    action: true,
-  },
-  {
-    id: 18,
-    image: "product/category/2.png",
-    categoryName: "Handbags",
-    description: "Passed 30+ quality checks performed by experts for Comfort & Design.",
-    categoryColor: "secondary",
-    categoryType: "Accessories",
-    action: true,
-  },
-  {
-    id: 19,
-    image: "product/products/1.png",
-    categoryName: "Chairs",
-    description: "Passed 30+ quality checks performed by experts for Comfort & Design.",
-    categoryColor: "secondary",
-    categoryType: "Accessories",
-    action: true,
-  },
-];
-
-export const TableColumns: TableColumn<CategoryTableTypes>[] = [
-  {
-    name: "",
-    cell: () => (
-      <FormGroup check>
-        <Input className="checkbox-primary" type="checkbox" />
-      </FormGroup>
-    ),
-    sortable: false,
-    width: "3%",
-  },
+export const TableColumns: TableColumn<TableTableTypes>[] = [
   {
     name: "Title",
-    selector: (row) => row.categoryName,
+    selector: (row) => row.title, // Updated from categoryName to title
     sortable: true,
-    cell: (row) => <CustomImage src={row.image} name={row.categoryName} />,
-    width: "15%",
+    width: "20%", // Adjust width as needed
   },
   {
     name: "Description",
-    selector: (row) => row.description,
+    selector: (row) => row.description, // Unchanged
     sortable: true,
-    cell: (row) => <CustomDescrioption text={row.description} />,
-    width: "35%",
+    cell: (row) => <CustomDescription text={row.description} />,
+    width: "30%", // Adjust width as needed
   },
   {
-    name: "Category",
-    selector: (row) => row.categoryType,
+    name: "Serving",
+    selector: (row) => row.serving_persons, // Unchanged
     sortable: true,
-    cell: (row) => <CustomType color={row.categoryColor} text={row.categoryType} />,
+    cell: (row) => <CustomDescription text={row.serving_persons} />,
+    width: "15%", // Adjust width as needed
+  },
+  {
+    name: "Status",
+    selector: (row) => row.status, // Updated from categoryType to status
+    sortable: true,
+    cell: (row) => <CustomStatus text={row.status} />, // Updated from categoryColor to statusColor
+    width: "15%", // Adjust width as needed
+  },
+  {
+    name: "Actions",
+    cell: (row) => (
+      <ActionButtons
+        onDelete={(id) => console.log("Delete", id)} // Pass your actual handleDelete function here
+        row={row}
+      />
+    ),
+    width: "20%", // Adjust width as needed
   },
 ];

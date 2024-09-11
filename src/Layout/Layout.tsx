@@ -22,7 +22,11 @@ import {
 import axios from "axios";
 import { getAPIURL, getVendorSettings } from "../services/helper";
 import BackgroundOrdersSync from "./BackgroundOrdersSync";
-import { fetchActivityLog } from "../ReduxToolkit/Reducers/AppReducer";
+import {
+  fetchActivityLog,
+  fetchCustomers,
+  fetchTables,
+} from "../ReduxToolkit/Reducers/AppReducer";
 
 export default function Layout() {
   const { sidebar_types } = useSelector(
@@ -64,39 +68,19 @@ export default function Layout() {
     };
   }, [updateSidebarBasedOnWidth]);
 
-  // Checking unread notifications every 30 seconds
-  // useEffect(() => {
-  //   const checkNewOrderNotifications = async () => {
-  //     try {
-  //       const ts = localStorage.getItem("getorder_orders_ts");
-  //       // console.log("checking ts");
-  //       if (ts) {
-  //         const { data: orders } = await axios.get(
-  //           `${api_url}/get-orders?vendor_id=${vendor_id}&ts=${ts}`
-  //         );
-  //         dispatch(syncNewOrders(orders.data));
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching unread notifications", error);
-  //     }
-  //   };
-
-  //   const notificationInterval = setInterval(checkNewOrderNotifications, 15000); // Check every 30 seconds (30000 ms)
-
-  //   return () => clearInterval(notificationInterval);
-  // }, [dispatch, api_url]);
-
   useEffect(() => {
     // Dispatching products/categories/orders
     dispatch(fetchProducts());
     dispatch(fetchCategories());
     dispatch(fetchOrders());
     dispatch(fetchActivityLog());
+    dispatch(fetchCustomers());
+    dispatch(fetchTables());
   }, [dispatch]);
 
   return (
     <>
-      {1 && <BackgroundOrdersSync />}
+      <BackgroundOrdersSync />
       <Loader />
       <Taptop />
       <div

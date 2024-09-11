@@ -7,6 +7,7 @@ import { Btn } from "../../../../AbstractElements";
 import SvgIcon from "../../../../Utils/CommonComponents/CommonIcons/CommonSvgIcons";
 import SelectCategory from "./SelectCategory";
 import ToolbarBox from "../../../Common/ToolbarBox";
+import ReactQuill from "react-quill";
 
 export default function AddProductDetails({
   activeCallBack,
@@ -57,13 +58,11 @@ export default function AddProductDetails({
           </Col>
           <Col xs={12} className="m-0">
             <FormGroup>
-              <ToolbarBox
-                name="product_description"
-                value={product.product_description}
-                onChange={(e) => onFormChange(e.target.name, e.target.value)}
-                paragraph={
-                  "Improve product visibility by adding a compelling description."
-                }
+              <Label>Product Description</Label>
+              <ReactQuill
+                style={{ height: "150px" }}
+                value={product.description}
+                onChange={(value) => onFormChange("description", value)}
               />
             </FormGroup>
           </Col>
