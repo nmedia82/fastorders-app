@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardBody, Col, Form, Input, Label, Row } from "reactstrap";
 import CommonCardHeader from "../../../../Utils/CommonComponents/CommonCardHeader";
 import {
@@ -13,8 +13,25 @@ import {
 } from "../../../../Utils/Constants";
 import { Btn, H3, H4, Image, P } from "../../../../AbstractElements";
 import { dynamicImage } from "../../../../Utils";
+import NMForm from "../../../../Components/NM/NMForm";
+import { UpdatePWDConfig } from "./updatePasswordFormConfig";
+import { useSSR } from "react-i18next";
 
 export default function UserProfile() {
+  const [PasswordChange, setPasswordChange] = useState({});
+
+  const handleUpdatePassword = (key: any, value: any) => {
+    // console.log(name, value);
+    setPasswordChange((prevData) => ({
+      ...prevData,
+      [key]: value,
+    }));
+  };
+
+  const handleChangePassword = () => {
+    console.log(PasswordChange);
+  };
+
   return (
     <Col xl={4}>
       <Card className="title-line">
@@ -36,20 +53,14 @@ export default function UserProfile() {
                 </div>
               </Col>
 
-              <Col xs={12}>
-                <Label>{EmailAddress}</Label>
-                <Input type="email" placeholder="your-email@domain.com" />
-              </Col>
-              <Col xs={12}>
-                <Label>{"Enter New Password"}</Label>
-                <Input type="password" defaultValue="password" />
-              </Col>
-              <Col xs={12}>
-                <Label>{"Re-Typre New Password"}</Label>
-                <Input type="password" defaultValue="password" />
-              </Col>
+              <NMForm
+                formKey="password_change"
+                formData={PasswordChange}
+                formConfig={UpdatePWDConfig()}
+                onFormChange={handleUpdatePassword}
+              />
 
-              <div className="form-footer">
+              <div className="form-footer" onClick={handleChangePassword}>
                 <Btn color="primary">{Save}</Btn>
               </div>
             </Row>
