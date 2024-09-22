@@ -145,6 +145,9 @@ const cartSlice = createSlice({
       state.total = subtotal - state.discount;
       saveCartToLocalStorage(state);
     },
+    setOpenRegister: (state, action) => {
+      state.register_id = action.payload;
+    },
     holdCart: (state) => {
       state.holdCarts.push({
         id: state.cartId,
@@ -184,6 +187,7 @@ const cartSlice = createSlice({
         sale_amount: parseFloat(state.total),
         discount: parseFloat(state.discount),
         paid: parseFloat(amount_paid),
+        register_id: state.register_id,
       };
 
       // Add the new order to pending orders (without directly mutating the array)
@@ -266,7 +270,6 @@ const cartSlice = createSlice({
       })
       .addCase(fetchRegisters.fulfilled, (state, action) => {
         state.status = "succeeded";
-        console.log(action.payload);
         const registers = action.payload;
         const open_registers = registers.filter((r) => r.status === "open");
         if (open_registers.length > 1) {
@@ -284,6 +287,7 @@ export const {
   removeItem,
   updateQuantity,
   applyDiscount,
+  setOpenRegister,
   holdCart,
   retrieveCart,
   clearCart,

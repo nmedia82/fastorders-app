@@ -223,6 +223,19 @@ const AppSlice = createSlice({
       state.vendorCustomers = [action.payload, ...state.vendorCustomers];
       state.isLoading = false;
     },
+    addNewRegister: (state, action) => {
+      state.registers = [action.payload, ...state.registers];
+      state.isLoading = false;
+    },
+    updateRegister: (state, action) => {
+      const index = state.registers.findIndex(
+        (c) => c.id === parseInt(action.payload.id)
+      );
+      if (index !== -1) {
+        state.registers[index] = action.payload;
+      }
+      state.isLoading = false;
+    },
     addNewTable: (state, action) => {
       state.vendorTables = [action.payload, ...state.vendorTables];
       state.isLoading = false;
@@ -401,6 +414,8 @@ export const {
   setLoading,
   setBackgroundSyncing,
   addNewCustomer,
+  addNewRegister,
+  updateRegister,
   addNewTable,
   updateCustomer,
 } = AppSlice.actions;
